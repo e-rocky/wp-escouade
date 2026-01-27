@@ -1,11 +1,10 @@
-// Base
-//@import "uikit/src/scss/variables.scss";
-//@import "uikit/src/scss/components/variables.scss";
-//@import "uikit/src/scss/components/mixin.scss";
-//@import "uikit/src/scss/components/base.scss";
+// Vars
+
+@use "vars";
 
 // Base
 @import "uikit/src/scss/variables.scss";
+
 @import "uikit/src/scss/components/variables.scss";
 @import "uikit/src/scss/components/mixin.scss";
 @import "uikit/src/scss/components/base.scss";
