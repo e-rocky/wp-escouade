@@ -1,0 +1,9 @@
+@use "sass:list";
+
+$colors: (#43fea5, #5e54ff, #191933, #ffffff, #f473d0);
+
+:root {
+    @for $i from 1 through list.length($colors) {
+        --color-#{$i}: #{list.nth($colors, $i)};
+    }
+}
