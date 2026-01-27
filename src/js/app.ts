@@ -1,1 +1,1 @@
-import "virtual:uno.css";
+import "./_vendors";

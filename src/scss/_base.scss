@@ -1,6 +1,9 @@
+$max-width: 1440px;
+
 /*-- .myAwesome-block --*/
 .myAwesome-block {
     &__content {
+        max-width: $max-width;
     }
     &__header {
     }
