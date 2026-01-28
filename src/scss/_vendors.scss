@@ -1,6 +1,5 @@
-// Vars
-
-@use "vars";
+// Vars include is not working with @use
+@import "vars";
 
 // Base
 @import "uikit/src/scss/variables.scss";
@@ -50,7 +49,7 @@
 //@import "uikit/src/scss/components/modal.scss"; // After: Close
 //@import "uikit/src/scss/components/slideshow.scss";
 //@import "uikit/src/scss/components/slider.scss";
-//@import "uikit/src/scss/components/sticky.scss";
+@import "uikit/src/scss/components/sticky.scss";
 //@import "uikit/src/scss/components/offcanvas.scss";
 //@import "uikit/src/scss/components/switcher.scss";
 //@import "uikit/src/scss/components/leader.scss";

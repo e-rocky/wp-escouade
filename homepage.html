@@ -9,40 +9,78 @@
 
 <body>
     <header id="header">
-        <div class="block main-nav-block">
+        <div class="block main-nav-block" data-uk-sticky>
             <div class="main-nav-block__content">
-                <div class="main-nav-block__body">
 
-                    <nav class="uk-navbar-container">
-                        <div class="uk-container">
-                            <div uk-navbar>
+                <nav class="main-nav-block__body uk-navbar-container">
+                    <div class="uk-container">
+                        <div uk-navbar>
 
-                                <div class="uk-navbar-left">
+                            <div class="uk-navbar-left">
 
-                                    <a class="uk-navbar-item uk-logo" href="#" aria-label="Escouade">
-                                        <img src="/img/design/logo.svg" alt="Escouade">
-                                    </a>
-
-                                    <ul class="uk-navbar-nav">
-                                        <li>
-                                            <a href="#">
-                                                <span class="uk-icon uk-margin-xsmall-right" uk-icon="icon: star"></span>
-                                                Accueil
-                                            </a>
-                                        </li>
-                                    </ul>
-
-
+                                <div class="uk-navbar-item">
+                                    <a href="#" class="uk-logo logo" href="#" aria-label="Escouade">
+                                        <img src="/img/design/logo.svg" alt="Escouade"></a>
                                 </div>
 
+                                <ul class="uk-navbar-nav">
+                                    <li>
+                                        <a href="#" title="Accueil">
+                                            Accueil
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="A propos">
+                                            A propos
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Carrière">
+                                            Carrière
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Services">
+                                            Services
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="Actualités">
+                                            Actualités
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="uk-navbar-item">
+                                    <a class="btn btn-outline btn-shadow-sm" href="#" title="Je cherche un job">Je cherche un job</a>
+                                    <a class="btn btn-gradient btn-shadow-md" href="#" title="Je recrute un talent">Je recrute un talent</a>
+                                </div>
+
+
                             </div>
+
                         </div>
-                    </nav>
+                    </div>
+                </nav><!-- .main-nav-block__body -->
 
 
-                </div><!-- .main-nav-block__body -->
             </div><!-- .main-nav-block__content -->
         </div><!-- .main-nav-block -->
+
+        <div class="block hero-text-block">
+            <div class="hero-text-block__content uk-container min-h-[600px]">
+                <div class="hero-text-block__body">
+                    <h1 class="title title--h1">
+                        <small class="block">Une <strong>Escouade</strong>, c'est <em>plus qu'une équipe</em> :</small>
+                        c'est une aventure humaine
+                    </h1>
+                </div><!-- .hero-text-block__body -->
+                <div class="hero-text-block__footer flex flex-justify-center">
+                    <a class="btn btn-gradient btn--lg btn-shadow-md" href="#" title="Je recrute un talent">Je recrute un talent</a>
+
+                </div><!-- .hero-text-block__footer -->
+            </div><!-- .hero-text-block__content -->
+        </div><!-- .hero-text-block -->
     </header>
 
     <script type="module" src="/src/main.ts"></script>

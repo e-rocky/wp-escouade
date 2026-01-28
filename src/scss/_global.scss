@@ -1,15 +1,97 @@
-$max-width: 1440px;
+@use "sass:list";
+@use "vars" as *;
 
-/*-- .myAwesome-block --*/
-.myAwesome-block {
-    &__content {
-        max-width: $max-width;
+html,
+body {
+    font-family: #{list.nth($fonts, 1)};
+    font-size: 18px;
+    line-height: 1.5;
+    color: #{list.nth($colors, 1)};
+    font-weight: 300;
+}
+
+.btn {
+    display: flex;
+    padding: 12px 30px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    font-family: #{list.nth($fonts, 2)};
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: fit-content;
+    font-size: 16px;
+    line-height: 1.2;
+    &:hover {
+        text-decoration: none;
     }
-    &__header {
+    $btn-gradient: linear-gradient(123deg, #{list.nth($colors, 1)} -73.44%, #{list.nth($colors, 2) 100%});
+    $btn-shadow-sm: 0 5px 20px 0 rgba(0, 0, 0, 0.12);
+    &--lg {
+        font-size: 20px;
     }
-    &__body {
+    &-shadow-sm {
+        box-shadow: $btn-shadow-sm;
     }
-    &__footer {
+    &-shadow-md {
+        box-shadow:
+            $btn-shadow-sm,
+            0 5px 20px 0 rgba(94, 84, 255, 0.12);
+    }
+    &-outline {
+        --webkit-background-clip: text;
+        position: relative;
+        background: $btn-gradient;
+        color: transparent;
+        background-clip: text;
+        &:hover {
+            color: transparent;
+        }
+        //https://codepen.io/t_afif/pen/ZEdYKvo
+        &:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: 2px; /* the border length */
+            background: $btn-gradient;
+            border-radius: inherit;
+            --m: conic-gradient(#000 0 0);
+            mask:
+                var(--m) content-box exclude,
+                var(--m);
+            pointer-events: none;
+        }
+    }
+    &-gradient {
+        background: $btn-gradient;
+        color: list.nth($colors, 4);
+        &:hover {
+            color: list.nth($colors, 4);
+        }
     }
 }
-/*-- end: .myAwesome-block --*/
+
+.title {
+    color: #{list.nth($colors, 3)};
+    font-family: #{list.nth($fonts, 2)};
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -0.01em;
+    &--h1 {
+        font-size: 64px;
+        font-weight: 700;
+        line-height: 1;
+        small {
+            font-size: 32px;
+            font-weight: 300;
+            line-height: inherit;
+            strong,
+            b {
+                font-weight: 600;
+            }
+        }
+    }
+}

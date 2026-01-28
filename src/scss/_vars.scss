@@ -1,11 +1,19 @@
 @use "sass:list";
 
-$container-max-width: 1440px;
-
 $colors: (#43fea5, #5e54ff, #191933, #ffffff, #f473d0);
+$additional-colors: (#000000, #f0f0f0, #888888);
+$fonts: ("Inter", "Funnel Display");
 
 :root {
     @for $i from 1 through list.length($colors) {
         --color-#{$i}: #{list.nth($colors, $i)};
     }
 }
+
+//uikit overrides
+
+$global-font-family: #{list.nth($fonts, 1)};
+$container-max-width: 1216px;
+$navbar-nav-item-color: #{list.nth($colors, 3)};
+$navbar-nav-item-hover-color: #{list.nth($colors, 3)};
+$navbar-nav-item-active-color: #{list.nth($colors, 3)};
