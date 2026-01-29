@@ -1,6 +1,52 @@
+@use "mixins" as *;
+
+/*-- .edito-card --*/
+.edito-card {
+    &__content {
+    }
+    &__header {
+        flex: 1;
+        .img-container {
+            margin-bottom: 0;
+            min-height: 100%;
+            box-shadow: 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+            border-radius: 24px;
+            &:after {
+                border-radius: 24px;
+                border: 4px solid rgba(255, 255, 255, 0.1);
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                filter: blur(1px);
+                background: transparent;
+                background-clip: padding-box;
+            }
+            @include img-container-center(576px, 414px);
+        }
+    }
+    &__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1;
+        .action {
+            margin-top: auto;
+        }
+    }
+    &__footer {
+    }
+}
+/*-- end: .edito-card --*/
+
 /*-- .hero-text-block --*/
 .hero-text-block {
     &__content {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
     }
     &__header {
     }
@@ -17,15 +63,33 @@
 
 /*-- .main-nav-block --*/
 .main-nav-block {
+    & + .uk-sticky-placeholder {
+        height: 107.188px !important;
+    }
     &__content {
+        backdrop-filter: blur(10px);
+        @include transition();
+        &:is(.uk-sticky.uk-active div) {
+            backdrop-filter: blur(20px);
+            background-color: rgba(white, 0.8);
+        }
     }
     &__header {
     }
     &__body {
+        &.uk-navbar-container {
+            background-color: transparent;
+        }
+
         .uk-container {
             .uk-navbar {
                 padding-top: 30px;
                 padding-bottom: 30px;
+                @include transition();
+                &:is(.uk-sticky.uk-active div) {
+                    padding-top: 20px;
+                    padding-bottom: 20px;
+                }
                 .uk-navbar-nav {
                     flex: 1;
                     justify-content: space-around;
@@ -37,9 +101,7 @@
                     min-height: 0;
                     column-gap: normal;
                     padding: 0;
-                    .btn ~ .btn {
-                        margin-left: 20px;
-                    }
+                    gap: 20px;
                 }
                 .uk-navbar-left {
                     justify-content: space-between;

@@ -3,34 +3,77 @@
 
 html,
 body {
-    font-family: #{list.nth($fonts, 1)};
+    font-family: var(--font-1);
     font-size: 18px;
     line-height: 1.5;
-    color: #{list.nth($colors, 1)};
+    color: var(--color-3);
     font-weight: 300;
+}
+
+.block {
+    position: relative;
+    &--bg {
+        background-image: linear-gradient(
+            90deg,
+            rgba(list.nth($colors-main, 2), 0.05) 0%,
+            rgba(list.nth($colors-main, 2), 0.05) 0% 100%
+        );
+        background-color: #fff;
+    }
+    [class*="block__content"]:is(#main .block div) {
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+}
+
+@for $i from 1 through list.length($colors-main) {
+    .c-#{$i} {
+        color: var(--color-#{$i});
+    }
+    .c-alt-#{$i} {
+        color: var(--color-alt-#{$i});
+    }
+}
+
+#page {
+    position: relative;
+    &:before {
+        z-index: 0;
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-image: url(/img/design/bg-1.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        // background-position: top 8.26% center;
+        background-position: center center;
+        filter: blur(25px);
+    }
 }
 
 .btn {
     display: flex;
-    padding: 12px 30px;
+    padding: 14px 30px;
     align-items: center;
     gap: 10px;
     border-radius: 50px;
-    font-family: #{list.nth($fonts, 2)};
-    font-weight: 600;
+    font-family: var(--font-2);
+    font-weight: 500;
     text-decoration: none;
     cursor: pointer;
-    font-size: 16px;
     width: fit-content;
     font-size: 16px;
     line-height: 1.2;
     &:hover {
         text-decoration: none;
     }
-    $btn-gradient: linear-gradient(123deg, #{list.nth($colors, 1)} -73.44%, #{list.nth($colors, 2) 100%});
     $btn-shadow-sm: 0 5px 20px 0 rgba(0, 0, 0, 0.12);
     &--lg {
         font-size: 20px;
+        padding: 22px 60px;
     }
     &-shadow-sm {
         box-shadow: $btn-shadow-sm;
@@ -40,12 +83,14 @@ body {
             $btn-shadow-sm,
             0 5px 20px 0 rgba(94, 84, 255, 0.12);
     }
-    &-outline {
+    &-shadow-lg {
+        box-shadow: 0 5px 200px 0 rgba(94, 84, 255, 0.5);
+    }
+    &-outlined {
         --webkit-background-clip: text;
         position: relative;
-        background: $btn-gradient;
         color: transparent;
-        background-clip: text;
+        font-weight: 600;
         &:hover {
             color: transparent;
         }
@@ -55,7 +100,6 @@ body {
             position: absolute;
             inset: 0;
             padding: 2px; /* the border length */
-            background: $btn-gradient;
             border-radius: inherit;
             --m: conic-gradient(#000 0 0);
             mask:
@@ -64,18 +108,44 @@ body {
             pointer-events: none;
         }
     }
-    &-gradient {
-        background: $btn-gradient;
-        color: list.nth($colors, 4);
-        &:hover {
-            color: list.nth($colors, 4);
+    @mixin btn-gradient($gradient) {
+        &.btn-outlined {
+            background: $gradient;
+            background-clip: text;
+
+            &::before {
+                background: $gradient;
+            }
         }
+
+        &.btn-filled {
+            background: $gradient;
+            color: white;
+        }
+    }
+
+    @for $i from 1 through list.length($colors-main) {
+        &-#{$i} {
+            @include btn-gradient(linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$i}) 100%));
+        }
+        &-alt-#{$i} {
+            @include btn-gradient(linear-gradient(90deg, var(--color-alt-#{$i}) 0%, var(--color-alt-#{$i}) 100%));
+        }
+        @for $j from 1 through list.length($colors-main) {
+            &-#{$i}-#{$j} {
+                @include btn-gradient(linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$j}) 100%));
+            }
+        }
+    }
+
+    &-1-2 {
+        $g: linear-gradient(123deg, var(--color-1) -73.44%, var(--color-2) 100%);
+        @include btn-gradient($g);
     }
 }
 
 .title {
-    color: #{list.nth($colors, 3)};
-    font-family: #{list.nth($fonts, 2)};
+    font-family: var(--font-2);
     font-style: normal;
     font-weight: 700;
     line-height: 100%;
@@ -88,10 +158,21 @@ body {
             font-size: 32px;
             font-weight: 300;
             line-height: inherit;
-            strong,
-            b {
-                font-weight: 600;
-            }
         }
+    }
+}
+
+.rte {
+    strong,
+    b {
+        font-weight: 600;
+    }
+    em,
+    i {
+        font-style: normal;
+        color: var(--color-5);
+    }
+    p {
+        font-size: 18px;
     }
 }
