@@ -10,15 +10,37 @@ body {
     font-weight: 300;
 }
 
+@mixin reset {
+    ul,
+    ol {
+        padding-left: 0;
+    }
+    li {
+        list-style: none;
+    }
+    button {
+        border: none;
+    }
+}
+
 .block {
     position: relative;
-    &--bg {
+    @include reset;
+    &--bg-white {
         background-image: linear-gradient(
             90deg,
             rgba(list.nth($colors-main, 2), 0.05) 0%,
             rgba(list.nth($colors-main, 2), 0.05) 0% 100%
         );
         background-color: #fff;
+    }
+    @for $i from 1 through 10 {
+        &--bg-#{$i} {
+            background-image: url(/img/design/bg-#{$i}.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
     }
     [class*="block__content"]:is(#main .block div) {
         padding-top: 120px;
@@ -150,14 +172,24 @@ body {
     font-weight: 700;
     line-height: 100%;
     letter-spacing: -0.01em;
+    small {
+        display: block;
+        font-size: 32px;
+        font-weight: 300;
+        line-height: inherit;
+    }
     &--h1 {
         font-size: 64px;
         font-weight: 700;
         line-height: 1;
+    }
+    &--h2 {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.2;
         small {
-            font-size: 32px;
-            font-weight: 300;
-            line-height: inherit;
+            font-size: 21px;
+            font-weight: 600;
         }
     }
 }
@@ -167,10 +199,14 @@ body {
     b {
         font-weight: 600;
     }
-    em,
-    i {
-        font-style: normal;
-        color: var(--color-5);
+    @for $i from 1 through list.length($colors-main) {
+        &--em-c-#{$i} {
+            em,
+            i {
+                font-style: normal;
+                color: var(--color-#{$i});
+            }
+        }
     }
     p {
         font-size: 18px;

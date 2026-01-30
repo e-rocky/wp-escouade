@@ -1,5 +1,71 @@
 @use "mixins" as *;
 
+/*-- .tech-slider-card --*/
+.tech-slider-card {
+    &__content {
+        display: flex;
+        padding: 50px 40px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        align-self: stretch;
+        border-radius: 24px;
+        border: 1px solid #fff;
+        background: linear-gradient(316deg, rgba(255, 255, 255, 0.5) 39.56%, rgba(255, 255, 255, 0.9) 74.55%);
+    }
+    &__header {
+        .title small {
+            margin-top: 10px;
+        }
+        .nav {
+            .btn {
+                position: relative;
+                border-radius: 100px;
+                &::before {
+                    border-radius: 100px;
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    z-index: 1;
+                    border: 2px solid rgba(255, 255, 255, 0.25);
+                }
+            }
+        }
+    }
+    &__body {
+        .tech-list {
+            .tech-item {
+                text-align: center;
+                figure {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                    .img-container {
+                        @include img-container-center(74px, 74px, contain, true);
+                    }
+                    figcaption {
+                        font-size: 21px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 1.2;
+                        max-height: 2.4em;
+                        letter-spacing: 0.15px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+    }
+    &__footer {
+    }
+}
+/*-- end: .tech-slider-card --*/
+
 /*-- .edito-card --*/
 .edito-card {
     &__content {
