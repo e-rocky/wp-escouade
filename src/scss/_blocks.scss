@@ -1,25 +1,94 @@
+@use "sass:list";
 @use "mixins" as *;
+@use "vars" as *;
 
-/*-- .card-latest-news --*/
-.card-latest-news {
+/*-- .latest-news-card --*/
+.latest-news-card {
     &__content {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        align-self: stretch;
         border-radius: 24px;
         border: 4px solid #5e54ff;
         background: #fff;
         box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        display: flex;
+        height: 100%;
+
+        .card-direction-column & {
+            flex-direction: column;
+        }
+        .card-direction-row & {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
     }
     &__header {
+        padding: 6px;
+        .card-direction-row & {
+            flex: 1;
+            grid-row: span 2;
+        }
+        .img-container {
+            @include img-container-center(333, 352);
+            border-radius: 15px 0 10px 15px;
+            overflow: hidden;
+            margin-bottom: 0;
+            .card-direction-column & {
+                border-radius: 15px 15px 10px 10px;
+                @include img-container-center(458, 230);
+            }
+            .card-direction-row & {
+                height: 100%;
+            }
+        }
     }
     &__body {
+        flex: 1;
+        $line-height: 1.75;
+        .summary p {
+            line-height: $line-height;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .card-direction-column & {
+            padding: 20px 28px 0;
+            .summary p {
+                max-height: calc($line-height * 7em);
+            }
+        }
+        .card-direction-row & {
+            padding: 30px 32px 0;
+            .summary p {
+                max-height: calc($line-height * 4em);
+            }
+        }
     }
     &__footer {
+        margin-top: auto;
+        padding-bottom: 20px;
+        padding-right: 32px;
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: row;
+        }
     }
 }
-/*-- end: .card-latest-news --*/
+/*-- end: .latest-news-card --*/
+
+/*-- .block-latest-news --*/
+.block-latest-news {
+    &.block {
+        .block-content {
+        }
+        .block-header {
+        }
+        .block-body {
+        }
+        .block-footer {
+        }
+    }
+}
+/*-- end: .block-latest-news --*/
 
 /*-- .job-advertising-card --*/
 .job-advertising-card {
@@ -37,6 +106,12 @@
         backdrop-filter: blur(15px);
         padding: 96px 24px 26px 37px;
         overflow: hidden;
+
+        background-image: linear-gradient(
+            90deg,
+            rgba(list.nth($colors-main, 2), 0.05) 0%,
+            rgba(list.nth($colors-main, 2), 0.05) 0% 100%
+        );
     }
     &__header {
         .img-container {
