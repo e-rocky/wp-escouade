@@ -1,2 +1,4 @@
 import "virtual:uno.css";
-import "uikit";
+import UIkit from "uikit";
+
+console.log(UIkit);

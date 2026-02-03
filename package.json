@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/uikit": "^3.23.0",
     "sass-embedded": "^1.79.5",
     "typescript": "~5.9.3",
     "vite": "^7.2.4"
