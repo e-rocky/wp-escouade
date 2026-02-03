@@ -48,6 +48,10 @@ body {
     }
 }
 .bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
     &--white {
         background-image: linear-gradient(
             90deg,
@@ -58,20 +62,16 @@ body {
     }
     @for $i from 1 through list.length($backgrounds) {
         &--#{$i} {
-            color: var(--color-4);
             background-image: url(/img/design/bg-#{$i}.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
-            background-attachment: fixed;
         }
     }
 }
 
 #page {
     position: relative;
+    z-index: 1;
     &:before {
-        z-index: 0;
+        z-index: -1;
         content: "";
         position: fixed;
         top: 0;
@@ -104,6 +104,9 @@ body {
         text-decoration: none;
     }
     $btn-shadow-sm: 0 5px 20px 0 rgba(0, 0, 0, 0.12);
+    &.bg {
+        color: white;
+    }
     &--lg {
         font-size: 20px;
         padding: 22px 60px;
@@ -172,8 +175,8 @@ body {
     }
 
     &-1-2 {
-        $g: linear-gradient(123deg, var(--color-1) -73.44%, var(--color-2) 100%);
-        @include btn-gradient($g);
+        $gradient: linear-gradient(123deg, var(--color-1) -73.44%, var(--color-2) 100%);
+        @include btn-gradient($gradient);
     }
 }
 
