@@ -2,8 +2,8 @@
 @use "mixins" as *;
 @use "vars" as *;
 
-/*-- .footer-menu-card --*/
-.footer-menu-card {
+/*-- .footer-nav-menu --*/
+.footer-nav-menu {
     &__content {
     }
     &__header {
@@ -16,7 +16,7 @@
     &__footer {
     }
 }
-/*-- end: .footer-menu-card --*/
+/*-- end: .footer-nav-menu --*/
 
 /*-- .minimap-card --*/
 .minimap-card {
@@ -120,6 +120,8 @@
         flex: 1;
         $line-height: 1.75;
         .summary p {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
             line-height: $line-height;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -127,13 +129,13 @@
         .card-direction-column & {
             padding: 20px 28px 0;
             .summary p {
-                max-height: calc($line-height * 7em);
+                -webkit-line-clamp: 7;
             }
         }
         .card-direction-row & {
             padding: 30px 32px 0;
             .summary p {
-                max-height: calc($line-height * 4em);
+                -webkit-line-clamp: 4;
             }
         }
     }

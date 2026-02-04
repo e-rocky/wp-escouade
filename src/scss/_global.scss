@@ -85,7 +85,13 @@ body {
     background-position: center center;
     background-attachment: fixed;
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
+
+    @supports (-moz-appearance: none) {
+        background-attachment: scroll;
+    }
+
     &-scroll {
         background-attachment: scroll;
         background-size: auto;
