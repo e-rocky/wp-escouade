@@ -40,29 +40,78 @@ body {
 }
 
 @for $i from 1 through list.length($colors-main) {
-    .c-#{$i} {
+    .c--#{$i} {
         color: var(--color-#{$i});
-    }
-    .c-alt-#{$i} {
-        color: var(--color-alt-#{$i});
+        &a {
+            color: var(--color-alt-#{$i});
+        }
+        &:is(a):hover {
+            color: var(--color-#{$i});
+        }
+        @for $j from 1 through list.length($colors-main) {
+            $gradient: linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$j}) 100%);
+            &-#{$j} {
+                -webkit-background-clip: text;
+                background-image: $gradient;
+                color: transparent;
+                &:hover {
+                    color: transparent;
+                }
+            }
+            @at-root {
+                .btn.bdc--#{$i}-#{$j} {
+                    &:before {
+                        background-image: $gradient;
+                        content: "";
+                        position: absolute;
+                        inset: 0;
+                        padding: 2px;
+                        border-radius: inherit;
+                        --m: conic-gradient(#000 0 0);
+                        mask:
+                            var(--m) content-box exclude,
+                            var(--m);
+                        pointer-events: none;
+                    }
+                }
+            }
+        }
     }
 }
 .bg {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    &--white {
-        background-image: linear-gradient(
-            90deg,
-            rgba(list.nth($colors-main, 2), 0.05) 0%,
-            rgba(list.nth($colors-main, 2), 0.05) 0% 100%
-        );
-        background-color: #fff;
+    &c {
+        &--white {
+            background-color: #fff;
+            background-image: linear-gradient(
+                90deg,
+                rgba(list.nth($colors-main, 2), 0.05) 0%,
+                rgba(list.nth($colors-main, 2), 0.05) 0% 100%
+            );
+        }
+        @for $i from 1 through list.length($colors-main) {
+            &--#{$i} {
+                background-color: var(--color-#{$i});
+                &a {
+                    background-color: var(--color-alt-#{$i});
+                }
+            }
+            @for $j from 1 through list.length($colors-main) {
+                $gradient: linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$j}) 100%);
+                &--#{$i}-#{$j} {
+                    background-image: $gradient;
+                }
+            }
+        }
     }
-    @for $i from 1 through list.length($backgrounds) {
-        &--#{$i} {
-            background-image: url(/img/design/bg-#{$i}.png);
+    &i {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        @for $i from 1 through list.length($backgrounds) {
+            &--#{$i} {
+                background-image: url(/img/design/bg-#{$i}.png);
+            }
         }
     }
 }
@@ -100,6 +149,7 @@ body {
     width: fit-content;
     font-size: 16px;
     line-height: 1.2;
+    position: relative;
     &:hover {
         text-decoration: none;
     }
@@ -122,61 +172,16 @@ body {
     &-shadow-lg {
         box-shadow: 0 5px 200px 0 rgba(94, 84, 255, 0.5);
     }
-    &-outlined {
-        --webkit-background-clip: text;
-        position: relative;
-        color: transparent;
-        font-weight: 600;
-        &:hover {
-            color: transparent;
-        }
-        //https://codepen.io/t_afif/pen/ZEdYKvo
+
+    &.bdc--1-2 {
         &:before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            padding: 2px; /* the border length */
-            border-radius: inherit;
-            --m: conic-gradient(#000 0 0);
-            mask:
-                var(--m) content-box exclude,
-                var(--m);
-            pointer-events: none;
+            $gradient: linear-gradient(123deg, var(--color-1) -73.44%, var(--color-2) 100%);
+            background-image: $gradient;
         }
     }
-    @mixin btn-gradient($gradient) {
-        background: $gradient;
-        background-clip: text;
-
-        &.btn-outlined {
-            &::before {
-                background: $gradient;
-            }
-        }
-
-        &.btn-filled {
-            background: $gradient;
-            color: white;
-        }
-    }
-
-    @for $i from 1 through list.length($colors-main) {
-        &-#{$i} {
-            @include btn-gradient(linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$i}) 100%));
-        }
-        &-alt-#{$i} {
-            @include btn-gradient(linear-gradient(90deg, var(--color-alt-#{$i}) 0%, var(--color-alt-#{$i}) 100%));
-        }
-        @for $j from 1 through list.length($colors-main) {
-            &-#{$i}-#{$j} {
-                @include btn-gradient(linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$j}) 100%));
-            }
-        }
-    }
-
-    &-1-2 {
+    &.bgc--1-2 {
         $gradient: linear-gradient(123deg, var(--color-1) -73.44%, var(--color-2) 100%);
-        @include btn-gradient($gradient);
+        background-image: $gradient;
     }
 }
 
