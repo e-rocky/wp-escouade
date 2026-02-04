@@ -2,6 +2,22 @@
 @use "mixins" as *;
 @use "vars" as *;
 
+/*-- .footer-menu-card --*/
+.footer-menu-card {
+    &__content {
+    }
+    &__header {
+    }
+    &__body {
+        a {
+            color: var(--color-3);
+        }
+    }
+    &__footer {
+    }
+}
+/*-- end: .footer-menu-card --*/
+
 /*-- .minimap-card --*/
 .minimap-card {
     font-size: 16px;
@@ -25,6 +41,11 @@
             border-radius: 14px;
             max-width: none;
             @include img-container-center(271px, 186px);
+            img {
+                max-width: none;
+                width: auto;
+                height: auto;
+            }
         }
     }
     &__body {
@@ -58,13 +79,6 @@
 
 /*-- .latest-news-card --*/
 .latest-news-card {
-    @mixin background-image {
-        background-image: list.nth($backgrounds, 4);
-        background-size: cover;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-    }
-    @include background-image();
     padding: 4px;
     border-radius: 24px;
     &__content {
@@ -105,11 +119,6 @@
     &__body {
         flex: 1;
         $line-height: 1.75;
-        .title {
-            @include background-image();
-            -webkit-background-clip: text;
-            color: transparent;
-        }
         .summary p {
             line-height: $line-height;
             overflow: hidden;
@@ -137,7 +146,7 @@
             justify-content: flex-end;
             flex-direction: row;
             .btn {
-                @include background-image();
+                //@include background-image();
                 color: transparent;
                 -webkit-background-clip: text;
                 background-clip: text;

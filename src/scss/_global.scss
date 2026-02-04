@@ -78,6 +78,24 @@ body {
         }
     }
 }
+
+.c--bgi {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-clip: text;
+    color: transparent;
+    &-scroll {
+        background-attachment: scroll;
+        background-size: auto;
+    }
+    @for $i from 1 through list.length($backgrounds) {
+        &-#{$i} {
+            background-image: url(/img/design/bg-#{$i}.png);
+        }
+    }
+}
 .bg {
     &c {
         &--white {
@@ -108,6 +126,9 @@ body {
         background-size: cover;
         background-position: center center;
         background-attachment: fixed;
+        &--scroll {
+            background-attachment: scroll;
+        }
         @for $i from 1 through list.length($backgrounds) {
             &--#{$i} {
                 background-image: url(/img/design/bg-#{$i}.png);
