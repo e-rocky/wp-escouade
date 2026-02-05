@@ -47,3 +47,8 @@ $container-max-width: 1216px;
 $navbar-nav-item-color: var(--color-3);
 $navbar-nav-item-hover-color: var(--color-3);
 $navbar-nav-item-active-color: var(--color-3);
+
+$breakpoint-small: 640px !default;
+$breakpoint-medium: 768px !default;
+$breakpoint-large: 1024px !default;
+$breakpoint-xlarge: 1280px !default;

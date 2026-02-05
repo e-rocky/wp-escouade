@@ -9,9 +9,9 @@ console.log(path.resolve(process.cwd(), "src/icons"));
 
 svgtofont({
   src: path.resolve(process.cwd(), "src/icons"), // svg path, only searches one level, not recursive
-  dist: path.resolve(process.cwd(), "public/fonts"), // output path
-  styleTemplates: path.resolve(rootPath, "src/scss"), // file templates path (optional)
-  fontName: "escouade-icons", // font name
+  dist: path.resolve(process.cwd(), "src/fonts"), // output path
+  output: path.resolve(rootPath, "src/fonts"), // file templates path (optional)
+  fontName: "es-icons", // font name
   css: true, // Create CSS files.
   startUnicode: 0xea01, // unicode start number
   svgicons2svgfont: {
@@ -57,22 +57,6 @@ svgtofont({
     ],
     footerInfo: `Licensed under MIT. (Yes it's free and <a href="https://github.com/jaywcjlove/svgtofont">open-sourced</a>`,
   },
-}).then(async () => {
-  const fontsDir = path.resolve(process.cwd(), "public/fonts");
-  const scssTargetDir = path.resolve(process.cwd(), "src/scss");
-
-  await mkdir(scssTargetDir, { recursive: true });
-
-  const entries = await readdir(fontsDir, { withFileTypes: true });
-  const scssFiles = entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".scss"))
-    .map((entry) => entry.name);
-
-  await Promise.all(
-    scssFiles.map((file) =>
-      rename(path.resolve(fontsDir, file), path.resolve(scssTargetDir, file)),
-    ),
-  );
-
+}).then(() => {
   console.log("done!");
 });

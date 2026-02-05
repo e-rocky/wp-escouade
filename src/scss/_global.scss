@@ -16,6 +16,18 @@ body {
     box-sizing: border-box;
 }
 
+[class*="es-icons"] {
+    display: inline-block;
+    font-family: "es-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 @mixin blockReset {
     ul,
     ol {
