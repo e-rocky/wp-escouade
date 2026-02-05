@@ -2,6 +2,19 @@
 @use "mixins" as *;
 @use "vars" as *;
 
+/*-- .copyright-social-block --*/
+.copyright-social-block {
+    &__content {
+    }
+    &__header {
+    }
+    &__body {
+    }
+    &__footer {
+    }
+}
+/*-- end: .copyright-social-block --*/
+
 /*-- .footer-nav-menu --*/
 .footer-nav-menu {
     &__content {
@@ -33,7 +46,6 @@
         box-shadow:
             0 20px 40px 0 rgba(25, 25, 51, 0.05),
             0 25px 50px 0 rgba(94, 84, 255, 0.05);
-        margin-top: -40px;
     }
     &__header {
         flex: 1;

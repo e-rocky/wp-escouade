@@ -1,0 +1,265 @@
+@use "sass:list";
+@use "vars" as *;
+
+html,
+body {
+    font-family: var(--font-1);
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--color-3);
+    font-weight: 300;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+@mixin blockReset {
+    ul,
+    ol {
+        padding-left: 0;
+    }
+    li {
+        list-style: none;
+    }
+    button {
+        border: none;
+    }
+}
+
+.block {
+    position: relative;
+    @include blockReset;
+
+    [class*="block__content"]:is(#main .block div) {
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+}
+
+@for $i from 1 through list.length($colors-main) {
+    .c--#{$i} {
+        color: var(--color-#{$i});
+        &a {
+            color: var(--color-alt-#{$i});
+        }
+        &:is(a):hover {
+            color: var(--color-#{$i});
+        }
+        @for $j from 1 through list.length($colors-main) {
+            $gradient: linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$j}) 100%);
+            &-#{$j} {
+                -webkit-background-clip: text;
+                background-image: $gradient;
+                color: transparent;
+                &:hover {
+                    color: transparent;
+                }
+            }
+            @at-root {
+                .btn.bdc--#{$i}-#{$j} {
+                    &:before {
+                        background-image: $gradient;
+                        content: "";
+                        position: absolute;
+                        inset: 0;
+                        padding: 2px;
+                        border-radius: inherit;
+                        --m: conic-gradient(#000 0 0);
+                        mask:
+                            var(--m) content-box exclude,
+                            var(--m);
+                        pointer-events: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.c--bgi {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    @supports (-moz-appearance: none) {
+        background-attachment: scroll;
+    }
+
+    &-scroll {
+        background-attachment: scroll;
+        background-size: auto;
+    }
+    @for $i from 1 through list.length($backgrounds) {
+        &-#{$i} {
+            background-image: url(/img/design/bg-#{$i}.png);
+        }
+    }
+}
+.bg {
+    &c {
+        &--white {
+            background-color: #fff;
+            background-image: linear-gradient(
+                90deg,
+                rgba(list.nth($colors-main, 2), 0.05) 0%,
+                rgba(list.nth($colors-main, 2), 0.05) 0% 100%
+            );
+        }
+        @for $i from 1 through list.length($colors-main) {
+            &--#{$i} {
+                background-color: var(--color-#{$i});
+                &a {
+                    background-color: var(--color-alt-#{$i});
+                }
+            }
+            @for $j from 1 through list.length($colors-main) {
+                $gradient: linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$j}) 100%);
+                &--#{$i}-#{$j} {
+                    background-image: $gradient;
+                }
+            }
+        }
+    }
+    &i {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        &--scroll {
+            background-attachment: scroll;
+        }
+        @for $i from 1 through list.length($backgrounds) {
+            &--#{$i} {
+                background-image: url(/img/design/bg-#{$i}.png);
+            }
+        }
+    }
+}
+
+#page {
+    position: relative;
+    z-index: 1;
+    &:before {
+        z-index: -1;
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-image: url(/img/design/bg-1.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        // background-position: top 8.26% center;
+        background-position: center center;
+        filter: blur(25px);
+    }
+}
+
+.btn {
+    display: flex;
+    padding: 14px 30px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    font-family: var(--font-2);
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    width: fit-content;
+    font-size: 16px;
+    line-height: 1.2;
+    position: relative;
+    &:hover {
+        text-decoration: none;
+    }
+    $btn-shadow-sm: 0 5px 20px 0 rgba(0, 0, 0, 0.12);
+    &.bg {
+        color: white;
+    }
+    &--lg {
+        font-size: 20px;
+        padding: 22px 60px;
+    }
+    &-shadow-sm {
+        box-shadow: $btn-shadow-sm;
+    }
+    &-shadow-md {
+        box-shadow:
+            $btn-shadow-sm,
+            0 5px 20px 0 rgba(94, 84, 255, 0.12);
+    }
+    &-shadow-lg {
+        box-shadow: 0 5px 200px 0 rgba(94, 84, 255, 0.5);
+    }
+
+    &.bdc--1-2 {
+        &:before {
+            $gradient: linear-gradient(123deg, var(--color-1) -73.44%, var(--color-2) 100%);
+            background-image: $gradient;
+        }
+    }
+    &.bgc--1-2 {
+        $gradient: linear-gradient(123deg, var(--color-1) -73.44%, var(--color-2) 100%);
+        background-image: $gradient;
+    }
+}
+
+.title {
+    font-family: var(--font-2);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -0.01em;
+    small {
+        display: block;
+        font-size: 32px;
+        font-weight: 300;
+        line-height: inherit;
+    }
+    &--h1 {
+        font-size: 64px;
+        font-weight: 700;
+        line-height: 1;
+    }
+    &--h2 {
+        font-size: 48px;
+        font-weight: 600;
+        line-height: 1.2;
+        small {
+            font-size: 21px;
+            font-weight: 600;
+        }
+    }
+    &--h4 {
+        font-size: 21px;
+        font-weight: 600;
+        line-height: 1.5;
+    }
+}
+
+.rte {
+    strong,
+    b {
+        font-weight: 600;
+    }
+    @for $i from 1 through list.length($colors-main) {
+        &--em-c-#{$i} {
+            em,
+            i {
+                font-style: normal;
+                color: var(--color-#{$i});
+            }
+        }
+    }
+    p {
+        font-size: 18px;
+    }
+}
