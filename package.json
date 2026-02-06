@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "icons": "node ./scripts/build-icons.mjs",
-    "fonts": "svgtofont --sources ./src/icons --output ./public/fonts --fontName escouade-icons"
+    "icons": "node ./scripts/build-icons.mjs"
   },
   "devDependencies": {
     "@types/uikit": "^3.23.0",

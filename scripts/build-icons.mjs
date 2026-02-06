@@ -11,7 +11,7 @@ svgtofont({
   src: path.resolve(process.cwd(), "src/icons"), // svg path, only searches one level, not recursive
   dist: path.resolve(process.cwd(), "src/fonts"), // output path
   output: path.resolve(rootPath, "src/fonts"), // file templates path (optional)
-  fontName: "es-icons", // font name
+  fontName: "es-icon", // font name
   css: true, // Create CSS files.
   startUnicode: 0xea01, // unicode start number
   svgicons2svgfont: {

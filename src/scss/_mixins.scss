@@ -1,3 +1,28 @@
+@use "sass:map";
+@use "vars" as *;
+
+$breakpoints: (
+    sm: $breakpoint-small,
+    md: $breakpoint-medium,
+    lg: $breakpoint-large,
+    xl: $breakpoint-xlarge
+);
+
+@mixin media-breakpoint-up($name) {
+    $value: null;
+    @if type-of($name) == "number" {
+        $value: $name * 1px;
+    } @else {
+        $value: map.get($breakpoints, $name);
+    }
+    @if $value == null {
+        @error "Unknown breakpoint `#{$name}`. Use one of: #{map.keys($breakpoints)} or a number like 960px.";
+    }
+    @media (min-width: $value) {
+        @content;
+    }
+}
+
 @mixin img-container-center($width, $height, $object-fit: cover, $fixed-size: false) {
     display: block;
     position: relative;
