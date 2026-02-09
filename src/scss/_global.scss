@@ -42,6 +42,10 @@ body {
     }
 }
 
+.uk-container {
+    box-sizing: border-box;
+}
+
 .block {
     position: relative;
     @include blockReset;
@@ -305,6 +309,7 @@ body {
     &--h1 {
         font-size: 40px;
         font-weight: 700;
+        line-height: 1;
         @include transition(150ms);
         @include media-breakpoint-up(sm) {
             font-size: 48px;
@@ -373,7 +378,9 @@ body {
             em,
             i {
                 font-style: normal;
-                color: var(--color-#{$i});
+                &:not([class*="es-icon-"]) {
+                    color: var(--color-#{$i});
+                }
             }
         }
     }
