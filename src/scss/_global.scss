@@ -173,7 +173,21 @@ body {
     position: relative;
     z-index: 1;
     overflow: hidden;
-    &:before {
+    background-position: center top -25vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% auto;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        backdrop-filter: blur(25px);
+    }
+    /*&:before {
         z-index: -1;
         content: "";
         position: fixed;
@@ -187,7 +201,7 @@ body {
         // background-position: top 8.26% center;
         background-position: center center;
         filter: blur(25px);
-    }
+    }*/
 }
 
 .btn {
@@ -209,7 +223,7 @@ body {
     text-align: center;
     &:hover {
         text-decoration: none;
-        transform: scale(1.05);
+        transform: scale(1.1);
     }
     $btn-shadow-sm: 0 5px 20px 0 rgba(0, 0, 0, 0.12);
     &.bg {
