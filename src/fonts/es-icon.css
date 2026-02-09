@@ -1,11 +1,11 @@
 @font-face {
   font-family: "es-icon";
-  src: url('es-icon.eot?t=1770384616089'); /* IE9*/
-  src: url('es-icon.eot?t=1770384616089#iefix') format('embedded-opentype') /* IE6-IE8 */,
-  url('es-icon.woff2?t=1770384616089') format('woff2'),
-  url('es-icon.woff?t=1770384616089') format('woff'),
-  url('es-icon.ttf?t=1770384616089') format('truetype'),
-  url('es-icon.svg?t=1770384616089') format('svg');
+  src: url('es-icon.eot?t=1770665479619'); /* IE9*/
+  src: url('es-icon.eot?t=1770665479619#iefix') format('embedded-opentype') /* IE6-IE8 */,
+  url('es-icon.woff2?t=1770665479619') format('woff2'),
+  url('es-icon.woff?t=1770665479619') format('woff'),
+  url('es-icon.ttf?t=1770665479619') format('truetype'),
+  url('es-icon.svg?t=1770665479619') format('svg');
 }
 
 [class^="es-icon-"], [class*=" es-icon-"] {
@@ -16,12 +16,14 @@
 }
 
 
-.es-icon-chevron-left::before { content: "\ea01"; }
-.es-icon-chevron-right::before { content: "\ea02"; }
-.es-icon-social-escouade::before { content: "\ea03"; }
-.es-icon-social-facebook::before { content: "\ea04"; }
-.es-icon-social-github::before { content: "\ea05"; }
-.es-icon-social-linkedin::before { content: "\ea06"; }
-.es-icon-social-x::before { content: "\ea07"; }
+.es-icon-caret::before { content: "\ea01"; }
+.es-icon-chevron-left::before { content: "\ea02"; }
+.es-icon-chevron-right::before { content: "\ea03"; }
+.es-icon-home::before { content: "\ea04"; }
+.es-icon-social-escouade::before { content: "\ea05"; }
+.es-icon-social-facebook::before { content: "\ea06"; }
+.es-icon-social-github::before { content: "\ea07"; }
+.es-icon-social-linkedin::before { content: "\ea08"; }
+.es-icon-social-x::before { content: "\ea09"; }
 
 

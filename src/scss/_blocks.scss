@@ -2,31 +2,96 @@
 @use "mixins" as *;
 @use "vars" as *;
 
+/*-- .breadcrumb-block --*/
+.breadcrumb-block {
+    &__content {
+        &.uk-container:is(#main .block div) {
+            padding-top: 64px;
+            padding-bottom: 0;
+        }
+    }
+    &__header {
+    }
+    &__body {
+        ul {
+            padding: 16px 64px 16px 32px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-radius: 900px;
+            background: #fff;
+            box-shadow: 0 4px 20px 0 rgba(82, 113, 255, 0.05);
+            backdrop-filter: blur(5px);
+            width: fit-content;
+            align-items: center;
+            font-size: 18px;
+            li {
+                display: block;
+                line-height: 1;
+                &.separator {
+                    i {
+                        font-size: 20px;
+                    }
+                }
+                &:last-child {
+                    color: var(--color-3a);
+                    a {
+                        color: inherit;
+                    }
+                }
+            }
+            a {
+                display: block;
+                line-height: 1;
+                color: var(--color-2);
+            }
+            [class*="es-icon"] {
+                color: var(--color-2);
+                font-size: 24px;
+                display: block;
+                &::before {
+                    display: block;
+                    line-height: 1;
+                }
+            }
+        }
+    }
+    &__footer {
+    }
+}
+/*-- end: .breadcrumb-block --*/
+
 /*-- .hero-intro-card --*/
 .hero-intro-card {
     &__content {
-        gap: 32px;
+        gap: 6px;
         border-radius: 40px;
         background: rgba(255, 255, 255, 0.7);
         box-shadow: 0 50px 50px 0 rgba(0, 0, 0, 0.05);
         backdrop-filter: blur(25px);
-        @include media-breakpoint-up(sm) {
-            gap: 42px;
-        }
-        @include media-breakpoint-up(md) {
-            gap: 53px;
-        }
-        @include media-breakpoint-up(lg) {
-            gap: 64px;
-        }
+        overflow: hidden;
     }
     &__header {
         flex: 1;
         .img-container {
             margin-bottom: 0;
             min-height: 100%;
+            height: 60vw;
+            max-height: 320px;
             box-shadow: 0 25px 50px 0 rgba(0, 0, 0, 0.1);
-            border-radius: 24px;
+            margin: 4px;
+            border-radius: 36px 36px 24px 24px;
+            overflow: hidden;
+            @include img-container-center(601.946px, 546px);
+            @include media-breakpoint-up(lg) {
+                height: auto;
+                max-height: none;
+                border-radius: 0;
+                margin: 0;
+                clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 20% 100%);
+            }
+
             &:after {
                 border-radius: 24px;
                 border: 4px solid rgba(255, 255, 255, 0.1);
@@ -40,26 +105,31 @@
                 background: transparent;
                 background-clip: padding-box;
             }
-            @include img-container-center(576px, 414px);
         }
     }
     &__body {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         flex: 1;
-        gap: 30px;
-        @include media-breakpoint-up(sm) {
-            gap: 32px;
-        }
-        @include media-breakpoint-up(md) {
-            gap: 34px;
-        }
-        @include media-breakpoint-up(lg) {
-            gap: 36px;
-        }
-        .actions {
-            margin-top: auto;
+        .rte {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+            gap: 30px;
+
+            padding: 32px 32px 42px 32px;
+            @include media-breakpoint-up(sm) {
+                gap: 32px;
+            }
+            @include media-breakpoint-up(md) {
+                gap: 34px;
+            }
+            @include media-breakpoint-up(lg) {
+                gap: 36px;
+                padding: 64px 0 64px 60px;
+            }
+            .actions {
+                margin-top: auto;
+            }
         }
     }
     &__footer {
@@ -483,6 +553,10 @@
             }
             .tech-item {
                 text-align: center;
+                display: none;
+                &:is(.uk-active .tech-item) {
+                    display: block;
+                }
                 figure {
                     display: flex;
                     flex-direction: column;

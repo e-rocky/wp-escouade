@@ -73,29 +73,32 @@
 
         <main id="main">
 
-            <div class="block hero-intro-block">
-                <div class="hero-intro-block__content">
+            <div class="block hero-intro-block bgi bgi--4">
+                <div class="hero-intro-block__content uk-container">
                     <div class="hero-intro-block__body">
 
                         <div class="card hero-intro-card">
-                            <div class="hero-intro-card__content uk-container flex flex-col md:flex-row">
+                            <div class="hero-intro-card__content flex flex-col lg:flex-row-reverse">
 
-                                <div class="hero-intro-card__body rte rte--em-c-2">
-                                    <h2 class="title title--h1 c--3">Envie de rejoindre <em>l’Escouade</em> ?</h2>
-                                    <div class="text">
-                                        <p>Chez Escouade, nous croyons que la réussite d'un projet repose avant tout sur les personnes.</p>
-                                        <p>Basée à Madagascar, notre société réunit des développeurs passionnés et les connecte à des projets stimulants portés par nos partenaires en Europe.</p>
-                                    </div>
-                                    <div class="actions flex flex-wrap gap-[20px]">
-                                        <a class="btn c--4 bgc--5-2 btn-shadow-sm" href="#" title="Nos offres d'emploi">Nos offres d'emploi</a>
-                                        <a class="btn c--1-2 bgc--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm" href="#" title="Candidature spontanée">Candidature spontanée</a>
-                                    </div>
-                                </div><!-- .hero-intro-card__body -->
                                 <div class="hero-intro-card__header">
                                     <figure class="img-container">
-                                        <img src="/img/content/edito-img-3.png" alt="">
+                                        <img src="/img/content/edito-img-1.png" alt="">
                                     </figure>
                                 </div><!-- .hero-intro-card__header -->
+                                <div class="hero-intro-card__body">
+                                    <div class="rte rte--em-c-2">
+
+                                        <h2 class="title title--h1 c--3">Envie de rejoindre <em>l’Escouade</em> ?</h2>
+                                        <div class="text">
+                                            <p>Chez Escouade, nous croyons que la réussite d'un projet repose avant tout sur les personnes.</p>
+                                            <p>Basée à Madagascar, notre société réunit des développeurs passionnés et les connecte à des projets stimulants portés par nos partenaires en Europe.</p>
+                                        </div>
+                                        <div class="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
+                                            <a class="btn c--4 bgc--5-2 btn-shadow-sm w-a" href="#" title="Nos offres d'emploi">Nos offres d'emploi</a>
+                                            <a class="btn c--1-2 bgc--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm w-a" href="#" title="Candidature spontanée">Candidature spontanée</a>
+                                        </div>
+                                    </div>
+                                </div><!-- .hero-intro-card__body -->
                             </div><!-- .hero-intro-card__content -->
                         </div><!-- .hero-intro-card -->
 
@@ -103,271 +106,18 @@
                 </div><!-- .hero-intro-block__content -->
             </div><!-- .hero-intro-block -->
 
-            <div class="block bgi bgi--4 tech-slider-block">
-                <div class="tech-slider-block__content uk-container" data-uk-slider="autoplay:true; pause-on-hover:true; autoplay-interval:5000;">
-                    <div class="tech-slider-block__body">
+            <div class="block breadcrumb-block">
+                <div class="breadcrumb-block__content uk-container">
+                    <div class="breadcrumb-block__body">
+                        <ul>
+                            <li><a href="#" title="Accueil"><i class="es-icon-home"></i></a></li>
+                            <li class="separator"><i class="es-icon-caret"></i></li>
+                            <li><a href="#" title="Rejoignez-nous">Rejoignez-nous</a></li>
+                        </ul>
+                    </div><!-- .breadcrumb-block__body -->
+                </div><!-- .breadcrumb-block__content -->
+            </div><!-- .breadcrumb-block -->
 
-                        <div class="card tech-slider-card">
-                            <div class="tech-slider-card__content">
-                                <div class="tech-slider-card__header flex flex-col md:flex-row flex-justify-between px-[40px] md:items-center">
-                                    <h2 class="title title--h2 rte rte--em-c-5 c--2">Les technologies <em>Backend</em> <small>au coeur de nos réalisations</small></h2>
-                                    <ul class="nav flex gap-[10px] m-0 justify-start">
-                                        <li><button class="btn c--4 bgc--1-2 btn-shadow-sm px-0 size-[48px] flex items-center justify-center" data-uk-slider-item="previous"><i class="es-icon-chevron-left"></i></button></li>
-                                        <li><button class="btn c--4 bgc--1-2 btn-shadow-sm px-0 size-[48px] flex items-center justify-center" data-uk-slider-item="next"><i class="es-icon-chevron-right"></i></button></li>
-                                    </ul>
-                                </div><!-- .tech-slider-card__header -->
-                                <div class="tech-slider-card__body md:px-[10px] uk-slider-items uk-child-width-1-1" data-uk-scrollspy="cls:uk-animation-scale-up; target: .tech-item; delay: 35; repeat: true">
-                                    <ul class="tech-list gap-[10px] gap-y-[20px] md:gap-y-[40px] lg:gap-y-[50px]">
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-php.png" alt="Webnet PHP"></div>
-                                                <figcaption>PHP</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-asp_.net.png" alt="Webnet .NET"></div>
-                                                <figcaption>.NET</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-java.png" alt="Webnet Java"></div>
-                                                <figcaption>Java</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-nodejs.png" alt="Webnet Node JS"></div>
-                                                <figcaption>Node JS</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-symfony.png" alt="Webnet Symfony"></div>
-                                                <figcaption>Symfony</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-laravel.png" alt="Webnet Laravel"></div>
-                                                <figcaption>Laravel</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-zend-framework.png" alt="Webnet Zend"></div>
-                                                <figcaption>Zend</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-azure.png" alt="Webnet Azure"></div>
-                                                <figcaption>Azure</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-asp_.net.png" alt="Webnet ASP .NET"></div>
-                                                <figcaption>ASP .NET</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-drupal.png" alt="Webnet Drupal"></div>
-                                                <figcaption>Drupal</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-wordpress.png" alt="Webnet Wordpress"></div>
-                                                <figcaption>Wordpress</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-ez_publish.png" alt="Webnet eZ Publish"></div>
-                                                <figcaption>eZ Publish</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-umbraco.png" alt="Webnet Umbraco"></div>
-                                                <figcaption>Umbraco</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-devops.png" alt="Webnet DevOps"></div>
-                                                <figcaption>DevOps</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-liferay-vector.png" alt="Webnet Liferay"></div>
-                                                <figcaption>Liferay</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-alfresco.png" alt="Webnet Alfresco"></div>
-                                                <figcaption>Alfresco</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-jhipster.png" alt="Webnet JHipster"></div>
-                                                <figcaption>JHipster</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-magento.png" alt="Webnet Magento"></div>
-                                                <figcaption>Magento</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-prestashop.png" alt="Webnet PrestaShop"></div>
-                                                <figcaption>PrestaShop</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-sharepoint.png" alt="Webnet SharePoint"></div>
-                                                <figcaption>SharePoint</figcaption>
-                                            </figure>
-                                        </li>
-                                    </ul>
-                                    <ul class="tech-list gap-[10px] gap-y-[20px] md:gap-y-[40px] lg:gap-y-[50px]">
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-php.png" alt="Webnet PHP"></div>
-                                                <figcaption>PHP</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-asp_.net.png" alt="Webnet .NET"></div>
-                                                <figcaption>.NET</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-java.png" alt="Webnet Java"></div>
-                                                <figcaption>Java</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-nodejs.png" alt="Webnet Node JS"></div>
-                                                <figcaption>Node JS</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-symfony.png" alt="Webnet Symfony"></div>
-                                                <figcaption>Symfony</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-laravel.png" alt="Webnet Laravel"></div>
-                                                <figcaption>Laravel</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-zend-framework.png" alt="Webnet Zend"></div>
-                                                <figcaption>Zend</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-azure.png" alt="Webnet Azure"></div>
-                                                <figcaption>Azure</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-asp_.net.png" alt="Webnet ASP .NET"></div>
-                                                <figcaption>ASP .NET</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-drupal.png" alt="Webnet Drupal"></div>
-                                                <figcaption>Drupal</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-wordpress.png" alt="Webnet Wordpress"></div>
-                                                <figcaption>Wordpress</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-ez_publish.png" alt="Webnet eZ Publish"></div>
-                                                <figcaption>eZ Publish</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-umbraco.png" alt="Webnet Umbraco"></div>
-                                                <figcaption>Umbraco</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-devops.png" alt="Webnet DevOps"></div>
-                                                <figcaption>DevOps</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-liferay-vector.png" alt="Webnet Liferay"></div>
-                                                <figcaption>Liferay</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-alfresco.png" alt="Webnet Alfresco"></div>
-                                                <figcaption>Alfresco</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-jhipster.png" alt="Webnet JHipster"></div>
-                                                <figcaption>JHipster</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-magento.png" alt="Webnet Magento"></div>
-                                                <figcaption>Magento</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-prestashop.png" alt="Webnet PrestaShop"></div>
-                                                <figcaption>PrestaShop</figcaption>
-                                            </figure>
-                                        </li>
-                                        <li class="tech-item">
-                                            <figure>
-                                                <div class="img-container"><img src="/img/content/tech-logo-sharepoint.png" alt="Webnet SharePoint"></div>
-                                                <figcaption>SharePoint</figcaption>
-                                            </figure>
-                                        </li>
-                                    </ul>
-                                </div><!-- .tech-slider-card__body -->
-                            </div><!-- .tech-slider-card__content -->
-                        </div><!-- .tech-slider-card -->
-
-                    </div><!-- .tech-slider-block__body -->
-                </div><!-- .tech-slider-block__content -->
-            </div><!-- .tech-slider-block -->
 
             <div class="block bgi bgc--white edito-block">
                 <div class="edito-block__content uk-container">
