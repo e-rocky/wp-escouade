@@ -173,6 +173,23 @@ body {
     }
 }
 
+.tag {
+    color: var(--color-2);
+    font-family: var(--font-1);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    display: flex;
+    padding: 5px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    background: rgba(list.nth($colors-main, 2), 0.1);
+    line-height: 1.5;
+}
+
 #page {
     position: relative;
     z-index: 1;
