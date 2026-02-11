@@ -2,12 +2,98 @@
 @use "mixins" as *;
 @use "vars" as *;
 
+/*-- .talent-card --*/
+.talent-card {
+    padding-bottom: 70px;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow:
+        0 20px 40px 0 rgba(25, 25, 51, 0.05),
+        0 25px 50px 0 rgba(94, 84, 255, 0.05);
+    &__content {
+        display: flex;
+        padding: 24px 20px 0;
+        flex-direction: column;
+        align-items: flex-end;
+        flex: 1 0 0;
+        align-self: stretch;
+        border: 0 solid rgba(255, 255, 255, 0.2);
+        color: var(--color-1a);
+        background: radial-gradient(
+            177.79% 139.56% at 1.72% 99.04%,
+            var(--color-1, #43fea5) 0%,
+            var(--color-2, #5e54ff) 100%
+        );
+    }
+    &__header {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        text-shadow: 0 4px 20px rgba(82, 113, 255, 0.15);
+        .title {
+            text-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &__body {
+        width: 100%;
+        .img-container {
+            position: relative;
+            img {
+                width: 100%;
+                align-self: stretch;
+                height: auto;
+                //box-shadow: 0 4px 100px 0 rgba(255, 255, 255, 0.5);
+                filter: drop-shadow(0 4px 100px rgba(255, 255, 255, 0.5));
+                &:first-child {
+                    opacity: 0.75;
+                    z-index: 2;
+                }
+                &:last-child {
+                    z-index: 1;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    mix-blend-mode: luminosity;
+                }
+            }
+        }
+    }
+    &__footer {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 3;
+        blockquote {
+            display: flex;
+            padding: 30px 30px 30px 20px;
+            align-items: flex-start;
+            gap: 10px;
+            border-radius: 24px 0 0 0;
+            background: linear-gradient(181deg, rgba(255, 255, 255, 0.85) -2.21%, #fff 98.61%);
+            backdrop-filter: blur(10px);
+            margin-bottom: 0;
+            font-size: inherit;
+            font-style: inherit;
+            i {
+                font-size: 42px;
+            }
+            p {
+                margin: 0;
+            }
+        }
+    }
+}
+/*-- end: .talent-card --*/
+
 /*-- .numbers-card --*/
 .numbers-card {
     &__content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         border-radius: 24px;
         border: 1px solid rgba(255, 255, 255, 0.25);
         background: rgba(255, 255, 255, 0.25);
@@ -15,61 +101,83 @@
         backdrop-filter: blur(15px);
         align-items: center;
         flex-direction: column;
-        padding: 0 64px;
+        padding: 15px 34px;
     }
     &__header {
     }
     &__body {
+        margin: 0;
         justify-content: center;
-        padding-top: 30px;
-        padding-bottom: 30px;
         .number {
             color: var(--color-4);
+            font-family: var(--font-2);
             position: relative;
-            padding-top: 30px;
-            padding-bottom: 30px;
-            margin-top: 0;
-            &:not(.uk-grid-stack .number)::before {
+            padding: 30px;
+            margin: 0;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            font-weight: 700;
+            gap: 10px;
+            &:not(.uk-first-column)::before {
+                content: "";
+                background-color: #e5e5e5;
+                position: absolute;
+                left: 0;
+                height: 75px;
+                width: 1px;
                 top: 50%;
                 transform: translateY(-50%);
-                height: 75px;
+                display: block;
             }
-            &:is(.uk-grid-stack .number)::before {
-                width: auto;
+            &:is(.uk-grid-stack .number)::after {
+                width: 100%;
+            }
+            &:is(.spacer)::after {
+                content: "";
+                background-color: #e5e5e5;
+                position: absolute;
                 top: 0;
-            }
-            &.uk-grid-margin {
-                margin-top: 0;
+                width: 75px;
+                height: 1px;
+                transform: translateY(-50%);
+                display: block;
             }
             &-value {
-                display: flex;
-                align-items: start;
-                justify-content: center;
-                font-weight: 700;
-                color: transparent;
+                //color: transparent;
+                //background-image: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.9) 100%);
+                color: --var(--color-4);
+                opacity: 0.9;
                 -webkit-background-clip: text;
                 line-height: 1;
-                background-image: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.9) 100%);
                 font-size: 85px;
+                position: relative;
                 @include transition(150ms);
-                @include media-breakpoint-up(sm) {
-                    font-size: 96px;
-                }
                 @include media-breakpoint-up(md) {
-                    font-size: 112px;
+                    //font-size: 96px;
+                }
+                @include media-breakpoint-up(lg) {
+                    //font-size: 112px;
                 }
                 @include media-breakpoint-up(xl) {
                     font-size: 128px;
                 }
                 sup {
                     color: white;
-                    font-size: 48px;
+                    font-size: 0.375em;
                     line-height: inherit;
+                    position: absolute;
                     top: 0;
+                    right: 0;
+                    transform: translatex(100%);
                 }
             }
             &-label {
                 font-size: 21px;
+                font-weight: 300;
+                flex: 1;
             }
         }
     }

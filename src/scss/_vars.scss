@@ -33,7 +33,7 @@ $fonts: ("Inter", "Funnel Display");
         --color-#{$i}: #{list.nth($colors-main, $i)};
     }
     @for $i from 1 through list.length($colors-alt) {
-        --color-alt-#{$i}: #{list.nth($colors-alt, $i)};
+        --color-#{$i}a: #{list.nth($colors-alt, $i)};
     }
     @for $i from 1 through list.length($fonts) {
         --font-#{$i}: "#{list.nth($fonts, $i)}";

@@ -73,20 +73,25 @@ body {
     .c--#{$i} {
         color: var(--color-#{$i});
         &a {
-            color: var(--color-alt-#{$i});
+            color: var(--color-#{$i}a);
         }
         &:is(a):hover {
             color: var(--color-#{$i});
         }
         @for $j from 1 through list.length($colors-main) {
             $gradient: linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$j}) 100%);
-            &-#{$j} {
+            $gradient-alt: linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$j}a) 100%);
+            &-#{$j},
+            &-#{$j}a {
                 -webkit-background-clip: text;
                 background-image: $gradient;
                 color: transparent;
                 &:hover {
                     color: transparent;
                 }
+            }
+            &-#{$j}a {
+                background-image: $gradient-alt;
             }
             @at-root {
                 .btn.bdc--#{$i}-#{$j} {
@@ -146,7 +151,7 @@ body {
             &--#{$i} {
                 background-color: var(--color-#{$i});
                 &a {
-                    background-color: var(--color-alt-#{$i});
+                    background-color: var(--color-#{$i}a);
                 }
             }
             @for $j from 1 through list.length($colors-main) {
@@ -314,6 +319,7 @@ body {
         font-size: 20px;
         font-weight: 300;
         line-height: inherit;
+        letter-spacing: 0.02em;
         @include media-breakpoint-up(sm) {
             font-size: 24px;
         }
