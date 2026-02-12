@@ -4,34 +4,85 @@
 
 /*-- .talent-card --*/
 .talent-card {
-    padding-bottom: 70px;
-    position: relative;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow:
-        0 20px 40px 0 rgba(25, 25, 51, 0.05),
-        0 25px 50px 0 rgba(94, 84, 255, 0.05);
     &__content {
         display: flex;
-        padding: 24px 20px 0;
         flex-direction: column;
         align-items: flex-end;
         flex: 1 0 0;
         align-self: stretch;
         border: 0 solid rgba(255, 255, 255, 0.2);
-        color: var(--color-1a);
-        background: radial-gradient(
-            177.79% 139.56% at 1.72% 99.04%,
-            var(--color-1, #43fea5) 0%,
-            var(--color-2, #5e54ff) 100%
-        );
+        padding-bottom: 70px;
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow:
+            0 20px 40px 0 rgba(25, 25, 51, 0.05),
+            0 25px 50px 0 rgba(94, 84, 255, 0.05);
+        &:after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 42px;
+            height: 42px;
+            mask: url("/img/design/logo--icon.svg");
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            //background-image: linear-gradient(16deg, #5e54ff -32.71%, #43fea5 224.22%);
+            background-color: white;
+            top: 20px;
+            right: 20px;
+
+            mix-blend-mode: soft-light;
+            backdrop-filter: blur(15px);
+        }
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 70px;
+        }
+        &:is(.card:nth-child(3n + 1) div) {
+            color: var(--color-1a);
+            &::before {
+                background: radial-gradient(
+                    177.79% 139.56% at 1.72% 99.04%,
+                    var(--color-1, #43fea5) 0%,
+                    var(--color-2, #5e54ff) 100%
+                );
+            }
+        }
+        &:is(.card:nth-child(3n + 2) div) {
+            color: var(--color-5);
+            &::before {
+                background: radial-gradient(
+                    171.81% 115.93% at 1.72% 99.04%,
+                    var(--color-2, #5e54ff) 0%,
+                    var(--color-5, #f473d0) 100%
+                );
+            }
+        }
+        &:is(.card:nth-child(3n + 3) div) {
+            color: var(--color-2);
+            &::before {
+                background: radial-gradient(
+                    171.81% 115.93% at 1.72% 99.04%,
+                    var(--color-2, #5e54ff) 0%,
+                    var(--color-1a, #00c8b3) 100%
+                );
+            }
+        }
     }
     &__header {
         width: 100%;
         display: flex;
         flex-direction: column;
         gap: 10px;
+        padding: 24px 20px 0;
         text-shadow: 0 4px 20px rgba(82, 113, 255, 0.15);
+        z-index: 1;
         .title {
             text-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
             display: flex;
@@ -42,10 +93,14 @@
         width: 100%;
         .img-container {
             position: relative;
+            padding-top: 130%;
             img {
                 width: 100%;
                 align-self: stretch;
                 height: auto;
+                position: absolute;
+                top: 0;
+                left: 0;
                 //box-shadow: 0 4px 100px 0 rgba(255, 255, 255, 0.5);
                 filter: drop-shadow(0 4px 100px rgba(255, 255, 255, 0.5));
                 &:first-child {
