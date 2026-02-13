@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div id="page" class="bgi--1" data-uk-parallax="bgy:0, -100vh, start: 0; end: 100vh">
+    <div id="page" class="bgi--1" data-uk-parallax="bgy:0 100vh; start: 0; end: 100vh">
 
         <header id="header">
             <div class="block main-nav-block" data-uk-sticky>
@@ -107,6 +107,26 @@
                 <div class="job-listing-block__content uk-container">
                     <div class="job-listing-block__body flex flex-col gap-[64px] sm:gap-[76px] md:gap-[88px] lg:gap[100px]">
 
+
+
+                        <div class="block filter-card bgc bgc--4">
+                            <div class="filter-card__background bgi bgi--4 h-[10px]"></div><!-- .filter-card__background -->
+                            <div class="filter-card__content">
+                                <div class="filter-card__header">
+                                    <h2 class="title title--h3 c--2">
+                                        Affiner les offres
+                                    </h2>
+                                </div><!-- .filter-card__header -->
+                                <div class="filter-card__body"></div><!-- .filter-card__body -->
+                                <div class="filter-card__footer">
+                                    <div class="actions flex items-center gap-[20px]">
+                                        <a class="btn c--4 bgc--5-2 btn-shadow-sm" href="#" title="Rechercher">Rechercher</a>
+                                        <div class="label">78 Offres trouvées</div>
+                                    </div>
+                                </div><!-- .filter-card__footer -->
+                            </div><!-- .filter-card__content -->
+                        </div><!-- .filter-card -->
+
                         <div class="job-card bgc bgc--4">
                             <div class="job-card__content flex flex-col lg:grid grid-cols-[1fr_412px] lg:flex-row-reverse">
                                 <div class="job-card__header row-start-1 col-start-2 col-span-1">
@@ -155,7 +175,7 @@
                                     </div>
                                 </div><!-- .job-card__body -->
 
-                                <div class="job-card__footer  col-span-2">
+                                <div class="job-card__footer col-span-2">
                                     <hr class="my-[20px]">
                                     <div class="flex flex-col-reverse sm:flex-row items-start items-stretch gap-[16px] flex-justify-between">
                                         <div class="actions flex items-stretch gap-[20px]">
@@ -172,6 +192,135 @@
                                 </div><!-- .job-card__footer -->
                             </div><!-- .job-card__content -->
                         </div><!-- .job-card -->
+
+                        <div class="job-card bgc bgc--4">
+                            <div class="job-card__content flex flex-col lg:grid grid-cols-[1fr_412px] lg:flex-row-reverse">
+                                <div class="job-card__header row-start-1 col-start-2 col-span-1">
+                                    <figure class="img-container">
+                                        <img src="/img/content/job-listing-img-2.png" alt="">
+                                    </figure>
+                                </div><!-- .job-card__header -->
+                                <div class="job-card__body row-start-1 col-start-1 col-span-1">
+                                    <div class="content">
+                                        <ul class="attributelist m-0 flex flex-wrap gap-[10px]">
+                                            <li><span class="attribute" style="--bg:#80ACD0">Stage</span></li>
+                                            <li><span class="attribute" style="--bg:#9B91B4">Remote</span></li>
+                                            <li><span class="attribute" style="--bg:#B97591">Urgent</span></li>
+                                        </ul>
+                                        <hr class="my-[10px]">
+                                        <h2 class="title title--h3 c--2-1a">Développeur Java / Spring Boot</h2>
+                                        <div class="grid grid-cols-[24px_1fr] gap-[10px] [&>svg]:size-[24px]">
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#shield'></use>
+                                            </svg>
+                                            <div>Niveau : Confirmé</div>
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#category'></use>
+                                            </svg>
+                                            <div>Département : Tech / Support</div>
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#lang'></use>
+                                            </svg>
+                                            <div>Langues : Francais / Anglais</div>
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#pin'></use>
+                                            </svg>
+                                            <div>Lieu : Antananarivo - Madagascar</div>
+                                        </div>
+                                        <div class="flex flex-col gap-[10px]">
+                                            <p>Développement et optimisation de services web backend. Intégration API REST et microservices.</p>
+                                            <ul class="taglist mb-0 flex flex-wrap gap-[10px] mb-[20px] mt-0">
+                                                <li><span class="tag">Java 17</span></li>
+                                                <li><span class="tag">Spring Boot</span></li>
+                                                <li><span class="tag">PostgreSQL</span></li>
+                                                <li><span class="tag">Docker</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- .job-card__body -->
+
+                                <div class="job-card__footer col-span-2">
+                                    <hr class="my-[20px]">
+                                    <div class="flex flex-col-reverse sm:flex-row items-start items-stretch gap-[16px] flex-justify-between">
+                                        <div class="actions flex items-stretch gap-[20px]">
+                                            <a class="btn c--4 bgc--2 btn-shadow-sm" href="#" title="Voir l’offre">Voir l’offre<i class="es-icon-chevron-right"></i></a>
+                                            <a class="btn c--4 bgc--5 btn-shadow-sm" href="#" title="Partager"><i class="es-icon-share"></i></a>
+                                        </div>
+                                        <div class="flex items-center flex-row sm:flex-row-reverse [&>svg]:size-[24px] gap-[10px]">
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#time'></use>
+                                            </svg>
+                                            <div class="text-left md:text-right">Publié il y a 3 jours</div>
+                                        </div>
+                                    </div>
+                                </div><!-- .job-card__footer -->
+                            </div><!-- .job-card__content -->
+                        </div><!-- .job-card -->
+
+                        <div class="job-card bgc bgc--4">
+                            <div class="job-card__content flex flex-col lg:grid grid-cols-[1fr_412px] lg:flex-row-reverse">
+                                <div class="job-card__header row-start-1 col-start-2 col-span-1">
+                                    <figure class="img-container">
+                                        <img src="/img/content/job-listing-img-3.png" alt="">
+                                    </figure>
+                                </div><!-- .job-card__header -->
+                                <div class="job-card__body row-start-1 col-start-1 col-span-1">
+                                    <div class="content">
+                                        <ul class="attributelist m-0 flex flex-wrap gap-[10px]">
+                                            <li><span class="attribute" style="--bg:#80ACD0">CDD</span></li>
+                                            <li><span class="attribute" style="--bg:#9B91B4">Remote</span></li>
+                                            <li><span class="attribute" style="--bg:#B97591">Urgent</span></li>
+                                        </ul>
+                                        <hr class="my-[10px]">
+                                        <h2 class="title title--h3 c--2-1a">Ingénieur Cybersécurité</h2>
+                                        <div class="grid grid-cols-[24px_1fr] gap-[10px] [&>svg]:size-[24px]">
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#shield'></use>
+                                            </svg>
+                                            <div>Niveau : Senior</div>
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#category'></use>
+                                            </svg>
+                                            <div>Département : Tech / Support</div>
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#lang'></use>
+                                            </svg>
+                                            <div>Langues : Francais / Anglais</div>
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#pin'></use>
+                                            </svg>
+                                            <div>Lieu : Antananarivo - Madagascar</div>
+                                        </div>
+                                        <div class="flex flex-col gap-[10px]">
+                                            <p>Analyse et renforcement de la sécurité des systèmes et applications.</p>
+                                            <ul class="taglist mb-0 flex flex-wrap gap-[10px] mb-[20px] mt-0">
+                                                <li><span class="tag">SIEM</span></li>
+                                                <li><span class="tag">OWASP</span></li>
+                                                <li><span class="tag">Firewall</span></li>
+                                                <li><span class="tag">Python</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- .job-card__body -->
+
+                                <div class="job-card__footer col-span-2">
+                                    <hr class="my-[20px]">
+                                    <div class="flex flex-col-reverse sm:flex-row items-start items-stretch gap-[16px] flex-justify-between">
+                                        <div class="actions flex items-stretch gap-[20px]">
+                                            <a class="btn c--4 bgc--2 btn-shadow-sm" href="#" title="Voir l’offre">Voir l’offre<i class="es-icon-chevron-right"></i></a>
+                                            <a class="btn c--4 bgc--5 btn-shadow-sm" href="#" title="Partager"><i class="es-icon-share"></i></a>
+                                        </div>
+                                        <div class="flex items-center flex-row sm:flex-row-reverse [&>svg]:size-[24px] gap-[10px]">
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#time'></use>
+                                            </svg>
+                                            <div class="text-left md:text-right">Publié il y a 3 jours</div>
+                                        </div>
+                                    </div>
+                                </div><!-- .job-card__footer -->
+                            </div><!-- .job-card__content -->
+                        </div><!-- .job-card -->
+
 
                     </div><!-- .job-listing-block__body -->
 
