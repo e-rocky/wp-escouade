@@ -27,6 +27,7 @@ body {
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 24px;
 }
 
 @mixin blockReset {
@@ -178,6 +179,38 @@ body {
     }
 }
 
+.attribute {
+    align-items: center;
+    border-radius: 50px;
+    display: flex;
+    font-family: var(--font-1);
+    font-size: 16px;
+    font-weight: 400;
+    gap: 10px;
+    justify-content: center;
+    line-height: 1.5;
+    padding: 0.4375em 1.875em;
+    position: relative;
+    text-align: center;
+    transition: all 0.15s ease-in-out;
+    width: fit-content;
+    overflow: hidden;
+    background-color: transparent;
+    z-index: 1;
+    color: var(--color-4);
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background-color: var(--bg);
+        z-index: -1;
+        opacity: 0.75;
+    }
+}
+
 .tag {
     color: var(--color-2);
     font-family: var(--font-1);
@@ -196,7 +229,7 @@ body {
 }
 
 #page {
-    position: relative;
+    //position: relative;
     z-index: 1;
     overflow: hidden;
     background-position: center top -25vh;
@@ -233,7 +266,8 @@ body {
 .btn {
     @include transition(150ms);
     display: flex;
-    padding: 0.875em 1.875em;
+    //padding: 0.875em 1.875em;
+    padding: 0.75em 1.875em;
     //padding: 14px 30px;
     align-items: center;
     gap: 10px;
@@ -244,7 +278,8 @@ body {
     cursor: pointer;
     width: fit-content;
     font-size: 16px;
-    line-height: 1.2;
+    //line-height: 1.2;
+    line-height: 1.5;
     position: relative;
     text-align: center;
     justify-content: center;

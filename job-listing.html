@@ -106,55 +106,75 @@
             <div class="block job-listing-block">
                 <div class="job-listing-block__content uk-container">
                     <div class="job-listing-block__body flex flex-col gap-[64px] sm:gap-[76px] md:gap-[88px] lg:gap[100px]">
-                        <div class="edito-card">
-                            <div class="edito-card__content flex flex-col md:flex-row md:flex-row-reverse">
-                                <div class="edito-card__header">
+
+                        <div class="job-card bgc bgc--4">
+                            <div class="job-card__content flex flex-col lg:grid grid-cols-[1fr_412px] lg:flex-row-reverse">
+                                <div class="job-card__header row-start-1 col-start-2 col-span-1">
                                     <figure class="img-container">
-                                        <img src="/img/content/edito-img-2.png" alt="">
+                                        <img src="/img/content/job-listing-img-1.png" alt="">
                                     </figure>
-                                </div><!-- .edito-card__header -->
-                                <div class="edito-card__body">
+                                </div><!-- .job-card__header -->
+                                <div class="job-card__body row-start-1 col-start-1 col-span-1">
                                     <div class="content">
-                                        <h2 class="title title--h3 c--5">Les Escouadiers, au cœur de nos missions</h2>
-                                        <div class="text">
-                                            <p>Rejoindre Escouade, c'est intégrer plus qu'une entreprise : c'est devenir un Escouadier, membre d'une équipe soudée où la passion pour la tech se vit au quotidien.</p>
-                                            <p>Nos talents collaborent sur des projets stimulants menés avec nos partenaires en Europe, dans un environnement qui valorise les compétences autant que l'équilibre vie pro/vie perso.</p>
-                                            <p>Ici, chaque mission est une aventure collective, une escouade où tu peux progresser, partager et construire ton avenir.</p>
+                                        <ul class="attributelist m-0 flex flex-wrap gap-[10px]">
+                                            <li><span class="attribute" style="--bg:#80ACD0">CDI</span></li>
+                                            <li><span class="attribute" style="--bg:#9B91B4">Remote</span></li>
+                                            <li><span class="attribute" style="--bg:#B97591">Urgent</span></li>
+                                        </ul>
+                                        <hr class="my-[10px]">
+                                        <h2 class="title title--h3 c--2-1a">Développeur Back-end PHP</h2>
+                                        <div class="grid grid-cols-[24px_1fr] gap-[10px] [&>svg]:size-[24px]">
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#shield'></use>
+                                            </svg>
+                                            <div>Niveau : Senior</div>
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#category'></use>
+                                            </svg>
+                                            <div>Département : Tech / Support</div>
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#lang'></use>
+                                            </svg>
+                                            <div>Langues : Francais / Anglais</div>
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#pin'></use>
+                                            </svg>
+                                            <div>Lieu : Antananarivo - Madagascar</div>
                                         </div>
-                                        <div class="actions">
-                                            <a class="btn c--4 bgc--5 btn-shadow-sm" href="#" title="Découvrir nos opportunités">Découvrir nos opportunités<i class="es-icon-chevron-right"></i></a>
+                                        <div class="flex flex-col gap-[10px]">
+                                            <p>Vous participerez au développement de modules back-end pour des applications web critiques. Travail en équipe agile et bonnes pratiques OOP.</p>
+                                            <ul class="taglist mb-0 flex flex-wrap gap-[10px] mb-[20px] mt-0">
+                                                <li><span class="tag">PHP 8.x</span></li>
+                                                <li><span class="tag">Symfony</span></li>
+                                                <li><span class="tag">Doctrine</span></li>
+                                                <li><span class="tag">MySQL</span></li>
+                                                <li><span class="tag">API REST</span></li>
+                                                <li><span class="tag">Docker</span></li>
+                                            </ul>
                                         </div>
                                     </div>
-                                </div><!-- .edito-card__body -->
-                            </div><!-- .edito-card__content -->
-                        </div><!-- .edito-card -->
+                                </div><!-- .job-card__body -->
 
-
-                        <div class="edito-card">
-                            <div class="edito-card__content flex flex-col md:flex-row">
-                                <div class="edito-card__header">
-                                    <figure class="img-container">
-                                        <img src="/img/content/edito-img-3.png" alt="">
-                                    </figure>
-                                </div><!-- .edito-card__header -->
-                                <div class="edito-card__body">
-                                    <div class="content">
-                                        <h2 class="title title--h3 c--1a">Composez l'escouade qui fera avancer vos projets.</h2>
-                                        <div class="text">
-                                            <p>Chez Escouade, nous accompagnons les entreprises en Europe dans la création d'équipes IT dédiées et performantes.</p>
-                                            <p>Nos talents couvrent un large éventail de compétences : développement web et applicatif (Java, .NET, PHP, JS, Python), QA, PO.</p>
-                                            <p>Chaque profil est sélectionné avec soin pour rejoindre une escouade adaptée à vos besoins, avec un suivi humain, réactif et transparent.</p>
-                                            <p>Plus qu'un simple service de recrutement, nous bâtissons des partenariats durables, où la proximité et la qualité sont au centre de nos engagements.</p>
+                                <div class="job-card__footer  col-span-2">
+                                    <hr class="my-[20px]">
+                                    <div class="flex flex-col-reverse sm:flex-row items-start items-stretch gap-[16px] flex-justify-between">
+                                        <div class="actions flex items-stretch gap-[20px]">
+                                            <a class="btn c--4 bgc--2 btn-shadow-sm" href="#" title="Voir l’offre">Voir l’offre<i class="es-icon-chevron-right"></i></a>
+                                            <a class="btn c--4 bgc--5 btn-shadow-sm" href="#" title="Partager"><i class="es-icon-share"></i></a>
                                         </div>
-                                        <div class="actions">
-                                            <a class="btn c--4 bgc--1a btn-shadow-sm" href="#" title="Recruter un talent">Recruter un talent<i class="es-icon-chevron-right"></i></a>
+                                        <div class="flex items-center flex-row sm:flex-row-reverse [&>svg]:size-[24px] gap-[10px]">
+                                            <svg aria-hidden='true'>
+                                                <use href='/img/design/sprite.svg#time'></use>
+                                            </svg>
+                                            <div class="text-left md:text-right">Publié il y a 3 jours</div>
                                         </div>
                                     </div>
-                                </div><!-- .edito-card__body -->
-                            </div><!-- .edito-card__content -->
-                        </div><!-- .edito-card -->
+                                </div><!-- .job-card__footer -->
+                            </div><!-- .job-card__content -->
+                        </div><!-- .job-card -->
 
                     </div><!-- .job-listing-block__body -->
+
                 </div><!-- .job-listing-block__content -->
             </div><!-- .job-listing-block -->
 
