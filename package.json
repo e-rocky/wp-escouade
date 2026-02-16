@@ -11,6 +11,7 @@
     "sprite": "svg-sprite --symbol --symbol-dest public/img/design --symbol-sprite sprite.svg --symbol-render-scss --symbol-prefix \".icon.icon-%s\" --symbol-dimensions \"\" --shape-id-generator %s public/img/design/!(sprite).svg"
   },
   "devDependencies": {
+    "@types/react-dom": "^19.2.3",
     "@types/uikit": "^3.23.0",
     "@vitejs/plugin-react": "^5.1.4",
     "cssnano": "^7.0.7",
