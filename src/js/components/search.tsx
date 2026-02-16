@@ -61,8 +61,8 @@ const Search = () => {
         <div className="search-card__header">
           <h2 className="title title--h3 c--2">Affiner les offres</h2>
         </div>
-        <div className="search-card__body flex flex-col md:flex-row gap-[32px] md:gap-[100px]">
-          <div className="search-card__select flex-1">
+        <div className="search-card__body flex items-stretch lg:items-start flex-col lg:flex-row gap-[32px] lg:gap-[100px]">
+          <div className="search-card__select flex-col flex-1">
             <i className="es-icon-search font-size-[32px] c--2"></i>
             <CreatableSelect
               isClearable
@@ -91,7 +91,7 @@ const Search = () => {
                 //ClearIndicator: () => <button>effacer</button>,
               }}
             />
-            <div className="sortby flex items-center font-size-[14px]">
+            <div className="sortby col-span-2 flex items-center font-size-[14px]">
               <span className="whitespace-nowrap">trier par :</span>
               <CreatableSelect
                 isSearchable={false}
@@ -165,7 +165,7 @@ const Search = () => {
           </div>
         </div>
         <div className="search-card__footer">
-          <div className="actions flex items-center gap-[20px]">
+          <div className="actions flex flex-col md:flex-row items-center gap-[20px]">
             <a
               className="btn c--4 bgc--5-2 btn-shadow-sm"
               href="#"

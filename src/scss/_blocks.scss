@@ -17,24 +17,38 @@
         align-self: stretch;
         border: 0 solid rgba(255, 255, 255, 0.2);
         position: relative;
-        padding: 32px;
+        padding: 16px;
+        @include media-breakpoint-up(sm) {
+            padding: 24px;
+        }
+        @include media-breakpoint-up(md) {
+            padding: 32px;
+        }
     }
     &__header {
     }
     &__body {
         #{$selector} {
             &__select {
-                flex-direction: row;
-                display: flex;
+                display: grid;
+                grid-template-columns: auto 1fr;
                 padding: 8px 16px;
                 justify-content: space-between;
                 align-items: center;
-                border-radius: 100px;
+                border-radius: 30px;
                 border: 1px solid #c5cbde;
                 background: #fff;
                 box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
-                & > i + div {
-                    flex: 1;
+                @include media-breakpoint-up(md) {
+                    display: flex;
+                    flex-direction: row;
+                }
+                & > i {
+                    margin-bottom: auto;
+                    margin-top: 3px;
+                    & + div {
+                        flex: 1;
+                    }
                 }
                 select {
                     background-color: transparent;
@@ -84,8 +98,9 @@
                 #{$selector}__indicator {
                     padding: 6px;
                     border-radius: 5px;
-                    @include transition(150ms);
                     cursor: pointer;
+                    margin-bottom: auto;
+                    @include transition(150ms);
                     &:hover {
                         background-color: list.nth($colors-alt, 5);
                         i {
@@ -108,11 +123,12 @@
                 justify-content: center;
                 align-items: center;
                 gap: 13px;
-                align-self: stretch;
                 border-radius: 30px;
                 border: 1px solid #c5cbde;
                 box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
                 cursor: pointer;
+                align-self: stretch;
+                max-height: 57px;
                 .label {
                     display: flex;
                     flex-direction: row;
@@ -127,16 +143,32 @@
             }
         }
         .sortby {
-            padding-left: 17px;
             position: relative;
-            margin-left: 9px;
-            &::before {
+            padding-top: 6px;
+            margin-top: 6px;
+            margin-bottom: auto;
+            &:before {
                 content: "";
                 position: absolute;
+                top: 0;
                 left: 0;
-                width: 1px;
-                height: 22px;
+                right: 0;
+                width: auto;
+                height: 1px;
                 background: #d5d0ee;
+            }
+            @include media-breakpoint-up(md) {
+                margin-top: 0;
+                padding-top: 0;
+                padding-left: 17px;
+                margin-left: 9px;
+                &::before {
+                    top: auto;
+                    left: 0;
+                    right: auto;
+                    width: 1px;
+                    height: 22px;
+                }
             }
             &__value-container {
                 font-weight: 500;
