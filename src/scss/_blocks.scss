@@ -104,7 +104,7 @@
                 font-size: 14px;
                 font-weight: 500;
                 display: flex;
-                padding: 12px 20px 12px 25px;
+                padding: 12px 20px 12px 12px;
                 justify-content: center;
                 align-items: center;
                 gap: 13px;
@@ -113,6 +113,17 @@
                 border: 1px solid #c5cbde;
                 box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
                 cursor: pointer;
+                .label {
+                    display: flex;
+                    flex-direction: row;
+                    .cpt {
+                        width: 2em;
+                        text-align: right;
+                        &::after {
+                            content: "\00a0";
+                        }
+                    }
+                }
             }
         }
         .sortby {
@@ -162,8 +173,20 @@
         0 20px 40px 0 rgba(25, 25, 51, 0.05),
         0 25px 50px 0 rgba(94, 84, 255, 0.05);
     &__content {
+        font-size: 12px;
     }
     &__header {
+        .reset {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            color: var(--color-3);
+            cursor: pointer;
+            text-decoration: underline;
+            &:hover {
+                color: var(--color-2);
+            }
+        }
     }
     &__body {
         .filter-list {
@@ -171,7 +194,6 @@
             color: var(--color-3);
             &__header {
                 color: #71717a;
-                font-size: 12px;
                 font-style: normal;
                 line-height: 1.5;
                 padding: 16px 16px 8px 16px;

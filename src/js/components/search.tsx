@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CreatableSelect from "react-select/creatable";
 import {
   components,
@@ -6,10 +6,53 @@ import {
   type MultiValueRemoveProps,
 } from "react-select";
 
-const Filter = () => {
+const Search = () => {
+  function handleCheckboxChange(filter: string) {
+    const mapSelectedFilters = new Set(selectedFilters);
+    return (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (event.target.checked) {
+        mapSelectedFilters.add(filter);
+      } else {
+        mapSelectedFilters.delete(filter);
+      }
+      setSelectedFilters(Array.from(mapSelectedFilters));
+    };
+  }
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+  const [selectedFilters, setSelectedFilters] = React.useState<string[]>([]);
   const options = [
     { value: "newest", label: "Plus récent" },
     { value: "oldest", label: "Plus ancien" },
+  ];
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+  }, []);
+  const filterGroups = [
+    {
+      title: "Contrat",
+      items: [
+        { value: "cdi", label: "CDI" },
+        { value: "cdd", label: "CDD" },
+      ],
+    },
+    {
+      title: "Modalité",
+      items: [
+        { value: "remote", label: "Remote" },
+        { value: "présentiel", label: "Présentiel" },
+        { value: "hybride", label: "Hybride" },
+      ],
+    },
+    {
+      title: "Niveau",
+      items: [
+        { value: "junior", label: "Junior" },
+        { value: "senior", label: "Senior" },
+      ],
+    },
   ];
   return (
     <div id="search-card" className="search-card bgc--4">
@@ -18,7 +61,7 @@ const Filter = () => {
         <div className="search-card__header">
           <h2 className="title title--h3 c--2">Affiner les offres</h2>
         </div>
-        <div className="search-card__body flex flex-row gap-[100px]">
+        <div className="search-card__body flex flex-col md:flex-row gap-[32px] md:gap-[100px]">
           <div className="search-card__select flex-1">
             <i className="es-icon-search font-size-[32px] c--2"></i>
             <CreatableSelect
@@ -65,60 +108,58 @@ const Filter = () => {
             </div>
           </div>
           <div className="search-card__filter [&>svg]:size-[24px]">
-            <div className="label">3 filtres actifs</div>
+            <div className="label">
+              <span className="cpt">{selectedFilters.length}</span> filtres
+              actifs
+            </div>
             <svg aria-hidden="true">
               <use href="/img/design/sprite.svg#filter"></use>
             </svg>
           </div>
           <div
             className="filter attribute-filter"
-            data-uk-drop="mode: click; pos: bottom-right; container:#search"
+            {...(windowWidth > 768
+              ? {
+                  "data-uk-drop":
+                    "mode: click; pos: bottom-right; container:#search;",
+                }
+              : {
+                  "data-uk-drop":
+                    "mode: click; pos: bottom-right; container:#search-card;",
+                })}
           >
             <div className="attribute-filter__content">
+              <div className="attribute-filter__header">
+                <span
+                  className="reset"
+                  title="Tout décocher"
+                  onClick={() => {
+                    setSelectedFilters([]);
+                  }}
+                >
+                  Tout décocher
+                </span>
+              </div>
               <div className="attribute-filter__body">
-                <div className="filter-list">
-                  <div className="filter-list__header">Contrat</div>
-                  <div className="filter-list__body">
-                    <label>
-                      <input className="uk-checkbox" type="checkbox"></input>
-                      CDI
-                    </label>
-                    <label>
-                      <input className="uk-checkbox" type="checkbox"></input>
-                      CDD
-                    </label>
+                {filterGroups.map((group) => (
+                  <div className="filter-list" key={group.title}>
+                    <div className="filter-list__header">{group.title}</div>
+                    <div className="filter-list__body">
+                      {group.items.map((item) => (
+                        <label key={`${group.title}-${item.value}`}>
+                          <input
+                            value={item.value}
+                            className="uk-checkbox"
+                            type="checkbox"
+                            onChange={handleCheckboxChange(item.value)}
+                            checked={selectedFilters.includes(item.value)}
+                          ></input>
+                          {item.label}
+                        </label>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div className="filter-list">
-                  <div className="filter-list__header">Modalité</div>
-                  <div className="filter-list__body">
-                    <label>
-                      <input className="uk-checkbox" type="checkbox"></input>
-                      Remote
-                    </label>
-                    <label>
-                      <input className="uk-checkbox" type="checkbox"></input>
-                      Présentiel
-                    </label>
-                    <label>
-                      <input className="uk-checkbox" type="checkbox"></input>
-                      Hybride
-                    </label>
-                  </div>
-                </div>
-                <div className="filter-list">
-                  <div className="filter-list__header">Niveau</div>
-                  <div className="filter-list__body">
-                    <label>
-                      <input className="uk-checkbox" type="checkbox"></input>
-                      Junior
-                    </label>
-                    <label>
-                      <input className="uk-checkbox" type="checkbox"></input>
-                      Senior
-                    </label>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -142,4 +183,4 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+export default Search;
