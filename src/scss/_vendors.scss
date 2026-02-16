@@ -17,7 +17,7 @@
 //@import "uikit/src/scss/components/table.scss";
 //@import "uikit/src/scss/components/icon.scss";
 //@import "uikit/src/scss/components/form-range.scss";
-//@import "uikit/src/scss/components/form.scss"; // After: Icon, Form Range
+@import "uikit/src/scss/components/form.scss"; // After: Icon, Form Range
 //@import "uikit/src/scss/components/button.scss";
 //@import "uikit/src/scss/components/progress.scss";
 
@@ -75,7 +75,7 @@
 //@import "uikit/src/scss/components/tab.scss";
 //@import "uikit/src/scss/components/slidenav.scss"; // After: Icon
 //@import "uikit/src/scss/components/dotnav.scss";
-//@import "uikit/src/scss/components/dropdown.scss"; // After: Card, Nav
+@import "uikit/src/scss/components/dropdown.scss"; // After: Card, Nav
 //@import "uikit/src/scss/components/lightbox.scss"; // After: Close, Slidenav
 
 // Utilities

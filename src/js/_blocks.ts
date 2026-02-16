@@ -1,1 +1,1 @@
-import "./blocks/_filter";
+import "./blocks/_search";

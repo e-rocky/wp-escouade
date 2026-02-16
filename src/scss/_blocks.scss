@@ -2,13 +2,14 @@
 @use "mixins" as *;
 @use "vars" as *;
 
-/*-- .filter-card --*/
-.filter-card {
+/*-- .search-card --*/
+.search-card {
+    $selector: &;
     border-radius: 24px;
-    overflow: hidden;
     box-shadow:
         0 20px 40px 0 rgba(25, 25, 51, 0.05),
         0 25px 50px 0 rgba(94, 84, 255, 0.05);
+    overflow-x: hidden;
     &__content {
         display: flex;
         flex-direction: column;
@@ -21,11 +22,200 @@
     &__header {
     }
     &__body {
+        #{$selector} {
+            &__select {
+                flex-direction: row;
+                display: flex;
+                padding: 8px 16px;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 100px;
+                border: 1px solid #c5cbde;
+                background: #fff;
+                box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+                & > i + div {
+                    flex: 1;
+                }
+                select {
+                    background-color: transparent;
+                    option {
+                        font-weight: 500;
+                        color: #000;
+                    }
+                }
+            }
+            &__control {
+                border: none;
+                box-shadow: none;
+                background: transparent;
+            }
+            &__value-container {
+                gap: 10px;
+            }
+            &__multi-value {
+                margin: 0;
+                background-color: rgba(list.nth($colors-main, 2), 0.1);
+                padding: 5px 10px 5px 20px;
+                border-radius: 4px;
+                align-items: center;
+                gap: 10px;
+                &__label {
+                    color: var(--color-2, #5e54ff);
+                    font-family: var(--font-1);
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 1.5;
+                    padding: 0;
+                }
+                &__remove {
+                    padding: 0;
+                    color: rgba(list.nth($colors-alt, 3), 0.25);
+                    cursor: pointer;
+                    @include transition(150ms);
+                    &:hover {
+                        color: white;
+                        background-color: var(--color-5);
+                    }
+                }
+            }
+            &__indicators {
+                background-color: transparent;
+                #{$selector}__indicator {
+                    padding: 6px;
+                    border-radius: 5px;
+                    @include transition(150ms);
+                    cursor: pointer;
+                    &:hover {
+                        background-color: list.nth($colors-alt, 5);
+                        i {
+                            color: white;
+                        }
+                    }
+                    i {
+                        @include transition(150ms);
+                        color: var(--color-2);
+                    }
+                }
+            }
+        }
+        #{$selector} {
+            &__filter {
+                font-size: 14px;
+                font-weight: 500;
+                display: flex;
+                padding: 12px 20px 12px 25px;
+                justify-content: center;
+                align-items: center;
+                gap: 13px;
+                align-self: stretch;
+                border-radius: 30px;
+                border: 1px solid #c5cbde;
+                box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+                cursor: pointer;
+            }
+        }
+        .sortby {
+            padding-left: 17px;
+            position: relative;
+            margin-left: 9px;
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 1px;
+                height: 22px;
+                background: #d5d0ee;
+            }
+            &__value-container {
+                font-weight: 500;
+            }
+            &__control {
+                border: none;
+                box-shadow: none;
+                background: transparent;
+                padding: 0;
+            }
+            &__indicator {
+                padding: 0;
+                color: var(--color-2);
+                cursor: pointer;
+                @include transition(150ms);
+                &:hover {
+                    color: var(--color-5);
+                }
+            }
+        }
     }
     &__footer {
     }
 }
-/*-- end: .filter-card --*/
+/*-- end: .search-card --*/
+
+/*-- .attribute-filter --*/
+.attribute-filter {
+    padding: 0;
+    border-radius: 12px;
+    border: 1px solid #c5cbde;
+    background: #fff;
+    box-shadow:
+        0 20px 40px 0 rgba(25, 25, 51, 0.05),
+        0 25px 50px 0 rgba(94, 84, 255, 0.05);
+    &__content {
+    }
+    &__header {
+    }
+    &__body {
+        .filter-list {
+            font-family: var(--font-1);
+            color: var(--color-3);
+            &__header {
+                color: #71717a;
+                font-size: 12px;
+                font-style: normal;
+                line-height: 1.5;
+                padding: 16px 16px 8px 16px;
+            }
+            &__body {
+                display: flex;
+                flex-direction: column;
+                label {
+                    display: flex;
+                    align-items: start;
+                    gap: 12px;
+                    font-size: 16px;
+                    font-weight: 400;
+                    user-select: none;
+                    padding: 8px 16px;
+                    font-family: var(--font-1);
+                    cursor: pointer;
+                    &:hover {
+                        background-color: rgba(list.nth($colors-main, 2), 0.1);
+                    }
+                    input {
+                        font-size: inherit;
+                        margin: 0.18em 0 0 0;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 6px;
+                        border: solid 1px #c5cbde;
+                        background-color: transparent;
+                        @include transition(150ms);
+                        &:checked {
+                            border-width: 0;
+                            background-image: url("/img/design/checked.svg");
+                            background-size: cover;
+                            background-color: var(--color-2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__footer {
+    }
+}
+/*-- end: .attribute-filter --*/
 
 /*-- .talent-card --*/
 .talent-card {
