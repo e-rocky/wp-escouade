@@ -2,6 +2,63 @@
 @use "mixins" as *;
 @use "vars" as *;
 
+/*-- .pagination-card --*/
+.pagination-card {
+    &__content {
+    }
+    &__header {
+    }
+    &__body {
+        nav {
+            ul {
+                margin-bottom: 0;
+                gap: 20px;
+                display: flex;
+                padding: 16px 32px;
+                align-items: center;
+                gap: 20px;
+                border-radius: 24px;
+                background: #fff;
+                box-shadow:
+                    0 20px 40px 0 rgba(25, 25, 51, 0.05),
+                    0 25px 50px 0 rgba(94, 84, 255, 0.05);
+                li {
+                    &.uk-active {
+                        a,
+                        span {
+                            background-color: var(--color-2);
+                            color: white;
+                        }
+                    }
+                    a:hover {
+                        background-color: rgba(list.nth($colors-main, 2), 0.25);
+                        color: var(--color-2);
+                        //transform: scale(1.2);
+                    }
+                    a,
+                    span {
+                        padding: 0;
+                        min-width: 32px;
+                        height: 32px;
+                        flex: 1;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 16px;
+                        color: var(--color-3);
+                        @include transition(150ms);
+                    }
+                    i {
+                        color: var(--color-2);
+                    }
+                }
+            }
+        }
+    }
+    &__footer {
+    }
+}
+/*-- end: .pagination-card --*/
+
 /*-- .search-card --*/
 .search-card {
     $selector: &;
