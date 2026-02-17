@@ -196,6 +196,7 @@
                 cursor: pointer;
                 align-self: stretch;
                 max-height: 57px;
+                user-select: none;
                 .label {
                     display: flex;
                     flex-direction: row;
@@ -644,18 +645,28 @@
     }
     &__body {
         ul {
-            padding: 16px 64px 16px 32px;
+            padding: 16px;
             margin: 0;
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
             gap: 20px;
-            border-radius: 900px;
+            border-radius: 32px;
             background: #fff;
             box-shadow: 0 4px 20px 0 rgba(82, 113, 255, 0.05);
             backdrop-filter: blur(5px);
             width: fit-content;
             align-items: center;
             font-size: 18px;
+            @include media-breakpoint-up(sm) {
+                padding: 16px 32px 16px 32px;
+            }
+            @include media-breakpoint-up(md) {
+                padding: 16px 48px 16px 32px;
+            }
+            @include media-breakpoint-up(lg) {
+                padding: 16px 64px 16px 32px;
+            }
             li {
                 display: block;
                 line-height: 1;
@@ -1470,10 +1481,16 @@
         .title {
             margin-top: 0;
         }
+        article {
+            &.bg {
+                padding: 16px 32px;
+                border-radius: 24px;
+                background-color: rgba(list.nth($colors-alt, 2), 0.05);
+            }
+        }
     }
     &__header {
         flex: 1;
-        margin-bottom: 32px;
         @include media-breakpoint-up(lg) {
             margin-bottom: 0;
         }

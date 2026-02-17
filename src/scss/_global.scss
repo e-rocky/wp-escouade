@@ -11,6 +11,10 @@ body {
     font-weight: 300;
 }
 
+.uk-modal-container {
+    overflow-y: scroll;
+}
+
 *,
 *::before,
 *::after {
@@ -105,9 +109,12 @@ a {
         @for $j from 1 through list.length($colors-main) {
             $gradient: linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$j}) 100%);
             $gradient-alt: linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$j}a) 100%);
+            $gradient-start-alt: linear-gradient(90deg, var(--color-#{$i}a) 0%, var(--color-#{$j}) 100%);
+            $gradient-both-alt: linear-gradient(90deg, var(--color-#{$i}a) 0%, var(--color-#{$j}a) 100%);
             &-#{$j},
             &-#{$j}a {
                 -webkit-background-clip: text;
+                background-clip: text;
                 background-image: $gradient;
                 color: transparent;
                 &:hover {
@@ -116,6 +123,19 @@ a {
             }
             &-#{$j}a {
                 background-image: $gradient-alt;
+            }
+            &a-#{$j},
+            &a-#{$j}a {
+                -webkit-background-clip: text;
+                background-clip: text;
+                background-image: $gradient-start-alt;
+                color: transparent;
+                &:hover {
+                    color: transparent;
+                }
+            }
+            &a-#{$j}a {
+                background-image: $gradient-both-alt;
             }
             @at-root {
                 .btn.bdc--#{$i}-#{$j} {
@@ -252,7 +272,7 @@ a {
 }
 
 #page {
-    //position: relative;
+    position: relative;
     z-index: 1;
     overflow: hidden;
     background-position: center top -25vh;
@@ -261,7 +281,7 @@ a {
     background-size: 100% auto;
     &::before {
         content: "";
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         bottom: 0;
@@ -306,6 +326,12 @@ a {
     position: relative;
     text-align: center;
     justify-content: center;
+    &.underline {
+        &,
+        &:hover {
+            text-decoration: underline;
+        }
+    }
     &:hover {
         text-decoration: none;
         transform: scale(1.1);
@@ -464,5 +490,29 @@ a {
     }
     p {
         font-size: 18px;
+    }
+    ul {
+        padding-left: 0.5em;
+        li {
+            position: relative;
+            list-style: none;
+            padding-left: 1em;
+            &:has(ul:first-child) {
+                &::before {
+                    display: none;
+                }
+            }
+            &::before {
+                position: absolute;
+                top: 12px;
+                left: 0;
+                content: "";
+                width: 6px;
+                height: 6px;
+                background-color: currentColor;
+                border-radius: 50%;
+                flex-shrink: 0;
+            }
+        }
     }
 }
