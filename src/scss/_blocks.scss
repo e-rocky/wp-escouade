@@ -115,6 +115,17 @@
                     }
                 }
             }
+            &__container {
+                position: relative;
+            }
+            &__select-label {
+                background-color: var(--color-4);
+                position: absolute;
+                padding-left: 10px;
+                top: -20px;
+                padding-right: 10px;
+                font-weight: 500;
+            }
             &__control {
                 border: none;
                 box-shadow: none;
@@ -173,7 +184,6 @@
         }
         #{$selector} {
             &__filter {
-                font-size: 14px;
                 font-weight: 500;
                 display: flex;
                 padding: 12px 20px 12px 12px;

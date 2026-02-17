@@ -17,9 +17,16 @@ body {
     box-sizing: border-box;
 }
 
+a {
+    text-decoration-color: transparent;
+    @include transition(250ms);
+    &:hover {
+        text-decoration-color: currentColor;
+    }
+}
+
 [class*="es-icon"] {
     display: inline-block;
-    font-family: "es-icon" !important;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -51,21 +58,37 @@ body {
     position: relative;
     @include blockReset;
 
-    [class*="block__content"]:is(#main .block div) {
-        padding-top: 64px;
-        padding-bottom: 64px;
+    [class*="block__content"] {
+        &:not([class*="pt-"]) {
+            padding-top: 64px;
 
-        @include media-breakpoint-up(sm) {
-            padding-top: 82px;
-            padding-bottom: 82px;
+            @include media-breakpoint-up(sm) {
+                padding-top: 82px;
+            }
+            @include media-breakpoint-up(md) {
+                padding-top: 102px;
+            }
+            @include media-breakpoint-up(lg) {
+                padding-top: 120px;
+            }
         }
-        @include media-breakpoint-up(md) {
-            padding-top: 102px;
-            padding-bottom: 102px;
+
+        &:not([class*="pb-"]) {
+            padding-bottom: 64px;
+
+            @include media-breakpoint-up(sm) {
+                padding-bottom: 82px;
+            }
+            @include media-breakpoint-up(md) {
+                padding-bottom: 102px;
+            }
+            @include media-breakpoint-up(lg) {
+                padding-bottom: 120px;
+            }
         }
-        @include media-breakpoint-up(lg) {
-            padding-top: 120px;
-            padding-bottom: 120px;
+        &.py-0 {
+            padding-top: 0;
+            padding-bottom: 0;
         }
     }
 }

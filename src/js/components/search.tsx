@@ -55,7 +55,7 @@ const Search = () => {
     },
   ];
   return (
-    <div id="search-card" className="search-card bgc--4">
+    <div id="search-card" className="search-card bgc--4 font-size-[14px]">
       <div className="search-card__background bgi bgi--4 h-[10px]"></div>
       <div className="search-card__content flex-col gap-[32px]">
         <div className="search-card__header">
@@ -69,6 +69,16 @@ const Search = () => {
               isMulti
               classNamePrefix="search-card"
               components={{
+                SelectContainer: (props) => (
+                  <components.SelectContainer {...props}>
+                    <div className="search-card__select-container">
+                      <div className="search-card__select-label">
+                        Vos technos
+                      </div>
+                      {props.children}
+                    </div>
+                  </components.SelectContainer>
+                ),
                 DropdownIndicator: () => null,
                 IndicatorSeparator: () => null,
                 MultiValueRemove: (props: MultiValueRemoveProps) => (
@@ -91,7 +101,7 @@ const Search = () => {
                 //ClearIndicator: () => <button>effacer</button>,
               }}
             />
-            <div className="sortby col-span-2 flex items-center font-size-[14px]">
+            <div className="sortby col-span-2 flex items-center">
               <span className="whitespace-nowrap">trier par :</span>
               <CreatableSelect
                 isSearchable={false}
@@ -109,8 +119,9 @@ const Search = () => {
           </div>
           <div className="search-card__filter [&>svg]:size-[24px]">
             <div className="label">
-              <span className="cpt">{selectedFilters.length}</span> filtres
-              actifs
+              <span className="cpt">{selectedFilters.length} </span> filtre
+              {selectedFilters.length > 1 ? "s" : ""} actif
+              {selectedFilters.length > 1 ? "s" : ""}
             </div>
             <svg aria-hidden="true">
               <use href="/img/design/sprite.svg#filter"></use>
@@ -173,9 +184,7 @@ const Search = () => {
             >
               Rechercher
             </a>
-            <div className="label font-size-[14px] font-500">
-              78 Offres trouvées
-            </div>
+            <div className="label font-500">78 Offres trouvées</div>
           </div>
         </div>
       </div>
