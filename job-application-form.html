@@ -111,7 +111,7 @@
 
 
                         <div class="job-card bgc bgc--4">
-                            <div class="job-card__content flex flex-col lg:grid grid-cols-[1fr_436px] p-[16px] sm:p-[32px] md:p-[48px] lg:p-[64px] gap-[32px] md:gap-[48px] lg:gap-[64px] lg:flex-row-reverse">
+                            <div class="job-card__content flex flex-col lg:grid grid-cols-[1fr_436px] p-[16px] sm:p-[32px] md:p-[48px] lg:p-[64px] gap-[32px] md:gap-[48px] lg:flex-row-reverse">
                                 <div class="job-card__header row-start-1 col-start-2 col-span-1">
                                     <figure class="img-container">
                                         <img src="/img/content/job-listing-img-1.png" alt="">
@@ -434,20 +434,111 @@
     </div><!-- #page -->
 
     <div id="modal-container" class="uk-modal-container" data-uk-modal="show: true">
-        <div class="uk-modal-dialog uk-modal-body">
-            <button class="uk-modal-close-default" type="button" uk-close></button>
-            <h2 class="uk-modal-title">Headline</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <form class="job-application-form uk-modal-dialog uk-modal-body">
+            <div class="job-application-form__content flex flex-col justify-between gap-[32px] md:gap-[48px]">
+
+                <div class="job-application-form__header flex gap-[16px] sm:gap-[32px] md:gap-[48px]">
+                    <div class="logo flex tems-center gap-x-[20px]">
+                        <div class="img size-[64px] mb-a md:mt-a">
+                            <img class="my-a size-full object-contain grid-row-span-2" src="/img/design/logo--icon-square.svg" alt="Escouade">
+                        </div>
+                        <div class="text flex flex-1 flex-col md:flex-row justify-between items-start md:items-center">
+                            <div class="line-height-[1]">
+                                <strong class="title py-0 my-0 my-a font-size-[32px]">Escouade</strong>
+                                <p class="address my-0">
+                                    Antananarivo -
+                                    Madagascar
+                                </p>
+                            </div>
+                            <div class="[&>p]:m-0 md:text-right">
+                                <p class="email">
+                                    <a class="c--3" href="mailto:contact@escouade.mg">contact@escouade.mg</a>
+                                </p>
+                                <p class="phone"><a class="c--3" href="tel:+26134223682">+261 34 22 236 82</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cover">
+                        <img src="img/content/application-form-img-1.png" alt="">
+                    </div>
+                </div>
+                <div class="job-application-form__body flex flex-col gap-[32px] md:gap-[48px] lg:gap-[64px]">
+
+                    <h2 class="title title--h2 rte rte--em-c-5 c--2-1a m-0 self-start">
+                        <small class="block c--3 tracking-0">Déposer ma candidature pour le poste de :</small>
+                        Développeur Back-end PHP
+                    </h2>
+
+                    <div class="uk-grid-small form" uk-grid>
+                        <div class="uk-width-1-2@s flex">
+                            <label class="uk-form-label" for="form-stacked-text">Prénom*</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="form-stacked-text" type="text" placeholder="Some text...">
+                            </div>
+                        </div>
+                        <div class="uk-width-1-2@s flex">
+                            <label class="uk-form-label" for="form-stacked-text">Nom*</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="form-stacked-text" type="text" placeholder="Some text...">
+                            </div>
+                        </div>
+                        <div class="uk-width-1-1 flex">
+                            <label class="uk-form-label" for="form-stacked-text">Email*</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="form-stacked-text" type="text" placeholder="100" aria-label="100">
+                            </div>
+                        </div>
+                        <div class="uk-width-1-1 flex">
+                            <label class="uk-form-label" for="form-stacked-text">Adresse*</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="form-stacked-text" type="text" placeholder="100" aria-label="100">
+                            </div>
+                        </div>
+                        <div class="uk-width-1-1 flex">
+                            <label class="uk-form-label" for="form-stacked-text">Téléphone*</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="form-stacked-text" type="text" placeholder="100" aria-label="100">
+                            </div>
+                        </div>
+                        <div class="uk-width-1-1 flex">
+                            <label class="uk-form-label" for="form-stacked-message">Message*</label>
+                            <div class="uk-form-controls">
+                                <textarea rows="4" class="uk-textarea" id="form-stacked-message" placeholder="Quelques mots pour accompagner votre candidature"></textarea>
+                            </div>
+                        </div>
+                        <divv class="flex">
+                            <div class="flex flex-row gap-[10px]">
+                                <input id="accept" class="uk-checkbox" type="checkbox" required>
+                                <label for="accept">
+                                    J’accepte <a href="#">la politique de confidentialité</a> et les <a href="#">conditions d’utilisation</a>.
+                                </label>
+                            </div>
+                        </divv>
+                    </div>
+
+
+                </div><!-- .job-application-form__body -->
+
+                <div class="job-application-form__footer py-[32px] flex justify-center">
+                    <button class="btn btn--lg c--4 bgc--5-2 btn-shadow-sm" type="submit">Envoyer</button>
+                </div><!-- .job-application-block__footer -->
+
+            </div><!-- .job-application-form__content -->
+        </form><!-- .job-application-form -->
     </div>
 
+
+
     <script type="module" src="/src/main.ts"></script>
+    <script type="module">
+        await import("/src/main.ts"); // attend le chargement + exécution de toute la chaîne d'imports
+        var modal = document.getElementById('modal-container');
+        var modalInstance = UIkit.modal(modal);
+        modalInstance.show();
+        console.log(UIkit.version);
+    </script>
+
 </body>
 
 </html>
