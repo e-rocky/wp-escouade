@@ -470,51 +470,65 @@
                         Développeur Back-end PHP
                     </h2>
 
-                    <div class="uk-grid-small form" uk-grid>
+                    <div class="uk-grid-small form" data-uk-grid>
                         <div class="uk-width-1-2@s flex">
-                            <label class="uk-form-label" for="form-stacked-text">Prénom*</label>
+                            <label class="uk-form-label" for="job-first-name">Prénom*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" id="form-stacked-text" type="text" placeholder="Some text...">
+                                <input class="uk-input" id="job-first-name" type="text" placeholder="John">
                             </div>
                         </div>
                         <div class="uk-width-1-2@s flex">
-                            <label class="uk-form-label" for="form-stacked-text">Nom*</label>
+                            <label class="uk-form-label" for="job-lastname">Nom*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" id="form-stacked-text" type="text" placeholder="Some text...">
+                                <input class="uk-input" id="job-lastname" type="text" placeholder="Carter">
                             </div>
                         </div>
                         <div class="uk-width-1-1 flex">
-                            <label class="uk-form-label" for="form-stacked-text">Email*</label>
+                            <label class="uk-form-label" for="job-email">Email*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" id="form-stacked-text" type="text" placeholder="100" aria-label="100">
+                                <input class="uk-input" id="job-email" type="text" placeholder="john.carter@example.com" aria-label="john.carter@example.com">
                             </div>
                         </div>
                         <div class="uk-width-1-1 flex">
-                            <label class="uk-form-label" for="form-stacked-text">Adresse*</label>
+                            <label class="uk-form-label" for="job-address">Adresse*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" id="form-stacked-text" type="text" placeholder="100" aria-label="100">
+                                <input class="uk-input" id="job-address" type="text" placeholder="Antananarivo Madagascar" aria-label="100">
                             </div>
                         </div>
                         <div class="uk-width-1-1 flex">
-                            <label class="uk-form-label" for="form-stacked-text">Téléphone*</label>
+                            <label class="uk-form-label" for="job-phone">Téléphone*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" id="form-stacked-text" type="text" placeholder="100" aria-label="100">
+                                <input class="uk-input" id="job-phone" type="text" placeholder="+261" aria-label="+261">
                             </div>
                         </div>
                         <div class="uk-width-1-1 flex">
-                            <label class="uk-form-label" for="form-stacked-message">Message*</label>
+
+                            <div class="js-upload uk-placeholder uk-text-center">
+                                <span data-uk-icon="icon: cloud-upload"></span>
+                                <span class="uk-text-middle">Attach binaries by dropping them here or</span>
+                                <div data-uk-form-custom>
+                                    <input type="file" multiple>
+                                    <span class="uk-link">selecting one</span>
+                                </div>
+                            </div>
+
+                            <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+
+                        </div>
+                        <div class="uk-width-1-1 flex">
+                            <label class="uk-form-label" for="job-message">Message*</label>
                             <div class="uk-form-controls">
-                                <textarea rows="4" class="uk-textarea" id="form-stacked-message" placeholder="Quelques mots pour accompagner votre candidature"></textarea>
+                                <textarea rows="4" class="uk-textarea" id="job-message" placeholder="Quelques mots pour accompagner votre candidature"></textarea>
                             </div>
                         </div>
-                        <divv class="flex">
+                        <div class="flex">
                             <div class="flex flex-row gap-[10px]">
                                 <input id="accept" class="uk-checkbox" type="checkbox" required>
                                 <label for="accept">
                                     J’accepte <a href="#">la politique de confidentialité</a> et les <a href="#">conditions d’utilisation</a>.
                                 </label>
                             </div>
-                        </divv>
+                        </div>
                     </div>
 
 

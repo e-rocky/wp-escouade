@@ -22,12 +22,12 @@ body {
 }
 
 a {
+    text-decoration: underline;
     text-decoration-color: transparent;
     cursor: pointer;
     @include transition(250ms);
-    &,
-    &:hover,
-    &:active {
+    color: var(--color-2);
+    &:hover {
         color: var(--color-2);
         text-decoration-color: currentColor;
     }
