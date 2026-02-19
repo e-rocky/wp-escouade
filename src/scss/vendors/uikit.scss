@@ -1,5 +1,5 @@
 // Vars include is not working with @use
-@import "vars";
+@import "../vars";
 
 // Base
 @import "uikit/src/scss/variables.scss";
