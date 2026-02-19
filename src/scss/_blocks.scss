@@ -2,6 +2,163 @@
 @use "mixins" as *;
 @use "vars" as *;
 
+.block-offcanvas__menu {
+    &.block {
+        color: white;
+        font-size: 24px;
+        height: 100%;
+        .block-content {
+            height: 100%;
+            .slinky-theme-default {
+                background-color: transparent;
+                text-transform: uppercase;
+                ul > li {
+                    & > a {
+                        color: inherit;
+                        font-weight: inherit;
+                        &.next {
+                            &:hover:after {
+                                opacity: 1;
+                                transform: translateX(0px);
+                            }
+                            &:after {
+                                color: white;
+                                filter: brightness(0) invert(1);
+                                transform: translateX(100px);
+                                opacity: 0;
+                            }
+                        }
+                        &.back {
+                            padding-left: 1em;
+                            &:hover:before {
+                                opacity: 1;
+                            }
+                            &:before {
+                                color: white;
+                                filter: brightness(0) invert(1);
+                                opacity: 1;
+                            }
+                        }
+                        &:not(.back) {
+                            padding: 1em 1.5em 1em 3.45em;
+                            &:hover {
+                                background: rgba(white, 0.25);
+                            }
+                        }
+                    }
+                    .header {
+                        background-color: rgba(white, 0.25);
+                        .title {
+                            color: inherit;
+                            &:before {
+                                content: "… ";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .block-header {
+        }
+        .block-body {
+            height: 100%;
+            .diptych {
+                display: flex;
+                flex-direction: row;
+                min-height: 100%;
+                justify-content: space-between;
+                .actions {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    .close {
+                        top: 0;
+                        left: 0;
+                    }
+                }
+                .panel {
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: stretch;
+                    padding-top: 5em;
+                    position: relative;
+                    &-left {
+                        flex: 1 1 auto;
+                        justify-content: space-between;
+                        .navigation {
+                            @at-root {
+                                .lang & {
+                                    //display: none;
+                                }
+                            }
+                            li.langpicker {
+                                margin-top: 3.375em;
+                            }
+                        }
+                    }
+                    &-right {
+                        ul {
+                            min-width: 4em;
+                            display: flex;
+                            align-items: center;
+                            flex-direction: column;
+                            align-items: stretch;
+                            & > li {
+                                margin-bottom: 20px;
+                                &.close {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    right: 0;
+                                }
+                            }
+                            a {
+                                display: block;
+                                padding: 1em;
+                                width: 100%;
+                                position: relative;
+                                &:hover {
+                                    background: rgba(white, 0.25);
+                                }
+                                &:before {
+                                    content: "";
+                                    display: block;
+                                    padding-top: 100%;
+                                }
+                                .icon {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                }
+                            }
+                        }
+                    }
+                }
+                .aside {
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 1px;
+                        background: rgba(255, 255, 255, 0.5);
+                        height: 200vh;
+                    }
+                }
+                .lang {
+                    //min-height: 10em;
+                }
+            }
+        }
+        .block-footer {
+        }
+    }
+}
+/*-- end: .block-offcanvas__menu --*/
+
 /*-- .job-application-form --*/
 .job-application-form {
     border-radius: 24px;

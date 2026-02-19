@@ -56,6 +56,10 @@
                                     <div class="uk-navbar-item">
                                         <a class="btn c--1-2 bgc--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm" href="#" title="Je cherche un job">Je cherche un job</a>
                                         <a class="btn c--4 bgc--1-2 btn-shadow-md" href="#" title="Je recrute un talent">Je recrute un talent</a>
+                                        <a class="burger" href="#offcanvas-menu" data-uk-toggle>
+                                            menu !
+                                            <i class="icon icon-burger fz:15"></i>
+                                        </a>
                                     </div>
 
 
@@ -434,8 +438,8 @@
     </div><!-- #page -->
 
     <div id="modal-container" class="uk-modal-container" data-uk-modal="show: true">
-        <button class="uk-modal-close-default" type="button" uk-close></button>
         <form class="job-application-form uk-modal-dialog uk-modal-body">
+            <a href="#" class="uk-modal-close-default" type="button" uk-close></a>
             <div class="job-application-form__content flex flex-col justify-between gap-[32px] md:gap-[48px]">
 
                 <div class="job-application-form__header flex gap-[16px] sm:gap-[32px] md:gap-[48px]">
@@ -498,7 +502,7 @@
                         <div class="uk-width-1-1 flex">
                             <label class="uk-form-label" for="job-phone">Téléphone*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" id="job-phone" type="text" placeholder="+261" aria-label="+261">
+                                <input class="uk-input" id="job-phone" type="tel" placeholder="" aria-label="Numéro de téléphone" data-intl-phone>
                             </div>
                         </div>
                         <div class="uk-width-1-1 flex">
@@ -534,6 +538,104 @@
 
             </div><!-- .job-application-form__content -->
         </form><!-- .job-application-form -->
+    </div><!-- #modal-container -->
+
+    <div id="offcanvas-menu" data-uk-offcanvas="flip: true; overlay: true;">
+        <div class="uk-offcanvas-bar">
+            <div class="block block-offcanvas__menu col-12">
+                <div class="block-content">
+                    <div class="block-body">
+                        <div class="diptych">
+                            <div class="panel panel-left">
+                                <div class="navigation">
+                                    <ul>
+                                        <li>
+                                            <a href="#page" title="Home">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="#page" title="ABOUT US">ABOUT US</a>
+                                        </li>
+                                        <li>
+                                            <a href="#page" title="SOLUTIONS">SOLUTIONS</a>
+                                            <ul>
+                                                <li><a href="#page" title="Ingest">Ingest</a></li>
+                                                <li><a href="#page" title="Live transcoding">Live transcoding</a></li>
+                                                <li><a href="#page" title="Live logging">Live logging</a></li>
+                                                <li><a href="#page" title="Video Clipping">Video Clipping</a></li>
+                                                <li><a href="#page" title="File Transcoding">File Transcoding</a></li>
+                                                <li><a href="#page" title="Asset &amp; metadata management">Asset &amp; metadata management</a></li>
+                                                <li><a href="#page" title="Subscription &amp; billing management">Subscription &amp; billing management</a></li>
+                                                <li><a href="#test" title="Ad insertion">Ad insertion</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#test" title="INDUSTRIES">INDUSTRIES</a>
+                                        </li>
+                                        <li>
+                                            <a href="#test" title="CAREERS">CAREERS</a>
+                                        </li>
+                                        <li>
+                                            <a href="#test" title="CONTACT">CONTACT</a>
+                                        </li>
+                                        <li class="langpicker">
+                                            <a href="#page" title="Lang">Lang</a>
+                                            <ul>
+                                                <li><a href="#test" title="Français">Français</a></li>
+                                                <li><a href="#test" title="English">English</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="lang d-none">
+                                    <ul class="h-match">
+                                        <li>
+                                            <a href="#page" title="Lang">Lang</a>
+                                            <ul class="h-match langpicker">
+                                                <li>
+                                                    <a href="#test" title="Français">Français</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#test" title="English">English</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="panel panel-right">
+                                <aside class="aside">
+                                    <ul>
+                                        <li class="close">
+                                            <a href="#page" title="close uk-close">
+                                                <i class="icon icon-close fz:28;32@sm"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://twitter.com/hexaglobe" title="twitter" target="_blank">
+                                                <i class="icon icon-twitter fz:16"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://fr.linkedin.com/company/hexaglobe" title="linkedin" target="_blank">
+                                                <i class="icon icon-linkedin fz:21"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.facebook.com/hexaglobe/" title="facebook" target="_blank">
+                                                <i class="icon icon-facebook fz:21"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .block-body -->
+                </div>
+                <!-- .block-content -->
+            </div>
+            <!-- .block-offcanvas__menu -->
+        </div>
     </div>
 
 
