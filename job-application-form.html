@@ -502,17 +502,22 @@
                             </div>
                         </div>
                         <div class="uk-width-1-1 flex">
-
-                            <div class="js-upload uk-placeholder uk-text-center">
-                                <span data-uk-icon="icon: cloud-upload"></span>
-                                <span class="uk-text-middle">Attach binaries by dropping them here or</span>
-                                <div data-uk-form-custom>
-                                    <input type="file" multiple>
-                                    <span class="uk-link">selecting one</span>
+                            <div class="uk-form-controls">
+                                <label class="uk-form-label" for="job-attachments">Pièces jointes*</label>
+                                <div class="js-upload uk-placeholder uk-text-center">
+                                    <span uk-icon="icon: cloud-upload"></span>
+                                    <span class="uk-text-middle">Attach binaries by dropping them here or</span>
+                                    <div data-uk-form-custom>
+                                        <input type="file" multiple>
+                                        <span class="uk-link">selecting one</span>
+                                    </div>
                                 </div>
+
+                                <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+
+
                             </div>
 
-                            <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
 
                         </div>
                         <div class="uk-width-1-1 flex">
@@ -535,7 +540,7 @@
                 </div><!-- .job-application-form__body -->
 
                 <div class="job-application-form__footer py-[32px] flex justify-center">
-                    <button class="btn btn--lg c--4 bgc--5-2 btn-shadow-sm" type="submit">Envoyer</button>
+                    <button class="btn btn--lg c--4 bgc--5-2 btn-shadow-sm w-full max-w-[320px]" type="submit">Envoyer</button>
                 </div><!-- .job-application-block__footer -->
 
             </div><!-- .job-application-form__content -->
