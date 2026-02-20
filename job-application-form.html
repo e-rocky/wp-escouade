@@ -15,17 +15,17 @@
                 <div class="main-nav-block__content py-0">
 
                     <nav class="main-nav-block__body uk-navbar-container">
-                        <div class="uk-container hidden xl:block">
-                            <div data-uk-navbar>
+                        <div class="uk-container">
+                            <div class="[&>div>.item-nav,&>div>.item-actions]:hidden xl:[&>div>.item-nav,&>div>.item-actions]:flex" data-uk-navbar>
 
                                 <div class="uk-navbar-left">
 
-                                    <div class="uk-navbar-item">
+                                    <div class="uk-navbar-item item-logo">
                                         <a href="#" class="uk-logo logo" href="#" aria-label="Escouade">
                                             <img src="/img/design/logo--icon-square-text.svg" alt="Escouade"></a>
                                     </div>
 
-                                    <ul class="uk-navbar-nav">
+                                    <ul class="uk-navbar-nav item-nav">
                                         <li>
                                             <a href="#" title="Accueil">
                                                 Accueil
@@ -53,13 +53,13 @@
                                         </li>
                                     </ul>
 
-                                    <div class="uk-navbar-item">
+                                    <div class="uk-navbar-item item-actions">
                                         <a class="btn c--1-2 bgc--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm" href="#" title="Je cherche un job">Je cherche un job</a>
                                         <a class="btn c--4 bgc--1-2 btn-shadow-md" href="#" title="Je recrute un talent">Je recrute un talent</a>
-                                        <a class="burger" href="#offcanvas-menu">
-                                            menu !
-                                            <i class="icon icon-burger fz:15"></i>
-                                        </a>
+                                    </div>
+
+                                    <div class="uk-navbar-item item-burger flex xl:hidden">
+                                        <a class="burger btn c--4 bgc--1-2 btn-shadow-md" href="#" title="Je recrute un talent">Menu <i class="es-icon-burger"></i></a>
                                     </div>
 
 
@@ -308,7 +308,7 @@
                     <div class="footer-menu-block__body flex flex-col md:flex-row gap-[50px] md:items-center ">
 
                         <div class="card minimap-card md:self-start z-1 md:mt-[-80px] md:max-w-[291px]">
-                            <div class="minimap-card__content flex flex-col sm:flex-row md:flex-col pb-[30px] sm:pb-[10px] md:pb-[30px]" data-uk-sticky="offset: 20; end:.footer-menu-block__body; media: @m;">
+                            <div class="minimap-card__content flex flex-col sm:flex-row md:flex-col pb-[30px] sm:pb-[10px] md:pb-[30px]">
                                 <div class="minimap-card__header">
                                     <figcaption class="img-container">
                                         <img src="/img/content/minimap-placeholder.png" alt="Minimap">
@@ -540,25 +540,6 @@
         </form><!-- .job-application-form -->
     </div><!-- #modal-container -->
 
-    <nav class="slide-menu" id="example-menu">
-        <ul>
-            <li>
-                <a href="#">Home</a>
-                <ul>
-                    <li><a href="#">Submenu entry 1</a></li>
-                    <li><a href="#">Submenu entry 2</a></li>
-                    <li><a href="#">Submenu entry 3</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="/blog">Blog</a>
-            </li>
-            <li>
-                <a href="/about">About</a>
-            </li>
-        </ul>
-    </nav>
-    </nav>
 
 
 
@@ -568,7 +549,6 @@
         var modal = document.getElementById('modal-container');
         var modalInstance = UIkit.modal(modal);
         modalInstance.show();
-        console.log(UIkit.version);
     </script>
 
 </body>
