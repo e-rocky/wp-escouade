@@ -153,3 +153,11 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+
+/**
+ * Register the blocks
+ *
+ * @return void
+ */
+require_once __DIR__ . '/blocks/blocks.php';

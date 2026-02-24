@@ -1,11 +1,15 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
+import UnoCSS from 'unocss/vite';
+import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
-import laravel from 'laravel-vite-plugin'
+import laravel from 'laravel-vite-plugin';
 import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
 
 export default defineConfig({
   base: '/app/themes/sage/public/build/',
   plugins: [
+    UnoCSS(),
+    react(),
     tailwindcss(),
     laravel({
       input: [
@@ -35,4 +39,4 @@ export default defineConfig({
       '@images': '/resources/images',
     },
   },
-})
+});
