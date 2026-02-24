@@ -58,3 +58,9 @@ collect(['setup', 'filters'])
             );
         }
     });
+
+
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_style('aura', get_template_directory_uri() . '/style.css', [], null);
+    wp_enqueue_script('aura', get_template_directory_uri() . '/app.js', [], null, true);
+});

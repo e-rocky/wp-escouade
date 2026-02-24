@@ -1,0 +1,39 @@
+@import "./intlTelInput-large";
+
+:root {
+    --iti-path-flags-1x: url("/resources/images/design/largeFlags.webp");
+    --iti-path-flags-2x: url("/resources/images/design/largeFlags@2x.webp");
+    --iti-icon-color: var(--color-2);
+}
+
+.iti {
+    $selector: &;
+    &#{&} {
+        display: block;
+        &--allow-dropdown {
+            #{$selector}__country-container {
+                border-radius: 16px;
+                &:not(:has(+ input[disabled])):not(:has(+ input[readonly])) {
+                    #{$selector}__selected-country-primary:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+            #{$selector}__selected-country-primary:hover {
+                background-color: transparent;
+            }
+        }
+    }
+    &__search-input {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    &__country-container {
+        border-radius: 16px;
+        .iti__dropdown-content {
+            font-size: 16px;
+        }
+    }
+}
+//.iti__selected-country-primary:hover,
+//.iti__selected-country:has(+.iti__dropdown-content:hover) .iti__selected-country-primary

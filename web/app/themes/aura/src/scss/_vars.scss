@@ -1,0 +1,58 @@
+@use "sass:list";
+@use "sass:map";
+
+$colors: (
+  main: (
+    #43fea5,
+    #5e54ff,
+    #191933,
+    #ffffff,
+    #f473d0
+  ),
+  alt: (
+    #00c8b3,
+    #5e54ff,
+    #2f388b,
+    #ffffff,
+    #f473d0
+  )
+);
+$backgrounds: (
+  url(/img/design/bg-1.png),
+  url(/img/design/bg-2.png),
+  url(/img/design/bg-3.png),
+  url(/img/design/bg-4.png),
+  url(/img/design/bg-5.png),
+  url(/img/design/bg-6.png)
+);
+$colors-main: map.get($colors, main);
+$colors-alt: map.get($colors, alt);
+$fonts: ("Inter", "Funnel Display");
+
+:root {
+  @for $i from 1 through list.length($colors-main) {
+    --color-#{$i}: #{list.nth($colors-main, $i)};
+  }
+  @for $i from 1 through list.length($colors-alt) {
+    --color-#{$i}a: #{list.nth($colors-alt, $i)};
+  }
+  @for $i from 1 through list.length($fonts) {
+    --font-#{$i}: "#{list.nth($fonts, $i)}";
+  }
+}
+
+$width: 1216px;
+
+//uikit overrides
+$global-medium-gutter: 40px !default;
+$global-font-family: var(--font-1);
+$container-max-width: $width + $global-medium-gutter * 2;
+$navbar-nav-item-color: var(--color-3);
+$navbar-nav-item-hover-color: var(--color-3);
+$navbar-nav-item-active-color: var(--color-3);
+$modal-container-width: $width;
+
+$breakpoint-small: 640px !default;
+$breakpoint-medium: 768px !default;
+$breakpoint-large: 1024px !default;
+$breakpoint-xlarge: 1280px !default;
