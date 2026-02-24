@@ -34,3 +34,5 @@ wp-cli.local.yml
 .idea/
 .DS_Store
 Thumbs.db
+
+!web/app/mu-plugins/heart

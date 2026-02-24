@@ -13,7 +13,7 @@ use Roots\Acorn\Application;
 |
 */
 
-if (! file_exists($composer = __DIR__.'/vendor/autoload.php')) {
+if (! file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
     wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'sage'));
 }
 
@@ -58,3 +58,13 @@ collect(['setup', 'filters'])
             );
         }
     });
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+*/
+require_once __DIR__ . '/blocks/blocks.php';
