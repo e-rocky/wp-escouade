@@ -31,6 +31,13 @@ export default defineConfig({
       disableTailwindFontSizes: false,
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ['import'],
+      },
+    },
+  },
   resolve: {
     alias: {
       '@scripts': '/resources/js',

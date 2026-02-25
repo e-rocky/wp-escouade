@@ -1,53 +1,54 @@
 @use "sass:map";
+@use "sass:meta";
 @use "vars" as *;
 
 $breakpoints: (
-    sm: $breakpoint-small,
-    md: $breakpoint-medium,
-    lg: $breakpoint-large,
-    xl: $breakpoint-xlarge
+  sm: $breakpoint-small,
+  md: $breakpoint-medium,
+  lg: $breakpoint-large,
+  xl: $breakpoint-xlarge
 );
 
 @mixin media-breakpoint-up($name) {
-    $value: null;
-    @if type-of($name) == "number" {
-        $value: $name * 1px;
-    } @else {
-        $value: map.get($breakpoints, $name);
-    }
-    @if $value == null {
-        @error "Unknown breakpoint `#{$name}`. Use one of: #{map.keys($breakpoints)} or a number like 960px.";
-    }
-    @media (min-width: $value) {
-        @content;
-    }
+  $value: null;
+  @if meta.type-of($name) == "number" {
+    $value: $name * 1px;
+  } @else {
+    $value: map.get($breakpoints, $name);
+  }
+  @if $value == null {
+    @error "Unknown breakpoint `#{$name}`. Use one of: #{map.keys($breakpoints)} or a number like 960px.";
+  }
+  @media (min-width: $value) {
+    @content;
+  }
 }
 
 @mixin img-container-center($width, $height, $object-fit: cover, $fixed-size: false) {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  @if $fixed-size == true {
+    width: $width;
+    height: $height;
+  }
+  &:before {
+    content: "";
     display: block;
-    position: relative;
+    padding-top: calc($height/$width * 100%);
+  }
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: $object-fit;
     overflow: hidden;
-    @if $fixed-size == true {
-        width: $width;
-        height: $height;
-    }
-    &:before {
-        content: "";
-        display: block;
-        padding-top: calc($height/$width * 100%);
-    }
-    img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
-        object-fit: $object-fit;
-        overflow: hidden;
-    }
+  }
 }
 
 @mixin transition($delay: 300ms) {
-    transition: all $delay ease-in-out;
+  transition: all $delay ease-in-out;
 }

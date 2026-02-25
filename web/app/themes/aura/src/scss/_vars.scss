@@ -18,12 +18,12 @@ $colors: (
   )
 );
 $backgrounds: (
-  url(/img/design/bg-1.png),
-  url(/img/design/bg-2.png),
-  url(/img/design/bg-3.png),
-  url(/img/design/bg-4.png),
-  url(/img/design/bg-5.png),
-  url(/img/design/bg-6.png)
+  url(/resources/images/design/bg-1.png),
+  url(/resources/images/design/bg-2.png),
+  url(/resources/images/design/bg-3.png),
+  url(/resources/images/design/bg-4.png),
+  url(/resources/images/design/bg-5.png),
+  url(/resources/images/design/bg-6.png)
 );
 $colors-main: map.get($colors, main);
 $colors-alt: map.get($colors, alt);
