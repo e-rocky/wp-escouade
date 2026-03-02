@@ -13,7 +13,6 @@
                   <img src="@asset('resources/images/design/logo--icon-square-text.svg')" alt="Escouade"></a>
               </div>
 
-              <?php dd(asset('resources/images/design/logo--icon-square-text.svg')) ?>
               <ul class="uk-navbar-nav">
                 <li>
                   <a href="#" title="Accueil">
