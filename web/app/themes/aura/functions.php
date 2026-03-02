@@ -1,6 +1,7 @@
 <?php
 
 use Roots\Acorn\Application;
+use function Roots\asset;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,8 +62,9 @@ collect(['setup', 'filters'])
 
 
 add_action('wp_enqueue_scripts', function () {
-
-    wp_enqueue_style('aura', get_template_directory_uri() . '/style.css', [], null);
-    wp_enqueue_style('aura', get_template_directory_uri() . '/public/build/assets/app.css', [], null);
-    wp_enqueue_script('aura', get_template_directory_uri() . '/app.js', [], null, true);
+    /* var_dump(asset("resources/css/app.css")->uri());
+    var_dump(asset("resources/js/app.js")->uri());*/
+    wp_enqueue_style('aura-style', get_template_directory_uri() . '/style.css', [], null);
+    wp_enqueue_style('aura-app-css', asset("resources/css/app.css")->uri(), [], null);
+    wp_enqueue_script('aura-app-js', asset('resources/js/app.js')->uri(), [], null);
 });

@@ -10,10 +10,10 @@
 
               <div class="uk-navbar-item">
                 <a href="#" class="uk-logo logo" href="#" aria-label="Escouade">
-                  <img src="@asset('assets/logo--icon-square-text.svg')" alt="Escouade"></a>
+                  <img src="@asset('resources/images/design/logo--icon-square-text.svg')" alt="Escouade"></a>
               </div>
 
-              <?php dd(asset('assets/logo--icon-square-text.svg')) ?>
+              <?php dd(asset('resources/images/design/logo--icon-square-text.svg')) ?>
               <ul class="uk-navbar-nav">
                 <li>
                   <a href="#" title="Accueil">
