@@ -6,7 +6,7 @@ import laravel from 'laravel-vite-plugin';
 import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
 
 export default defineConfig({
-  base: '/app/themes/sage/public/build/',
+  base: '/app/themes/aura/public/build/',
   plugins: [
     UnoCSS(),
     react(),
