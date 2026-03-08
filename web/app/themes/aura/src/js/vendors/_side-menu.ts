@@ -11,22 +11,24 @@ const $menuContent: HTMLElement = document
   .querySelector('#header .main-nav-block__body .uk-container .uk-navbar-left')
   ?.cloneNode(true) as HTMLElement;
 
-const $fixedLogo = $menuContent.querySelector('.item-logo') as HTMLElement;
-
-const menu = new SlideMenu($menuContent, {
-  // Optional parameters
-  position: 'left', // Position of the menu (left, right, top, bottom)
-});
-
-UIkit.sticky($fixedLogo, {});
-
 if ($menuContent) {
-  $menuContent.id = 'side-menu';
-  $body.appendChild($menuContent);
-  Array.from($triggerElement).forEach((element) => {
-    element.addEventListener('click', () => {
-      //console.log('click');
-      menu.toggle();
-    });
+  const $fixedLogo = $menuContent.querySelector('.item-logo') as HTMLElement;
+
+  const menu = new SlideMenu($menuContent, {
+    // Optional parameters
+    position: 'left', // Position of the menu (left, right, top, bottom)
   });
+
+  UIkit.sticky($fixedLogo, {});
+
+  if ($menuContent) {
+    $menuContent.id = 'side-menu';
+    $body.appendChild($menuContent);
+    Array.from($triggerElement).forEach((element) => {
+      element.addEventListener('click', () => {
+        //console.log('click');
+        menu.toggle();
+      });
+    });
+  }
 }
