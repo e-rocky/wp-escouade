@@ -46,4 +46,15 @@ export default defineConfig({
       '@images': '/resources/images',
     },
   },
+  build: {
+    manifest: 'manifest.json',
+    rollupOptions: {
+      input: {
+        app: './src/main.ts',
+        main: './resources/js/app.js',
+        appStyle: './resources/css/app.css',
+        editorStyle: './resources/css/editor.css',
+      },
+    },
+  },
 });

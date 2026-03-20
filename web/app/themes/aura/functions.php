@@ -66,7 +66,3 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('aura-app-css', asset("resources/css/app.css")->uri(), [], null);
     wp_enqueue_script('aura-app-js', asset('resources/js/app.js')->uri(), [], null);
 });
-
-add_action('admin_enqueue_scripts', function () {
-    wp_enqueue_style('aura-admin-css', asset("resources/css/app.css")->uri(), [], null);
-});
