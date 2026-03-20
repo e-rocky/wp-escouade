@@ -51,7 +51,7 @@ const Search = () => {
     },
   ];
   return (
-    <div id="search-card" className="search-card bgc--4 font-size-[14px]">
+    <div id="search-card" className="search-card bgc--4 text-[14px]">
       <div className="search-card__background bgi bgi--4 h-[10px]"></div>
       <div className="search-card__content flex-col gap-[32px]">
         <div className="search-card__header">
@@ -59,7 +59,7 @@ const Search = () => {
         </div>
         <div className="search-card__body flex items-stretch lg:items-start flex-col lg:flex-row gap-[32px] lg:gap-[100px]">
           <div className="search-card__select flex-col flex-1">
-            <i className="es-icon-search font-size-[32px] c--2"></i>
+            <i className="es-icon-search text-[32px] c--2"></i>
             <CreatableSelect
               isClearable
               isMulti
@@ -77,13 +77,13 @@ const Search = () => {
                 IndicatorSeparator: () => null,
                 MultiValueRemove: (props: MultiValueRemoveProps) => (
                   <components.MultiValueRemove {...props}>
-                    <i className="es-icon-cross font-size-[20px]"></i>
+                    <i className="es-icon-cross text-[20px]"></i>
                   </components.MultiValueRemove>
                 ),
                 ClearIndicator: (props: ClearIndicatorProps) => (
                   <components.ClearIndicator {...props}>
                     <i
-                      className="es-icon-cross font-size-[24px]"
+                      className="es-icon-cross text-[24px]"
                       onMouseDown={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
@@ -104,7 +104,7 @@ const Search = () => {
                 components={{
                   IndicatorSeparator: () => null,
                   DropdownIndicator: () => (
-                    <i className="es-icon-chevron-down font-size-[24px] c--2"></i>
+                    <i className="es-icon-chevron-down text-[24px] c--2"></i>
                   ),
                 }}
                 classNamePrefix="sortby"

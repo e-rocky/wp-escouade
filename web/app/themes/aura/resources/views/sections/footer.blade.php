@@ -15,9 +15,9 @@
               </figcaption>
             </div><!-- .minimap-card__header -->
             <div class="minimap-card__body flex-1 grid grid-cols-[32px_1fr] gap-[10px]">
-              <img class="my-a" src="@asset('resources/images/design/logo--icon-square.svg')" alt="Escouade">
-              <h4 class="title py-0 my-0 c--bgi c--bgi-scroll c--bgi-3 my-a font-size-[20px]">Escouade</h4>
-              <div class="content grid-col-start-2 sm:grid-col-start-1 sm:col-span-2 md:grid-col-start-2 gap-[10px]">
+              <img class="my-auto" src="@asset('resources/images/design/logo--icon-square.svg')" alt="Escouade">
+              <h4 class="title py-0 my-0 c--bgi c--bgi-scroll c--bgi-3 my-auto text-[20px]">Escouade</h4>
+              <div class="content col-start-2 sm:col-start-1 sm:col-span-2 md:col-start-2 gap-[10px]">
                 <p class="address">
                   Lot II Y 53 L, Bâtiment "Dina",
                   Antanimora ANTANANARIVO
@@ -105,8 +105,8 @@
 
   <div class="block copyright-social-block">
     <div class="copyright-social-block__content py-0 uk-container">
-      <div class="copyright-social-block__body flex flex-col-reverse md:flex-row gap-[32px] justify-between items-center py-[46px] font-size-[16px]">
-        <p class="copyright c--4 mb-0 text-center md:text-align-left">© 2025 Escouade. Tous droits réservés.</p>
+      <div class="copyright-social-block__body flex flex-col-reverse md:flex-row gap-[32px] justify-between items-center py-[46px] text-[16px]">
+        <p class="copyright c--4 mb-0 text-center md:text-left">© 2025 Escouade. Tous droits réservés.</p>
         <ul class="social-links flex gap-[20px] my-0">
           <li>
             <a href="#" title="Facebook" class="social-link">

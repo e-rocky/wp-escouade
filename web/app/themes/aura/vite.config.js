@@ -51,7 +51,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         app: './src/main.ts',
+        appScssStyle: './src/style.scss',
         main: './resources/js/app.js',
+        editor: './resources/js/editor.js',
         appStyle: './resources/css/app.css',
         editorStyle: './resources/css/editor.css',
       },

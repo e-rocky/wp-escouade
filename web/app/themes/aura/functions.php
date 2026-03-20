@@ -61,8 +61,20 @@ collect(['setup', 'filters'])
     });
 
 
-add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('aura-style', get_template_directory_uri() . '/style.css', [], null);
-    wp_enqueue_style('aura-app-css', asset("resources/css/app.css")->uri(), [], null);
-    wp_enqueue_script('aura-app-js', asset('resources/js/app.js')->uri(), [], null);
+add_action('wp_enqueue_scripts', function () {});
+
+add_filter('block_editor_settings_all', function ($settings) {
+    $style = asset("src/style.scss")->uri();
+
+    $settings['styles'][] = [
+        'css' => "@import url('{$style}')",
+    ];
+
+    return $settings;
+});
+
+
+add_action('admin_head', function () {
+    if ((get_current_screen()->is_block_editor())) {
+    };
 });
