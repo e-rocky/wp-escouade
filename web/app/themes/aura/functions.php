@@ -2,6 +2,7 @@
 
 use Roots\Acorn\Application;
 use function Roots\asset;
+use Illuminate\Support\Facades\Vite;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,15 @@ add_filter('block_editor_settings_all', function ($settings) {
     ];
 
     return $settings;
+});
+
+add_action('enqueue_block_editor_assets', function () {
+    wp_enqueue_style(
+        'aura-editor',
+        Vite::asset('resources/css/editor.css'),
+        [],
+        null
+    );
 });
 
 

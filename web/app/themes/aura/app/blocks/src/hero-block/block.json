@@ -12,17 +12,21 @@
     "html": false
   },
   "attributes": {
-    "smallText": {
-      "type": "string",
-      "default": "Une <strong>Escouade</strong>, c'est <em>plus qu'une équipe</em> :"
-    },
     "headingText": {
       "type": "string",
       "default": "c'est une aventure humaine"
     },
-    "buttonText": {
+    "bodyText": {
       "type": "string",
-      "default": "Rejoindre l'aventure"
+      "default": "Une <strong>Escouade</strong>, c'est <em>plus qu'une équipe</em> :"
+    },
+    "image": {
+      "type": "object",
+      "default": {
+        "url": "",
+        "alt": "",
+        "id": null
+      }
     },
     "button": {
       "type": "object",

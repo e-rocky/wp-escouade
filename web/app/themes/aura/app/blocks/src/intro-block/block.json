@@ -1,9 +1,9 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "create-block/hero-block",
+  "name": "create-block/intro-block",
   "version": "0.1.0",
-  "title": "Hero Block",
+  "title": "Intro Block",
   "category": "widgets",
   "icon": "smiley",
   "description": "Example block scaffolded with Create Block tool.",
@@ -12,28 +12,32 @@
     "html": false
   },
   "attributes": {
-    "smallText": {
-      "type": "string",
-      "default": "Une <strong>Escouade</strong>, c'est <em>plus qu'une équipe</em> :"
-    },
     "headingText": {
       "type": "string",
-      "default": "c'est une aventure humaine"
+      "default": "Qui sommes-nous"
     },
-    "buttonText": {
+    "bodyText": {
       "type": "string",
-      "default": "Rejoindre l'aventure"
+      "default": "<p>Chez Escouade, nous croyons que la réussite d'un projet repose avant tout sur les personnes.</p>"
+    },
+    "image": {
+      "type": "object",
+      "default": {
+        "url": "https://picsum.photos/id/206/576/414.jpg",
+        "alt": "",
+        "id": null
+      }
     },
     "button": {
       "type": "object",
       "default": {
-        "text": "Rejoindre l'aventure",
+        "text": "Découvrir l'Escouade",
         "url": "#",
         "openInNewTab": false
       }
     }
   },
-  "textdomain": "hero-block",
+  "textdomain": "intro-block",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",

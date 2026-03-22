@@ -39,3 +39,4 @@ Thumbs.db
 
 #custom blocks
 web/app/themes/aura/app/blocks/node_modules/
+web/app/themes/aura/app/blocks/build/
