@@ -11,6 +11,28 @@
   "supports": {
     "html": false
   },
+  "attributes": {
+    "smallText": {
+      "type": "string",
+      "default": "Une <strong>Escouade</strong>, c'est <em>plus qu'une équipe</em> :"
+    },
+    "headingText": {
+      "type": "string",
+      "default": "c'est une aventure humaine"
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "Rejoindre l'aventure"
+    },
+    "button": {
+      "type": "object",
+      "default": {
+        "text": "Rejoindre l'aventure",
+        "url": "#",
+        "openInNewTab": false
+      }
+    }
+  },
   "textdomain": "hero-block",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",

@@ -4,8 +4,8 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from "@wordpress/block-editor";
-import { Block } from "./Block";
+import { useBlockProps } from '@wordpress/block-editor';
+import { Block } from './Block';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -16,10 +16,10 @@ import { Block } from "./Block";
  *
  * @return {Element} Element to render.
  */
-export default function save() {
-	return (
-		<div {...useBlockProps.save()}>
-			<Block />
-		</div>
-	);
+export default function save({ attributes }) {
+  return (
+    <div {...useBlockProps.save()}>
+      <Block attributes={attributes} />
+    </div>
+  );
 }

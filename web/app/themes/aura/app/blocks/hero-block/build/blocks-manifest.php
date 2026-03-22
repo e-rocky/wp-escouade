@@ -16,6 +16,28 @@ return array(
 		'supports' => array(
 			'html' => false
 		),
+		'attributes' => array(
+			'smallText' => array(
+				'type' => 'string',
+				'default' => 'Une <strong>Escouade</strong>, c\'est <em>plus qu\'une équipe</em> :'
+			),
+			'headingText' => array(
+				'type' => 'string',
+				'default' => 'c\'est une aventure humaine'
+			),
+			'buttonText' => array(
+				'type' => 'string',
+				'default' => 'Rejoindre l\'aventure'
+			),
+			'button' => array(
+				'type' => 'object',
+				'default' => array(
+					'text' => 'Rejoindre l\'aventure',
+					'url' => '#',
+					'openInNewTab' => false
+				)
+			)
+		),
 		'textdomain' => 'hero-block',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
