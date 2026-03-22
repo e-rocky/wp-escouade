@@ -8,3 +8,9 @@
 .wp-block-create-block-content-block {
   padding: 2px;
 }
+
+.block-editor-block-list__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}

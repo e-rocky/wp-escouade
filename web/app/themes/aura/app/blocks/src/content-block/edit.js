@@ -11,8 +11,11 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 import { Block } from './Block';
+
+const ALLOWED_BLOCKS = ['create-block/content-card'];
+const BLOCKS_TEMPLATE = [['create-block/content-card', {}]];
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.

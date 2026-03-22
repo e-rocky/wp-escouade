@@ -11,7 +11,12 @@
   "supports": {
     "html": false
   },
-  "attributes": {},
+  "attributes": {
+    "background": {
+      "type": "string",
+      "default": "bgc--white"
+    }
+  },
   "textdomain": "content-block",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
