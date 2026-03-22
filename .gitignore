@@ -36,3 +36,6 @@ wp-cli.local.yml
 Thumbs.db
 
 !web/app/mu-plugins/heart
+
+#custom blocks
+web/app/themes/aura/app/blocks/node_modules/

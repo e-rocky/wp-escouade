@@ -1,9 +1,10 @@
 <?php
 
-require_once __DIR__ . '/hero-block/hero-block.php';
-$blocks = glob(__DIR__ . '/*/');
-foreach ($blocks as $block_init) {
-	$path = $block_init;
-	$filename = basename($block_init);
-	require_once $path . $filename . '.php';
+function aura_register_blocks()
+{
+	wp_register_block_types_from_metadata_collection(
+		__DIR__ . '/build',
+		__DIR__ . '/build/blocks-manifest.php'
+	);
 }
+add_action('init', 'aura_register_blocks');

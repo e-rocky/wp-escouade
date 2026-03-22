@@ -1,0 +1,16 @@
+{
+  "name": "aura-blocks",
+  "version": "1.0.0",
+  "description": "Gutenberg blocks for the Aura theme",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build --blocks-manifest",
+    "start": "wp-scripts start --blocks-manifest",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^31.5.0"
+  }
+}
