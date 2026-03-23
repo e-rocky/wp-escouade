@@ -4,3 +4,8 @@
 !/public/.gitkeep
 .env
 npm-debug.log
+
+
+#custom
+/app/blocks/node_modules/
+/app/blocks/build/
