@@ -1,0 +1,34 @@
+{
+  "name": "wp-escouade",
+  "version": "1.0.0",
+  "description": "Wordpress website for Escouade",
+  "homepage": "https://github.com/e-rocky/wp-escouade#readme",
+  "bugs": {
+    "url": "https://github.com/e-rocky/wp-escouade/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e-rocky/wp-escouade.git"
+  },
+  "license": "ISC",
+  "author": "Rocky",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "composer": "npm run composer:all",
+    "composer:all": "npm run composer:root && npm run composer:aura",
+    "composer:root": "composer install",
+    "composer:aura": "composer install --working-dir=web/app/themes/aura",
+    "install": "npm run install:all && npm run composer:all",
+    "install:all": "npm run install:aura && npm run install:blocks",
+    "install:aura": "npm --prefix web/app/themes/aura install",
+    "install:blocks": "npm --prefix web/app/themes/aura/app/blocks install",
+    "build": "npm run build:all",
+    "build:all": "npm run build:aura && npm run build:blocks",
+    "build:aura": "npm --prefix web/app/themes/aura run build",
+    "build:blocks": "npm --prefix web/app/themes/aura/app/blocks run build",
+    "start:aura": "npm --prefix web/app/themes/aura run dev",
+    "start:blocks": "npm --prefix web/app/themes/aura/app/blocks run start",
+    "zip:aura": "cd web/app/themes && 7z a -tzip ../../../aura.zip aura -xr!node_modules -xr!.git -xr!src -xr!scripts -xr!*.html && cd ../../.."
+  }
+}
