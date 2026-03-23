@@ -19,7 +19,7 @@
     "composer:all": "npm run composer:root && npm run composer:aura",
     "composer:root": "composer install",
     "composer:aura": "composer install --working-dir=web/app/themes/aura",
-    "install": "npm run install:all",
+    "install": "npm run install:all && npm run composer:all",
     "install:all": "npm run install:aura && npm run install:blocks",
     "install:aura": "npm --prefix web/app/themes/aura install",
     "install:blocks": "npm --prefix web/app/themes/aura/app/blocks install",
@@ -28,6 +28,7 @@
     "build:aura": "npm --prefix web/app/themes/aura run build",
     "build:blocks": "npm --prefix web/app/themes/aura/app/blocks run build",
     "start:aura": "npm --prefix web/app/themes/aura run dev",
-    "start:blocks": "npm --prefix web/app/themes/aura/app/blocks run start"
+    "start:blocks": "npm --prefix web/app/themes/aura/app/blocks run start",
+    "zip:aura": "cd web/app/themes && 7z a -tzip ../../../aura.zip aura -xr!node_modules -xr!.git -xr!src -xr!scripts -xr!*.html && cd ../../.."
   }
 }
