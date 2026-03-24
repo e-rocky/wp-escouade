@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/tech-block",
+  "version": "0.1.0",
+  "title": "Tech Block",
+  "category": "widgets",
+  "icon": "grid-view",
+  "description": "Technology slider block containing tech category cards.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "background": {
+      "type": "string",
+      "default": "bgi--4"
+    }
+  },
+  "textdomain": "tech-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

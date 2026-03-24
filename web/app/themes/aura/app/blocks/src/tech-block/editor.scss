@@ -1,0 +1,9 @@
+.wp-block-create-block-tech-block {
+    border: 1px dotted darkblue;
+
+    .tech-slider-card {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+}
