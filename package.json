@@ -29,6 +29,6 @@
     "build:blocks": "npm --prefix web/app/themes/aura/app/blocks run build",
     "start:aura": "npm --prefix web/app/themes/aura run dev",
     "start:blocks": "npm --prefix web/app/themes/aura/app/blocks run start",
-    "zip:aura": "cd web/app/themes && 7z a -tzip ../../../aura.zip aura -xr!node_modules -xr!.git -xr!src -xr!scripts -xr!*.html && cd ../../.."
+    "zip:aura": "cd web/app/themes && 7z a -tzip ../../../aura.zip aura -x!aura/node_modules -x!aura/app/blocks/node_modules -x!.git -x!src -x!scripts -x!*.html && cd ../../.."
   }
 }
