@@ -1,7 +1,3 @@
-<footer class="content-info">
-  @php(dynamic_sidebar('sidebar-footer'))
-</footer>
-
 <footer id="footer" class="bgi bgi--5">
   <div class="block footer-menu-block">
     <div class="footer-menu-block__content uk-container pt-[40px]  pb-[40px]">

@@ -13,20 +13,13 @@
   },
   "parent": ["create-block/tech-block"],
   "attributes": {
-    "categoryLabel": {
+    "title": {
       "type": "string",
-      "default": "Backend"
+      "default": "Les technologies <em>Frontend</em>"
     },
-    "subtitleText": {
+    "subtitle": {
       "type": "string",
       "default": "au coeur de nos réalisations"
-    },
-    "items": {
-      "type": "array",
-      "default": [],
-      "items": {
-        "type": "object"
-      }
     }
   },
   "textdomain": "tech-card",

@@ -1,0 +1,37 @@
+.wp-block-create-block-tech-item {
+  border: 1px dotted steelblue;
+  display: block !important;
+
+  .img-container {
+    img,
+    button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    button {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  figure {
+    margin-bottom: 0;
+  }
+
+  .tech-item__logo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 2px dashed #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #999;
+  }
+}
