@@ -51,13 +51,12 @@ export default defineConfig({
     rollupOptions: {
       input: {
         //app: './src/main.ts',
+        auraApp: './resources/js/app.js',
         auraStyle: './src/style.scss',
-        auraUno: './src/js/vendors/_unocss.ts',
-        unocss: 'virtual:uno.css',
-        /*main: './resources/js/app.js',
+        auraUno: 'virtual:uno.css',
         editor: './resources/js/editor.js',
-        appStyle: './resources/css/app.css',
-        editorStyle: './resources/css/editor.css',*/
+        editorStyle: './resources/css/editor.css',
+        /*appStyle: './resources/css/app.css',*/
       },
     },
   },
