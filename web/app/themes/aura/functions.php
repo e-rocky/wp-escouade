@@ -62,7 +62,27 @@ collect(['setup', 'filters'])
     });
 
 
-add_action('wp_enqueue_scripts', function () {});
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_style(
+        'auraStyle',
+        Vite::asset('src/style.scss'),
+        [],
+        null
+    );
+    wp_enqueue_style(
+        'auraUno',
+        Vite::asset("../../../../../../../../../../__uno.css"),
+        [],
+        null
+    );
+    wp_enqueue_script(
+        'auraScript',
+        Vite::asset('resources/js/app.js'),
+        [],
+        null,
+        true
+    );
+});
 
 add_filter('block_editor_settings_all', function ($settings) {
     $style = asset("src/style.scss")->uri();

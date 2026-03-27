@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
-import UnoCSS from 'unocss/vite';
 import react from '@vitejs/plugin-react';
+import UnoCSS from 'unocss/vite';
 import tailwindcss from '@tailwindcss/vite';
 import laravel from 'laravel-vite-plugin';
 import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
@@ -8,7 +8,6 @@ import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
 export default defineConfig({
   base: '/app/themes/aura/public/build/',
   plugins: [
-    UnoCSS(),
     react(),
     tailwindcss(),
     laravel({
@@ -21,6 +20,7 @@ export default defineConfig({
       refresh: true,
     }),
 
+    UnoCSS(),
     wordpressPlugin(),
 
     // Generate the theme.json file in the public/build/assets directory
@@ -50,12 +50,13 @@ export default defineConfig({
     manifest: 'manifest.json',
     rollupOptions: {
       input: {
-        app: './src/main.ts',
-        appScssStyle: './src/style.scss',
-        main: './resources/js/app.js',
+        //app: './src/main.ts',
+        auraApp: './resources/js/app.js',
+        auraStyle: './src/style.scss',
+        auraUno: 'virtual:uno.css',
         editor: './resources/js/editor.js',
-        appStyle: './resources/css/app.css',
         editorStyle: './resources/css/editor.css',
+        /*appStyle: './resources/css/app.css',*/
       },
     },
   },

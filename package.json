@@ -15,11 +15,12 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+    "setup": "npm run install:all && npm run composer:all",
     "composer": "npm run composer:all",
     "composer:all": "npm run composer:root && npm run composer:aura",
     "composer:root": "composer install",
     "composer:aura": "composer install --working-dir=web/app/themes/aura",
-    "install": "npm run install:all && npm run composer:all",
+    "install": "npm run install:all",
     "install:all": "npm run install:aura && npm run install:blocks",
     "install:aura": "npm --prefix web/app/themes/aura install",
     "install:blocks": "npm --prefix web/app/themes/aura/app/blocks install",
@@ -29,6 +30,12 @@
     "build:blocks": "npm --prefix web/app/themes/aura/app/blocks run build",
     "start:aura": "npm --prefix web/app/themes/aura run dev",
     "start:blocks": "npm --prefix web/app/themes/aura/app/blocks run start",
-    "zip:aura": "cd web/app/themes && 7z a -tzip ../../../aura.zip aura -xr!node_modules -xr!.git -xr!src -xr!scripts -xr!*.html && cd ../../.."
+    "zip:aura": "cd web/app/themes && 7z a -tzip ../../../aura.zip aura -x!aura/node_modules -x!aura/src -x!aura/app/blocks/node_modules -x!.git -x!src -x!scripts -x!*.html && cd ../../..",
+    "bump:style:patch": "node web/app/themes/aura/src/js/increment-style-version.js patch",
+    "bump:style:minor": "node web/app/themes/aura/src/js/increment-style-version.js minor",
+    "bump:style:major": "node web/app/themes/aura/src/js/increment-style-version.js major",
+    "git:patch": "npm run bump:style:patch && git commit -a --amend",
+    "git:minor": "npm run bump:style:minor && git commit -a --amend",
+    "git:major": "npm run bump:style:major && git commit -a --amend"
   }
 }

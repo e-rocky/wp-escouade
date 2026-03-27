@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+.block .card {
+  max-width: none;
+}
+
 .block-editor-block-list__block .block-editor-url-input,
 .block-editor-url-input,
 .components-popover .block-editor-url-input {

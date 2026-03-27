@@ -41,6 +41,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-select": "^5.10.2",
+    "replace-in-file": "^8.4.0",
     "smdm-slide-menu": "^2.2.1",
     "svgtofont": "^6.5.1",
     "uikit": "3.23.13",

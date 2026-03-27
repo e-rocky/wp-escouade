@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/tech-item",
+  "version": "0.1.0",
+  "title": "Tech Item",
+  "category": "widgets",
+  "icon": "format-image",
+  "description": "A single technology logo and name item.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "parent": ["create-block/tech-card"],
+  "attributes": {
+    "logo": {
+      "type": "object",
+      "default": {
+        "url": "",
+        "alt": "",
+        "id": null
+      }
+    },
+    "name": {
+      "type": "string",
+      "default": "Technology"
+    }
+  },
+  "textdomain": "tech-item",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
