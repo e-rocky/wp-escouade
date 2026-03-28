@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:prod": "tsc && VITE_ASSET_BASE=/wp-content/themes/aura/public/build/ vite build",
     "preview": "vite preview",
     "icons": "node ./scripts/build-icons.mjs",
     "sprite": "svg-sprite --symbol --symbol-dest public/img/design --symbol-sprite sprite.svg --symbol-render-scss --symbol-prefix \".icon.icon-%s\" --symbol-dimensions \"\" --shape-id-generator %s public/img/design/!(sprite).svg",

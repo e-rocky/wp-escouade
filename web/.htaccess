@@ -8,7 +8,12 @@
 
 # END WordPress
 
-# Increase PHP upload limits
+# Increase PHP upload
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RedirectMatch 301 ^/wp-content/themes/aura/public/build/(.*)$ /app/themes/aura/public/build/$1
+</IfModule>
 
 <IfModule mod_php.c>
     php_value upload_max_filesize 256M
