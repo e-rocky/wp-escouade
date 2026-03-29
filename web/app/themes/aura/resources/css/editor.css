@@ -2,6 +2,7 @@
 
 .block .card {
   max-width: none;
+  background-color: transparent;
 }
 
 .block-editor-block-list__block .block-editor-url-input,

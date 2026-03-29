@@ -85,10 +85,15 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 add_filter('block_editor_settings_all', function ($settings) {
-    $style = asset("src/style.scss")->uri();
+    $auraStyle = Vite::asset('src/style.scss');
+    $auraUno = Vite::asset("../../../../../../../../../../__uno.css");
 
     $settings['styles'][] = [
-        'css' => "@import url('{$style}')",
+        'css' => "@import url('{$auraStyle}')",
+    ];
+
+    $settings['styles'][] = [
+        'css' => "@import url('{$auraUno}')",
     ];
 
     return $settings;
@@ -100,6 +105,13 @@ add_action('enqueue_block_editor_assets', function () {
         Vite::asset('resources/css/editor.css'),
         [],
         null
+    );
+    wp_add_inline_script(
+        'wp-blocks',
+        'window.auraBuildPath = ' . json_encode([
+            'uri' => get_theme_file_uri('public/build/'),
+        ]) . ';',
+        'before'
     );
 });
 

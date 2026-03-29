@@ -1,5 +1,5 @@
-import { RichText, InnerBlocks, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, SelectControl } from '@wordpress/components';
+import { RichText, InnerBlocks, InspectorControls, URLInput } from '@wordpress/block-editor';
+import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
 
 const BG_OPTIONS = [
   { label: 'Background Blanc', value: '' },
@@ -12,7 +12,8 @@ const BG_OPTIONS = [
 ];
 
 const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) => {
-  const { background, headingText } = attributes;
+  const { background, headingText, button = {} } = attributes;
+  const { text: buttonText = '', url: buttonUrl = '#', openInNewTab = false } = button;
   const BLOCKS_TEMPLATE = [['create-block/job-advertising-card', {}]];
   const ALLOWED_BLOCKS = ['create-block/job-advertising-card'];
   return (
@@ -25,6 +26,18 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
               value={background}
               options={BG_OPTIONS}
               onChange={(val) => setAttributes({ background: val })}
+            />
+          </PanelBody>
+          <PanelBody title="Bouton" initialOpen={true}>
+            <URLInput
+              label="URL du bouton"
+              value={buttonUrl}
+              onChange={(val) => setAttributes({ button: { ...button, url: val } })}
+            />
+            <ToggleControl
+              label="Ouvrir dans un nouvel onglet"
+              checked={openInNewTab}
+              onChange={(val) => setAttributes({ button: { ...button, openInNewTab: val } })}
             />
           </PanelBody>
         </InspectorControls>
@@ -57,6 +70,23 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
                 <InnerBlocks.Content />
               )}
             </div>
+          </div>
+          <div className="job-advertising-block__footer flex justify-center">
+            {editmode ? (
+              <RichText
+                tagName="a"
+                className="btn btn--lg c--4 bgc--5 btn-shadow-sm"
+                value={buttonText}
+                onChange={(val) => setAttributes({ button: { ...button, text: val } })}
+                allowedFormats={[]}
+                placeholder="Texte du bouton…"
+              />
+            ) : (
+              <a className="btn btn--lg c--4 bgc--5 btn-shadow-sm" href={buttonUrl} title={buttonText} target={openInNewTab ? '_blank' : undefined} rel={openInNewTab ? 'noopener noreferrer' : undefined}>
+                <RichText.Content tagName="span" value={buttonText} />
+                <i className="es-icon-chevron-right"></i>
+              </a>
+            )}
           </div>
         </div>
       </div>
