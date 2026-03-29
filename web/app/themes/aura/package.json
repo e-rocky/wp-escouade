@@ -8,8 +8,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "build:prod": "tsc && VITE_ASSET_BASE=/wp-content/themes/aura/public/build/ vite build",
+    "build": "tsc && cross-env VITE_ASSET_BASE=/wp-content/themes/aura/public/build/ vite build",
+    "build:bedrock": "tsc && vite build",
     "preview": "vite preview",
     "icons": "node ./scripts/build-icons.mjs",
     "sprite": "svg-sprite --symbol --symbol-dest public/img/design --symbol-sprite sprite.svg --symbol-render-scss --symbol-prefix \".icon.icon-%s\" --symbol-dimensions \"\" --shape-id-generator %s public/img/design/!(sprite).svg",
@@ -27,6 +27,7 @@
     "@types/react-dom": "^19.2.3",
     "@types/uikit": "^3.23.0",
     "@vitejs/plugin-react": "^5.1.4",
+    "cross-env": "^10.1.0",
     "cssnano": "^7.0.7",
     "laravel-vite-plugin": "^2.1.0",
     "postcss": "^8.4.47",

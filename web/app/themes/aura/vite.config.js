@@ -5,9 +5,10 @@ import tailwindcss from '@tailwindcss/vite';
 import laravel from 'laravel-vite-plugin';
 import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
 
+const base = process.env.VITE_ASSET_BASE ?? '/app/themes/aura/public/build/';
+
 export default defineConfig({
-  //base: '/app/themes/aura/public/build/',
-  base: '/wp-content/themes/aura/public/build/',
+  base,
   plugins: [
     react(),
     tailwindcss(),
