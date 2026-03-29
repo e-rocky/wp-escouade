@@ -11,8 +11,6 @@ export default function Edit({ attributes, setAttributes, clientId }) {
   );
 
   return (
-    <div {...useBlockProps()}>
-      <Block editmode attributes={attributes} setAttributes={setAttributes} innerCount={innerCount} />
-    </div>
+      <Block editmode attributes={attributes} setAttributes={setAttributes} innerCount={innerCount} blockProps={useBlockProps()} />
   );
 }

@@ -7,11 +7,11 @@ const BLOCKS_TEMPLATE = [
 ];
 const ALLOWED_BLOCKS = ['create-block/talent-card'];
 
-const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, innerCount = 0 }) => {
+const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, innerCount = 0, blockProps = {} }) => {
   const { headingText } = attributes;
 
   return (
-    <div className="block bgi bgc--white talents-block">
+    <div {...blockProps} className={`block bgi bgc--white talents-block ${blockProps.className ?? ''}`}>
       <div className="talents-block__content uk-container flex flex-col gap-[70px]">
         <div className="talents-block__header">
           {editmode ? (
