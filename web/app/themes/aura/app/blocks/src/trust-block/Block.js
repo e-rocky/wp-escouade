@@ -9,18 +9,18 @@ const ALLOWED_BLOCKS = ['create-block/trust-card'];
 
 const MAX_CARDS = 3;
 
-const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, innerCount = 0 }) => {
+const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, innerCount = 0, blockProps={} }) => {
   const { headingText, bodyText } = attributes;
 
   return (
     <>
-      <div className="block dna-block">
-        <div className="uk-container">
-          <div className="dna-block__header">
+      <div className="block dna-block" {...blockProps}>
+        <div className="dna-block__content uk-container flex flex-col gap-[64px]">
+          <div className="dna-block__header text-center">
             {editmode ? (
               <RichText
                 tagName="h2"
-                className="title title--h2 rte rte--em-c-2"
+                className="title title--h2 c--2 rte--em-c-5 mb-0 text-[48px]"
                 value={headingText}
                 onChange={(val) => setAttributes({ headingText: val })}
                 allowedFormats={['core/bold', 'core/italic']}
@@ -29,7 +29,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, in
             ) : (
               <RichText.Content
                 tagName="h2"
-                className="title title--h2 rte rte--em-c-2"
+                className="title title--h2 c--2 rte--em-c-5 mb-0 text-[48px]"
                 value={headingText}
               />
             )}

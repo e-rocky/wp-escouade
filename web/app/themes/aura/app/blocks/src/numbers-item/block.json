@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/numbers-item",
+  "version": "0.1.0",
+  "title": "Numbers Item",
+  "category": "widgets",
+  "description": "Chiffre clé individuel.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "parent": ["create-block/numbers-block"],
+  "attributes": {
+    "value": {
+      "type": "string",
+      "default": "0"
+    },
+    "suffix": {
+      "type": "string",
+      "default": "+"
+    },
+    "label": {
+      "type": "string",
+      "default": "Label"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
