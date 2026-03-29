@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/cta-image-block",
+  "version": "0.1.0",
+  "title": "CTA Image",
+  "category": "widgets",
+  "icon": "align-center",
+  "description": "Bloc intro avec image, titre, texte et bouton CTA.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "headingText": {
+      "type": "string",
+      "default": "Osez faire le premier pas"
+    },
+    "bodyText": {
+      "type": "string",
+      "default": "Vous avez du potentiel, même sans offre publiée. Présentez votre profil et créez votre opportunité."
+    },
+    "image": {
+      "type": "object",
+      "default": {
+        "url": "https://picsum.photos/id/206/792/953.jpg",
+        "alt": "",
+        "id": null
+      }
+    },
+    "button": {
+      "type": "object",
+      "default": {
+        "text": "Candidature spontanée",
+        "url": "#",
+        "openInNewTab": false
+      }
+    }
+  },
+  "textdomain": "cta-image-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

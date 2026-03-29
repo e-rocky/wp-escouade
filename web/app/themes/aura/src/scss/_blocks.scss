@@ -1040,6 +1040,7 @@
       align-items: center;
       width: auto;
       max-width: 320px;
+      padding: 0;
       @include media-breakpoint-up(md) {
         display: flex;
         max-width: none;
