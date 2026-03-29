@@ -57,6 +57,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
               <div className="cta-card__content flex flex-col-reverse md:flex-row-reverse">
 
                 <div className="cta-card__header">
+                  <figure className="img-container">
                     {editmode ? (
                       <MediaUploadCheck>
                         <MediaUpload
@@ -67,19 +68,21 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
                           value={imgId}
                           render={({ open }) => (
                             <>
-                              <Button className='img-container' onClick={open}>
                               {imgUrl && <img src={imgUrl} alt={imgAlt} />}
+                              <Button onClick={open} className="button button-large">
+                                Choisir une image
                               </Button>
                             </>
                           )}
                         />
                       </MediaUploadCheck>
                     ) : (
-                      <figure className="img-container">
+                      <>
                         <img src={imgUrl} alt={imgAlt} />
                         <img src={imgUrl} alt={imgAlt} />
-                      </figure>
+                      </>
                     )}
+                  </figure>
                 </div>
 
                 <div className="cta-card__body">

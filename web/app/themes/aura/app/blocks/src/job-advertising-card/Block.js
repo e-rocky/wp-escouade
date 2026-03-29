@@ -82,9 +82,10 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
                     allowedTypes={['image']}
                     value={image.id}
                     render={({ open }) => (
-                      <>
+                       <>
+                        {imgUrl && <img src={imgUrl} alt={imgAlt} />}
                         <Button onClick={open} className="button button-large">
-                        {imgUrl && <img onClick={open} src={imgUrl} alt={imgAlt} />}
+                          Choisir une image
                         </Button>
                       </>
                     )}

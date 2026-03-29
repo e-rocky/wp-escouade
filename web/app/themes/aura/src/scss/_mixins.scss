@@ -46,6 +46,7 @@ $breakpoints: (
     height: 100%;
     object-fit: $object-fit;
     overflow: hidden;
+    z-index: 1;
   }
 }
 
