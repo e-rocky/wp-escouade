@@ -4,7 +4,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
   const { value, suffix, label } = attributes;
 
   return (
-    <h3 className="number" {...blockProps}>
+    <h3 className="number my-number__class why_isnt_this_working" {...blockProps}>
       <div className="number-value">
         {editmode ? (
           <RichText

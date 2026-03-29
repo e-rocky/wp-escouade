@@ -4,6 +4,6 @@ import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
   return (
-      <Block editmode attributes={attributes} setAttributes={setAttributes} />
+      <Block editmode attributes={attributes} setAttributes={setAttributes} blockProps={useBlockProps()} />
   );
 }
