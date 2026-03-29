@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/trust-block",
+  "version": "0.1.0",
+  "title": "Trust Block",
+  "category": "widgets",
+  "description": "Bloc confiance avec grille de cartes.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "parent": null,
+  "allowedBlocks": ["create-block/trust-card"],
+  "attributes": {
+    "headingText": {
+      "type": "string",
+      "default": "Notre <em>ADN</em>"
+    },
+    "bodyText": {
+      "type": "string",
+      "default": "Notre motivation première est d'accompagner chaque candidat et candidature vers sa réussite."
+    },
+    "colCount": {
+      "type": "number",
+      "default": 3
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

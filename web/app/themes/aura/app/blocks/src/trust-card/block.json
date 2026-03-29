@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/trust-card",
+  "version": "0.1.0",
+  "title": "Trust Card",
+  "category": "widgets",
+  "icon": "awards",
+  "description": "Carte avec image, titre et texte pour le Trust Block.",
+  "example": {},
+  "parent": ["create-block/trust-block"],
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "headingText": {
+      "type": "string",
+      "default": "Titre"
+    },
+    "bodyText": {
+      "type": "string",
+      "default": "Description de la valeur"
+    },
+    "titleColor": {
+      "type": "string",
+      "default": "c--2-5"
+    },
+    "image": {
+      "type": "object",
+      "default": {
+        "url": "",
+        "alt": "",
+        "id": null
+      }
+    }
+  },
+  "textdomain": "trust-card",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
