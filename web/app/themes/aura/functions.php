@@ -71,7 +71,7 @@ collect(['job-offer'])
     });
 
 
-collect(['job-contract', 'job-level', 'job-term'])
+collect(['job-duration', 'job-language', 'job-level', 'job-location', 'job-workplace'])
     ->each(function ($file) {
         if (! locate_template($file = "app/taxonomy/{$file}.php", true, true)) {
             wp_die(
