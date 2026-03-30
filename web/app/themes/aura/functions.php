@@ -56,7 +56,7 @@ collect(['setup', 'filters'])
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
                 /* translators: %s is replaced with the relative file path */
-                sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file)
+                sprintf('Error locating <code>%s</code> for inclusion.', $file)
             );
         }
     });
@@ -65,17 +65,17 @@ collect(['job-offer'])
     ->each(function ($file) {
         if (! locate_template($file = "app/post-types/{$file}.php", true, true)) {
             wp_die(
-                sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file)
+                sprintf('Error locating <code>%s</code> for inclusion.', $file)
             );
         }
     });
 
 
-collect(['contract', 'level', 'terms'])
+collect(['contract', 'level', 'term'])
     ->each(function ($file) {
         if (! locate_template($file = "app/taxonomy/{$file}.php", true, true)) {
             wp_die(
-                sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file)
+                sprintf('Error locating <code>%s</code> for inclusion.', $file)
             );
         }
     });
