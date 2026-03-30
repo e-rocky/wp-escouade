@@ -15,7 +15,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "setup": "npm run install:all && npm run composer:all",
+    "setup": "npm run install:all && npm run composer:all && npm run build:all",
     "composer": "npm run composer:all",
     "composer:all": "npm run composer:root && npm run composer:aura",
     "composer:root": "composer install",
