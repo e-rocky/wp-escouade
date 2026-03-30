@@ -46,6 +46,10 @@
         "show": false,
         "text": "Un cadre de travail respectueux"
       }
+    },
+    "cardStyle": {
+      "type": "number",
+      "default": 1
     }
   },
   "textdomain": "content-card",

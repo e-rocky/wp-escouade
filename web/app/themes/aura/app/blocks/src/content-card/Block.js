@@ -5,7 +5,7 @@ import {
   MediaUploadCheck,
   URLInput,
 } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl, Button } from '@wordpress/components';
+import { PanelBody, ToggleControl, Button, SelectControl } from '@wordpress/components';
 
 const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) => {
   const {
@@ -15,16 +15,35 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
     button = {},
     transparentBackground = false,
     overline = {},
+    cardStyle = 0,
   } = attributes;
   const { show: overlineShow = false, text: overlineText } = overline;
   const { text: btnText = button.text, url: btnUrl = '#', openInNewTab = false } = button;
   const { url: imgUrl = '', alt: imgAlt = '' } = image;
+
+  const styles = [
+    { titleStyle: 'c--5', buttonStyle: 'bgc--5' },
+    { titleStyle: 'c--1a', buttonStyle: 'bgc--1a' },
+    { titleStyle: 'c--2-1a', buttonStyle: 'bgc--2' },
+    { titleStyle: 'c--5-2', buttonStyle: 'bgc--5' },
+    { titleStyle: 'c--2-1a', buttonStyle: 'bgc--1a' },
+  ];
+  const currentCardStyle = styles[cardStyle] ?? styles[0];
 
   return (
     <React.Fragment>
       {editmode && (
         <InspectorControls>
           <PanelBody title="Apparence" initialOpen={true}>
+            <SelectControl
+              label="Style de carte"
+              value={cardStyle}
+              options={styles.map((style, index) => ({
+                label: `Style ${index + 1}`,
+                value: index,
+              }))}
+              onChange={(val) => setAttributes({ cardStyle: val })}
+            />
             <ToggleControl
               label="Fond transparent"
               checked={transparentBackground}
@@ -121,7 +140,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
                   </li>
                 </ul>
               )}
-              <h2 className="title title--h3 c--2">
+              <h2 className={`title title--h3 ${currentCardStyle.titleStyle}`}>
                 {editmode ? (
                   <RichText
                     tagName="span"
@@ -150,7 +169,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
               </div>
               <div className="actions">
                 {editmode ? (
-                  <div className="btn c--4 bgc--5 btn-shadow-sm">
+                  <div className={`btn c--4 ${currentCardStyle.buttonStyle} btn-shadow-sm`}>
                     <RichText
                       onChange={(val) => setAttributes({ button: { ...button, text: val } })}
                       allowedFormats={[]}
