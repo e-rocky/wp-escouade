@@ -1,4 +1,9 @@
-import { RichText, InspectorControls, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import {
+  RichText,
+  InspectorControls,
+  MediaUpload,
+  MediaUploadCheck,
+} from '@wordpress/block-editor';
 import { PanelBody, Button, SelectControl } from '@wordpress/components';
 
 const COLOR_OPTIONS = [
@@ -9,7 +14,12 @@ const COLOR_OPTIONS = [
   { label: 'Couleur 5', value: 'c--5' },
 ];
 
-const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, blockProps = {} }) => {
+const Block = ({
+  editmode = false,
+  attributes = {},
+  setAttributes = () => {},
+  blockProps = {},
+}) => {
   const { headingText, bodyText, titleColor, image = {} } = attributes;
   const { url: imgUrl = '', alt: imgAlt = '', id: imgId = null } = image;
 
@@ -35,7 +45,13 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
                 value={imgId}
                 render={({ open }) => (
                   <>
-                    {imgUrl && <img src={imgUrl} alt={imgAlt} style={{ maxWidth: '100%', marginBottom: '8px' }} />}
+                    {imgUrl && (
+                      <img
+                        src={imgUrl}
+                        alt={imgAlt}
+                        style={{ maxWidth: '100%', marginBottom: '8px' }}
+                      />
+                    )}
                     <Button onClick={open} variant="secondary">
                       {imgUrl ? "Remplacer l'image" : 'Choisir une image'}
                     </Button>
@@ -46,7 +62,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
           </PanelBody>
         </InspectorControls>
       )}
-      <div className="card dna-card flex-1 h-full" {...blockProps}>
+      <div {...blockProps} className={`card dna-card flex-1 h-full ${blockProps.className ?? ''}`}>
         <div className="dna-card__content">
           <div className="dna-card__header">
             <figure className="img-container">
@@ -59,10 +75,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
                     allowedTypes={['image']}
                     value={imgId}
                     render={({ open }) => (
-                      <button
-                        onClick={open}
-                        style={{ cursor: 'pointer', border: 'none', background: 'none', padding: 0, display: 'block', width: '100%' }}
-                      >
+                      <button onClick={open} className="btn-icon">
                         {imgUrl ? (
                           <img src={imgUrl} alt={imgAlt} />
                         ) : (

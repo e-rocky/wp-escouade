@@ -1,8 +1,19 @@
-import { RichText, InspectorControls, MediaUpload, MediaUploadCheck, URLInput } from '@wordpress/block-editor';
+import {
+  RichText,
+  InspectorControls,
+  MediaUpload,
+  MediaUploadCheck,
+  URLInput,
+} from '@wordpress/block-editor';
 import { PanelBody, Button, ToggleControl } from '@wordpress/components';
 import { Img } from '../compoonents/Img';
 
-const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, blockProps = {} }) => {
+const Block = ({
+  editmode = false,
+  attributes = {},
+  setAttributes = () => {},
+  blockProps = {},
+}) => {
   const { headingText, bodyText, image = {}, button = {} } = attributes;
   const { url: imgUrl = '', alt: imgAlt = '', id: imgId = null } = image;
   const { text: btnText = '', url: btnUrl = '#', openInNewTab = false } = button;
@@ -21,9 +32,15 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
                 value={imgId}
                 render={({ open }) => (
                   <>
-                    {imgUrl && <img src={imgUrl} alt={imgAlt} style={{ maxWidth: '100%', marginBottom: '8px' }} />}
+                    {imgUrl && (
+                      <img
+                        src={imgUrl}
+                        alt={imgAlt}
+                        style={{ maxWidth: '100%', marginBottom: '8px' }}
+                      />
+                    )}
                     <Button onClick={open} variant="secondary">
-                      {imgUrl ? 'Remplacer l\'image' : 'Choisir une image'}
+                      {imgUrl ? "Remplacer l'image" : 'Choisir une image'}
                     </Button>
                   </>
                 )}
@@ -44,32 +61,34 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
           </PanelBody>
         </InspectorControls>
       )}
-      <div className="block cta-image-block bgc bgc--3a" {...blockProps}>
+      <div
+        {...blockProps}
+        className={`block cta-image-block bgc bgc--3a ${blockProps.className ?? ''}`}
+      >
         <div className="cta-image-block__content uk-container">
           <div className="cta-image-block__body">
             <div className="card cta-card">
-
               <div className="cta-card__background scale-x-[-1]">
                 <Img src="resources/images/design/bg-6.png" />
-
               </div>
 
               <div className="cta-card__content flex flex-col-reverse md:flex-row-reverse">
-
                 <div className="cta-card__header">
                   <figure className="img-container">
                     {editmode ? (
                       <MediaUploadCheck>
                         <MediaUpload
                           onSelect={(media) =>
-                            setAttributes({ image: { url: media.url, alt: media.alt, id: media.id } })
+                            setAttributes({
+                              image: { url: media.url, alt: media.alt, id: media.id },
+                            })
                           }
                           allowedTypes={['image']}
                           value={imgId}
                           render={({ open }) => (
                             <>
                               {imgUrl && <img src={imgUrl} alt={imgAlt} />}
-                              <Button onClick={open} className="button button-large">
+                              <Button onClick={open} className="btn-img">
                                 Choisir une image
                               </Button>
                             </>
@@ -139,7 +158,6 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>

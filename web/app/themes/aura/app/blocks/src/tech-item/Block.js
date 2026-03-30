@@ -16,17 +16,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
               allowedTypes={['image']}
               value={logo.id}
               render={({ open }) => (
-                <button
-                  onClick={open}
-                  style={{
-                    cursor: 'pointer',
-                    border: 'none',
-                    background: 'none',
-                    padding: 0,
-                    display: 'block',
-                    width: '100%',
-                  }}
-                >
+                <button onClick={open} className="btn-icon">
                   {logoUrl ? (
                     <img src={logoUrl} alt={logoAlt || name} />
                   ) : (

@@ -14,7 +14,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, in
 
   return (
     <>
-      <div className="block dna-block" {...blockProps}>
+      <div {...blockProps} className={`block dna-block ${blockProps.className ?? ''}`}>
         <div className="dna-block__content uk-container flex flex-col gap-[64px]">
           <div className="dna-block__header text-center">
             {editmode ? (

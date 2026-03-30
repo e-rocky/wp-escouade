@@ -284,26 +284,6 @@ input[type="checkbox"] {
   }
 }
 
-.img-container {
-  position: relative;
-  img + button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 3;
-    color: transparent;
-    height: auto;
-    &,
-    &.components-button {
-      &:hover {
-        color: transparent;
-      }
-    }
-  }
-}
-
 .attribute {
   align-items: center;
   border-radius: 50px;

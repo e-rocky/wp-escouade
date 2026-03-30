@@ -31,7 +31,7 @@
     "image": {
       "type": "object",
       "default": {
-        "url": "",
+        "url": "https://picsum.photos/id/206/576/414.jpg",
         "alt": "",
         "id": null
       }

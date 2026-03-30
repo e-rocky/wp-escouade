@@ -66,7 +66,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
                     render={({ open }) => (
                       <>
                         {imgUrl && <img src={imgUrl} alt={imgAlt} />}
-                        <Button onClick={open} className="button button-large">
+                        <Button onClick={open} className="btn-img">
                           Choisir une image
                         </Button>
                       </>

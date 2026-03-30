@@ -7,7 +7,12 @@ import {
 import { PanelBody, Button } from '@wordpress/components';
 import { Img } from '../compoonents/Img';
 
-const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, blockProps = {} }) => {
+const Block = ({
+  editmode = false,
+  attributes = {},
+  setAttributes = () => {},
+  blockProps = {},
+}) => {
   const { headingText, bodyText, image = {} } = attributes;
   const { url: imgUrl = '', alt: imgAlt = '' } = image;
 
@@ -26,7 +31,13 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
               value={image.id}
               render={({ open }) => (
                 <>
-                  {imgUrl && <img src={imgUrl} alt={imgAlt} style={{ maxWidth: '100%', marginBottom: '8px' }} />}
+                  {imgUrl && (
+                    <img
+                      src={imgUrl}
+                      alt={imgAlt}
+                      style={{ maxWidth: '100%', marginBottom: '8px' }}
+                    />
+                  )}
                   <Button onClick={open} className="button button-large">
                     Choisir une image
                   </Button>
@@ -36,7 +47,10 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
           </PanelBody>
         </InspectorControls>
       )}
-      <div className="slide card job-advertising-card" {...blockProps}>
+      <div
+        {...blockProps}
+        className={`slide card job-advertising-card ${blockProps.className ?? ''}`}
+      >
         <div className="job-advertising-card__content c--4">
           <div className="card-header">
             <figure className="img-container">
@@ -82,9 +96,9 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
                     allowedTypes={['image']}
                     value={image.id}
                     render={({ open }) => (
-                       <>
+                      <>
                         {imgUrl && <img src={imgUrl} alt={imgAlt} />}
-                        <Button onClick={open} className="button button-large">
+                        <Button onClick={open} className="btn-img">
                           Choisir une image
                         </Button>
                       </>

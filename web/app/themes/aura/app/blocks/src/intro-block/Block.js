@@ -1,4 +1,10 @@
-import { RichText, InspectorControls, MediaUpload, MediaUploadCheck, URLInput } from '@wordpress/block-editor';
+import {
+  RichText,
+  InspectorControls,
+  MediaUpload,
+  MediaUploadCheck,
+  URLInput,
+} from '@wordpress/block-editor';
 import { PanelBody, Button, ToggleControl, SelectControl } from '@wordpress/components';
 
 const BG_OPTIONS = [
@@ -10,11 +16,31 @@ const BG_OPTIONS = [
   { label: 'Blanc', value: 'bgc--white' },
 ];
 
-const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, blockProps = {} }) => {
-  const { background, headingText, bodyText, image = {}, primaryButton = {}, secondaryButton = {} } = attributes;
+const Block = ({
+  editmode = false,
+  attributes = {},
+  setAttributes = () => {},
+  blockProps = {},
+}) => {
+  const {
+    background,
+    headingText,
+    bodyText,
+    image = {},
+    primaryButton = {},
+    secondaryButton = {},
+  } = attributes;
   const { url: imgUrl = '', alt: imgAlt = '', id: imgId = null } = image;
-  const { text: primaryText = '', url: primaryUrl = '#', openInNewTab: primaryNewTab = false } = primaryButton;
-  const { text: secondaryText = '', url: secondaryUrl = '#', openInNewTab: secondaryNewTab = false } = secondaryButton;
+  const {
+    text: primaryText = '',
+    url: primaryUrl = '#',
+    openInNewTab: primaryNewTab = false,
+  } = primaryButton;
+  const {
+    text: secondaryText = '',
+    url: secondaryUrl = '#',
+    openInNewTab: secondaryNewTab = false,
+  } = secondaryButton;
 
   return (
     <React.Fragment>
@@ -38,7 +64,13 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
                 value={imgId}
                 render={({ open }) => (
                   <>
-                    {imgUrl && <img src={imgUrl} alt={imgAlt} style={{ maxWidth: '100%', marginBottom: '8px' }} />}
+                    {imgUrl && (
+                      <img
+                        src={imgUrl}
+                        alt={imgAlt}
+                        style={{ maxWidth: '100%', marginBottom: '8px' }}
+                      />
+                    )}
                     <Button onClick={open} variant="secondary">
                       {imgUrl ? "Remplacer l'image" : 'Choisir une image'}
                     </Button>
@@ -56,47 +88,55 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
             <ToggleControl
               label="Ouvrir dans un nouvel onglet"
               checked={primaryNewTab}
-              onChange={(val) => setAttributes({ primaryButton: { ...primaryButton, openInNewTab: val } })}
+              onChange={(val) =>
+                setAttributes({ primaryButton: { ...primaryButton, openInNewTab: val } })
+              }
             />
           </PanelBody>
           <PanelBody title="Bouton secondaire" initialOpen={false}>
             <URLInput
               label="URL"
               value={secondaryUrl}
-              onChange={(val) => setAttributes({ secondaryButton: { ...secondaryButton, url: val } })}
+              onChange={(val) =>
+                setAttributes({ secondaryButton: { ...secondaryButton, url: val } })
+              }
             />
             <ToggleControl
               label="Ouvrir dans un nouvel onglet"
               checked={secondaryNewTab}
-              onChange={(val) => setAttributes({ secondaryButton: { ...secondaryButton, openInNewTab: val } })}
+              onChange={(val) =>
+                setAttributes({ secondaryButton: { ...secondaryButton, openInNewTab: val } })
+              }
             />
           </PanelBody>
         </InspectorControls>
       )}
-      <div className={`block hero-intro-block bgi ${background}`} {...blockProps}>
+      <div
+        {...blockProps}
+        className={`block hero-intro-block bgi ${background} ${blockProps.className ?? ''}`}
+      >
         <div className="hero-intro-block__content uk-container">
           <div className="hero-intro-block__body">
             <div className="card hero-intro-card">
-
               <div className="hero-intro-card__background scale-x-[-1]"></div>
 
               <div className="hero-intro-card__content flex flex-col lg:flex-row-reverse">
-
                 <div className="hero-intro-card__header">
-                    <figure className="img-container">
-
+                  <figure className="img-container">
                     {editmode ? (
                       <MediaUploadCheck>
                         <MediaUpload
                           onSelect={(media) =>
-                            setAttributes({ image: { url: media.url, alt: media.alt, id: media.id } })
+                            setAttributes({
+                              image: { url: media.url, alt: media.alt, id: media.id },
+                            })
                           }
                           allowedTypes={['image']}
                           value={imgId}
                           render={({ open }) => (
-                             <>
+                            <>
                               {imgUrl && <img src={imgUrl} alt={imgAlt} />}
-                              <Button onClick={open} className="button button-large">
+                              <Button onClick={open} className="btn-img">
                                 Choisir une image
                               </Button>
                             </>
@@ -104,9 +144,9 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
                         />
                       </MediaUploadCheck>
                     ) : (
-                        <img src={imgUrl} alt={imgAlt} />
+                      <img src={imgUrl} alt={imgAlt} />
                     )}
-                    </figure>
+                  </figure>
                 </div>
 
                 <div className="hero-intro-card__body">
@@ -142,7 +182,9 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
                         <div className="btn c--4 bgc--5-2 btn-shadow-sm w-a">
                           <RichText
                             value={primaryText}
-                            onChange={(val) => setAttributes({ primaryButton: { ...primaryButton, text: val } })}
+                            onChange={(val) =>
+                              setAttributes({ primaryButton: { ...primaryButton, text: val } })
+                            }
                             allowedFormats={[]}
                             placeholder="Bouton principal…"
                           />
@@ -162,7 +204,9 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
                         <div className="btn c--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm w-a">
                           <RichText
                             value={secondaryText}
-                            onChange={(val) => setAttributes({ secondaryButton: { ...secondaryButton, text: val } })}
+                            onChange={(val) =>
+                              setAttributes({ secondaryButton: { ...secondaryButton, text: val } })
+                            }
                             allowedFormats={[]}
                             placeholder="Bouton secondaire…"
                           />
@@ -181,7 +225,6 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, bl
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
