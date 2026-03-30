@@ -147,20 +147,20 @@
 
             @php(the_content())
 
+            @php($terms_stack = get_the_terms(get_the_ID(), 'job-stack'))
+            @if($terms_stack)
             <article class="bg flex flex-col gap-[32px] ">
               <h2 class="title title--h4 c--3">Compétences techniques</h2>
               <div class="text rte">
                 <ul>
-                  <li>PHP 8.x</li>
-                  <li>Symfony</li>
-                  <li>Doctrine</li>
-                  <li>MySQL</li>
-                  <li>API REST</li>
-                  <li>Docker</li>
+                  @foreach($terms_stack as $term)
+                  <li>{{ $term->name }}</li>
+                  @endforeach
                 </ul>
                 <p>(Des connaissances en CI/CD et bonnes pratiques DevOps sont un plus)</p>
               </div>
             </article>
+            @endif
             <article class="flex flex-col gap-[32px] ">
               <h2 class="title title--h4 c--3">Pourquoi nous rejoindre ?</h2>
               <div class="text rte">
@@ -170,7 +170,6 @@
                   <li>Contexte technique riche, entre qualité, performance et fiabilité</li>
                   <li>Opportunités d’évolution et de montée en compétences</li>
                   <li>Valorisation de l’engagement et de l’expertise</li>
-                  <li>(Des connaissances en CI/CD et bonnes pratiques DevOps sont un plus)</li>
 
                 </ul>
               </div>
