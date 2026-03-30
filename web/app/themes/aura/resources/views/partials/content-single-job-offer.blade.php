@@ -32,7 +32,7 @@
           <li class="separator"><i class="es-icon-caret"></i></li>
           <li><a href="#" title="Nos offres d’emploi">Nos offres d’emploi</a></li>
           <li class="separator"><i class="es-icon-caret"></i></li>
-          <li><a href="#" title="Développeur Back-end PHP">Développeur Back-end PHP</a></li>
+          <li><a href="#" title="{!! $title !!}">{!! $title !!}</a></li>
         </ul>
       </div><!-- .breadcrumb-block__body -->
     </div><!-- .breadcrumb-block__content -->
@@ -73,27 +73,56 @@
 
                   <h2 class="title title--h2 c--2-1a">{!! $title !!}</h2>
                   <ul class="attributelist m-0 flex flex-wrap gap-[10px]">
-                    <li><span class="attribute" style="--bg:#80ACD0">CDI</span></li>
-                    <li><span class="attribute" style="--bg:#9B91B4">Remote</span></li>
+
+
+                    @php($terms_duration = get_the_terms(get_the_ID(), 'job-duration'))
+                    @if($terms_duration)
+                    <li><span class="attribute" style="--bg:#80ACD0">{{ implode(', ', wp_list_pluck($terms_duration, 'name')) }}</span></li>
+                    @endif
+
+                    @php($terms_workplace = get_the_terms(get_the_ID(), 'job-workplace'))
+                    @if($terms_workplace)
+                    <span class="job-offer__workplace">
+                      <li><span class="attribute" style="--bg:#9B91B4">{{ implode(', ', wp_list_pluck($terms_workplace, 'name')) }}</span></li>
+                    </span>
+                    @endif
                     <li><span class="attribute" style="--bg:#B97591">Urgent</span></li>
                   </ul>
                   <div class="grid grid-cols-[24px_1fr] gap-[10px] [&>svg]:size-[24px]">
+
+                    @php($terms_level = get_the_terms(get_the_ID(), 'job-level'))
+                    @if($terms_level)
                     <svg aria-hidden='true'>
                       <use href="{{ asset('resources/images/design/sprite.svg') }}#shield"></use>
                     </svg>
-                    <div>Niveau : Senior</div>
+                    <div>
+                      Niveau :
+                      {{ implode(', ', wp_list_pluck($terms_level, 'name')) }}
+                    </div>
+                    @endif
+                    @php($terms_department = get_the_terms(get_the_ID(), 'job-department'))
+                    @if($terms_department)
                     <svg aria-hidden='true'>
                       <use href="{{ asset('resources/images/design/sprite.svg') }}#category"></use>
                     </svg>
-                    <div>Département : Tech / Support</div>
+                    <div>Département : {{ implode(', ', wp_list_pluck($terms_department, 'name')) }}</div>
+                    @endif
+
+                    @php($terms_language = get_the_terms(get_the_ID(), 'job-language'))
+                    @if($terms_language)
                     <svg aria-hidden='true'>
                       <use href="{{ asset('resources/images/design/sprite.svg') }}#lang"></use>
                     </svg>
-                    <div>Langues : Francais / Anglais</div>
+                    <div>Langues : {{ implode(', ', wp_list_pluck($terms_language, 'name')) }}</div>
+                    @endif
+
+                    @php($terms_location = get_the_terms(get_the_ID(), 'job-location'))
+                    @if($terms_location)
                     <svg aria-hidden='true'>
                       <use href="{{ asset('resources/images/design/sprite.svg') }}#pin"></use>
                     </svg>
-                    <div>Lieu : Antananarivo - Madagascar</div>
+                    <div>Lieu : {{ implode(', ', wp_list_pluck($terms_location, 'name')) }}</div>
+                    @endif
                   </div>
                 </div>
               </div>
@@ -116,43 +145,8 @@
               <hr class="my-[20px]">
             </div><!-- .job-card__body -->
 
-            <article class="flex col-span-2 flex-col gap-[32px] ">
-              <h2 class="title title--h3 c--2-1a">À propos du poste</h2>
-              <div class="text rte">
-                <p>
-                  Dans le cadre de la croissance de nos projets digitaux, nous recherchons un Développeur Back-end PHP Senior pour renforcer notre équipe technique.
-                  Vous interviendrez sur des applications web critiques à forte valeur métier, dans un environnement agile, collaboratif et orienté qualité.
-                </p>
-                <p>Vous travaillerez en étroite collaboration avec les équipes front-end, produit et support afin de concevoir des solutions robustes, performantes et évolutives.</p>
-              </div>
-            </article>
+            @php(the_content())
 
-            <article class="flex flex-col gap-[32px] ">
-              <h2 class="title title--h3 c--2-1a">Vos missions principales</h2>
-              <div class="text rte">
-                <ul>
-                  <li>Concevoir, développer et maintenir des modules back-end en PHP</li>
-                  <li>Participer à l’architecture et à l’évolution des applications existantes</li>
-                  <li>Implémenter et maintenir des API REST sécurisées</li>
-                  <li>Optimiser les performances et la qualité du code (tests, bonnes pratiques)</li>
-                  <li>Collaborer avec les équipes produit et support pour répondre aux besoins métiers</li>
-                  <li>Participer aux revues de code et à l’amélioration continue</li>
-                  <li>Contribuer à la documentation technique</li>
-                </ul>
-              </div>
-            </article>
-            <article class="flex flex-col gap-[32px] row-start-5 ">
-              <h2 class="title title--h3 c--2-1a">Profil recherché</h2>
-              <div class="text rte">
-                <ul>
-                  <li>Minimum 5 ans d’expérience en développement back-end PHP</li>
-                  <li>Excellente maîtrise de la programmation orientée objet (OOP)</li>
-                  <li>Bonne compréhension des architectures web modernes</li>
-                  <li>Capacité à travailler en équipe et à être force de proposition</li>
-                  <li>Autonomie, rigueur et sens des responsabilités</li>
-                </ul>
-              </div>
-            </article>
             <article class="bg flex flex-col gap-[32px] ">
               <h2 class="title title--h4 c--3">Compétences techniques</h2>
               <div class="text rte">
@@ -232,49 +226,6 @@
     </div><!-- .hero-intro-block__content -->
   </div><!-- .hero-intro-block -->
 
-  <header>
-
-    <div class="job-offer__meta">
-      @php($terms_level = get_the_terms(get_the_ID(), 'job-level'))
-      @if($terms_level)
-      <span class="job-offer__level">
-        {{ implode(', ', wp_list_pluck($terms_level, 'name')) }}
-      </span>
-      @endif
-
-      @php($terms_duration = get_the_terms(get_the_ID(), 'job-duration'))
-      @if($terms_duration)
-      <span class="job-offer__duration">
-        {{ implode(', ', wp_list_pluck($terms_duration, 'name')) }}
-      </span>
-      @endif
-
-      @php($terms_workplace = get_the_terms(get_the_ID(), 'job-workplace'))
-      @if($terms_workplace)
-      <span class="job-offer__workplace">
-        {{ implode(', ', wp_list_pluck($terms_workplace, 'name')) }}
-      </span>
-      @endif
-
-      @php($terms_location = get_the_terms(get_the_ID(), 'job-location'))
-      @if($terms_location)
-      <span class="job-offer__location">
-        {{ implode(', ', wp_list_pluck($terms_location, 'name')) }}
-      </span>
-      @endif
-
-      @php($terms_language = get_the_terms(get_the_ID(), 'job-language'))
-      @if($terms_language)
-      <span class="job-offer__language">
-        {{ implode(', ', wp_list_pluck($terms_language, 'name')) }}
-      </span>
-      @endif
-    </div>
-  </header>
-
-  <div class="e-content">
-    @php(the_content())
-  </div>
 
   @php(comments_template())
 </article>
