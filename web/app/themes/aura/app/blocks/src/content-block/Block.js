@@ -1,4 +1,4 @@
-import { InnerBlocks, InspectorControls } from '@wordpress/block-editor';
+import { InnerBlocks, InspectorControls, RichText } from '@wordpress/block-editor';
 import { PanelBody, SelectControl } from '@wordpress/components';
 
 const BG_OPTIONS = [
@@ -12,7 +12,7 @@ const BG_OPTIONS = [
 ];
 
 const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) => {
-  const { background = 'bgc--white' } = attributes;
+  const { background = 'bgc--white', headingText } = attributes;
   const BLOCKS_TEMPLATE = [['create-block/content-card', {}]];
   const ALLOWED_BLOCKS = ['create-block/content-card'];
   return (
@@ -29,9 +29,29 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
           </PanelBody>
         </InspectorControls>
       )}
-      <div class={`block bgi ${background} edito-block`}>
-        <div class="edito-block__content uk-container flex flex-col gap-[64px]">
-          <div class="edito-block__body flex flex-col gap-[64px] sm:gap-[76px] md:gap-[88px] lg:gap-[100px]">
+      <div className={`block bgi ${background} edito-block`}>
+        <div className="edito-block__content uk-container flex flex-col gap-[64px]">
+          <div className={`edito-block__header ${!editmode && !headingText ? 'hidden' : ''}`}>
+            {editmode ? (
+              <RichText
+                className="title title--h2 rte rte--em-c-5 c--2"
+                tagName="span"
+                value={headingText}
+                onChange={(val) => setAttributes({ headingText: val })}
+                allowedFormats={['core/bold', 'core/italic']}
+                placeholder="Titre…"
+              />
+            ) : (
+              headingText && (
+                <RichText.Content
+                  className="title title--h2 rte rte--em-c-5 c--2"
+                  tagName="span"
+                  value={headingText}
+                />
+              )
+            )}
+          </div>
+          <div className="edito-block__body flex flex-col gap-[64px] sm:gap-[76px] md:gap-[88px] lg:gap-[100px]">
             {editmode ? (
               <InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={BLOCKS_TEMPLATE} />
             ) : (

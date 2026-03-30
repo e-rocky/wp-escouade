@@ -15,6 +15,10 @@
     "background": {
       "type": "string",
       "default": "bgc--white"
+    },
+    "headingText": {
+      "type": "string",
+      "default": "Pourquoi choisir <em>Escouade ?</em>"
     }
   },
   "textdomain": "content-block",

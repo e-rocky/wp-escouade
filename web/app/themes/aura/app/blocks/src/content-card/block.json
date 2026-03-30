@@ -35,6 +35,17 @@
         "url": "#",
         "openInNewTab": false
       }
+    },
+    "transparentBackground": {
+      "type": "boolean",
+      "default": true
+    },
+    "overline": {
+      "type": "object",
+      "default": {
+        "show": false,
+        "text": "Un cadre de travail respectueux"
+      }
     }
   },
   "textdomain": "content-card",

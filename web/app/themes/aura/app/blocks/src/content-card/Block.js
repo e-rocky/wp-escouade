@@ -8,7 +8,15 @@ import {
 import { PanelBody, ToggleControl, Button } from '@wordpress/components';
 
 const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) => {
-  const { headingText, bodyText, image = {}, button = {} } = attributes;
+  const {
+    headingText,
+    bodyText,
+    image = {},
+    button = {},
+    transparentBackground = false,
+    overline = {},
+  } = attributes;
+  const { show: overlineShow = false, text: overlineText } = overline;
   const { text: btnText = button.text, url: btnUrl = '#', openInNewTab = false } = button;
   const { url: imgUrl = '', alt: imgAlt = '' } = image;
 
@@ -16,6 +24,18 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
     <React.Fragment>
       {editmode && (
         <InspectorControls>
+          <PanelBody title="Apparence" initialOpen={true}>
+            <ToggleControl
+              label="Fond transparent"
+              checked={transparentBackground}
+              onChange={(val) => setAttributes({ transparentBackground: val })}
+            />
+            <ToggleControl
+              label="Ajouter un surtitre"
+              checked={overlineShow}
+              onChange={(val) => setAttributes({ overline: { ...overline, show: val } })}
+            />
+          </PanelBody>
           <PanelBody title="Bouton" initialOpen={true}>
             <URLInput
               label="URL du bouton"
@@ -49,7 +69,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
           </PanelBody>
         </InspectorControls>
       )}
-      <div className="block edito-card">
+      <div className={`block edito-card ${!transparentBackground ? 'bgc bgc--4' : ''}`}>
         <div className="edito-card__content flex flex-col md:flex-row">
           <div className="edito-card__header">
             <figure className="img-container">
@@ -80,6 +100,27 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
           </div>
           <div className="edito-card__body">
             <div className="content">
+              {overlineShow && (
+                <ul className="taglist mb-0 flex flex-wrap gap-[10px] mb-[20px]">
+                  <li>
+                    <span className="tag">
+                      {editmode ? (
+                        <RichText
+                          tagName="span"
+                          value={overlineText}
+                          onChange={(val) =>
+                            setAttributes({ overline: { ...overline, text: val } })
+                          }
+                          allowedFormats={[]}
+                          placeholder="Surtitre…"
+                        />
+                      ) : (
+                        <RichText.Content tagName="span" value={overlineText} />
+                      )}
+                    </span>
+                  </li>
+                </ul>
+              )}
               <h2 className="title title--h3 c--2">
                 {editmode ? (
                   <RichText
