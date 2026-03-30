@@ -61,6 +61,15 @@ collect(['setup', 'filters'])
         }
     });
 
+collect(['job-offer'])
+    ->each(function ($file) {
+        if (! locate_template($file = "app/post-types/{$file}.php", true, true)) {
+            wp_die(
+                sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file)
+            );
+        }
+    });
+
 
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style(
