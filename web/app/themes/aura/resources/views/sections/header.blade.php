@@ -9,7 +9,7 @@
             <div class="uk-navbar-left">
 
               <div class="uk-navbar-item">
-                <a href="#" class="uk-logo logo" href="#" aria-label="Escouade">
+                <a href="{{ home_url('/') }}" class="uk-logo logo" aria-label="Escouade">
                   <img src="@asset('resources/images/design/logo--icon-square-text.svg')" alt="Escouade"></a>
               </div>
 
@@ -19,10 +19,16 @@
               'container' => false,
               ]) !!}
 
-              <div class="uk-navbar-item">
+              {!! wp_nav_menu([
+              'theme_location' => 'cta_navigation',
+              'menu_class' => 'uk-navbar-item',
+              'container' => false,
+              ]) !!}
+
+              <!--div class="uk-navbar-item">
                 <a class="btn c--1-2 bgc--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm" href="#" title="Je cherche un job">Je cherche un job</a>
                 <a class="btn c--4 bgc--1-2 btn-shadow-md" href="#" title="Je recrute un talent">Je recrute un talent</a>
-              </div>
+              </div-->
 
 
             </div>

@@ -1876,6 +1876,22 @@
           column-gap: normal;
           padding: 0;
           gap: 20px;
+          .btn {
+            position: relative;
+            overflow: hidden;
+            a {
+              &:before {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                top: 0;
+                content: "";
+              }
+              text-decoration: none;
+              color: inherit;
+            }
+          }
         }
         .uk-navbar-left {
           justify-content: space-between;
