@@ -65,7 +65,7 @@
     </div><!-- .content-block__content -->
   </div><!-- .content-block -->
 
-  @php(dynamic_sidebar('sidebar-job-offer-footer'))
+  @php(dynamic_sidebar('content-footer'))
 
 
   @php(comments_template())

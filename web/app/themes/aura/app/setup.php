@@ -165,8 +165,8 @@ add_action('widgets_init', function () {
     ]);
 
     register_sidebar([
-        'name' => __('Job offer page - Footer', 'sage'),
-        'id' => 'sidebar-job-offer-footer',
+        'name' => __('Content - Footer', 'sage'),
+        'id' => 'content-footer',
     ] + $config);
 });
 

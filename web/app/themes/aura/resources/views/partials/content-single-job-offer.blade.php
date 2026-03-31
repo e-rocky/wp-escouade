@@ -180,7 +180,7 @@
     </div><!-- .job-detail-block__content -->
   </div><!-- .job-detail-block -->
 
-  @php(dynamic_sidebar('sidebar-job-offer-footer'))
+  @php(dynamic_sidebar('content-footer'))
 
 
   @php(comments_template())
