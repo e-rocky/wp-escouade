@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aura/our-benefits-block",
+  "version": "0.1.0",
+  "title": "Our Benefits",
+  "category": "widgets",
+  "icon": "awards",
+  "description": "Liste des avantages entreprise.",
+  "example": {},
+  "supports": { "html": false },
+  "attributes": {
+    "benefitsHeading": { "type": "string", "default": "Pourquoi nous rejoindre ?" },
+    "benefitsBody": {
+      "type": "string",
+      "default": "<li>Projets stimulants et techniquement exigeants</li><li>Contexte technique riche, entre qualité, performance et fiabilité</li><li>Opportunités d’évolution et de montée en compétences</li><li>Valorisation de l’engagement et de l’expertise</li>"
+    }
+  },
+  "textdomain": "our-benefits-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.scss",
+  "style": "file:./style.scss",
+  "viewScript": "file:./view.js"
+}

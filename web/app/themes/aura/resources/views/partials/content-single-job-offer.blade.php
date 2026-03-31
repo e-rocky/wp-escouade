@@ -161,19 +161,10 @@
               </div>
             </article>
             @endif
-            <article class="flex flex-col gap-[32px] ">
-              <h2 class="title title--h4 c--3">Pourquoi nous rejoindre ?</h2>
-              <div class="text rte">
-                <ul>
 
-                  <li>Projets stimulants et techniquement exigeants</li>
-                  <li>Contexte technique riche, entre qualité, performance et fiabilité</li>
-                  <li>Opportunités d’évolution et de montée en compétences</li>
-                  <li>Valorisation de l’engagement et de l’expertise</li>
+            @php(dynamic_sidebar('sidebar-our-benefits'))
 
-                </ul>
-              </div>
-            </article>
+
             <div class="actions col-span-2 flex justify-end items-stretch gap-[20px]">
               <a class="btn c--1a-2 underline" href="#" title="Voir l’offre">Retourner à la liste les offres</a>
               <a class="btn c--4 bgc--5-2 btn-shadow-sm" href="#" title="Je postule ">Je postule <i class="es-icon-chevron-right"></i></a>

@@ -149,6 +149,16 @@ add_action('widgets_init', function () {
     ] + $config);
 
     register_sidebar([
+        'name' => __('Our Benefits', 'sage'),
+        'id' => 'sidebar-our-benefits',
+    ] +  [
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '',
+        'after_title' => '',
+    ]);
+
+    register_sidebar([
         'name' => __('Footer', 'sage'),
         'id' => 'sidebar-footer',
     ] + $config);
