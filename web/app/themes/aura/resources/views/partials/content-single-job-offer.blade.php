@@ -162,7 +162,7 @@
             </article>
             @endif
 
-            @php(dynamic_sidebar('sidebar-our-benefits'))
+            @php(dynamic_sidebar('sidebar-job-offer-our-benefits'))
 
 
             <div class="actions col-span-2 flex justify-end items-stretch gap-[20px]">
@@ -180,7 +180,7 @@
     </div><!-- .job-detail-block__content -->
   </div><!-- .job-detail-block -->
 
-  @php(dynamic_sidebar('sidebar-footer'))
+  @php(dynamic_sidebar('sidebar-job-offer-footer'))
 
 
   @php(comments_template())

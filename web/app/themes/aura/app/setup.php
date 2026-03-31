@@ -155,8 +155,8 @@ add_action('widgets_init', function () {
     ] + $config);
 
     register_sidebar([
-        'name' => __('Our Benefits', 'sage'),
-        'id' => 'sidebar-our-benefits',
+        'name' => __('Job offer page - Our Benefits', 'sage'),
+        'id' => 'sidebar-job-offer-our-benefits',
     ] +  [
         'before_widget' => '',
         'after_widget' => '',
@@ -165,8 +165,8 @@ add_action('widgets_init', function () {
     ]);
 
     register_sidebar([
-        'name' => __('Footer', 'sage'),
-        'id' => 'sidebar-footer',
+        'name' => __('Job offer page - Footer', 'sage'),
+        'id' => 'sidebar-job-offer-footer',
     ] + $config);
 });
 
