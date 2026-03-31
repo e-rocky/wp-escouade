@@ -180,41 +180,7 @@
     </div><!-- .job-detail-block__content -->
   </div><!-- .job-detail-block -->
 
-  <div class="block hero-intro-block bgc bgc--3a">
-    <div class="hero-intro-block__content uk-container">
-      <div class="hero-intro-block__body">
-
-        <div class="card cta-card">
-
-          <div class="cta-card__background scale-x-[-1]">
-            <img src="{{ asset('resources/images/design/bg-6.png') }}" alt="">
-          </div><!-- .cta-card__background -->
-
-          <div class="cta-card__content flex flex-col-reverse md:flex-row-reverse">
-
-            <div class="cta-card__header">
-              <figure class="img-container">
-                <img src="{{ asset('resources/images/content/intro-img-1.png') }}" alt="">
-                <img src="{{ asset('resources/images/content/intro-img-1.png') }}" alt="">
-              </figure>
-            </div><!-- .cta-card__header -->
-            <div class="cta-card__body">
-              <div class="content">
-                <h2 class="title title--h1 c--4">Osez faire le premier pas</h2>
-                <div class="text">
-                  <p>Vous avez du potentiel, même sans offre publiée. Présentez votre profil et créez votre opportunité.</p>
-                </div>
-                <div class="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
-                  <a class="btn btn--lg c--4 bgc--5 btn-shadow-sm" href="#" title="Candidature spontanée">Candidature spontanée<i class="es-icon-chevron-right"></i></a>
-                </div>
-              </div>
-            </div><!-- .cta-card__body -->
-          </div><!-- .cta-card__content -->
-        </div><!-- .cta-card -->
-
-      </div><!-- .hero-intro-block__body -->
-    </div><!-- .hero-intro-block__content -->
-  </div><!-- .hero-intro-block -->
+  @php(dynamic_sidebar('sidebar-footer'))
 
 
   @php(comments_template())
