@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/job-offer-block",
+  "version": "0.1.0",
+  "title": "Job Offer Block",
+  "category": "widgets",
+  "icon": "editor-ul",
+  "description": "Article avec titre et contenu riche (texte, liste…).",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "section1Heading": {
+      "type": "string",
+      "default": "À propos du poste"
+    },
+    "section1Body": {
+      "type": "string",
+      "default": ""
+    },
+    "section2Heading": {
+      "type": "string",
+      "default": "Vos missions principales"
+    },
+    "section2Body": {
+      "type": "string",
+      "default": "<li>Concevoir, développer et maintenir des modules back-end en PHP</li><li>Participer à l'architecture et à l'évolution des applications existantes</li><li>Implémenter et maintenir des API REST sécurisées</li><li>Optimiser les performances et la qualité du code (tests, bonnes pratiques)</li><li>Collaborer avec les équipes produit et support pour répondre aux besoins métiers</li><li>Participer aux revues de code et à l'amélioration continue</li><li>Contribuer à la documentation technique</li>"
+    },
+    "section3Heading": {
+      "type": "string",
+      "default": "Profil recherché"
+    },
+    "section3Body": {
+      "type": "string",
+      "default": "<li>Minimum 5 ans d'expérience en développement back-end PHP</li><li>Excellente maîtrise de la programmation orientée objet (OOP)</li><li>Bonne compréhension des architectures web modernes</li><li>Capacité à travailler en équipe et à être force de proposition</li><li>Autonomie, rigueur et sens des responsabilités</li>"
+    }
+  },
+  "textdomain": "job-offer-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
