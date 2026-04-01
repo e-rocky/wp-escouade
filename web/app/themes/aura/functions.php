@@ -56,7 +56,26 @@ collect(['setup', 'filters'])
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
                 /* translators: %s is replaced with the relative file path */
-                sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file)
+                sprintf('Error locating <code>%s</code> for inclusion.', $file)
+            );
+        }
+    });
+
+collect(['job-offer'])
+    ->each(function ($file) {
+        if (! locate_template($file = "app/post-types/{$file}.php", true, true)) {
+            wp_die(
+                sprintf('Error locating <code>%s</code> for inclusion.', $file)
+            );
+        }
+    });
+
+
+collect(['job-department', 'job-duration', 'job-language', 'job-level', 'job-location', 'job-stack', 'job-workplace'])
+    ->each(function ($file) {
+        if (! locate_template($file = "app/taxonomy/{$file}.php", true, true)) {
+            wp_die(
+                sprintf('Error locating <code>%s</code> for inclusion.', $file)
             );
         }
     });
@@ -85,10 +104,15 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 add_filter('block_editor_settings_all', function ($settings) {
-    $style = asset("src/style.scss")->uri();
+    $auraStyle = Vite::asset('src/style.scss');
+    $auraUno = Vite::asset("../../../../../../../../../../__uno.css");
 
     $settings['styles'][] = [
-        'css' => "@import url('{$style}')",
+        'css' => "@import url('{$auraStyle}')",
+    ];
+
+    $settings['styles'][] = [
+        'css' => "@import url('{$auraUno}')",
     ];
 
     return $settings;
@@ -100,6 +124,13 @@ add_action('enqueue_block_editor_assets', function () {
         Vite::asset('resources/css/editor.css'),
         [],
         null
+    );
+    wp_add_inline_script(
+        'wp-blocks',
+        'window.auraBuildPath = ' . json_encode([
+            'uri' => get_theme_file_uri('public/build/'),
+        ]) . ';',
+        'before'
     );
 });
 

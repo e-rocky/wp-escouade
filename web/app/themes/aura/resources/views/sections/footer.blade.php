@@ -11,7 +11,7 @@
               </figcaption>
             </div><!-- .minimap-card__header -->
             <div class="minimap-card__body flex-1 grid grid-cols-[32px_1fr] gap-[10px]">
-              <img class="my-auto" src="{{ asset('resources/images/design/logo--icon-square.svg') }}" alt="Escouade">
+              <img class="my-auto" src="@asset('resources/images/design/logo--icon-square.svg')" alt="Escouade">
               <h4 class="title py-0 my-0 c--bgi c--bgi-scroll c--bgi-3 my-auto text-[20px]">Escouade</h4>
               <div class="content col-start-2 sm:col-start-1 sm:col-span-2 md:col-start-2 gap-[10px]">
                 <p class="address">

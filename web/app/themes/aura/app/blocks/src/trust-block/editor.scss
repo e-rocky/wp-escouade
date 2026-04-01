@@ -1,0 +1,16 @@
+// editor styles for trust-block
+// trust-block/editor.scss
+
+/*-- .dna-block --*/
+
+/*-- end: .dna-block --*/
+
+.wp-block[data-type="create-block/trust-block"] .block-editor-block-list__layout {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 32px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

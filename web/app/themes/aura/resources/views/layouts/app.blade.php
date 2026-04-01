@@ -17,9 +17,6 @@
 
   <div id="page" class="bgi--1" data-uk-parallax="bgy:0, -100vh, start: 0; end: 100vh">
     <div id="app">
-      <a class="sr-only focus:not-sr-only" href="#main">
-        {{ __('Skip to content', 'sage') }}
-      </a>
 
       @include('sections.header')
 

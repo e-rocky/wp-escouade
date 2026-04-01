@@ -19,6 +19,14 @@
     "headingText": {
       "type": "string",
       "default": "Rejoignez votre Escouade"
+    },
+    "button": {
+      "type": "object",
+      "default": {
+        "text": "Voir toutes les offres d'emploi",
+        "url": "#",
+        "openInNewTab": false
+      }
     }
   },
   "textdomain": "job-advertising-block",

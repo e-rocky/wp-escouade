@@ -79,6 +79,16 @@ add_action('after_setup_theme', function () {
         'primary_navigation' => __('Primary Navigation', 'sage'),
     ]);
 
+    register_nav_menus([
+        'cta_navigation' => __('CTA Navigation', 'sage'),
+    ]);
+
+
+    register_nav_menus([
+        'footer_navigation' => __('Footer Navigation', 'sage'),
+    ]);
+
+
     /**
      * Disable the default block patterns.
      *
@@ -149,8 +159,18 @@ add_action('widgets_init', function () {
     ] + $config);
 
     register_sidebar([
-        'name' => __('Footer', 'sage'),
-        'id' => 'sidebar-footer',
+        'name' => __('Job offer page - Our Benefits', 'sage'),
+        'id' => 'sidebar-job-offer-our-benefits',
+    ] +  [
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '',
+        'after_title' => '',
+    ]);
+
+    register_sidebar([
+        'name' => __('Content - Footer', 'sage'),
+        'id' => 'content-footer',
     ] + $config);
 });
 

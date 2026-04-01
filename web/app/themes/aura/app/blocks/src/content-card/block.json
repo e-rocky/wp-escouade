@@ -9,7 +9,8 @@
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {
-    "html": false
+    "html": false,
+    "anchor": true
   },
   "attributes": {
     "headingText": {
@@ -35,6 +36,25 @@
         "url": "#",
         "openInNewTab": false
       }
+    },
+    "transparentBackground": {
+      "type": "boolean",
+      "default": true
+    },
+    "reverse": {
+      "type": "boolean",
+      "default": true
+    },
+    "overline": {
+      "type": "object",
+      "default": {
+        "show": false,
+        "text": "Un cadre de travail respectueux"
+      }
+    },
+    "cardStyle": {
+      "type": "number",
+      "default": 1
     }
   },
   "textdomain": "content-card",

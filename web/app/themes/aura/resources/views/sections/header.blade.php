@@ -9,42 +9,26 @@
             <div class="uk-navbar-left">
 
               <div class="uk-navbar-item">
-                <a href="#" class="uk-logo logo" href="#" aria-label="Escouade">
+                <a href="{{ home_url('/') }}" class="uk-logo logo" aria-label="Escouade">
                   <img src="@asset('resources/images/design/logo--icon-square-text.svg')" alt="Escouade"></a>
               </div>
 
-              <ul class="uk-navbar-nav">
-                <li>
-                  <a href="#" title="Accueil">
-                    Accueil
-                  </a>
-                </li>
-                <li>
-                  <a href="#" title="A propos">
-                    A propos
-                  </a>
-                </li>
-                <li>
-                  <a href="#" title="Carrière">
-                    Carrière
-                  </a>
-                </li>
-                <li>
-                  <a href="#" title="Services">
-                    Services
-                  </a>
-                </li>
-                <li>
-                  <a href="#" title="Actualités">
-                    Actualités
-                  </a>
-                </li>
-              </ul>
+              {!! wp_nav_menu([
+              'theme_location' => 'primary_navigation',
+              'menu_class' => 'uk-navbar-nav',
+              'container' => false,
+              ]) !!}
 
-              <div class="uk-navbar-item">
+              {!! wp_nav_menu([
+              'theme_location' => 'cta_navigation',
+              'menu_class' => 'uk-navbar-item m-0',
+              'container' => false,
+              ]) !!}
+
+              <!--div class="uk-navbar-item">
                 <a class="btn c--1-2 bgc--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm" href="#" title="Je cherche un job">Je cherche un job</a>
                 <a class="btn c--4 bgc--1-2 btn-shadow-md" href="#" title="Je recrute un talent">Je recrute un talent</a>
-              </div>
+              </div-->
 
 
             </div>

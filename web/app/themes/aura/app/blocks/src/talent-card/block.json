@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/talent-card",
+  "version": "0.1.0",
+  "title": "Talent Card",
+  "category": "widgets",
+  "description": "Carte talent individuelle.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "parent": ["create-block/talents-block"],
+  "attributes": {
+    "firstname": {
+      "type": "string",
+      "default": "Prénom"
+    },
+    "lastname": {
+      "type": "string",
+      "default": "Nom"
+    },
+    "role": {
+      "type": "string",
+      "default": "Titre"
+    },
+    "quote": {
+      "type": "string",
+      "default": "Citation…"
+    },
+    "image": {
+      "type": "object",
+      "default": {
+        "url": "https://picsum.photos/id/206/576/414.jpg",
+        "alt": "",
+        "id": null
+      }
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

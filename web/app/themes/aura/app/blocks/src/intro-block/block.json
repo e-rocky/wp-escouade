@@ -1,0 +1,57 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/intro-block",
+  "version": "0.1.0",
+  "title": "Intro Block",
+  "category": "widgets",
+  "icon": "cover-image",
+  "description": "Bloc intro avec image, titre, texte et deux boutons CTA.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "background": {
+      "type": "string",
+      "default": "bgi--4"
+    },
+    "headingText": {
+      "type": "string",
+      "default": "Envie de rejoindre <em>l'Escouade</em> ?"
+    },
+    "bodyText": {
+      "type": "string",
+      "default": "Chez Escouade, nous croyons que la réussite d'un projet repose avant tout sur les personnes."
+    },
+    "image": {
+      "type": "object",
+      "default": {
+        "url": "https://picsum.photos/id/206/576/414.jpg",
+        "alt": "",
+        "id": null
+      }
+    },
+    "primaryButton": {
+      "type": "object",
+      "default": {
+        "text": "Nos offres d'emploi",
+        "url": "#",
+        "openInNewTab": false
+      }
+    },
+    "secondaryButton": {
+      "type": "object",
+      "default": {
+        "text": "Candidature spontanée",
+        "url": "#",
+        "openInNewTab": false
+      }
+    }
+  },
+  "textdomain": "intro-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
