@@ -41,9 +41,9 @@
       "type": "boolean",
       "default": true
     },
-    "reverse": {
-      "type": "boolean",
-      "default": true
+    "imgPosition": {
+      "type": "number",
+      "default": 0
     },
     "overline": {
       "type": "object",
