@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   RichText,
   InspectorControls,
@@ -25,9 +27,9 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
   const styles = [
     { titleStyle: 'c--5', buttonStyle: 'bgc--5' },
     { titleStyle: 'c--1a', buttonStyle: 'bgc--1a' },
-    { titleStyle: 'c--2-1a', buttonStyle: 'bgc--2' },
-    { titleStyle: 'c--5-2', buttonStyle: 'bgc--5' },
+    { titleStyle: 'c--5-2', buttonStyle: 'bgc--2' },
     { titleStyle: 'c--2-1a', buttonStyle: 'bgc--1a' },
+    { titleStyle: 'c--5-2', buttonStyle: 'bgc--5' },
   ];
   const currentCardStyle = styles[cardStyle] ?? styles[0];
 
@@ -43,7 +45,12 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
                 label: `Style ${index + 1}`,
                 value: index,
               }))}
-              onChange={(val) => setAttributes({ cardStyle: val })}
+              onChange={(val) => {
+                setAttributes({ cardStyle: val });
+                console.log(val);
+                console.log(typeof val);
+                console.log(styles[val]);
+              }}
             />
             <ToggleControl
               label="Fond transparent"
@@ -132,7 +139,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
                         <RichText
                           tagName="span"
                           value={overlineText}
-                          onChange={(val) =>
+                          onChange={(val: string) =>
                             setAttributes({ overline: { ...overline, text: val } })
                           }
                           allowedFormats={[]}
@@ -150,7 +157,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
                   <RichText
                     tagName="span"
                     value={headingText}
-                    onChange={(val) => setAttributes({ headingText: val })}
+                    onChange={(val: string) => setAttributes({ headingText: val })}
                     allowedFormats={['core/bold', 'core/italic']}
                     placeholder="Titre…"
                   />
@@ -164,7 +171,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
                     tagName="div"
                     multiline="p"
                     value={bodyText}
-                    onChange={(val) => setAttributes({ bodyText: val })}
+                    onChange={(val: string) => setAttributes({ bodyText: val })}
                     allowedFormats={['core/bold', 'core/italic']}
                     placeholder="Texte…"
                   />
@@ -176,7 +183,9 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
                 {editmode ? (
                   <div className={`btn c--4 ${currentCardStyle.buttonStyle} btn-shadow-sm`}>
                     <RichText
-                      onChange={(val) => setAttributes({ button: { ...button, text: val } })}
+                      onChange={(val: string) =>
+                        setAttributes({ button: { ...button, text: val } })
+                      }
                       allowedFormats={[]}
                       placeholder="Texte du bouton…"
                       value={btnText}
@@ -185,7 +194,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
                   </div>
                 ) : (
                   <a
-                    className="btn c--4 bgc--5 btn-shadow-sm"
+                    className={`btn c--4 ${currentCardStyle.buttonStyle} btn-shadow-sm`}
                     href={btnUrl}
                     title={btnText}
                     target={openInNewTab ? '_blank' : undefined}
