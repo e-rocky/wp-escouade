@@ -16,6 +16,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
     transparentBackground = false,
     overline = {},
     cardStyle = 0,
+    reverse = false,
   } = attributes;
   const { show: overlineShow = false, text: overlineText } = overline;
   const { text: btnText = button.text, url: btnUrl = '#', openInNewTab = false } = button;
@@ -88,7 +89,11 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
           </PanelBody>
         </InspectorControls>
       )}
-      <div className={`block edito-card ${!transparentBackground ? 'bgc bgc--4' : ''}`}>
+      <div
+        className={`block edito-card ${!transparentBackground ? 'bgc bgc--4' : ''} ${
+          reverse ? 'reverse' : ''
+        }`}
+      >
         <div className="edito-card__content flex flex-col md:flex-row">
           <div className="edito-card__header">
             <figure className="img-container">

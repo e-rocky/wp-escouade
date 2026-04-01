@@ -9,7 +9,8 @@
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {
-    "html": false
+    "html": false,
+    "anchor": true
   },
   "attributes": {
     "headingText": {
@@ -37,6 +38,10 @@
       }
     },
     "transparentBackground": {
+      "type": "boolean",
+      "default": true
+    },
+    "reverse": {
       "type": "boolean",
       "default": true
     },

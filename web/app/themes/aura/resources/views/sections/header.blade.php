@@ -21,7 +21,7 @@
 
               {!! wp_nav_menu([
               'theme_location' => 'cta_navigation',
-              'menu_class' => 'uk-navbar-item',
+              'menu_class' => 'uk-navbar-item m-0',
               'container' => false,
               ]) !!}
 
