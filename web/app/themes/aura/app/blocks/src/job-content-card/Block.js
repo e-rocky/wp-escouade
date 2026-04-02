@@ -28,11 +28,13 @@ const Block = ({
             <RichText.Content tagName="span" value={sectionHeading} />
           )}
         </h2>
-        {editmode ? (
-          <InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={BLOCKS_TEMPLATE} />
-        ) : (
-          <InnerBlocks.Content />
-        )}
+        <div class="text rte">
+          {editmode ? (
+            <InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={BLOCKS_TEMPLATE} />
+          ) : (
+            <InnerBlocks.Content />
+          )}
+        </div>
       </article>
     </>
   );
