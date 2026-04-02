@@ -72,21 +72,29 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
             </div>
           </div>
           <div className="job-advertising-block__footer flex justify-center">
-            {editmode ? (
-              <RichText
-                tagName="a"
-                className="btn btn--lg c--4 bgc--5 btn-shadow-sm"
-                value={buttonText}
-                onChange={(val) => setAttributes({ button: { ...button, text: val } })}
-                allowedFormats={[]}
-                placeholder="Texte du bouton…"
-              />
-            ) : (
-              <a className="btn btn--lg c--4 bgc--5 btn-shadow-sm" href={buttonUrl} title={buttonText} target={openInNewTab ? '_blank' : undefined} rel={openInNewTab ? 'noopener noreferrer' : undefined}>
-                <RichText.Content tagName="span" value={buttonText} />
-                <i className="es-icon-chevron-right"></i>
-              </a>
-            )}
+            {editmode
+              ? buttonUrl && (
+                  <RichText
+                    tagName="a"
+                    className="btn btn--lg c--4 bgc--5 btn-shadow-sm"
+                    value={buttonText}
+                    onChange={(val) => setAttributes({ button: { ...button, text: val } })}
+                    allowedFormats={[]}
+                    placeholder="Texte du bouton…"
+                  />
+                )
+              : buttonUrl && (
+                  <a
+                    className="btn btn--lg c--4 bgc--5 btn-shadow-sm"
+                    href={buttonUrl}
+                    title={buttonText}
+                    target={openInNewTab ? '_blank' : undefined}
+                    rel={openInNewTab ? 'noopener noreferrer' : undefined}
+                  >
+                    <RichText.Content tagName="span" value={buttonText} />
+                    <i className="es-icon-chevron-right"></i>
+                  </a>
+                )}
           </div>
         </div>
       </div>

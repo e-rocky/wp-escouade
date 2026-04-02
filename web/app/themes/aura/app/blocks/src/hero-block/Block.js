@@ -58,28 +58,30 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
             </h1>
           </div>
           <div className="hero-text-block__footer flex justify-center">
-            {editmode ? (
-              <div className="btn c--4 bgc--5-2 btn--lg btn-shadow-lg">
-                <RichText
-                  onChange={(val) => setAttributes({ button: { ...button, text: val } })}
-                  allowedFormats={[]}
-                  placeholder="Texte du bouton…"
-                  value={btnText}
-                />
-                <i className="es-icon-chevron-right"></i>
-              </div>
-            ) : (
-              <a
-                className="btn c--4 bgc--5-2 btn--lg btn-shadow-lg"
-                href={btnUrl}
-                title={btnText}
-                target={openInNewTab ? '_blank' : undefined}
-                rel={openInNewTab ? 'noreferrer noopener' : undefined}
-              >
-                <RichText.Content tagName="span" value={btnText} />
-                <i className="es-icon-chevron-right"></i>
-              </a>
-            )}
+            {editmode
+              ? btnUrl && (
+                  <div className="btn c--4 bgc--5-2 btn--lg btn-shadow-lg">
+                    <RichText
+                      onChange={(val) => setAttributes({ button: { ...button, text: val } })}
+                      allowedFormats={[]}
+                      placeholder="Texte du bouton…"
+                      value={btnText}
+                    />
+                    <i className="es-icon-chevron-right"></i>
+                  </div>
+                )
+              : btnUrl && (
+                  <a
+                    className="btn c--4 bgc--5-2 btn--lg btn-shadow-lg"
+                    href={btnUrl}
+                    title={btnText}
+                    target={openInNewTab ? '_blank' : undefined}
+                    rel={openInNewTab ? 'noreferrer noopener' : undefined}
+                  >
+                    <RichText.Content tagName="span" value={btnText} />
+                    <i className="es-icon-chevron-right"></i>
+                  </a>
+                )}
           </div>
         </div>
       </div>

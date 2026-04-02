@@ -133,28 +133,32 @@ const Block = ({
                       )}
                     </div>
                     <div className="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
-                      {editmode ? (
-                        <div className="btn btn--lg c--4 bgc--5 btn-shadow-sm">
-                          <RichText
-                            value={btnText}
-                            onChange={(val) => setAttributes({ button: { ...button, text: val } })}
-                            allowedFormats={[]}
-                            placeholder="Texte du bouton…"
-                          />
-                          <i className="es-icon-chevron-right"></i>
-                        </div>
-                      ) : (
-                        <a
-                          className="btn btn--lg c--4 bgc--5 btn-shadow-sm"
-                          href={btnUrl}
-                          title={btnText}
-                          target={openInNewTab ? '_blank' : undefined}
-                          rel={openInNewTab ? 'noreferrer noopener' : undefined}
-                        >
-                          <RichText.Content tagName="span" value={btnText} />
-                          <i className="es-icon-chevron-right"></i>
-                        </a>
-                      )}
+                      {editmode
+                        ? btnUrl && (
+                            <div className="btn btn--lg c--4 bgc--5 btn-shadow-sm">
+                              <RichText
+                                value={btnText}
+                                onChange={(val) =>
+                                  setAttributes({ button: { ...button, text: val } })
+                                }
+                                allowedFormats={[]}
+                                placeholder="Texte du bouton…"
+                              />
+                              <i className="es-icon-chevron-right"></i>
+                            </div>
+                          )
+                        : btnUrl && (
+                            <a
+                              className="btn btn--lg c--4 bgc--5 btn-shadow-sm"
+                              href={btnUrl}
+                              title={btnText}
+                              target={openInNewTab ? '_blank' : undefined}
+                              rel={openInNewTab ? 'noreferrer noopener' : undefined}
+                            >
+                              <RichText.Content tagName="span" value={btnText} />
+                              <i className="es-icon-chevron-right"></i>
+                            </a>
+                          )}
                     </div>
                   </div>
                 </div>
