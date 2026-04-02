@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/job-content-block",
+  "version": "0.1.0",
+  "title": "Job Content Block",
+  "category": "widgets",
+  "icon": "editor-ul",
+  "description": "Article avec titre et contenu riche (texte, liste…).",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "sectionHeading": {
+      "type": "string",
+      "default": "titre du bloc"
+    },
+    "section1Body": {
+      "type": "string",
+      "default": "contenu du bloc"
+    }
+  },
+  "textdomain": "job-content-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
