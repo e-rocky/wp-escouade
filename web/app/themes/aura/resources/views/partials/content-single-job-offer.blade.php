@@ -86,7 +86,10 @@
                       <li><span class="attribute" style="--bg:#9B91B4">{{ implode(', ', wp_list_pluck($terms_workplace, 'name')) }}</span></li>
                     </span>
                     @endif
+                    @php($urgent = get_post_meta(get_the_ID(), 'urgent', true))
+                    @if($urgent)
                     <li><span class="attribute" style="--bg:#B97591">Urgent</span></li>
+                    @endif
                   </ul>
                   <div class="grid grid-cols-[24px_1fr] gap-[10px] [&>svg]:size-[24px]">
 
@@ -157,7 +160,10 @@
                   <li>{{ $term->name }}</li>
                   @endforeach
                 </ul>
-                <p>(Des connaissances en CI/CD et bonnes pratiques DevOps sont un plus)</p>
+                @php($annotation = get_post_meta(get_the_ID(), 'annotation', true))
+                @if($annotation)
+                <p>{{ $annotation }}</p>
+                @endif
               </div>
             </article>
             @endif

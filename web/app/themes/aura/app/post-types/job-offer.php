@@ -127,3 +127,53 @@ function aura_job_offer_bulk_updated_messages($bulk_messages, $bulk_counts)
 }
 
 add_filter('bulk_post_updated_messages', 'aura_job_offer_bulk_updated_messages', 10, 2);
+
+
+
+// Ajouter la meta box
+add_action('add_meta_boxes', function () {
+    add_meta_box(
+        'job_offer_options',            // ID unique
+        'Options supplémentaires',      // Titre affiché
+        'job_offer_options_html',       // Callback qui affiche le contenu
+        'job-offer',                    // Post type
+        'side',                         // Position : 'normal', 'side', 'advanced'
+        'high'                          // Priorité : 'high', 'default', 'low'
+    );
+});
+
+// Contenu de la meta box Options
+function job_offer_options_html($post)
+{
+    wp_nonce_field('job_offer_options_save', 'job_offer_options_nonce');
+    $urgent     = get_post_meta($post->ID, 'urgent', true);
+    $annotation = get_post_meta($post->ID, 'annotation', true);
+?>
+    <label>
+        <input type="checkbox" name="urgent" value="1" <?php checked($urgent, '1'); ?> />
+        Offre urgente
+    </label>
+    <br><br>
+    <label>
+        Annotation<br>
+        <textarea name="annotation" rows="5" style="width:100%"><?php echo esc_textarea($annotation); ?></textarea>
+    </label>
+<?php
+}
+
+
+
+// Sauvegarder la valeur
+add_action('save_post_job-offer', function ($post_id) {
+    if (
+        ! isset($_POST['job_offer_options_nonce']) ||
+        ! wp_verify_nonce($_POST['job_offer_options_nonce'], 'job_offer_options_save') ||
+        defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ||
+        ! current_user_can('edit_post', $post_id)
+    ) {
+        return;
+    }
+
+    update_post_meta($post_id, 'urgent', isset($_POST['urgent']) ? '1' : '0');
+    update_post_meta($post_id, 'annotation', sanitize_textarea_field($_POST['annotation'] ?? ''));
+});
