@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/job-content-card",
+  "version": "0.1.0",
+  "title": "Job Content Card",
+  "category": "widgets",
+  "icon": "editor-ul",
+  "description": "Article avec titre et contenu riche (texte, liste…).",
+  "parent": ["create-block/job-content-block"],
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "sectionHeading": {
+      "type": "string",
+      "default": "titre du bloc"
+    }
+  },
+  "textdomain": "job-content-card",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
