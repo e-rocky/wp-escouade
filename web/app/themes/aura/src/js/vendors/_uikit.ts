@@ -12,7 +12,12 @@ initializeUkScroll();
 function initializeUkScroll() {
   const scrollElements = document.querySelectorAll('a[href^="#"]');
   scrollElements.forEach((element) => {
-    UIkit.scroll(element);
+    element.addEventListener('click', () => {
+      const offset: number =
+        document.querySelector<HTMLElement>('.main-nav-block__body.uk-navbar-container')
+          ?.offsetHeight ?? 0;
+      UIkit.scroll(element, { offset });
+    });
   });
 }
 
