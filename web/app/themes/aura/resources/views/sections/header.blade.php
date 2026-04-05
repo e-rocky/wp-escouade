@@ -9,8 +9,8 @@
             <div class="uk-navbar-left">
 
               <div class="uk-navbar-item">
-                <a href="{{ home_url('/') }}" class="uk-logo logo" aria-label="Escouade">
-                  <img src="@asset('resources/images/design/logo--icon-square-text.svg')" alt="Escouade"></a>
+                <a href="{{ home_url('/') }}" class="uk-logo logo" aria-label="{{ get_bloginfo('name') }}" title="{{ get_bloginfo('name') }}">
+                  <img src="@asset('resources/images/design/logo--icon-square-text.svg')" alt="{{ get_bloginfo('name') }}"></a>
               </div>
 
               {!! wp_nav_menu([
