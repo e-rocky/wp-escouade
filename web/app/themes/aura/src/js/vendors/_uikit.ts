@@ -1,11 +1,22 @@
-import UIkit from "uikit";
-import Icons from "uikit/dist/js/uikit-icons";
-
+import UIkit from 'uikit';
+import Icons from 'uikit/dist/js/uikit-icons';
 declare global {
   interface Window {
     UIkit: typeof UIkit;
   }
 }
 
-UIkit.use(Icons);
-window.UIkit = UIkit;
+initializeUikit();
+initializeUkScroll();
+
+function initializeUkScroll() {
+  const scrollElements = document.querySelectorAll('a[href^="#"]');
+  scrollElements.forEach((element) => {
+    UIkit.scroll(element);
+  });
+}
+
+function initializeUikit() {
+  UIkit.use(Icons);
+  window.UIkit = UIkit;
+}
