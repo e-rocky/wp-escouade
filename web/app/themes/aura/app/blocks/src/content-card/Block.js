@@ -187,9 +187,9 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
                   <RichText.Content tagName="div" value={bodyText} />
                 )}
               </div>
-              <div className="actions">
-                {editmode
-                  ? btnUrl && (
+              {editmode
+                ? btnUrl && (
+                    <div className="actions">
                       <div className={`btn c--4 ${currentCardStyle.buttonClass} btn-shadow-sm`}>
                         <RichText
                           onChange={(val) => setAttributes({ button: { ...button, text: val } })}
@@ -199,8 +199,10 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
                         />
                         <i className="es-icon-chevron-right"></i>
                       </div>
-                    )
-                  : btnUrl && (
+                    </div>
+                  )
+                : btnUrl && (
+                    <div className="actions">
                       <a
                         className={`btn c--4 ${currentCardStyle.buttonClass} btn-shadow-sm`}
                         href={btnUrl}
@@ -211,8 +213,8 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
                         <RichText.Content tagName="span" value={btnText} />
                         <i className="es-icon-chevron-right"></i>
                       </a>
-                    )}
-              </div>
+                    </div>
+                  )}
             </div>
           </div>
         </div>

@@ -132,9 +132,10 @@ const Block = ({
                         <RichText.Content tagName="p" value={bodyText} />
                       )}
                     </div>
-                    <div className="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
-                      {editmode
-                        ? btnUrl && (
+
+                    {editmode
+                      ? btnUrl && (
+                          <div className="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
                             <div className="btn btn--lg c--4 bgc--5 btn-shadow-sm">
                               <RichText
                                 value={btnText}
@@ -146,8 +147,10 @@ const Block = ({
                               />
                               <i className="es-icon-chevron-right"></i>
                             </div>
-                          )
-                        : btnUrl && (
+                          </div>
+                        )
+                      : btnUrl && (
+                          <div className="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
                             <a
                               className="btn btn--lg c--4 bgc--5 btn-shadow-sm"
                               href={btnUrl}
@@ -158,8 +161,8 @@ const Block = ({
                               <RichText.Content tagName="span" value={btnText} />
                               <i className="es-icon-chevron-right"></i>
                             </a>
-                          )}
-                    </div>
+                          </div>
+                        )}
                   </div>
                 </div>
               </div>

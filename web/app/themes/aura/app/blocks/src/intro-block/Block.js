@@ -177,33 +177,33 @@ const Block = ({
                         <RichText.Content tagName="p" value={bodyText} />
                       )}
                     </div>
-                    <div className="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
-                      {editmode
-                        ? primaryUrl && (
-                            <div className="btn c--4 bgc--5-2 btn-shadow-sm w-a">
-                              <RichText
-                                value={primaryText}
-                                onChange={(val) =>
-                                  setAttributes({ primaryButton: { ...primaryButton, text: val } })
-                                }
-                                allowedFormats={[]}
-                                placeholder="Bouton principal…"
-                              />
-                            </div>
-                          )
-                        : primaryUrl && (
-                            <a
-                              className="btn c--4 bgc--5-2 btn-shadow-sm w-a"
-                              href={primaryUrl}
-                              title={primaryText}
-                              target={primaryNewTab ? '_blank' : undefined}
-                              rel={primaryNewTab ? 'noreferrer noopener' : undefined}
-                            >
-                              <RichText.Content tagName="span" value={primaryText} />
-                            </a>
-                          )}
-                      {editmode
-                        ? secondaryUrl && (
+                    {editmode
+                      ? primaryUrl && (
+                          <div className="btn c--4 bgc--5-2 btn-shadow-sm w-a">
+                            <RichText
+                              value={primaryText}
+                              onChange={(val) =>
+                                setAttributes({ primaryButton: { ...primaryButton, text: val } })
+                              }
+                              allowedFormats={[]}
+                              placeholder="Bouton principal…"
+                            />
+                          </div>
+                        )
+                      : primaryUrl && (
+                          <a
+                            className="btn c--4 bgc--5-2 btn-shadow-sm w-a"
+                            href={primaryUrl}
+                            title={primaryText}
+                            target={primaryNewTab ? '_blank' : undefined}
+                            rel={primaryNewTab ? 'noreferrer noopener' : undefined}
+                          >
+                            <RichText.Content tagName="span" value={primaryText} />
+                          </a>
+                        )}
+                    {editmode
+                      ? secondaryUrl && (
+                          <div className="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
                             <div className="btn c--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm w-a">
                               <RichText
                                 value={secondaryText}
@@ -216,8 +216,10 @@ const Block = ({
                                 placeholder="Bouton secondaire…"
                               />
                             </div>
-                          )
-                        : secondaryUrl && (
+                          </div>
+                        )
+                      : secondaryUrl && (
+                          <div className="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
                             <a
                               className="btn c--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm w-a"
                               href={secondaryUrl}
@@ -227,8 +229,8 @@ const Block = ({
                             >
                               <RichText.Content tagName="span" value={secondaryText} />
                             </a>
-                          )}
-                    </div>
+                          </div>
+                        )}
                   </div>
                 </div>
               </div>
