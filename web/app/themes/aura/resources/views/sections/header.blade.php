@@ -3,7 +3,7 @@
     <div class="main-nav-block__content py-0">
 
       <nav class="main-nav-block__body uk-navbar-container">
-        <div class="uk-container hidden xl:block">
+        <div class="uk-container">
           <div data-uk-navbar>
 
             <div class="uk-navbar-left">

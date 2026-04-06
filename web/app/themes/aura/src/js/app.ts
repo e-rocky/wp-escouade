@@ -4,5 +4,6 @@ import './vendors/_autosize';
 import './vendors/_intl-tel-input';
 import './vendors/_uppy';
 import './vendors/_side-menu';
+import './vendors/_mmenujs';
 
 import './_blocks';
