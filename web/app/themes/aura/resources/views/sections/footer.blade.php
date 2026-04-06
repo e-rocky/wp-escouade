@@ -1,6 +1,6 @@
 <footer id="footer" class="bgi bgi--5">
   <div class="block footer-menu-block">
-    <div class="footer-menu-block__content uk-container pt-[40px]  pb-[40px]">
+    {{-- <div class="footer-menu-block__content uk-container pt-[40px]  pb-[40px]">
       <div class="footer-menu-block__body flex flex-col md:flex-row gap-[50px] md:items-center ">
 
         <div class="card minimap-card md:self-start z-1 md:mt-[-80px] md:max-w-[291px]">
@@ -96,35 +96,21 @@
 
       <div class="footer-menu-block__footer"></div><!-- .footer-menu-block__footer -->
 
-    </div><!-- .footer-menu-block__content -->
+    </div><!-- .footer-menu-block__content --> --}}
   </div><!-- .footer-menu-block -->
 
   <div class="block copyright-social-block">
     <div class="copyright-social-block__content py-0 uk-container">
       <div class="copyright-social-block__body flex flex-col-reverse md:flex-row gap-[32px] justify-between items-center py-[46px] text-[16px]">
-        <p class="copyright c--4 mb-0 text-center md:text-left">© 2025 Escouade. Tous droits réservés.</p>
-        <ul class="social-links flex gap-[20px] my-0">
-          <li>
-            <a href="#" title="Facebook" class="social-link">
-              <i class="es-icon-social-x"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#" title="LinkedIn" class="social-link">
-              <i class="es-icon-social-linkedin"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#" title="Facebook" class="social-link">
-              <i class="es-icon-social-facebook"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#" title="Github" class="social-link">
-              <i class="es-icon-social-github"></i>
-            </a>
-          </li>
-        </ul><!-- .social-links -->
+        <p class="copyright c--4 mb-0 text-center md:text-left">© {{ date('Y') }} Escouade. Tous droits réservés.</p>
+
+        {!! wp_nav_menu([
+        'theme_location' => 'footer_social_navigation',
+        'menu_class' => 'social-links flex gap-[20px] my-0',
+        'container' => false,
+        ]) !!}
+
+
       </div><!-- .copyright-social-block__body -->
     </div><!-- .copyright-social-block__content -->
   </div><!-- .copyright-social-block -->

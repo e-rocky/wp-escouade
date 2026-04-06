@@ -92,6 +92,10 @@ add_action('after_setup_theme', function () {
 
 
     register_nav_menus([
+        'footer_social_navigation' => __('Footer Social Navigation', 'sage'),
+    ]);
+
+    register_nav_menus([
         'footer_navigation' => __('Footer Navigation', 'sage'),
     ]);
 
