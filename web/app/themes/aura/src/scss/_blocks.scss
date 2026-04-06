@@ -2,7 +2,7 @@
 @use "mixins" as *;
 @use "vars" as *;
 
-.slide-menu {
+/* .slide-menu {
   $selector: &;
   box-shadow: 0 30.944px 61.888px 0 rgba(37, 49, 76, 0.08);
   &#{&} {
@@ -46,7 +46,7 @@
       }
     }
   }
-}
+} */
 
 .block-offcanvas__menu {
   &.block {
@@ -1885,10 +1885,35 @@
           padding-bottom: 20px;
         }
         .uk-navbar-nav {
-          flex: 1;
-          justify-content: space-around;
+          justify-content: center;
           & > li > a {
             min-height: 0;
+            padding-bottom: 12px;
+            padding-top: 12px;
+            & + .uk-drop {
+              box-shadow:
+                0 20px 40px 0 rgba(25, 25, 51, 0.05),
+                0 25px 50px 0 rgba(94, 84, 255, 0.05);
+              border-radius: 8px;
+              ul {
+                display: flex;
+                gap: 10px;
+                flex-direction: column;
+                li {
+                  a {
+                    color: inherit;
+                    text-decoration: none;
+                    display: block;
+                    padding: 8px 16px;
+                    border-radius: 3px;
+                    &:hover {
+                      background-color: var(--color-2);
+                      color: white;
+                    }
+                  }
+                }
+              }
+            }
           }
         }
         .uk-navbar-item {
@@ -1899,6 +1924,10 @@
           .btn {
             position: relative;
             overflow: hidden;
+            display: none;
+            @include media-breakpoint-up(md) {
+              display: block;
+            }
             a {
               &:before {
                 position: absolute;
@@ -1914,8 +1943,8 @@
           }
         }
         .uk-navbar-left {
-          justify-content: space-between;
           flex: 1;
+          justify-content: space-between;
           .item-logo {
             .logo {
               img {

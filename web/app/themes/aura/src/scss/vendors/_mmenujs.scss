@@ -1,0 +1,24 @@
+@import "mmenu-light/src/mmenu-light.scss";
+//@import "mmenu-light/dist/mmenu-light.css";
+
+.mm {
+  &-listitem-default {
+    padding: 0;
+  }
+}
+
+#menu-clone {
+  .btn {
+    margin: 20px;
+    border-radius: 50px;
+    overflow: hidden;
+    width: auto;
+    &:before,
+    &:after {
+      display: none;
+    }
+    a {
+      color: white;
+    }
+  }
+}
