@@ -57,6 +57,13 @@ add_filter('theme_file_path', function ($path, $file) {
         : $path;
 }, 10, 2);
 
+add_filter('wp_nav_menu_items', function ($items, $args) {
+    if ($args->theme_location === 'cta_navigation') {
+        $items .= '<li class="lg:hidden"><a class="p-[10px]" id="menu-toggle" class="order-4" href="#menu" data-uk-icon="icon: menu; ratio:1.2"></a></li>';
+    }
+    return $items;
+}, 10, 2);
+
 /**
  * Register the initial theme setup.
  *
