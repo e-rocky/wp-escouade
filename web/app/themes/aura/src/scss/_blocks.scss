@@ -1143,6 +1143,11 @@
           text-decoration: none;
           font-size: 28px;
           display: block;
+          margin-left: 10px;
+          margin-right: 10px;
+          &[href="#"] {
+            display: none;
+          }
           i {
             display: block;
           }

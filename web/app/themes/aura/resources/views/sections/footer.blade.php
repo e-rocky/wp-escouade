@@ -106,7 +106,7 @@
 
         {!! wp_nav_menu([
         'theme_location' => 'footer_social_navigation',
-        'menu_class' => 'social-links flex gap-[20px] my-0',
+        'menu_class' => 'social-links flex my-0',
         'container' => false,
         ]) !!}
 
