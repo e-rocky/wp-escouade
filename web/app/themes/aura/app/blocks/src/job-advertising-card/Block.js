@@ -3,6 +3,7 @@ import {
   InspectorControls,
   MediaUpload,
   MediaUploadCheck,
+  URLInput,
 } from '@wordpress/block-editor';
 import { PanelBody, Button } from '@wordpress/components';
 import { Img } from '../compoonents/Img';
@@ -13,13 +14,20 @@ const Block = ({
   setAttributes = () => {},
   blockProps = {},
 }) => {
-  const { headingText, bodyText, image = {} } = attributes;
+  const { headingText, bodyText, image = {}, url = '' } = attributes;
   const { url: imgUrl = '', alt: imgAlt = '' } = image;
 
   return (
     <React.Fragment>
       {editmode && (
         <InspectorControls>
+          <PanelBody title="Lien" initialOpen={true}>
+            <URLInput
+              label="URL de la carte"
+              value={url}
+              onChange={(val) => setAttributes({ url: val })}
+            />
+          </PanelBody>
           <PanelBody title="Image" initialOpen={true}>
             <MediaUpload
               onSelect={(media) =>
@@ -51,8 +59,8 @@ const Block = ({
         {...blockProps}
         className={`slide card job-advertising-card ${blockProps.className ?? ''}`}
       >
-        <div className="job-advertising-card__content c--4">
-          <div className="card-header">
+        <a href={url || '#'} className="job-advertising-card__content c--4">
+          <div className="job-advertising-card__header">
             <figure className="img-container">
               <Img src="resources/images/design/logo--text.svg" alt="Escouade" />
             </figure>
@@ -110,7 +118,7 @@ const Block = ({
               )}
             </figure>
           </div>
-        </div>
+        </a>
       </div>
     </React.Fragment>
   );
