@@ -8,6 +8,69 @@ import {
 import { PanelBody, Button } from '@wordpress/components';
 import { Img } from '../compoonents/Img';
 
+const Content = ({ editmode, headingText, bodyText, imgUrl, imgAlt, setAttributes, image }) => (
+  <>
+    <div className="job-advertising-card__header">
+      <figure className="img-container">
+        <Img src="resources/images/design/logo--text.svg" alt="Escouade" />
+      </figure>
+    </div>
+    <div className="job-advertising-card__body">
+      <strong className="title--overline">
+        {editmode ? (
+          <RichText
+            tagName="span"
+            value={headingText}
+            onChange={(val) => setAttributes({ headingText: val })}
+            allowedFormats={[]}
+            placeholder="Label…"
+          />
+        ) : (
+          <RichText.Content tagName="span" value={headingText} />
+        )}
+      </strong>
+      <h3 className="title color-inherit">
+        {editmode ? (
+          <RichText
+            tagName="span"
+            value={bodyText}
+            onChange={(val) => setAttributes({ bodyText: val })}
+            allowedFormats={['core/bold', 'core/italic']}
+            placeholder="Titre du poste…"
+          />
+        ) : (
+          <RichText.Content tagName="span" value={bodyText} />
+        )}
+      </h3>
+      <figure className="img-container">
+        {editmode ? (
+          <MediaUploadCheck>
+            <MediaUpload
+              onSelect={(media) =>
+                setAttributes({
+                  image: { url: media.url, alt: media.alt, id: media.id },
+                })
+              }
+              allowedTypes={['image']}
+              value={image.id}
+              render={({ open }) => (
+                <>
+                  {imgUrl && <img src={imgUrl} alt={imgAlt} />}
+                  <Button onClick={open} className="btn-img">
+                    Choisir une image
+                  </Button>
+                </>
+              )}
+            />
+          </MediaUploadCheck>
+        ) : (
+          <img src={imgUrl} alt={imgAlt} />
+        )}
+      </figure>
+    </div>
+  </>
+);
+
 const Block = ({
   editmode = false,
   attributes = {},
@@ -59,69 +122,33 @@ const Block = ({
         {...blockProps}
         className={`slide card job-advertising-card ${blockProps.className ?? ''}`}
       >
-        <a href={url || '#'} className="job-advertising-card__content c--4">
-          <div className="job-advertising-card__header">
-            <figure className="img-container">
-              <Img src="resources/images/design/logo--text.svg" alt="Escouade" />
-            </figure>
+        {editmode ? (
+          <div className="job-advertising-card__content c--4">
+            <Content
+              editmode={editmode}
+              headingText={headingText}
+              bodyText={bodyText}
+              imgUrl={imgUrl}
+              imgAlt={imgAlt}
+              setAttributes={setAttributes}
+              image={image}
+            />
           </div>
-          <div className="job-advertising-card__body">
-            <strong className="title--overline">
-              {editmode ? (
-                <RichText
-                  tagName="span"
-                  value={headingText}
-                  onChange={(val) => setAttributes({ headingText: val })}
-                  allowedFormats={[]}
-                  placeholder="Label…"
-                />
-              ) : (
-                <RichText.Content tagName="span" value={headingText} />
-              )}
-            </strong>
-            <h3 className="title color-inherit">
-              {editmode ? (
-                <RichText
-                  tagName="span"
-                  value={bodyText}
-                  onChange={(val) => setAttributes({ bodyText: val })}
-                  allowedFormats={['core/bold', 'core/italic']}
-                  placeholder="Titre du poste…"
-                />
-              ) : (
-                <RichText.Content tagName="span" value={bodyText} />
-              )}
-            </h3>
-            <figure className="img-container">
-              {editmode ? (
-                <MediaUploadCheck>
-                  <MediaUpload
-                    onSelect={(media) =>
-                      setAttributes({
-                        image: { url: media.url, alt: media.alt, id: media.id },
-                      })
-                    }
-                    allowedTypes={['image']}
-                    value={image.id}
-                    render={({ open }) => (
-                      <>
-                        {imgUrl && <img src={imgUrl} alt={imgAlt} />}
-                        <Button onClick={open} className="btn-img">
-                          Choisir une image
-                        </Button>
-                      </>
-                    )}
-                  />
-                </MediaUploadCheck>
-              ) : (
-                <img src={imgUrl} alt={imgAlt} />
-              )}
-            </figure>
-          </div>
-        </a>
+        ) : (
+          <a href={url || '#'} className="job-advertising-card__content c--4">
+            <Content
+              editmode={editmode}
+              headingText={headingText}
+              bodyText={bodyText}
+              imgUrl={imgUrl}
+              imgAlt={imgAlt}
+              setAttributes={setAttributes}
+              image={image}
+            />
+          </a>
+        )}
       </div>
     </React.Fragment>
   );
 };
-
 export { Block };
