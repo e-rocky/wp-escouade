@@ -177,60 +177,62 @@ const Block = ({
                         <RichText.Content tagName="p" value={bodyText} />
                       )}
                     </div>
-                    {editmode
-                      ? primaryUrl && (
-                          <div className="btn c--4 bgc--5-2 btn-shadow-sm w-a">
-                            <RichText
-                              value={primaryText}
-                              onChange={(val) =>
-                                setAttributes({ primaryButton: { ...primaryButton, text: val } })
-                              }
-                              allowedFormats={[]}
-                              placeholder="Bouton principal…"
-                            />
-                          </div>
-                        )
-                      : primaryUrl && (
-                          <a
-                            className="btn c--4 bgc--5-2 btn-shadow-sm w-a"
-                            href={primaryUrl}
-                            title={primaryText}
-                            target={primaryNewTab ? '_blank' : undefined}
-                            rel={primaryNewTab ? 'noreferrer noopener' : undefined}
-                          >
-                            <RichText.Content tagName="span" value={primaryText} />
-                          </a>
-                        )}
-                    {editmode
-                      ? secondaryUrl && (
-                          <div className="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
-                            <div className="btn c--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm w-a">
-                              <RichText
-                                value={secondaryText}
-                                onChange={(val) =>
-                                  setAttributes({
-                                    secondaryButton: { ...secondaryButton, text: val },
-                                  })
-                                }
-                                allowedFormats={[]}
-                                placeholder="Bouton secondaire…"
-                              />
-                            </div>
-                          </div>
-                        )
-                      : secondaryUrl && (
-                          <div className="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
-                            <a
-                              className="btn c--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm w-a"
-                              href={secondaryUrl}
-                              title={secondaryText}
-                              target={secondaryNewTab ? '_blank' : undefined}
-                              rel={secondaryNewTab ? 'noreferrer noopener' : undefined}
-                            >
-                              <RichText.Content tagName="span" value={secondaryText} />
-                            </a>
-                          </div>
-                        )}
+                    {primaryUrl || secondaryUrl ? (
+                      <div className="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
+                        {editmode
+                          ? primaryUrl && (
+                              <div className="btn c--4 bgc--5-2 btn-shadow-sm w-a">
+                                <RichText
+                                  value={primaryText}
+                                  onChange={(val) =>
+                                    setAttributes({
+                                      primaryButton: { ...primaryButton, text: val },
+                                    })
+                                  }
+                                  allowedFormats={[]}
+                                  placeholder="Bouton principal…"
+                                />
+                              </div>
+                            )
+                          : primaryUrl && (
+                              <a
+                                className="btn c--4 bgc--5-2 btn-shadow-sm w-a"
+                                href={primaryUrl}
+                                title={primaryText}
+                                target={primaryNewTab ? '_blank' : undefined}
+                                rel={primaryNewTab ? 'noreferrer noopener' : undefined}
+                              >
+                                <RichText.Content tagName="span" value={primaryText} />
+                              </a>
+                            )}
+                        {editmode
+                          ? secondaryUrl && (
+                              <div className="btn c--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm w-a">
+                                <RichText
+                                  value={secondaryText}
+                                  onChange={(val) =>
+                                    setAttributes({
+                                      secondaryButton: { ...secondaryButton, text: val },
+                                    })
+                                  }
+                                  allowedFormats={[]}
+                                  placeholder="Bouton secondaire…"
+                                />
+                              </div>
+                            )
+                          : secondaryUrl && (
+                              <a
+                                className="btn c--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm w-a"
+                                href={secondaryUrl}
+                                title={secondaryText}
+                                target={secondaryNewTab ? '_blank' : undefined}
+                                rel={secondaryNewTab ? 'noreferrer noopener' : undefined}
+                              >
+                                <RichText.Content tagName="span" value={secondaryText} />
+                              </a>
+                            )}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               </div>
