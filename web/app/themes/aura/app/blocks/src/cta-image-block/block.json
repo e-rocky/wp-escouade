@@ -17,10 +17,6 @@
       "type": "string",
       "default": "Osez faire le premier pas"
     },
-    "bodyText": {
-      "type": "string",
-      "default": "Vous avez du potentiel, même sans offre publiée. Présentez votre profil et créez votre opportunité."
-    },
     "image": {
       "type": "object",
       "default": {
@@ -28,6 +24,10 @@
         "alt": "",
         "id": null
       }
+    },
+    "background": {
+      "type": "string",
+      "default": "bgi--6"
     },
     "button": {
       "type": "object",

@@ -8,12 +8,13 @@ import {
 import { PanelBody, Button, ToggleControl, SelectControl } from '@wordpress/components';
 
 const BG_OPTIONS = [
+  { label: 'Aucun', value: '' },
   { label: 'Background 1', value: 'bgi--1' },
   { label: 'Background 2', value: 'bgi--2' },
   { label: 'Background 3', value: 'bgi--3' },
   { label: 'Background 4', value: 'bgi--4' },
   { label: 'Background 5', value: 'bgi--5' },
-  { label: 'Blanc', value: 'bgc--white' },
+  { label: 'Background 6', value: 'bgi--6' },
 ];
 
 const Block = ({

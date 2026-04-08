@@ -1,3 +1,6 @@
 .wp-block-create-block-cta-image-block {
-    border: 1px dotted darkgreen;
+  border: 1px dotted darkgreen;
+  .cta-card__background {
+    background-color: transparent;
+  }
 }

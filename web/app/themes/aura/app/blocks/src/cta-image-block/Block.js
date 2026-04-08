@@ -4,8 +4,9 @@ import {
   MediaUpload,
   MediaUploadCheck,
   URLInput,
+  InnerBlocks,
 } from '@wordpress/block-editor';
-import { PanelBody, Button, ToggleControl } from '@wordpress/components';
+import { PanelBody, Button, ToggleControl, SelectControl } from '@wordpress/components';
 import { Img } from '../compoonents/Img';
 
 const Block = ({
@@ -14,9 +15,28 @@ const Block = ({
   setAttributes = () => {},
   blockProps = {},
 }) => {
-  const { headingText, bodyText, image = {}, button = {} } = attributes;
+  const { headingText, image = {}, button = {}, background } = attributes;
   const { url: imgUrl = '', alt: imgAlt = '', id: imgId = null } = image;
   const { text: btnText = '', url: btnUrl = '#', openInNewTab = false } = button;
+  const ALLOWED_BLOCKS = ['core/paragraph'];
+  const DEFAULT_TEMPLATE = [
+    [
+      'core/paragraph',
+      {
+        content:
+          'Vous avez du potentiel, même sans offre publiée. Présentez votre profil et créez votre opportunité.',
+      },
+    ],
+  ];
+  const BG_OPTIONS = [
+    { label: 'Aucun', value: '' },
+    { label: 'Background 1', value: 'bgi--1' },
+    { label: 'Background 2', value: 'bgi--2' },
+    { label: 'Background 3', value: 'bgi--3' },
+    { label: 'Background 4', value: 'bgi--4' },
+    { label: 'Background 5', value: 'bgi--5' },
+    { label: 'Background 6', value: 'bgi--6' },
+  ];
 
   return (
     <React.Fragment>
@@ -47,6 +67,14 @@ const Block = ({
               />
             </MediaUploadCheck>
           </PanelBody>
+          <PanelBody title="Background" initialOpen={true}>
+            <SelectControl
+              label="Fond"
+              value={background}
+              options={BG_OPTIONS}
+              onChange={(val) => setAttributes({ background: val })}
+            />
+          </PanelBody>
           <PanelBody title="Bouton" initialOpen={true}>
             <URLInput
               label="URL du bouton"
@@ -68,8 +96,8 @@ const Block = ({
         <div className="cta-image-block__content uk-container">
           <div className="cta-image-block__body">
             <div className="card cta-card">
-              <div className="cta-card__background scale-x-[-1]">
-                <Img src="resources/images/design/bg-6.png" />
+              <div className={`cta-card__background scale-x-[-1] bgi ${background}`}>
+                <Img className="hidden" src="resources/images/design/bg-6.png" />
               </div>
 
               <div className="cta-card__content flex flex-col-reverse md:flex-row-reverse">
@@ -85,14 +113,7 @@ const Block = ({
                           }
                           allowedTypes={['image']}
                           value={imgId}
-                          render={({ open }) => (
-                            <>
-                              {imgUrl && <img src={imgUrl} alt={imgAlt} />}
-                              <Button onClick={open} className="btn-img">
-                                Choisir une image
-                              </Button>
-                            </>
-                          )}
+                          render={({ open }) => <>{imgUrl && <img src={imgUrl} alt={imgAlt} />}</>}
                         />
                       </MediaUploadCheck>
                     ) : (
@@ -121,15 +142,13 @@ const Block = ({
                     </h2>
                     <div className="text">
                       {editmode ? (
-                        <RichText
-                          tagName="p"
-                          value={bodyText}
-                          onChange={(val) => setAttributes({ bodyText: val })}
-                          allowedFormats={['core/bold', 'core/italic']}
-                          placeholder="Texte…"
+                        <InnerBlocks
+                          allowedBlocks={ALLOWED_BLOCKS}
+                          template={DEFAULT_TEMPLATE}
+                          templateLock={false}
                         />
                       ) : (
-                        <RichText.Content tagName="p" value={bodyText} />
+                        <InnerBlocks.Content />
                       )}
                     </div>
 

@@ -2,13 +2,13 @@ import { RichText, InnerBlocks, InspectorControls, URLInput } from '@wordpress/b
 import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
 
 const BG_OPTIONS = [
-  { label: 'Background Blanc', value: '' },
-  { label: 'neutre', value: 'bgc--white' },
+  { label: 'Aucun', value: '' },
   { label: 'Background 1', value: 'bgi--1' },
   { label: 'Background 2', value: 'bgi--2' },
   { label: 'Background 3', value: 'bgi--3' },
   { label: 'Background 4', value: 'bgi--4' },
   { label: 'Background 5', value: 'bgi--5' },
+  { label: 'Background 6', value: 'bgi--6' },
 ];
 
 const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) => {

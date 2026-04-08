@@ -8,6 +8,7 @@ const BG_OPTIONS = [
   { label: 'Background 3', value: 'bgi--3' },
   { label: 'Background 4', value: 'bgi--4' },
   { label: 'Background 5', value: 'bgi--5' },
+  { label: 'Background 6', value: 'bgi--6' },
 ];
 
 const MAX_ITEMS = 4;
@@ -49,8 +50,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, in
                     onChange={(val) => setAttributes({ headingText: val })}
                     allowedFormats={['core/bold', 'core/italic']}
                     placeholder="Titre…"
-                  />
-                  {' '}
+                  />{' '}
                   <small>
                     <RichText
                       tagName="span"
@@ -63,8 +63,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, in
                 </>
               ) : (
                 <>
-                  <RichText.Content tagName="span" value={headingText} />
-                  {' '}
+                  <RichText.Content tagName="span" value={headingText} />{' '}
                   <small>
                     <RichText.Content tagName="span" value={headingSmall} />
                   </small>
@@ -75,12 +74,17 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, in
           <div className="numbers-block__body">
             <div className="card numbers-card">
               <div className="numbers-card__content">
-                <div class="numbers-card__body grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full justify-between" data-uk-grid="margin: spacer;">
+                <div
+                  className="numbers-card__body grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full justify-between"
+                  data-uk-grid="margin: spacer;"
+                >
                   {editmode ? (
                     <InnerBlocks
                       allowedBlocks={ALLOWED_BLOCKS}
                       template={BLOCKS_TEMPLATE}
-                      renderAppender={innerCount >= MAX_ITEMS ? false : InnerBlocks.ButtonBlockAppender}
+                      renderAppender={
+                        innerCount >= MAX_ITEMS ? false : InnerBlocks.ButtonBlockAppender
+                      }
                     />
                   ) : (
                     <InnerBlocks.Content />
