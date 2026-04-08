@@ -7,11 +7,21 @@ const BLOCKS_TEMPLATE = [
 ];
 const ALLOWED_BLOCKS = ['create-block/talent-card'];
 
-const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, innerCount = 0, blockProps = {} }) => {
+const Block = ({
+  editmode = false,
+  attributes = {},
+  setAttributes = () => {},
+  innerCount = 0,
+  blockProps = {},
+}) => {
   const { headingText } = attributes;
 
   return (
-    <div {...blockProps} className={`block bgi bgc--white talents-block ${blockProps.className ?? ''}`}>
+    <div
+      {...blockProps}
+      className={`block bgi bgc--white talents-block ${blockProps.className ?? ''}`}
+      data-uk-slider="autoplay:true; pause-on-hover:true; autoplay-interval:5000;"
+    >
       <div className="talents-block__content uk-container flex flex-col gap-[70px]">
         <div className="talents-block__header">
           {editmode ? (
@@ -31,7 +41,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {}, in
             />
           )}
         </div>
-        <div className="talents-block__body uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@l uk-grid mx-[-16px] uk-slider-items">
+        <div className="talents-block__body uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@l uk-slider-items uk-grid mx-[16px] md:mx-[-16px]">
           {editmode ? (
             <InnerBlocks
               allowedBlocks={ALLOWED_BLOCKS}

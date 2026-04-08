@@ -49,7 +49,10 @@ const Block = ({
           </PanelBody>
         </InspectorControls>
       )}
-      <div {...blockProps} className={`card talent-card px-[16px] ${blockProps.className ?? ''}`}>
+      <div
+        {...blockProps}
+        className={`card talent-card px-[8px] md:px-[16px] ${blockProps.className ?? ''}`}
+      >
         <div className="talent-card__content">
           <div className="talent-card__header c--4 text-center">
             <h3 className="name title title--h3 c--4">

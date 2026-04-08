@@ -562,6 +562,7 @@
     position: relative;
     border-radius: 24px;
     overflow: hidden;
+    user-select: none;
     box-shadow:
       0 20px 40px 0 rgba(25, 25, 51, 0.05),
       0 25px 50px 0 rgba(94, 84, 255, 0.05);

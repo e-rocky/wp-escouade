@@ -23,6 +23,8 @@ export default defineConfig({
     'mb-0',
     'ml-0',
     'mr-0',
+    'mx-4',
+    'lg:mx-4',
   ],
   presets: [presetWind3()],
   rules: [[/^fz\:(\d+(?:\.\d+)?)$/, ([, num]) => ({ 'font-size': `${num}px` })]],
