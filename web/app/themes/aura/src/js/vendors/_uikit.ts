@@ -9,15 +9,29 @@ declare global {
 initializeUikit();
 initializeUkScroll();
 
-function initializeUkScroll() {
-  const scrollElements = document.querySelectorAll('a[href^="#"]');
+export function clickToAnchor(element: HTMLElement) {
+  element.addEventListener('click', () => {
+    console.log('scroll to anchor');
+    const offset: number =
+      document.querySelector<HTMLElement>('.main-nav-block__body.uk-navbar-container')
+        ?.offsetHeight ?? 0;
+    const href = element.getAttribute('href');
+    if (!href || !href.startsWith('#')) {
+      return;
+    }
+    UIkit.scroll(element, { offset }).scrollTo(href);
+  });
+}
+
+function initializeUkScroll(elements?: NodeListOf<HTMLElement>) {
+  let scrollElements: NodeListOf<HTMLElement>;
+  if (!elements) {
+    scrollElements = document.querySelectorAll('a[href^="#"]');
+  } else {
+    scrollElements = elements;
+  }
   scrollElements.forEach((element) => {
-    element.addEventListener('click', () => {
-      const offset: number =
-        document.querySelector<HTMLElement>('.main-nav-block__body.uk-navbar-container')
-          ?.offsetHeight ?? 0;
-      UIkit.scroll(element, { offset });
-    });
+    clickToAnchor(element);
   });
 }
 

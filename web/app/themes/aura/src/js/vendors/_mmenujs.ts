@@ -1,5 +1,5 @@
 import MmenuLight from 'mmenu-light';
-import UIkit from 'uikit';
+import { clickToAnchor } from './_uikit';
 
 // Initialise le menu mobile mmenu-light une fois le DOM chargé
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,20 +27,28 @@ document.addEventListener('DOMContentLoaded', () => {
   $menuElCloneUl.classList.remove('uk-navbar-nav');
 
   // Déplace les <li> de boutons dans la liste du menu mobile
-  $btnLi.forEach((btn: HTMLElement) => {
-    const btnClone = btn.cloneNode(true) as HTMLElement;
-    $menuElCloneUl!.appendChild(btnClone);
-    btnClone.addEventListener('click', (event: Event) => {
-      event.preventDefault();
-      const anchor = btnClone.querySelector('a');
-      if (anchor) {
-        const href = anchor.getAttribute('href');
-        if (href?.startsWith('#')) {
-          UIkit.scroll(anchor).scrollTo(anchor.getAttribute('href')!);
-          drawer.close();
+  $btnLi.forEach(($btn: HTMLElement) => {
+    const $anchor = $btn.querySelector('a');
+    if ($anchor) {
+      const href = $anchor.getAttribute('href');
+      if (href?.startsWith('#')) {
+        // Si l'ancre existe, fait défiler jusqu'à elle, sinon met à jour l'URL sans recharger la page
+        const $target = document.querySelector<HTMLElement>(href);
+        if (!$target) {
+          $anchor.setAttribute('href', window.location.origin + href);
         }
+        // Utilise UIkit pour faire défiler jusqu'à l'ancre ciblée, puis ferme le menu mobile
       }
-    });
+      const $btnLiClone = $btn.cloneNode(true) as HTMLElement;
+      const $btnLiCloneLinks: NodeListOf<HTMLElement> = $btnLiClone.querySelectorAll('a');
+      $btnLiCloneLinks.forEach((link) => {
+        clickToAnchor(link);
+        link.addEventListener('click', () => {
+          drawer.close();
+        });
+      });
+      $menuElCloneUl!.appendChild($btnLiClone);
+    }
   });
 
   const menu = new MmenuLight($menuElClone);
