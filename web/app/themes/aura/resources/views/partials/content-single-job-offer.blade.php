@@ -142,7 +142,9 @@
                   <svg aria-hidden='true'>
                     <use href="{{ asset('resources/images/design/sprite.svg') }}#time"></use>
                   </svg>
-                  <div class="text-left md:text-right">Publié il y a 3 jours</div>
+                  <div class="text-left md:text-right">
+                    Publié il y a {{ human_time_diff(get_the_time('U'), current_time('timestamp')) }}
+                  </div>
                 </div>
               </div>
               <hr class="my-[20px]">
