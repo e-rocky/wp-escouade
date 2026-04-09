@@ -29,7 +29,6 @@ function share() {
           UIkit.notification("<span uk-icon='icon: check'></span> " + success_message, {
             status: 'success',
             pos: 'bottom-center',
-            timeout: 60 * 60 * 1000, // 1 hour
           });
         })
         .catch((err) => {
