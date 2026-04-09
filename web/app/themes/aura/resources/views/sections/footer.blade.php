@@ -116,3 +116,5 @@
   </div><!-- .copyright-social-block -->
 
 </footer><!-- #footer -->
+
+@include ('sections.modals')

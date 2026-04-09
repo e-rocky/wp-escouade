@@ -53,7 +53,7 @@
 @import "uikit/src/scss/components/offcanvas.scss";
 //@import "uikit/src/scss/components/switcher.scss";
 //@import "uikit/src/scss/components/leader.scss";
-//@import "uikit/src/scss/components/notification.scss";
+@import "uikit/src/scss/components/notification.scss";
 //@import "uikit/src/scss/components/tooltip.scss";
 //@import "uikit/src/scss/components/sortable.scss";
 //@import "uikit/src/scss/components/countdown.scss";
@@ -88,8 +88,8 @@
 //@import "uikit/src/scss/components/background.scss";
 //@import "uikit/src/scss/components/align.scss";
 //@import "uikit/src/scss/components/svg.scss";
-//@import "uikit/src/scss/components/utility.scss";
-//@import "uikit/src/scss/components/flex.scss"; // After: Utility
+@import "uikit/src/scss/components/utility.scss";
+@import "uikit/src/scss/components/flex.scss"; // After: Utility
 //@import "uikit/src/scss/components/margin.scss";
 //@import "uikit/src/scss/components/padding.scss";
 //@import "uikit/src/scss/components/position.scss";
@@ -99,3 +99,70 @@
 
 // Need to be loaded last
 //@import "uikit/src/scss/components/print.scss";
+
+.uk-notification {
+  z-index: 999999;
+  .uk-notification-message {
+    position: relative;
+    padding: 15px;
+    background: var(--color-2);
+    color: #666;
+    font-size: 16px;
+    line-height: 1.4;
+    cursor: pointer;
+    border-radius: 6px;
+    &.uk-notification-message-success {
+      color: var(--color-4);
+    }
+    & > div {
+      display: flex;
+      align-items: center;
+      &:before {
+        content: "";
+        display: block;
+        width: 3px;
+        background-color: lightgreen;
+        position: absolute;
+        left: 6px;
+        top: 6px;
+        bottom: 6px;
+      }
+      .uk-icon {
+        display: flex;
+        background-color: #90ee90;
+        margin-left: 5px;
+        border-radius: 50%;
+        margin-right: 10px;
+        color: #fff;
+        padding: 3px;
+        width: 24px;
+        height: 24px;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .uk-close {
+      top: 50%;
+      transform: translateY(-50%);
+      svg {
+        line {
+          stroke: white;
+        }
+      }
+    }
+  }
+}
+
+.uk-lightbox {
+  .uk-lightbox-toolbar {
+    &:hover {
+      .uk-icon {
+        opacity: 0.75;
+        color: white;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

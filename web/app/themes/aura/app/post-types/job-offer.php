@@ -3,12 +3,23 @@
 /**
  * Custom post type
  *
- * @package 1
+ * @package aura
  */
 
 /**
- * Registers the `job_offer` post type.
+ * Exclude the `job_offer` post type's archive from the sitemap.
  */
+add_filter('rank_math/sitemap/post_type_archive_link', function ($url, $post_type) {
+    // Exclure l'archive du CPT 'job-offer' du sitemap
+    if ($post_type === 'job-offer') {
+        return false;
+    }
+    return $url;
+}, 10, 2);
+
+/*
+    * Translate the `job_offer` post type's slug based on the current locale.
+*/
 add_filter('register_post_type_args', 'translate_cpt_slug', 10, 2);
 function translate_cpt_slug($args, $post_type)
 {
@@ -26,6 +37,11 @@ function translate_cpt_slug($args, $post_type)
     return $args;
 }
 
+
+
+/**
+ * Registers the `job_offer` post type.
+ */
 function aura_job_offer_init()
 {
     register_post_type(

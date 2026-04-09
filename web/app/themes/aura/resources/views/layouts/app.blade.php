@@ -15,24 +15,22 @@
 
   @php(wp_body_open())
 
-  <div id="page" class="bgi--1" data-uk-parallax="bgy:0, -100vh, start: 0; end: 100vh">
-    <div id="app">
+  <div id="app" class="bgi--1" data-uk-parallax="bgy:0, -100vh, start: 0; end: 100vh">
 
-      @include('sections.header')
+    @include('sections.header')
 
-      <main id="main" class="main">
-        @yield('content')
-      </main>
+    <main id="main" class="main">
+      @yield('content')
+    </main>
 
-      @hasSection('sidebar')
-      <aside class="sidebar">
-        @yield('sidebar')
-      </aside>
-      @endif
+    @hasSection('sidebar')
+    <aside class="sidebar">
+      @yield('sidebar')
+    </aside>
+    @endif
 
-      @include('sections.footer')
-    </div>
-  </div><!-- #page -->
+    @include('sections.footer')
+  </div><!-- #app -->
 
   @php(do_action('get_footer'))
   @php(wp_footer())

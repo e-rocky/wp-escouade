@@ -26,13 +26,11 @@
     <div class="breadcrumb-block__content uk-container">
       <div class="breadcrumb-block__body">
         <ul>
-          <li><a href="#" title="Accueil"><i class="es-icon-home"></i></a></li>
+          <li><a href="{{ home_url() }}" title="Accueil"><i class="es-icon-home"></i></a></li>
           <li class="separator"><i class="es-icon-caret"></i></li>
-          <li><a href="#" title="Rejoignez-nous">Rejoignez-nous</a></li>
+          <li><a href="{{ get_permalink(get_page_by_path('carriere-it-madagascar')) }}" title="Rejoindre l'Escouade">Rejoindre l'Escouade</a></li>
           <li class="separator"><i class="es-icon-caret"></i></li>
-          <li><a href="#" title="Nos offres d’emploi">Nos offres d’emploi</a></li>
-          <li class="separator"><i class="es-icon-caret"></i></li>
-          <li><a href="#" title="{!! $title !!}">{!! $title !!}</a></li>
+          <li><a href="{{ get_permalink() }}" title="{!! $title !!}">{!! $title !!}</a></li>
         </ul>
       </div><!-- .breadcrumb-block__body -->
     </div><!-- .breadcrumb-block__content -->
@@ -136,7 +134,7 @@
               <div class="flex flex-col-reverse sm:flex-row items-start items-stretch gap-[16px] justify-between">
                 <div class="actions flex items-stretch gap-[20px]">
                   <a class="btn c--4 bgc--2 btn-shadow-sm" href="#" title="Je postule">Je postule<i class="es-icon-chevron-right"></i></a>
-                  <a class="btn c--4 bgc--5 btn-shadow-sm" href="#" title="Partager"><i class="es-icon-share"></i></a>
+                  <button class="btn share-btn c--4 bgc--5 btn-shadow-sm" title="Partager" data-uk-toggle="target: #modal-share"><i class="es-icon-share"></i></button>
                 </div>
                 <div class="flex items-center flex-row sm:flex-row-reverse [&>svg]:size-[24px] gap-[10px]">
                   <svg aria-hidden='true'>
