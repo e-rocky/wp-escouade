@@ -9,6 +9,23 @@
 /**
  * Registers the `job_offer` post type.
  */
+add_filter('register_post_type_args', 'translate_cpt_slug', 10, 2);
+function translate_cpt_slug($args, $post_type)
+{
+    if ($post_type === 'job-offer') {
+        $locale = get_locale();
+        $args['rewrite'] = array(
+            'slug' => match ($locale) {
+                'es_ES' => 'ofertas-de-empleo',
+                'fr_FR' => 'offres-d-emploi',
+                default => 'job-offers',
+            },
+            'with_front' => false,
+        );
+    }
+    return $args;
+}
+
 function aura_job_offer_init()
 {
     register_post_type(
