@@ -31,7 +31,7 @@
     "watch:aura": "npm --prefix web/app/themes/aura run watch",
     "start:aura": "npm --prefix web/app/themes/aura run dev",
     "start:blocks": "npm --prefix web/app/themes/aura/app/blocks run start",
-    "zip:aura": "rm -rf aura.zip && npm run build:all && npm run composer:aura && cd web/app/themes && 7z a -tzip ../../../aura.zip aura -x!aura/node_modules -x!aura/src -x!aura/app/blocks/node_modules -x!.git -x!src -x!scripts -x!*.html && cd ../../..",
+    "zip:aura": "rm -rf aura.zip && npm run build:all && npm run composer:aura && cd web/app/themes && 7z a -tzip ../../../aura.zip aura -x!aura/node_modules -x!aura/resources/images -x!aura/src -x!aura/app/blocks/node_modules -x!.git -x!src -x!scripts -x!*.html && cd ../../..",
     "bump:style:patch": "node web/app/themes/aura/src/js/increment-style-version.js patch",
     "bump:style:minor": "node web/app/themes/aura/src/js/increment-style-version.js minor",
     "bump:style:major": "node web/app/themes/aura/src/js/increment-style-version.js major",

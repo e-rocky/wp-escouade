@@ -14,7 +14,6 @@ if ($block) {
     card.style.setProperty('cursor', 'pointer', 'important');
 
     card.addEventListener('mousedown', function () {
-      console.log('mousedown');
       card.classList.add('dragging');
       card.style.removeProperty('cursor');
       card.style.cursor = 'grabbing';
