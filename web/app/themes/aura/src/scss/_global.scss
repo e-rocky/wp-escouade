@@ -28,9 +28,11 @@ a {
   cursor: pointer;
   @include transition(250ms);
   color: var(--color-2);
+  text-underline-offset: 0.3em;
   &:hover {
     color: var(--color-2);
     text-decoration-color: currentColor;
+    text-underline-offset: 0.2em;
   }
 }
 
@@ -349,6 +351,7 @@ $gradients: ();
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% auto;
+  transition: ease-in-out 2.5s background-position;
   &::before {
     content: "";
     position: fixed;

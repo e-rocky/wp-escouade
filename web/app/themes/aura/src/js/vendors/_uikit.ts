@@ -10,13 +10,16 @@ initializeUikit();
 initializeUkScroll();
 
 export function clickToAnchor(element: HTMLElement) {
-  element.addEventListener('click', () => {
+  element.addEventListener('click', function (e: MouseEvent) {
     console.log('scroll to anchor');
     const offset: number =
       document.querySelector<HTMLElement>('.main-nav-block__body.uk-navbar-container')
         ?.offsetHeight ?? 0;
     const href = element.getAttribute('href');
     if (!href || !href.startsWith('#')) {
+      return;
+    } else if (href === '#') {
+      e.preventDefault();
       return;
     }
     UIkit.scroll(element, { offset }).scrollTo(href);
