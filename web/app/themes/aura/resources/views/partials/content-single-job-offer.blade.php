@@ -133,7 +133,7 @@
               <hr class="my-[20px]">
               <div class="flex flex-col-reverse sm:flex-row items-start items-stretch gap-[16px] justify-between">
                 <div class="actions flex items-stretch gap-[20px]">
-                  <a class="btn c--4 bgc--2 btn-shadow-sm" href="#" title="Je postule">Je postule<i class="es-icon-chevron-right"></i></a>
+                  <button class="btn c--4 bgc--2 btn-shadow-sm" href="#" title="Je postule" data-uk-toggle="target: #modal-job-application-form">Je postule<i class="es-icon-chevron-right"></i></button>
                   <button class="btn share-btn c--4 bgc--5 btn-shadow-sm" title="Partager" data-uk-toggle="target: #modal-share"><i class="es-icon-share"></i></button>
                 </div>
                 <div class="flex items-center flex-row sm:flex-row-reverse [&>svg]:size-[24px] gap-[10px]">
