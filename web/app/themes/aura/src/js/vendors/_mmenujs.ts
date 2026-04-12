@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const $anchor = $btn.querySelector('a');
     if ($anchor) {
       const href = $anchor.getAttribute('href');
-      if (href?.startsWith('#')) {
+      if (href?.startsWith('#') && href !== '#') {
         // Si l'ancre existe, fait défiler jusqu'à elle, sinon met à jour l'URL sans recharger la page
         const $target = document.querySelector<HTMLElement>(href);
         if (!$target) {

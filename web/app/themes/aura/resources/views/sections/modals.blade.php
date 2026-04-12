@@ -93,18 +93,14 @@
           {!! get_the_title() !!}
         </h2>
 
-        <div class="uk-grid-small form" data-uk-grid>
-          {!! do_shortcode('[contact-form-7 id="d3ced4c" title="Contact form 1"]') !!}
-        </div>
-
-
+        @if ($_SERVER['HTTP_HOST'] == 'escouade.loc')
+        {!! do_shortcode('[contact-form-7 id="d3ced4c" html_class="uk-grid-small form uk-grid uk-grid-stack"]') !!}
+        @else
+        {!! do_shortcode('[contact-form-7 id="2394c78" html_class="uk-grid-small form uk-grid uk-grid-stack"]') !!}
+        @endif
 
 
       </div><!-- .job-application-form__body -->
-
-      <div class="job-application-form__footer py-[32px] flex justify-center">
-        <button class="btn btn--lg c--4 bgc--5-2 btn-shadow-sm w-full max-w-[320px]" type="submit">Envoyer</button>
-      </div><!-- .job-application-block__footer -->
 
     </div><!-- .job-application-form__content -->
   </div><!-- .job-application-form -->

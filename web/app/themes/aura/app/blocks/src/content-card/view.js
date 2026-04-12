@@ -21,5 +21,5 @@
  */
 
 /* eslint-disable no-console */
-console.log('Hello World! (from create-block-content-card block)');
+// console.log('Hello World! (from create-block-content-card block)');
 /* eslint-enable no-console */

@@ -8,8 +8,6 @@ function share() {
     const $button = document.querySelectorAll('.share-btn');
     const $copy = $block.querySelector('.copy');
 
-    console.log($button);
-
     $button.forEach((btn) => {
       btn.addEventListener('click', function (e) {
         e.preventDefault();
