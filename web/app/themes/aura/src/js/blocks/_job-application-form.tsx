@@ -11,7 +11,7 @@ if ($block) {
     if (typeof args[0] === 'string' && args[0].includes('/wp-json/contact-form')) {
       const clone = response.clone();
       const data = await clone.json().catch(() => null);
-      if (data.status == 'validation_failed') {
+      if (data.status.includes('failed')) {
         UIkit.notification("<i uk-icon='icon: warning'></i><span>" + data.message + '</span>', {
           status: 'danger',
           pos: 'bottom-center',
