@@ -101,49 +101,70 @@
 //@import "uikit/src/scss/components/print.scss";
 
 .uk-notification {
-  z-index: 999999;
+  z-index: 9999;
   .uk-notification-message {
     position: relative;
-    padding: 15px;
-    background: var(--color-2);
+    padding: 15px 32px 15px 24px;
     color: #666;
     font-size: 16px;
     line-height: 1.4;
     cursor: pointer;
     border-radius: 6px;
+    color: var(--color-4);
     &.uk-notification-message-success {
-      color: var(--color-4);
+      background: var(--color-2);
+      & > div {
+        color: var(--color-1a);
+      }
+    }
+    &.uk-notification-message-danger {
+      background: var(--color-2);
+      & > div {
+        color: red;
+      }
     }
     & > div {
       display: flex;
       align-items: center;
+      gap: 10px;
+      span {
+        color: white;
+      }
       &:before {
         content: "";
         display: block;
-        width: 3px;
-        background-color: lightgreen;
+        width: 2px;
         position: absolute;
         left: 6px;
         top: 6px;
         bottom: 6px;
+        background-color: currentColor;
       }
       .uk-icon {
         display: flex;
-        background-color: #90ee90;
-        margin-left: 5px;
+        background-color: currentColor;
         border-radius: 50%;
-        margin-right: 10px;
-        color: #fff;
-        padding: 3px;
+        padding: 2px;
         width: 24px;
         height: 24px;
+        min-width: 24px;
         align-items: center;
         justify-content: center;
+        margin: 0;
+        svg {
+          filter: invert(1);
+        }
       }
     }
+    &:hover .uk-close {
+      opacity: 1;
+    }
     .uk-close {
-      top: 50%;
-      transform: translateY(-50%);
+      top: 14px;
+      //transform: translateY(-50%);
+      display: block;
+      opacity: 0.5;
+      transition: all ease-in-out 0.3s;
       svg {
         line {
           stroke: white;

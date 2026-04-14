@@ -236,6 +236,42 @@
         .wpcf7-list-item {
           margin-left: 0;
         }
+        .wpcf7-not-valid-tip {
+          border: solid 1px var(--color-5);
+          font-weight: normal;
+          display: block;
+          border-radius: 6px;
+          margin-top: 10px;
+          padding: 10px;
+          font-size: 14px;
+          color: var(--color-5);
+          position: relative;
+          /*&:before {
+            content: "";
+            width: 24px;
+            height: 24px;
+            background-image: url("/src/icons/cross.svg");
+          }*/
+          &:after {
+            background: var(--color-5);
+            content: "";
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            opacity: 0.2;
+          }
+        }
+      }
+      .wpcf7-response-output {
+        display: none;
+      }
+      .wpcf7-spinner {
+        position: absolute;
+        margin: 20px 0 0 0;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
   }

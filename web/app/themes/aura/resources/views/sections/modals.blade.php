@@ -93,12 +93,7 @@
           {!! get_the_title() !!}
         </h2>
 
-        @if ($_SERVER['HTTP_HOST'] == 'escouade.loc')
-        {!! do_shortcode('[contact-form-7 id="d3ced4c" html_class="uk-grid-small form uk-grid uk-grid-stack"]') !!}
-        @else
         {!! do_shortcode('[contact-form-7 id="2394c78" html_class="uk-grid-small form uk-grid uk-grid-stack"]') !!}
-        @endif
-
 
       </div><!-- .job-application-form__body -->
 

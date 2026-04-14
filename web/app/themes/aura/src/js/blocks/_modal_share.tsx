@@ -24,7 +24,7 @@ function share() {
         .writeText(url)
         .then(() => {
           UIkit.notification.closeAll();
-          UIkit.notification("<span uk-icon='icon: check'></span> " + success_message, {
+          UIkit.notification("<i uk-icon='icon: check'></i><span>" + success_message + '</span>', {
             status: 'success',
             pos: 'bottom-center',
           });
