@@ -24,7 +24,7 @@
     "install:all": "npm run install:aura && npm run install:blocks",
     "install:aura": "npm --prefix web/app/themes/aura install",
     "install:blocks": "npm --prefix web/app/themes/aura/app/blocks install",
-    "install:plugins": "vendor/bin/wp plugin activate duplicate-post && vendor/bin/wp plugin activate polylang && vendor/bin/wp plugin activate seo-by-rank-math && vendor/bin/wp plugin activate contact-form-7 && vendor/bin/wp plugin activate drag-and-drop-multiple-file-upload-contact-form-7",
+    "install:plugins": "php vendor/bin/wp plugin activate duplicate-post && php vendor/bin/wp plugin activate polylang && php vendor/bin/wp plugin activate seo-by-rank-math && php vendor/bin/wp plugin activate contact-form-7 && php vendor/bin/wp plugin activate drag-and-drop-multiple-file-upload-contact-form-7",
     "build": "npm run build:all",
     "build:all": "npm run build:aura && npm run build:blocks",
     "build:aura": "npm --prefix web/app/themes/aura run build",

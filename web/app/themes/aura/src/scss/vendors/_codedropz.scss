@@ -1,0 +1,36 @@
+@use "../mixins" as *;
+
+.codedropz-upload-wrapper {
+  .codedropz-upload-handler {
+    margin-bottom: 10px;
+    position: relative;
+    background: #f9f9f9;
+    border-radius: 16px;
+    border: solid 1px #e5ebfe;
+    .dnd-upload-counter {
+      right: 24px;
+      bottom: 16px;
+    }
+    .codedropz-upload-container {
+      padding: 12px;
+      .codedropz-upload-inner {
+        border: dashed 1px #959bae;
+        border-radius: 6px;
+        padding: 24px 24px 32px 24px;
+        h3 {
+          font-size: 18px;
+        }
+        .codedropz-btn-wrap {
+          display: flex;
+          justify-content: center;
+          margin-top: 32px;
+          .cd-upload-btn {
+            @include btn;
+            background-image: linear-gradient(123deg, var(--color-1) -73.44%, var(--color-2) 100%);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
