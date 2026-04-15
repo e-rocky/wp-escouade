@@ -1,3 +1,5 @@
+@use "../mixins" as *;
+
 .wpcf7-list-item {
   margin-left: 0;
 }
@@ -22,5 +24,34 @@
     right: 0;
     position: absolute;
     opacity: 0.2;
+  }
+}
+.dnd-upload-status .dnd-upload-details .dnd-progress-bar span {
+  background-image: linear-gradient(123deg, var(--color-2) -73.44%, var(--color-1a) 100%);
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.codedropz-upload-wrapper {
+  .codedropz-upload-handler {
+    &.codedropz-dragover {
+      background-color: #eff7fb;
+      .codedropz-upload-inner:before {
+        opacity: 0.3;
+      }
+    }
+    .codedropz-upload-inner {
+      &:before {
+        content: "";
+        background-image: url("/src/icons/upload-cloud.svg");
+        width: 64px;
+        height: 64px;
+        display: block;
+        margin: 0 auto;
+        background-size: cover;
+        opacity: 0.1;
+        @include transition(150ms);
+      }
+    }
   }
 }
