@@ -187,3 +187,37 @@
     }
   }
 }
+
+.uk-modal {
+  & > .uk-modal-dialog {
+    box-shadow: 0 30.944px 61.888px 0 rgba(37, 49, 76, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .uk-modal-close {
+    background: none;
+    border: none;
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: var(--color-5);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: ease-in-out 0.4s all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      width: 12px;
+      height: 12px;
+      line {
+        stroke: white;
+        stroke-width: 2px;
+      }
+    }
+    &:hover {
+      transform: rotate(180deg) scale(1.1);
+      background: var(--color-2);
+    }
+  }
+}
