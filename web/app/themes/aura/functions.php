@@ -139,3 +139,12 @@ add_action('admin_head', function () {
     if ((get_current_screen()->is_block_editor())) {
     };
 });
+
+// Exemple : pré-remplir un champ caché "page-title" avec le titre de la page dans Contact Form 7
+add_filter('wpcf7_form_hidden_fields', function ($hidden_fields) {
+    if (is_singular()) {
+        $hidden_fields['_post_title'] = get_the_title();
+        $hidden_fields['_site_title'] = get_bloginfo('name');
+    }
+    return $hidden_fields;
+});

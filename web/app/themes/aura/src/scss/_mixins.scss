@@ -11,6 +11,16 @@ $breakpoints: (
 
 @mixin btn {
   @include transition(150ms);
+  &[disabled] {
+    cursor: not-allowed;
+    background: lightgray;
+    opacity: 0.5;
+    color: #9f9f9f;
+    box-shadow: inset 0 0px 1px #000;
+    &:hover {
+      transform: none;
+    }
+  }
   display: flex;
   //padding: 0.875em 1.875em;
   padding: 0.75em 1.875em;

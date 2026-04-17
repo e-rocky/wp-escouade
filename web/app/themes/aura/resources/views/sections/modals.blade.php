@@ -93,7 +93,7 @@
           {!! get_the_title() !!}
         </h2>
 
-        {!! do_shortcode('[contact-form-7 id="2394c78" html_class="uk-grid-small form uk-grid uk-grid-stack"]') !!}
+        {!! do_shortcode('[contact-form-7 id="2394c78" html_class="uk-grid-small form uk-grid uk-grid-stack" title="Déposer ma candidature pour le poste de : ' . get_the_title() . '"]') !!}
 
       </div><!-- .job-application-form__body -->
 
