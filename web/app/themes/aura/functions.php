@@ -134,17 +134,34 @@ add_action('enqueue_block_editor_assets', function () {
     );
 });
 
-
-add_action('admin_head', function () {
-    if ((get_current_screen()->is_block_editor())) {
-    };
-});
-
 // Exemple : pré-remplir un champ caché "page-title" avec le titre de la page dans Contact Form 7
 add_filter('wpcf7_form_hidden_fields', function ($hidden_fields) {
     if (is_singular()) {
-        $hidden_fields['_post_title'] = get_the_title();
-        $hidden_fields['_site_title'] = get_bloginfo('name');
+        $hidden_fields['post_title'] = get_the_title();
+        $hidden_fields['site_title'] = get_bloginfo('name');
     }
     return $hidden_fields;
 });
+
+function my_scripts()
+{
+    wp_enqueue_script(
+        'auraScript',
+        get_template_directory_uri() . '/js/script.js',
+        array(),
+        null,
+        true
+    );
+
+    wp_localize_script('auraScript', 'wpAura', array(
+        'translations' => array(
+            'wpcf7_message'  => array(
+                'dropzone' => array(
+                    'error' => __("Échec de l'opération. Veuillez réessayer ou contactez le support.", 'aura'),
+                    'success' => __("%s importé avec succès", 'aura'),
+                ),
+            ),
+        ),
+    ));
+}
+add_action('wp_enqueue_scripts', 'my_scripts');

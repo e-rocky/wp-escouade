@@ -9485,7 +9485,7 @@ msgstr "Lien de sortie du mode de récupération expiré."
 
 #: wp-includes/class-wp-recovery-mode.php:189
 msgid "Failed to store the error."
-msgstr "Erreur de stockage de l’erreur."
+msgstr "Erreur de stockage de l’erreur"
 
 #: wp-includes/class-wp-recovery-mode.php:173
 msgid "Error not caused by a plugin or theme."
