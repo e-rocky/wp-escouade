@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+
+<body>
+  <div id="app" class="bgi--1" data-uk-parallax="bgy:0, -100vh, start: 0; end: 100vh">
+
+    <div id="background"></div>
+    <header id="header">
+      <div class="block main-nav-block" data-uk-sticky>
+        <div class="main-nav-block__content py-0">
+
+          <nav class="main-nav-block__body uk-navbar-container">
+            <div class="uk-container">
+              <div data-uk-navbar>
+
+                <div class="uk-navbar-left gap-[20px]">
+
+                  <div class="uk-navbar-item order-1">
+                    <a href="#" class="uk-logo logo" href="#" aria-label="Escouade">
+                      <img src="/resources/images/design/logo--icon-square-text.svg" alt="Escouade"></a>
+                  </div>
+
+                  <div id="menu" class="order-3 xl:order-2 flex-[1_1_100%] xl:flex-1 hidden lg:flex justify-center">
+
+
+                    <ul class="uk-navbar-nav">
+                      <li>
+                        <a href="#" title="Accueil">
+                          Accueil
+                        </a>
+
+                        <ul>
+                          <li class="uk-active"><a href="#">Active</a></li>
+                          <li><a href="#">Item</a></li>
+                          <li><a href="#">Item</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#" title="A propos">
+                          A propos
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" title="Carrière">
+                          Carrière
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" title="Services">
+                          Services
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" title="Actualités">
+                          Actualités
+                        </a>
+                      </li>
+                    </ul>
+
+                  </div>
+
+                  <ul id="menu-cta-navigation" class="uk-navbar-item order-2 xl:order-3 m-0">
+                    <li class="btn c--1-2 bgc--1-2 bdc--1-2 btn-shadow-sm menu-item menu-item-type-custom menu-item-object-custom menu-item-257"><a href="#join-your-squad">Je cherche un job</a></li>
+                    <li class="btn c--4 bgc--1-2 btn-shadow-md menu-item menu-item-type-custom menu-item-object-custom menu-item-258"><a href="#Build-my-squad">Je recrute un talent</a></li>
+                    <li class="lg:hidden"><a class="p-[10px]" id="menu-toggle" class="order-4" href="#menu" data-uk-icon="icon: menu; ratio:1.2"></a></li>
+                  </ul>
+
+
+
+                </div>
+
+              </div>
+            </div>
+          </nav><!-- .main-nav-block__body -->
+
+
+        </div><!-- .main-nav-block__content -->
+      </div><!-- .main-nav-block -->
+
+    </header><!-- #header -->
+
+    <main id="main">
+      <div class="block error_404-block">
+        <div class="error_404-block__content">
+          <div class="error_404-block__body">
+
+
+            <div class="card error_404-card">
+              <div class="error_404-card__content">
+                <div class="error_404-card__body">
+                  <canvas id="canvas" width="300" height="300"></canvas>
+                </div><!-- .error_404-card__body -->
+              </div><!-- .error_404-card__content -->
+            </div><!-- .error_404-card -->
+
+
+          </div><!-- .error_404-block__body -->
+        </div><!-- .error_404-block__content -->
+      </div><!-- .error_404-block -->
+
+    </main><!-- #main -->
+
+    <footer id="footer" class="bgi bgi--5">
+
+      <div class="block copyright-social-block">
+        <div class="copyright-social-block__content py-0 uk-container">
+          <div class="copyright-social-block__body flex flex-col-reverse md:flex-row gap-[32px] justify-between items-center py-[46px] text-[16px]">
+            <p class="copyright c--4 mb-0 text-center md:text-left">© 2025 Escouade. Tous droits réservés.</p>
+            <ul class="social-links flex gap-[20px] my-0">
+              <li>
+                <a href="#" title="Facebook" class="social-link">
+                  <i class="es-icon-social-x"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" title="LinkedIn" class="social-link">
+                  <i class="es-icon-social-linkedin"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" title="Facebook" class="social-link">
+                  <i class="es-icon-social-facebook"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" title="Github" class="social-link">
+                  <i class="es-icon-social-github"></i>
+                </a>
+              </li>
+            </ul><!-- .social-links -->
+          </div><!-- .copyright-social-block__body -->
+        </div><!-- .copyright-social-block__content -->
+      </div><!-- .copyright-social-block -->
+
+    </footer><!-- #footer -->
+
+  </div><!-- #page -->
+
+  <script type="module" src="/src/main.ts"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      document.body.classList.add('page-404');
+      VANTA.FOG({
+        el: "#background",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        highlightColor: 0x2f5efa,
+        midtoneColor: 0x43fea5,
+        lowlightColor: 0xf473d0,
+        baseColor: 0xf473d0,
+        blurFactor: 0.9,
+        speed: 2.50,
+        zoom: 0.4
+      })
+    });
+  </script>
+  <script type="module">
+    import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
+
+    new DotLottie({
+      autoplay: true,
+      loop: true,
+      canvas: document.getElementById("canvas"),
+      src: "animation.json", // or .json file
+    });
+  </script>
+</body>
+
+</html>

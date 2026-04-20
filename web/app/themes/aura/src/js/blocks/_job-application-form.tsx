@@ -96,6 +96,7 @@ function handleJobApplicationNotification(data: { status: string; message: strin
       UIkit.notification("<i uk-icon='icon: check'></i><span>" + data.message + '</span>', {
         status: 'success',
         pos: 'bottom-center',
+        timeout: 10 * 1000,
       });
       UIkit.modal('.uk-modal.uk-open').hide();
     } else {
@@ -123,7 +124,6 @@ function handleJobApplicationAttachmentsNotification(data: AttachmentsResponse) 
         {
           status: 'success',
           pos: 'bottom-center',
-          timeout: 100 * 1000,
         }
       );
     }

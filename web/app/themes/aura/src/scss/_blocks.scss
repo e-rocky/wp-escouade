@@ -2172,3 +2172,48 @@
   }
 }
 /*-- end: .block-modal__share --*/
+
+/*-- .error_404-block --*/
+.error_404-block {
+  @at-root {
+    .page-404 {
+      #app {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        #header {
+          z-index: 3;
+        }
+        #header,
+        #footer {
+          backdrop-filter: blur(20px);
+          background: transparent;
+          background-color: rgba(255, 255, 255, 0.8);
+        }
+        #footer .c--4 {
+          color: var(--color-3);
+        }
+        #main {
+          flex: 1;
+        }
+      }
+      #background {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+      }
+    }
+  }
+  &__content {
+  }
+  &__header {
+  }
+  &__body {
+  }
+  &__footer {
+  }
+}
+/*-- end: .404-block --*/
