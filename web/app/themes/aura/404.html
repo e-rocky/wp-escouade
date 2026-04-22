@@ -10,7 +10,6 @@
 <body>
   <div id="app" class="bgi--1" data-uk-parallax="bgy:0, -100vh, start: 0; end: 100vh">
 
-    <div id="background"></div>
     <header id="header">
       <div class="block main-nav-block" data-uk-sticky>
         <div class="main-nav-block__content py-0">
@@ -87,15 +86,25 @@
 
     <main id="main">
       <div class="block error_404-block">
-        <div class="error_404-block__content">
+        <div class="error_404-block__content uk-container">
           <div class="error_404-block__body">
 
 
             <div class="card error_404-card">
-              <div class="error_404-card__content">
+              <div class="error_404-card__content px-[64px]">
                 <div class="error_404-card__body">
-                  <canvas id="canvas" width="300" height="300"></canvas>
+                  <div class="img-container">
+                    <canvas id="canvas" width="300" height="300"></canvas>
+                  </div>
                 </div><!-- .error_404-card__body -->
+                <div class="error_404-card__footer pb-[46px]">
+                  <div class="content rte text-center flex flex-col items-center [&>h1]:mb-0 gap-[32px]">
+                    <h1 class="title">Page introuvable</h1>
+                    <p>La page que vous recherchez n’existe pas ou a été déplacée.<br>
+                      Vérifiez l’URL ou continuez votre navigation.</p>
+                    <a href="/" class="btn c--4 bgc--5-2 btn--lg btn-shadow-lg" title="Retour à la page d'accueil">Retour à la page d'accueil</a>
+                  </div>
+                </div><!-- .error_404-card__footer -->
               </div><!-- .error_404-card__content -->
             </div><!-- .error_404-card -->
 
@@ -112,28 +121,12 @@
         <div class="copyright-social-block__content py-0 uk-container">
           <div class="copyright-social-block__body flex flex-col-reverse md:flex-row gap-[32px] justify-between items-center py-[46px] text-[16px]">
             <p class="copyright c--4 mb-0 text-center md:text-left">© 2025 Escouade. Tous droits réservés.</p>
-            <ul class="social-links flex gap-[20px] my-0">
-              <li>
-                <a href="#" title="Facebook" class="social-link">
-                  <i class="es-icon-social-x"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" title="LinkedIn" class="social-link">
-                  <i class="es-icon-social-linkedin"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" title="Facebook" class="social-link">
-                  <i class="es-icon-social-facebook"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" title="Github" class="social-link">
-                  <i class="es-icon-social-github"></i>
-                </a>
-              </li>
-            </ul><!-- .social-links -->
+            <ul id="menu-social-footer-menu" class="social-links flex my-0">
+              <li id="menu-item-274" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-274"><a target="_blank" href="#"><i class="es-icon-social-x"></i></a></li>
+              <li id="menu-item-275" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-275"><a target="_blank" href="https://www.linkedin.com/company/escouade-madagascar/"><i class="es-icon-social-linkedin"></i></a></li>
+              <li id="menu-item-276" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-276"><a target="_blank" href="#"><i class="es-icon-social-facebook"></i></a></li>
+              <li id="menu-item-277" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-277"><a target="_blank" href="#"><i class="es-icon-social-github"></i></a></li>
+            </ul>
           </div><!-- .copyright-social-block__body -->
         </div><!-- .copyright-social-block__content -->
       </div><!-- .copyright-social-block -->
@@ -143,38 +136,6 @@
   </div><!-- #page -->
 
   <script type="module" src="/src/main.ts"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
-  <script>
-    window.addEventListener('load', function () {
-      document.body.classList.add('page-404');
-      VANTA.FOG({
-        el: "#background",
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        highlightColor: 0x2f5efa,
-        midtoneColor: 0x43fea5,
-        lowlightColor: 0xf473d0,
-        baseColor: 0xf473d0,
-        blurFactor: 0.9,
-        speed: 2.50,
-        zoom: 0.4
-      })
-    });
-  </script>
-  <script type="module">
-    import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
-
-    new DotLottie({
-      autoplay: true,
-      loop: true,
-      canvas: document.getElementById("canvas"),
-      src: "animation.json", // or .json file
-    });
-  </script>
 </body>
 
 </html>

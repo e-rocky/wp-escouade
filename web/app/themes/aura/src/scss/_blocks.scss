@@ -2181,6 +2181,11 @@
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        #background {
+          canvas {
+            opacity: 0.75;
+          }
+        }
         #header {
           z-index: 3;
         }
@@ -2190,8 +2195,11 @@
           background: transparent;
           background-color: rgba(255, 255, 255, 0.8);
         }
-        #footer .c--4 {
-          color: var(--color-3);
+        #footer {
+          .social-links a,
+          .c--4 {
+            color: var(--color-3);
+          }
         }
         #main {
           flex: 1;
@@ -2217,3 +2225,57 @@
   }
 }
 /*-- end: .404-block --*/
+
+/*-- .error_404-card --*/
+.error_404-card {
+  &__content {
+    border: 1px solid #fff;
+    border-radius: 24px;
+    background: linear-gradient(316deg, rgba(255, 255, 255, 0.5) 39.56%, rgba(255, 255, 255, 0.9) 74.55%);
+    box-shadow:
+      0 20px 40px 0 rgba(25, 25, 51, 0.05),
+      0 25px 50px 0 rgba(94, 84, 255, 0.05);
+  }
+  &__header {
+  }
+  &__body {
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 640px;
+    &:before {
+      content: "";
+      display: block;
+      padding-top: 50%;
+      width: 100%;
+    }
+    .img-container {
+      margin-left: auto;
+      margin-right: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+      &:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+        width: 100%;
+      }
+      #canvas {
+        width: 100% !important;
+        height: 100% !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+  &__footer {
+  }
+}
+/*-- end: .error_404-card --*/
