@@ -118,13 +118,27 @@ add_filter('block_editor_settings_all', function ($settings) {
     return $settings;
 });
 
-add_action('enqueue_block_editor_assets', function () {
+add_action('enqueue_block_assets', function () {
     wp_enqueue_style(
-        'aura-editor',
+        'auraEditorStyle',
         Vite::asset('resources/css/editor.css'),
         [],
         null
     );
+
+    var_dump("get_body_class()");
+    var_dump(get_body_class());
+
+    wp_enqueue_script(
+        'auraEditorScript',
+        Vite::asset('resources/js/editor.js'),
+        ['wp-blocks', 'wp-element', 'wp-i18n', 'wp-components', 'wp-dom-ready'],
+        null,
+        true
+    );
+});
+
+add_action('enqueue_block_editor_assets', function () {
     wp_add_inline_script(
         'wp-blocks',
         'window.auraBuildPath = ' . json_encode([

@@ -3,29 +3,36 @@ import { DotLottie } from '@lottiefiles/dotlottie-web';
 import * as THREE from 'three';
 import FOG from 'vanta/dist/vanta.fog.min';
 
-const $block = document.querySelector('.error_404-block');
+const initError404 = function () {
+  const iframe = document.querySelector('[name="editor-canvas"]');
+  const $document =
+    iframe instanceof HTMLIFrameElement && iframe.contentDocument
+      ? iframe.contentDocument
+      : document;
+  const $block = $document.querySelector('.error_404-block');
+  console.log($document.body.classList);
+  console.log('Initializing 404 block...', $block);
 
-if ($block) {
-  // Ajoute dynamiquement le background si absent
-  const $app = document.querySelector('#app');
-  if (!$block.querySelector('#background')) {
-    const bgDiv = document.createElement('div');
-    bgDiv.id = 'background';
-    $app?.prepend(bgDiv);
-  }
+  if ($block) {
+    // Ajoute dynamiquement le background si absent
+    const $app = $document.querySelector('#app');
+    if (!$block.querySelector('#background')) {
+      const bgDiv = $document.createElement('div');
+      bgDiv.id = 'background';
+      $app?.prepend(bgDiv);
+    }
 
-  const $canvas = $block.querySelector<HTMLCanvasElement>('#canvas');
-  if ($canvas) {
-    new DotLottie({
-      autoplay: true,
-      loop: true,
-      canvas: $canvas,
-      src: 'https://lottie.host/01cc43f5-24ac-4649-b943-ae35512c397d/tcanZVpnG5.lottie', // or .json file
-    });
-  }
+    const $canvas = $block.querySelector<HTMLCanvasElement>('#canvas');
+    if ($canvas) {
+      new DotLottie({
+        autoplay: true,
+        loop: true,
+        canvas: $canvas,
+        src: 'https://lottie.host/01cc43f5-24ac-4649-b943-ae35512c397d/tcanZVpnG5.lottie', // or .json file
+      });
+    }
 
-  window.addEventListener('load', function () {
-    document.body.classList.add('page-404');
+    $document.body.classList.add('page-404');
     FOG({
       el: '#background',
       THREE: THREE,
@@ -42,5 +49,6 @@ if ($block) {
       speed: 2.5,
       zoom: 0.4,
     });
-  });
-}
+  }
+};
+initError404();

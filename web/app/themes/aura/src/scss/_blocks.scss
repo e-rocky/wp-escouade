@@ -1173,6 +1173,14 @@
   }
   &__body {
     .social-links {
+      &:hover {
+        li a {
+          opacity: 0.75;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
       li {
         display: block;
         a {
@@ -1182,10 +1190,12 @@
           display: block;
           margin-left: 10px;
           margin-right: 10px;
+          @include transition(150ms);
           &[href="#"] {
             display: none;
           }
           i {
+            font-size: 32px;
             display: block;
           }
         }
@@ -2183,7 +2193,7 @@
         flex-direction: column;
         #background {
           canvas {
-            opacity: 0.75;
+            opacity: 0.5;
           }
         }
         #header {
@@ -2244,6 +2254,7 @@
     margin-left: auto;
     margin-right: auto;
     max-width: 640px;
+    z-index: 2;
     &:before {
       content: "";
       display: block;
@@ -2276,6 +2287,13 @@
     }
   }
   &__footer {
+    position: relative;
+    z-index: 2;
+    .content {
+      .title {
+        line-height: 1.15;
+      }
+    }
   }
 }
 /*-- end: .error_404-card --*/
