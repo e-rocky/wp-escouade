@@ -52,6 +52,8 @@
 </section>
 <!-- #modal-share -->
 
+
+@if(get_post_type() === 'job-offer')
 <div id="modal-job-application-form" class="uk-modal-container" data-uk-modal="show: true">
   <div class="job-application-form uk-modal-dialog uk-modal-body">
     <button class="uk-modal-close uk-icon uk-close uk-modal-close-default" type="button" data-uk-close></button>
@@ -100,3 +102,4 @@
     </div><!-- .job-application-form__content -->
   </div><!-- .job-application-form -->
 </div><!-- #modal-contact -->
+@endif

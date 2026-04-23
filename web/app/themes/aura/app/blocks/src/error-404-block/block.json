@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/error-404-block",
+  "version": "0.1.0",
+  "title": "404 Error Block",
+  "category": "widgets",
+  "icon": "align-center",
+  "description": "Bloc intro avec image, titre, texte et bouton CTA.",
+  "example": {},
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "attributes": {
+    "headingText": {
+      "type": "string",
+      "default": "Page introuvable"
+    },
+    "button": {
+      "type": "object",
+      "default": {
+        "text": "Retour à la page d'accueil",
+        "url": "#",
+        "openInNewTab": false
+      }
+    }
+  },
+  "textdomain": "error-404-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
