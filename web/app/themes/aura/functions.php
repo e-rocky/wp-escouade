@@ -126,9 +126,6 @@ add_action('enqueue_block_assets', function () {
         null
     );
 
-    var_dump("get_body_class()");
-    var_dump(get_body_class());
-
     wp_enqueue_script(
         'auraEditorScript',
         Vite::asset('resources/js/editor.js'),
@@ -138,11 +135,22 @@ add_action('enqueue_block_assets', function () {
     );
 });
 
+add_filter('wp_script_attributes', function ($attributes) {
+    if (($attributes['id'] ?? '') !== 'auraEditorScript-js') {
+        return $attributes;
+    }
+
+    $attributes['type'] = 'module';
+
+    return $attributes;
+});
+
 add_action('enqueue_block_editor_assets', function () {
     wp_add_inline_script(
         'wp-blocks',
-        'window.auraBuildPath = ' . json_encode([
-            'uri' => get_theme_file_uri('public/build/'),
+        'window.aura = ' . json_encode([
+            'src' => ['uri' => get_theme_file_uri('/'),],
+            'build' => ['uri' => get_theme_file_uri('public/build/')],
         ]) . ';',
         'before'
     );
