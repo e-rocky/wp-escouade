@@ -1,1 +1,2 @@
-// console.log('Hello World! (from create-block-error-404-block block)');
+import { initError404 } from '../../../../src/js/blocks/_error-404';
+initError404();
