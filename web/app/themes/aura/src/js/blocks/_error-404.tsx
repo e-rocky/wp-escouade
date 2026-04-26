@@ -1,9 +1,27 @@
 import { DotLottie } from '@lottiefiles/dotlottie-web';
 
-import * as THREE from 'three';
-import FOG from 'vanta/dist/vanta.fog.min';
+declare global {
+  interface Window {
+    VANTA: any;
+    THREE: any;
+  }
+}
 
 const initError404 = function () {
+  const jsFiles: { id: string; src: string }[] = [
+    { id: 'three-js', src: 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js' },
+    { id: 'vanta-fog', src: 'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js' },
+  ];
+
+  for (const src in jsFiles) {
+    if (!document.getElementById(jsFiles[src].id)) {
+      const script = document.createElement('script');
+      script.id = jsFiles[src].id;
+      script.src = jsFiles[src].src;
+      document.body.appendChild(script);
+    }
+  }
+
   window.addEventListener('load', () => {
     const iframe = document.querySelector('[name="editor-canvas"]');
     const $document =
@@ -32,9 +50,9 @@ const initError404 = function () {
       }
 
       $document.body.classList.add('page-404');
-      FOG({
+      window.VANTA.FOG({
         el: '#background',
-        THREE: THREE,
+        THREE: window.THREE,
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
