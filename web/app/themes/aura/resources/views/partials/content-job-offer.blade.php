@@ -1,0 +1,82 @@
+<div class="job-card bgc bgc--4">
+  <div class="job-card__content flex flex-col lg:grid grid-cols-[1fr_412px] lg:flex-row-reverse">
+    <div class="job-card__header mb-[32px] lg:mb-0 row-start-1 col-start-2 col-span-1">
+      <a class="img-container block" href="{{ get_the_permalink() }}" title="{{ get_the_title() }}">
+        @if (has_post_thumbnail())
+          <img src="{{ get_the_post_thumbnail_url(null, 'full') }}" alt="{{ get_the_title() }}">
+        @else
+          <img src="{{ asset('resources/images/content/job-detail-bg-1.png') }}" alt="">
+        @endif
+      </a>
+    </div><!-- .job-card__header -->
+    @php
+      $dom = new DOMDocument();
+      libxml_use_internal_errors(true);
+      $dom->loadHTML('<?xml encoding="utf-8' . get_the_content());
+      libxml_clear_errors();
+      //$paragraph = $dom->getElementsByTagName('article')->item(0)->getElementsByTagName('p');
+      $paragraph = $dom->getElementsByTagName('p');
+    @endphp
+    <div class="job-card__body row-start-1 col-start-1 col-span-1">
+      <div class="content">
+        <ul class="attributelist m-0 flex flex-wrap gap-[10px]">
+          <li><span class="attribute" style="--bg:#80ACD0">CDI</span></li>
+          <li><span class="attribute" style="--bg:#9B91B4">Remote</span></li>
+          <li><span class="attribute" style="--bg:#B97591">Urgent</span></li>
+        </ul>
+        <hr class="my-[10px]">
+        <a class="block" href="{{ get_the_permalink() }}" title="{{ get_the_title() }}">
+          <h2 class="title title--h3 c--2-1a">{{ get_the_title() }}</h2>
+          <div class="grid grid-cols-[24px_1fr] gap-[10px] [&>svg]:size-[24px]">
+            <svg aria-hidden='true'>
+              <use href='/resources/images/design/sprite.svg#shield'></use>
+            </svg>
+            <div>Niveau : Senior</div>
+            <svg aria-hidden='true'>
+              <use href='/resources/images/design/sprite.svg#category'></use>
+            </svg>
+            <div>Département : Tech / Support</div>
+            <svg aria-hidden='true'>
+              <use href='/resources/images/design/sprite.svg#lang'></use>
+            </svg>
+            <div>Langues : Francais / Anglais</div>
+            <svg aria-hidden='true'>
+              <use href='/resources/images/design/sprite.svg#pin'></use>
+            </svg>
+            <div>Lieu : Antananarivo - Madagascar</div>
+          </div>
+        </a>
+        <div class="flex flex-col gap-[10px]">
+          <a class="block" href="{{ get_the_permalink() }}" title="{{ get_the_title() }}">
+            <p>{{ $paragraph->item(0)->textContent }}</p>
+          </a>
+          @php($stacks = get_the_terms(get_the_ID(), 'job-stack'))
+          <ul class="taglist mb-0 flex flex-wrap gap-[10px] mb-[20px] mt-0">
+            @foreach ($stacks as $stack)
+              <li><span class="tag">{{ $stack->name }}</span></li>
+            @endforeach
+          </ul>
+        </div>
+      </div>
+    </div><!-- .job-card__body -->
+
+    <div class="job-card__footer col-span-2">
+      <hr class="my-[20px]">
+      <div class="flex flex-col-reverse sm:flex-row items-start items-stretch gap-[16px] justify-between">
+        <div class="actions flex items-stretch gap-[20px]">
+          <a class="btn c--4 bgc--2 btn-shadow-sm" href="{{ get_the_permalink() }}" title="Voir l’offre">Voir l’offre<i
+              class="es-icon-chevron-right"></i></a>
+          <a class="btn c--4 bgc--5 btn-shadow-sm" href="#" title="Partager"
+            data-href="{{ get_the_permalink() }}"><i class="es-icon-share"></i></a>
+        </div>
+        <div class="flex items-center flex-row sm:flex-row-reverse [&>svg]:size-[24px] gap-[10px]">
+          <svg aria-hidden='true'>
+            <use href='/resources/images/design/sprite.svg#time'></use>
+          </svg>
+          <div class="text-left md:text-right">Publié il y a
+            {{ human_time_diff(get_the_time('U'), current_time('timestamp')) }}</div>
+        </div>
+      </div>
+    </div><!-- .job-card__footer -->
+  </div><!-- .job-card__content -->
+</div><!-- .job-card -->

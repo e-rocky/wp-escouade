@@ -1813,6 +1813,10 @@
         grid-row-start: 5;
       }
     }
+    a.block {
+      text-decoration: none;
+      color: inherit;
+    }
   }
   &__header {
     flex: 1;
