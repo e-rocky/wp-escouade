@@ -28,22 +28,54 @@
         <a class="block" href="{{ get_the_permalink() }}" title="{{ get_the_title() }}">
           <h2 class="title title--h3 c--2-1a">{{ get_the_title() }}</h2>
           <div class="grid grid-cols-[24px_1fr] gap-[10px] [&>svg]:size-[24px]">
-            <svg aria-hidden='true'>
-              <use href='/resources/images/design/sprite.svg#shield'></use>
-            </svg>
-            <div>Niveau : Senior</div>
-            <svg aria-hidden='true'>
-              <use href='/resources/images/design/sprite.svg#category'></use>
-            </svg>
-            <div>Département : Tech / Support</div>
-            <svg aria-hidden='true'>
-              <use href='/resources/images/design/sprite.svg#lang'></use>
-            </svg>
-            <div>Langues : Francais / Anglais</div>
-            <svg aria-hidden='true'>
-              <use href='/resources/images/design/sprite.svg#pin'></use>
-            </svg>
-            <div>Lieu : Antananarivo - Madagascar</div>
+            @php($levels = get_the_terms(get_the_ID(), 'job-level'))
+            @if ($levels)
+              <svg aria-hidden='true'>
+                <use href="@asset('resources/images/design/sprite.svg')#shield"></use>
+              </svg>
+              <div>Niveau :
+                @foreach ($levels as $level)
+                  {{ $level->name }}
+                @endforeach
+              </div>
+            @endif
+
+            @php($departments = get_the_terms(get_the_ID(), 'job-department'))
+            @if ($departments)
+              <svg aria-hidden='true'>
+                <use href="@asset('resources/images/design/sprite.svg')#category"></use>
+              </svg>
+              <div>Département :
+                @foreach ($departments as $department)
+                  {{ $department->name }}
+                @endforeach
+              </div>
+            @endif
+
+            @php($languages = get_the_terms(get_the_ID(), 'job-language'))
+            @if ($languages)
+              <svg aria-hidden='true'>
+                <use href="@asset('resources/images/design/sprite.svg')#lang"></use>
+              </svg>
+              <div>Langues :
+                @foreach ($languages as $language)
+                  {{ $language->name }}
+                @endforeach
+              </div>
+            @endif
+
+
+            @php($locations = get_the_terms(get_the_ID(), 'job-location'))
+            @if ($locations)
+              <svg aria-hidden='true'>
+                <use href="@asset('resources/images/design/sprite.svg')#pin"></use>
+              </svg>
+              <div>Lieu :
+                @foreach ($locations as $location)
+                  {{ $location->name }}
+                @endforeach
+              </div>
+            @endif
           </div>
         </a>
         <div class="flex flex-col gap-[10px]">
@@ -71,7 +103,7 @@
         </div>
         <div class="flex items-center flex-row sm:flex-row-reverse [&>svg]:size-[24px] gap-[10px]">
           <svg aria-hidden='true'>
-            <use href='/resources/images/design/sprite.svg#time'></use>
+            <use href="@asset('resources/images/design/sprite.svg')#time"></use>
           </svg>
           <div class="text-left md:text-right">Publié il y a
             {{ human_time_diff(get_the_time('U'), current_time('timestamp')) }}</div>

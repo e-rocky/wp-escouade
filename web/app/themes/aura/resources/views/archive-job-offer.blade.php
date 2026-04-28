@@ -75,6 +75,9 @@
           </div><!-- .pagination-card__content -->
         </div><!-- .pagination-card -->
 
+        {{-- https://escouade.loc/?post_type=job-offer&s=talend&job-stack=talend&job-level=confirm%C3%A9&job-lang=Fran%C3%A7ais&job-stack=agile --}}
+        {!! get_search_form(false) !!}
+
 
       </div><!-- .job-listing-block__body -->
 
