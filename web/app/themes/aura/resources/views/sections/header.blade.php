@@ -9,23 +9,24 @@
             <div class="uk-navbar-left gap-[20px]">
 
               <div class="uk-navbar-item order-1">
-                <a href="{{ home_url('/') }}" class="uk-logo logo" aria-label="{{ get_bloginfo('name') }}" title="{{ get_bloginfo('name') }}">
+                <a href="{{ home_url('/') }}" class="uk-logo logo" aria-label="{{ get_bloginfo('name') }}"
+                  title="{{ get_bloginfo('name') }}">
                   <img src="@asset('resources/images/design/logo--icon-square-text.svg')" alt="{{ get_bloginfo('name') }}"></a>
               </div>
 
               <div id="menu" class="order-3 xl:order-2 flex-[1_1_100%] xl:flex-1 hidden lg:flex justify-center">
                 {!! wp_nav_menu([
-                'theme_location' => 'primary_navigation',
-                'menu_class' => 'uk-navbar-nav',
-                'container' => false,
+                    'theme_location' => 'primary_navigation',
+                    'menu_class' => 'uk-navbar-nav',
+                    'container' => false,
                 ]) !!}
               </div>
 
 
               {!! wp_nav_menu([
-              'theme_location' => 'cta_navigation',
-              'menu_class' => 'uk-navbar-item order-2 xl:order-3 m-0',
-              'container' => false,
+                  'theme_location' => 'cta_navigation',
+                  'menu_class' => 'uk-navbar-item order-2 xl:order-3 m-0',
+                  'container' => false,
               ]) !!}
 
               <!--div class="uk-navbar-item">
