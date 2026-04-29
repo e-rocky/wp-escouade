@@ -73,26 +73,26 @@
 
                   <h2 class="title title--h2 c--2-1a">{!! $title !!}</h2>
                   <ul class="attributelist m-0 flex flex-wrap gap-[10px]">
-
-
                     @php($terms_duration = get_the_terms(get_the_ID(), 'job-duration'))
-                    @if ($terms_duration)
-                      <li><span class="attribute"
-                          style="--bg:#80ACD0">{{ implode(', ', wp_list_pluck($terms_duration, 'name')) }}</span>
+                    @foreach ($terms_duration as $term_duration)
+                      <li><a class="attribute" href="/?s=&post_type=job-offer&job-duration={{ $term_duration->slug }}"
+                          title="{{ $term_duration->name }}" style="--bg:#80ACD0">{{ $term_duration->name }}</a>
                       </li>
-                    @endif
+                    @endforeach
+
 
                     @php($terms_workplace = get_the_terms(get_the_ID(), 'job-workplace'))
-                    @if ($terms_workplace)
-                      <span class="job-offer__workplace">
-                        <li><span class="attribute"
-                            style="--bg:#9B91B4">{{ implode(', ', wp_list_pluck($terms_workplace, 'name')) }}</span>
-                        </li>
-                      </span>
-                    @endif
+                    @foreach ($terms_workplace as $term_workplace)
+                      <li><a class="attribute"
+                          href="/?s=&post_type=job-offer&job-workplace={{ $term_workplace->slug }}"
+                          title="{{ $term_workplace->name }}" style="--bg:#9B91B4">{{ $term_workplace->name }}</a>
+                      </li>
+                    @endforeach
+
                     @php($urgent = get_post_meta(get_the_ID(), 'urgent', true))
                     @if ($urgent)
-                      <li><span class="attribute" style="--bg:#B97591">Urgent</span></li>
+                      <li><a class="attribute" href="/?s=&post_type=job-offer&urgent=1" style="--bg:#B97591">Urgent</a>
+                      </li>
                     @endif
                   </ul>
                   <div class="grid grid-cols-[24px_1fr] gap-[10px] [&>svg]:size-[24px]">
