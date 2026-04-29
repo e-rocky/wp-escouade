@@ -20,9 +20,25 @@
     <div class="job-card__body row-start-1 col-start-1 col-span-1">
       <div class="content">
         <ul class="attributelist m-0 flex flex-wrap gap-[10px]">
-          <li><span class="attribute" style="--bg:#80ACD0">CDI</span></li>
-          <li><span class="attribute" style="--bg:#9B91B4">Remote</span></li>
-          <li><span class="attribute" style="--bg:#B97591">Urgent</span></li>
+          @php($terms_duration = get_the_terms(get_the_ID(), 'job-duration'))
+          @foreach ($terms_duration as $term_duration)
+            <li><a href="/?s=&post_type=job-offer&job-duration={{ $term_duration->slug }}" class="attribute"
+                style="--bg:#80ACD0">{{ $term_duration->name }}</a>
+            </li>
+          @endforeach
+
+          @php($terms_workplace = get_the_terms(get_the_ID(), 'job-workplace'))
+          @if ($terms_workplace)
+            <span class="job-offer__workplace">
+              <li><span class="attribute"
+                  style="--bg:#9B91B4">{{ implode(', ', wp_list_pluck($terms_workplace, 'name')) }}</span>
+              </li>
+            </span>
+          @endif
+          @php($urgent = get_post_meta(get_the_ID(), 'urgent', true))
+          @if ($urgent)
+            <li><span class="attribute" style="--bg:#B97591">Urgent</span></li>
+          @endif
         </ul>
         <hr class="my-[10px]">
         <a class="block" href="{{ get_the_permalink() }}" title="{{ get_the_title() }}">
