@@ -161,7 +161,44 @@ function aura_job_offer_bulk_updated_messages($bulk_messages, $bulk_counts)
 
 add_filter('bulk_post_updated_messages', 'aura_job_offer_bulk_updated_messages', 10, 2);
 
-
+add_action('wp_enqueue_scripts', function () {
+    wp_add_inline_script(
+        'wp-blocks',
+        'window.aura = ' . json_encode([
+            'taxonomy' => [
+                'jobWorkplace' => get_terms([
+                    'taxonomy' => 'job-workplace',
+                    'hide_empty' => false,
+                ]),
+                'jobStack' => get_terms([
+                    'taxonomy' => 'job-stack',
+                    'hide_empty' => false,
+                ]),
+                'jobLocation' => get_terms([
+                    'taxonomy' => 'job-location',
+                    'hide_empty' => false,
+                ]),
+                'jobLevel' => get_terms([
+                    'taxonomy' => 'job-level',
+                    'hide_empty' => false,
+                ]),
+                'jobLanguage' => get_terms([
+                    'taxonomy' => 'job-language',
+                    'hide_empty' => false,
+                ]),
+                'jobDuration' => get_terms([
+                    'taxonomy' => 'job-duration',
+                    'hide_empty' => false,
+                ]),
+                'jobDepartment' => get_terms([
+                    'taxonomy' => 'job-department',
+                    'hide_empty' => false,
+                ]),
+            ],
+        ]) . ';',
+        'before'
+    );
+});
 
 // Ajouter la meta box
 add_action('add_meta_boxes', function () {

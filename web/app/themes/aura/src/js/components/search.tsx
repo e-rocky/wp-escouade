@@ -1,6 +1,32 @@
 import React, { useEffect } from 'react';
 import CreatableSelect from 'react-select/creatable';
-import { components, type ClearIndicatorProps, type MultiValueRemoveProps } from 'react-select';
+import {
+  components,
+  type ActionMeta,
+  type ClearIndicatorProps,
+  type MultiValue,
+  type MultiValueRemoveProps,
+} from 'react-select';
+declare global {
+  interface Window {
+    aura: {
+      taxonomy: {
+        jobStack: {
+          count: number;
+          description: string;
+          filter: string;
+          name: string;
+          parent: number;
+          slug: string;
+          taxonomy: string;
+          term_group: number;
+          term_id: number;
+          term_taxonomy_id: number;
+        }[];
+      };
+    };
+  }
+}
 
 const Search = () => {
   function handleCheckboxChange(filter: string) {
@@ -16,9 +42,16 @@ const Search = () => {
   }
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [selectedFilters, setSelectedFilters] = React.useState<string[]>([]);
+  const [jobDurationParam, setJobDurationParam] = React.useState<MultiValue<unknown>>([]);
+  const [jobDepartmentParam, setJobDepartmentParam] = React.useState<MultiValue<unknown>>([]);
+  const [jobLanguageParam, setJobLanguageParam] = React.useState<MultiValue<unknown>>([]);
+  const [jobLevelParam, setJobLevelParam] = React.useState<MultiValue<unknown>>([]);
+  const [jobLocationParam, setJobLocationParam] = React.useState<MultiValue<unknown>>([]);
+  const [jobStackParam, setJobStackParam] = React.useState<MultiValue<unknown>>([]);
+  const [jobWorkplaceParam, setJobWorkplaceParam] = React.useState<MultiValue<unknown>>([]);
   const options = [
-    { value: 'newest', label: 'Plus récent' },
-    { value: 'oldest', label: 'Plus ancien' },
+    { slug: 'newest', name: 'Plus récent' },
+    { slug: 'oldest', name: 'Plus ancien' },
   ];
   useEffect(() => {
     const handleResize = () => {
@@ -30,29 +63,28 @@ const Search = () => {
     {
       title: 'Contrat',
       items: [
-        { value: 'cdi', label: 'CDI' },
-        { value: 'cdd', label: 'CDD' },
+        { slug: 'cdi', name: 'CDI' },
+        { slug: 'cdd', name: 'CDD' },
       ],
     },
     {
       title: 'Modalité',
       items: [
-        { value: 'remote', label: 'Remote' },
-        { value: 'présentiel', label: 'Présentiel' },
-        { value: 'hybride', label: 'Hybride' },
+        { slug: 'remote', name: 'Remote' },
+        { slug: 'présentiel', name: 'Présentiel' },
+        { slug: 'hybride', name: 'Hybride' },
       ],
     },
     {
       title: 'Niveau',
       items: [
-        { value: 'junior', label: 'Junior' },
-        { value: 'senior', label: 'Senior' },
+        { slug: 'junior', name: 'Junior' },
+        { slug: 'senior', name: 'Senior' },
       ],
     },
   ];
   return (
-    <div id="search-card" className="search-card bgc--4 text-[14px]">
-      <div className="search-card__background bgi bgi--4 h-[10px]"></div>
+    <div id="search-card" className="search-card text-[14px]">
       <div className="search-card__content flex-col gap-[32px]">
         <div className="search-card__header">
           <h2 className="title title--h3 c--2">Affiner les offres</h2>
@@ -64,6 +96,10 @@ const Search = () => {
               isClearable
               isMulti
               classNamePrefix="search-card"
+              options={window.aura.taxonomy.jobStack.map((tech) => ({
+                slug: tech.slug,
+                name: tech.name,
+              }))}
               components={{
                 SelectContainer: (props) => (
                   <components.SelectContainer {...props}>
@@ -93,6 +129,9 @@ const Search = () => {
                   </components.ClearIndicator>
                 ),
                 //ClearIndicator: () => <button>effacer</button>,
+              }}
+              onChange={(newValue: MultiValue<unknown>, _) => {
+                setJobStackParam(newValue);
               }}
             />
             <div className="sortby col-span-2 flex items-center">
@@ -149,15 +188,15 @@ const Search = () => {
                     <div className="filter-list__header">{group.title}</div>
                     <div className="filter-list__body">
                       {group.items.map((item) => (
-                        <label key={`${group.title}-${item.value}`}>
+                        <label key={`${group.title}-${item.slug}`}>
                           <input
-                            value={item.value}
+                            value={item.name}
                             className="uk-checkbox"
                             type="checkbox"
-                            onChange={handleCheckboxChange(item.value)}
-                            checked={selectedFilters.includes(item.value)}
+                            onChange={handleCheckboxChange(item.slug)}
+                            checked={selectedFilters.includes(item.slug)}
                           ></input>
-                          {item.label}
+                          {item.name}
                         </label>
                       ))}
                     </div>
