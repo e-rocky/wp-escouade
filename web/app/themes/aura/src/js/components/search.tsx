@@ -7,22 +7,30 @@ import {
   type MultiValue,
   type MultiValueRemoveProps,
 } from 'react-select';
+
+interface TaxonomyItem {
+  count: number;
+  description: string;
+  filter: string;
+  name: string;
+  parent: number;
+  slug: string;
+  taxonomy: string;
+  term_group: number;
+  term_id: number;
+  term_taxonomy_id: number;
+}
 declare global {
   interface Window {
     aura: {
       taxonomy: {
-        jobStack: {
-          count: number;
-          description: string;
-          filter: string;
-          name: string;
-          parent: number;
-          slug: string;
-          taxonomy: string;
-          term_group: number;
-          term_id: number;
-          term_taxonomy_id: number;
-        }[];
+        jobDepartment: TaxonomyItem[];
+        jobDuration: TaxonomyItem[];
+        jobLanguage: TaxonomyItem[];
+        jobLevel: TaxonomyItem[];
+        jobLocation: TaxonomyItem[];
+        jobStack: TaxonomyItem[];
+        jobWorkplace: TaxonomyItem[];
       };
     };
   }
@@ -59,28 +67,22 @@ const Search = () => {
     };
     window.addEventListener('resize', handleResize);
   }, []);
-  const filterGroups = [
-    {
+  const filterGroups: Array<0 | { title: string; items: TaxonomyItem[] }> = [
+    window.aura.taxonomy.jobDuration.length && {
       title: 'Contrat',
-      items: [
-        { slug: 'cdi', name: 'CDI' },
-        { slug: 'cdd', name: 'CDD' },
-      ],
+      items: window.aura.taxonomy.jobDuration,
     },
-    {
+    window.aura.taxonomy.jobWorkplace.length && {
       title: 'Modalité',
-      items: [
-        { slug: 'remote', name: 'Remote' },
-        { slug: 'présentiel', name: 'Présentiel' },
-        { slug: 'hybride', name: 'Hybride' },
-      ],
+      items: window.aura.taxonomy.jobWorkplace,
     },
-    {
+    window.aura.taxonomy.jobLevel.length && {
       title: 'Niveau',
-      items: [
-        { slug: 'junior', name: 'Junior' },
-        { slug: 'senior', name: 'Senior' },
-      ],
+      items: window.aura.taxonomy.jobLevel,
+    },
+    window.aura.taxonomy.jobDepartment.length && {
+      title: 'Département',
+      items: window.aura.taxonomy.jobDepartment,
     },
   ];
   return (
@@ -183,25 +185,28 @@ const Search = () => {
                 </span>
               </div>
               <div className="attribute-filter__body">
-                {filterGroups.map((group) => (
-                  <div className="filter-list" key={group.title}>
-                    <div className="filter-list__header">{group.title}</div>
-                    <div className="filter-list__body">
-                      {group.items.map((item) => (
-                        <label key={`${group.title}-${item.slug}`}>
-                          <input
-                            value={item.name}
-                            className="uk-checkbox"
-                            type="checkbox"
-                            onChange={handleCheckboxChange(item.slug)}
-                            checked={selectedFilters.includes(item.slug)}
-                          ></input>
-                          {item.name}
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+                {filterGroups.map(
+                  (group: 0 | { title: string; items: TaxonomyItem[] }) =>
+                    group && (
+                      <div className="filter-list" key={group.title}>
+                        <div className="filter-list__header">{group.title}</div>
+                        <div className="filter-list__body">
+                          {group.items.map((item) => (
+                            <label key={`${group.title}-${item.slug}`}>
+                              <input
+                                value={item.name}
+                                className="uk-checkbox"
+                                type="checkbox"
+                                onChange={handleCheckboxChange(item.slug)}
+                                checked={selectedFilters.includes(item.slug)}
+                              ></input>
+                              {item.name}
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    )
+                )}
               </div>
             </div>
           </div>
