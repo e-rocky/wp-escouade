@@ -21,6 +21,10 @@
       "type": "string",
       "default": "Rejoignez votre Escouade"
     },
+    "showLastEntries": {
+      "type": "boolean",
+      "default": true
+    },
     "button": {
       "type": "object",
       "default": {

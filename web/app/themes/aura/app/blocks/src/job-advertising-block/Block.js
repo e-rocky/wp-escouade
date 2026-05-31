@@ -1,5 +1,6 @@
 import { RichText, InnerBlocks, InspectorControls, URLInput } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
+import { useEffect } from '@wordpress/element';
 
 const BG_OPTIONS = [
   { label: 'Aucun', value: '' },
@@ -12,7 +13,7 @@ const BG_OPTIONS = [
 ];
 
 const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) => {
-  const { background, headingText, button = {} } = attributes;
+  const { background, headingText, button = {}, showLastEntries = true } = attributes;
   const { text: buttonText = '', url: buttonUrl = '#', openInNewTab = false } = button;
   const BLOCKS_TEMPLATE = [['create-block/job-advertising-card', {}]];
   const ALLOWED_BLOCKS = ['create-block/job-advertising-card'];
@@ -26,6 +27,13 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
               value={background}
               options={BG_OPTIONS}
               onChange={(val) => setAttributes({ background: val })}
+            />
+          </PanelBody>
+          <PanelBody title="Option de liste" initialOpen={true}>
+            <ToggleControl
+              label="Afficher les dernières annonces"
+              checked={showLastEntries}
+              onChange={(val) => setAttributes({ showLastEntries: val })}
             />
           </PanelBody>
           <PanelBody title="Bouton" initialOpen={true}>
@@ -63,7 +71,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
             )}
           </div>
           <div className="job-advertising-block__body" data-uk-slider>
-            <div className="slider uk-slider-items">
+            <div className={`slider uk-slider-items${showLastEntries ? ' latestEntries' : ''}`}>
               {editmode ? (
                 <InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={BLOCKS_TEMPLATE} />
               ) : (

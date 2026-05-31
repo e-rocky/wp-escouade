@@ -1503,6 +1503,7 @@
       padding-right: 42px;
       margin-bottom: 0;
       font-size: 8vw;
+      color: inherit;
       @include media-breakpoint-up(md) {
         font-size: 72px;
       }

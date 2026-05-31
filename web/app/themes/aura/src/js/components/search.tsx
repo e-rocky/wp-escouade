@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import CreatableSelect from 'react-select/creatable';
 import {
   components,
-  type ActionMeta,
+  //type ActionMeta,
   type ClearIndicatorProps,
   type MultiValue,
   type MultiValueRemoveProps,
@@ -50,13 +50,13 @@ const Search = () => {
   }
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [selectedFilters, setSelectedFilters] = React.useState<string[]>([]);
-  const [jobDurationParam, setJobDurationParam] = React.useState<MultiValue<unknown>>([]);
+  /*const [jobDurationParam, setJobDurationParam] = React.useState<MultiValue<unknown>>([]);
   const [jobDepartmentParam, setJobDepartmentParam] = React.useState<MultiValue<unknown>>([]);
   const [jobLanguageParam, setJobLanguageParam] = React.useState<MultiValue<unknown>>([]);
   const [jobLevelParam, setJobLevelParam] = React.useState<MultiValue<unknown>>([]);
   const [jobLocationParam, setJobLocationParam] = React.useState<MultiValue<unknown>>([]);
-  const [jobStackParam, setJobStackParam] = React.useState<MultiValue<unknown>>([]);
-  const [jobWorkplaceParam, setJobWorkplaceParam] = React.useState<MultiValue<unknown>>([]);
+  const [jobWorkplaceParam, setJobWorkplaceParam] = React.useState<MultiValue<unknown>>([]);*/
+  const [_, setJobStackParam] = React.useState<MultiValue<unknown>>([]);
   const options = [
     { slug: 'newest', name: 'Plus récent' },
     { slug: 'oldest', name: 'Plus ancien' },
