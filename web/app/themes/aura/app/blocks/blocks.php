@@ -1,6 +1,32 @@
 <?php
 
 add_filter('render_block_create-block/job-advertising-block', function ($block_content, $block) {
+    $dom = new DOMDocument();
+    libxml_use_internal_errors(true);
+    $dom->loadHTML('<?xml encoding="utf-8' . get_the_content());
+    libxml_clear_errors();
+
+    $dom->loadHTML(
+        '<?xml encoding="utf-8" ?>' . $block_content
+    );
+    $xpath = new DOMXPath($dom);
+
+    // Cible: .job-advertising-card__body .img-container img
+    $nodes = $xpath->query(
+        "//*[contains(concat(' ', normalize-space(@class), ' '), ' job-advertising-card__header ')]" .
+            "//*[contains(concat(' ', normalize-space(@class), ' '), ' img-container ')]//img"
+    );
+
+    if ($nodes !== false) {
+        foreach ($nodes as $img) {
+            // Remplacement des attributs (exemple)
+            $img->setAttribute('src', \Roots\asset('resources/images/design/logo--text.svg')->uri());
+        }
+    }
+
+    $block_content = $dom->saveHTML();
+
+    libxml_clear_errors();
     $jobs = get_posts([
         'post_type'      => 'job-offer',
         'posts_per_page' => 3,
