@@ -3,12 +3,16 @@
 .wp-block .card,
 .block .card {
   border: none;
-  padding: 0;
   background-color: transparent;
   box-shadow: none;
-  min-width: none;
+  min-width: 0;
   max-width: none;
   margin: 0;
+}
+
+.wp-block .card:not([class*='px-']),
+.block .card:not([class*='px-']) {
+  padding: 0;
 }
 
 [contenteditable='true'] {
