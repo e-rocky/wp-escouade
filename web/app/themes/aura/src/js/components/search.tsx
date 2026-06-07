@@ -58,8 +58,8 @@ const Search = () => {
   const [jobWorkplaceParam, setJobWorkplaceParam] = React.useState<MultiValue<unknown>>([]);*/
   const [_, setJobStackParam] = React.useState<MultiValue<unknown>>([]);
   const options = [
-    { slug: 'newest', name: 'Plus récent' },
-    { slug: 'oldest', name: 'Plus ancien' },
+    { value: 'newest', label: 'Plus récent' },
+    { value: 'oldest', name: 'Plus ancien' },
   ];
   useEffect(() => {
     const handleResize = () => {
@@ -99,8 +99,8 @@ const Search = () => {
               isMulti
               classNamePrefix="search-card"
               options={window.aura.taxonomy.jobStack.map((tech) => ({
-                slug: tech.slug,
-                name: tech.name,
+                value: tech.slug,
+                label: tech.name,
               }))}
               components={{
                 SelectContainer: (props) => (

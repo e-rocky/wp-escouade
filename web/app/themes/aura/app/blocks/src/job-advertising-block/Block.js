@@ -70,7 +70,7 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
               />
             )}
           </div>
-          <div className="job-advertising-block__body" data-uk-slider>
+          <div className="job-advertising-block__body" data-uk-slider="finite: true">
             <div className={`slider uk-slider-items${showLastEntries ? ' latestEntries' : ''}`}>
               {editmode ? (
                 <InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={BLOCKS_TEMPLATE} />
