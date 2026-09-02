@@ -1,4 +1,9 @@
 import React, { useEffect } from 'react';
+interface OptionType {
+  value: string;
+  label: string;
+}
+
 import CreatableSelect from 'react-select/creatable';
 import {
   components,
@@ -37,19 +42,21 @@ declare global {
 }
 
 const Search = () => {
-  function handleCheckboxChange(filter: string) {
-    const mapSelectedFilters = new Set(selectedFilters);
-    return (event: React.ChangeEvent<HTMLInputElement>) => {
-      if (event.target.checked) {
-        mapSelectedFilters.add(filter);
-      } else {
-        mapSelectedFilters.delete(filter);
-      }
-      setSelectedFilters(Array.from(mapSelectedFilters));
-    };
+  function handleCheckboxChange(filter: TaxonomyItem, event: React.ChangeEvent<HTMLInputElement>) {
+    const newSelectedFilters = new Map(selectedFilters);
+
+    if (event.target.checked) {
+      newSelectedFilters.set(filter.slug, filter);
+    } else {
+      newSelectedFilters.delete(filter.slug);
+    }
+
+    setSelectedFilters(newSelectedFilters);
   }
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
-  const [selectedFilters, setSelectedFilters] = React.useState<string[]>([]);
+  const [selectedFilters, setSelectedFilters] = React.useState<Map<String, TaxonomyItem>>(
+    new Map()
+  );
   /*const [jobDurationParam, setJobDurationParam] = React.useState<MultiValue<unknown>>([]);
   const [jobDepartmentParam, setJobDepartmentParam] = React.useState<MultiValue<unknown>>([]);
   const [jobLanguageParam, setJobLanguageParam] = React.useState<MultiValue<unknown>>([]);
@@ -57,7 +64,7 @@ const Search = () => {
   const [jobLocationParam, setJobLocationParam] = React.useState<MultiValue<unknown>>([]);
   const [jobWorkplaceParam, setJobWorkplaceParam] = React.useState<MultiValue<unknown>>([]);*/
   const [_, setJobStackParam] = React.useState<MultiValue<unknown>>([]);
-  const options = [
+  const options: OptionType[] = [
     { value: 'newest', label: 'Plus récent' },
     { value: 'oldest', label: 'Plus ancien' },
   ];
@@ -89,12 +96,18 @@ const Search = () => {
     return { value: tech.slug, label: tech.name };
   });
   const toggleFilters = () => {
-    if (selectedFilters.length > 0) {
-      setSelectedFilters([]);
+    if (selectedFilters.size > 0) {
+      setSelectedFilters(new Map());
     } else {
-      const allFilters = filterGroups
+      const allFilters: Map<String, TaxonomyItem> = new Map();
+      filterGroups
         .filter((group) => group !== 0)
-        .flatMap((group) => group.items.map((item) => item.slug));
+        .reduce((filters, group) => {
+          group.items.forEach((item) => {
+            filters.set(item.slug, item);
+          });
+          return filters;
+        }, allFilters);
       setSelectedFilters(allFilters);
     }
   };
@@ -103,6 +116,7 @@ const Search = () => {
       <div className="search-card__content flex-col gap-[32px]">
         <div className="search-card__header">
           <h2 className="title title--h3 c--2">Affiner les offres</h2>
+          <code>https://escouade.loc/?s=</code>
         </div>
         <div className="search-card__body flex items-stretch lg:items-start flex-col lg:flex-row gap-[32px] lg:gap-[100px]">
           <div className="search-card__select flex-col flex-1">
@@ -164,8 +178,8 @@ const Search = () => {
           </div>
           <div className="search-card__filter [&>svg]:size-[24px]">
             <div className="label">
-              <span className="cpt">{selectedFilters.length} </span> filtre
-              {selectedFilters.length > 1 ? 's actifs' : ' actif'}
+              <span className="cpt">{selectedFilters.size} </span> filtre
+              {selectedFilters.size > 1 ? 's actifs' : ' actif'}
             </div>
             <svg aria-hidden="true">
               <use href="/resources/images/design/sprite.svg#filter"></use>
@@ -184,7 +198,7 @@ const Search = () => {
             <div className="attribute-filter__content">
               <div className="attribute-filter__header">
                 <span className="reset" onClick={() => toggleFilters()}>
-                  {`Tout ${selectedFilters.length > 0 ? 'décocher' : 'cocher'}`}
+                  {`Tout ${selectedFilters.size > 0 ? 'décocher' : 'cocher'}`}
                 </span>
               </div>
               <div className="attribute-filter__body">
@@ -200,8 +214,8 @@ const Search = () => {
                                 value={item.name}
                                 className="uk-checkbox"
                                 type="checkbox"
-                                onChange={handleCheckboxChange(item.slug)}
-                                checked={selectedFilters.includes(item.slug)}
+                                onChange={(e) => handleCheckboxChange(item, e)}
+                                checked={selectedFilters.has(item.slug)}
                               ></input>
                               {item.name}
                             </label>
