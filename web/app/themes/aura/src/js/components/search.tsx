@@ -59,7 +59,7 @@ const Search = () => {
   const [_, setJobStackParam] = React.useState<MultiValue<unknown>>([]);
   const options = [
     { value: 'newest', label: 'Plus récent' },
-    { value: 'oldest', name: 'Plus ancien' },
+    { value: 'oldest', label: 'Plus ancien' },
   ];
   useEffect(() => {
     const handleResize = () => {
@@ -85,6 +85,19 @@ const Search = () => {
       items: window.aura.taxonomy.jobDepartment,
     },
   ];
+  const jobStack = window.aura.taxonomy.jobStack.map(function (tech) {
+    return { value: tech.slug, label: tech.name };
+  });
+  const toggleFilters = () => {
+    if (selectedFilters.length > 0) {
+      setSelectedFilters([]);
+    } else {
+      const allFilters = filterGroups
+        .filter((group) => group !== 0)
+        .flatMap((group) => group.items.map((item) => item.slug));
+      setSelectedFilters(allFilters);
+    }
+  };
   return (
     <div id="search-card" className="search-card text-[14px]">
       <div className="search-card__content flex-col gap-[32px]">
@@ -98,10 +111,7 @@ const Search = () => {
               isClearable
               isMulti
               classNamePrefix="search-card"
-              options={window.aura.taxonomy.jobStack.map((tech) => ({
-                value: tech.slug,
-                label: tech.name,
-              }))}
+              options={jobStack}
               components={{
                 SelectContainer: (props) => (
                   <components.SelectContainer {...props}>
@@ -155,8 +165,7 @@ const Search = () => {
           <div className="search-card__filter [&>svg]:size-[24px]">
             <div className="label">
               <span className="cpt">{selectedFilters.length} </span> filtre
-              {selectedFilters.length > 1 ? 's' : ''} actif
-              {selectedFilters.length > 1 ? 's' : ''}
+              {selectedFilters.length > 1 ? 's actifs' : ' actif'}
             </div>
             <svg aria-hidden="true">
               <use href="/resources/images/design/sprite.svg#filter"></use>
@@ -174,14 +183,8 @@ const Search = () => {
           >
             <div className="attribute-filter__content">
               <div className="attribute-filter__header">
-                <span
-                  className="reset"
-                  title="Tout décocher"
-                  onClick={() => {
-                    setSelectedFilters([]);
-                  }}
-                >
-                  Tout décocher
+                <span className="reset" onClick={() => toggleFilters()}>
+                  {`Tout ${selectedFilters.length > 0 ? 'décocher' : 'cocher'}`}
                 </span>
               </div>
               <div className="attribute-filter__body">
