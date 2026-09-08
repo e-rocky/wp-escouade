@@ -2126,9 +2126,19 @@
       .uk-icon {
         background-color: transparent;
         cursor: pointer;
+        width: 36px;
+        height: 36px;
+        transition-duration: 150ms;
+        border: solid 1px transparent;
+        &:hover {
+          transform: none;
+          background-color: rgba(white, 0.2);
+          //border-color: rgba(white, 0.1);
+          backdrop-filter: blur(10px);
+        }
         svg {
-          width: 24px;
-          height: 24px;
+          width: 14px;
+          height: 14px;
           line {
             stroke: white;
           }
