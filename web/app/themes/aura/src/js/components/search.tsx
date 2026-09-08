@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import spriteUrl from '../../../resources/images/design/sprite.svg';
 interface OptionType {
   value: string;
   label: string;
@@ -133,6 +134,8 @@ const Search = () => {
       _urlFilter += '&order=' + urlOrder;
     }
 
+    _urlFilter += '#search';
+
     setUrlFilter(_urlFilter);
 
     //updateUrlFilter();
@@ -189,6 +192,7 @@ const Search = () => {
               isMulti
               classNamePrefix="search-card"
               options={jobStack}
+              placeholder="Ex. React, PHP, Python..."
               defaultValue={jobStack.filter((tech) =>
                 (
                   new URLSearchParams(window.location.search).get('job-stack')?.split(',') || []
@@ -210,7 +214,7 @@ const Search = () => {
                     <i className="es-icon-cross text-[20px]"></i>
                   </components.MultiValueRemove>
                 ),
-                ClearIndicator: (props: ClearIndicatorProps) => (
+                ClearIndicator: (props: ClearIndicatorProps<OptionType, true>) => (
                   <components.ClearIndicator {...props}>
                     <i
                       className="es-icon-cross text-[24px]"
@@ -224,8 +228,8 @@ const Search = () => {
                 ),
                 //ClearIndicator: () => <button>effacer</button>,
               }}
-              onChange={(newValue: MultiValue<unknown>, _) => {
-                setJobStackParam(newValue);
+              onChange={(newValue: MultiValue<OptionType>, _) => {
+                setJobStackParam([...newValue]);
               }}
             />
             <div className="sortby col-span-2 flex items-center">
@@ -252,13 +256,13 @@ const Search = () => {
               />
             </div>
           </div>
-          <div className="search-card__filter [&>svg]:size-[24px]">
+          <div className="search-card__filter [&>svg]:size-[24px] min-w-40">
             <div className="label">
               <span className="cpt">{selectedFilters.size} </span> filtre
               {selectedFilters.size > 1 ? 's actifs' : ' actif'}
             </div>
             <svg aria-hidden="true">
-              <use href="/resources/images/design/sprite.svg#filter"></use>
+              <use href={`${spriteUrl}#filter`}></use>
             </svg>
           </div>
           <div
@@ -309,7 +313,7 @@ const Search = () => {
             <a className="btn c--4 bgc--5-2 btn-shadow-sm" title="Rechercher" href={urlFilter}>
               Rechercher
             </a>
-            <div className="label font-500">78 Offres trouvées</div>
+            <div className="label font-500 hidden">78 Offres trouvées</div>
           </div>
         </div>
       </div>

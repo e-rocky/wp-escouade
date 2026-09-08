@@ -22,19 +22,20 @@
     <div class="breadcrumb-block__content uk-container">
       <div class="breadcrumb-block__body">
         <ul>
-          <li><a href="#" title="Accueil"><i class="es-icon-home"></i></a></li>
+          <li><a href="{{ home_url() }}" title="Accueil"><i class="es-icon-home"></i></a></li>
           <li class="separator"><i class="es-icon-caret"></i></li>
-          <li><a href="#" title="Rejoignez-nous">Rejoignez-nous</a></li>
-          <li class="separator"><i class="es-icon-caret"></i></li>
-          <li><a href="#" title="Nos offres d’emploi">Nos offres d’emploi</a></li>
+          <li><a href="{{ get_permalink(get_page_by_path('carriere-it-madagascar')) }}"
+              title="Rejoindre l'Escouade">Rejoindre l'Escouade</a></li>
+          <li><a href="{{ get_post_type_archive_link('job-offer') }}" title="Nos offres d’emploi">Nos offres
+              d’emploi</a></li>
         </ul>
       </div><!-- .breadcrumb-block__body -->
     </div><!-- .breadcrumb-block__content -->
   </div><!-- .breadcrumb-block -->
 
   <div class="block job-listing-block">
-    <div class="job-listing-block__content pt-[64px] uk-container">
-      <div class="job-listing-block__body flex flex-col gap-[64px]">
+    <div class="job-listing-block__content pt-16 uk-container">
+      <div class="job-listing-block__body flex flex-col gap-16">
 
 
 
@@ -52,14 +53,14 @@
               </div><!-- .emptyState-card__header -->
               <div class="emptyState-card__body flex flex-col items-center">
                 <h2 class="title">Aucune offre ne correspond à votre recherche</h2>
-                <p class="text-center text-[15px] max-w-[650px] text-[#77778c] mx-auto">Nous n’avons trouvé aucune offre
+                <p class="text-center text-[15px] max-w-162.5 text-[#77778c] mx-auto">Nous n’avons trouvé aucune offre
                   correspondant aux critères sélectionnés. Essayez de modifier vos
                   filtres ou de réinitialiser votre recherche.</p>
               </div><!-- .emptyState-card__body -->
               <div class="emptyState-card__footer flex flex-col items-center">
-                <a class="btn c--4 bgc--1-2 btn-shadow-md" href="https://escouade.loc/carriere-it-madagascar/"
+                <a class="btn c--4 bgc--1-2 btn-shadow-md" href="{{ get_post_type_archive_link('job-offer') }}#search"
                   title="Réinitialiser les filtres">
-                  <span>Réinitialiser les filtres</span></i>
+                  <span>Réinitialiser les filtres</span>
                 </a>
               </div><!-- .emptyState-card__footer -->
             </div><!-- .emptyState-card__content -->

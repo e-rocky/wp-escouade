@@ -469,6 +469,7 @@
         .label {
           display: flex;
           flex-direction: row;
+          flex: 1;
           .cpt {
             width: 2em;
             text-align: right;
@@ -562,6 +563,7 @@
     .filter-list {
       font-family: var(--font-1);
       color: var(--color-3);
+      padding-bottom: 10px;
       &__header {
         color: #71717a;
         font-style: normal;
@@ -1891,6 +1893,9 @@
       flex-direction: column;
       gap: 16px;
       height: 100%;
+      .title {
+        margin-bottom: 32px;
+      }
       .actions {
         margin-top: auto;
       }
