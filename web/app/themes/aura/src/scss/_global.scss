@@ -560,3 +560,7 @@ $gradients: ();
     }
   }
 }
+
+.shadow {
+  @include box-shadow;
+}

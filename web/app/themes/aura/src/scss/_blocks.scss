@@ -333,9 +333,7 @@
     right: 0;
     border-radius: 10px;
     background-color: white;
-    box-shadow:
-      0 20px 40px 0 rgba(25, 25, 51, 0.05),
-      0 25px 50px 0 rgba(94, 84, 255, 0.05);
+    @include box-shadow;
     //overflow-x: hidden;
   }
   &__content {
@@ -609,9 +607,7 @@
     border-radius: 24px;
     overflow: hidden;
     user-select: none;
-    box-shadow:
-      0 20px 40px 0 rgba(25, 25, 51, 0.05),
-      0 25px 50px 0 rgba(94, 84, 255, 0.05);
+    @include box-shadow;
     &:after {
       content: "";
       position: absolute;
@@ -1257,9 +1253,7 @@
     gap: 10px;
     border-radius: 24px;
     background: #fff;
-    box-shadow:
-      0 20px 40px 0 rgba(25, 25, 51, 0.05),
-      0 25px 50px 0 rgba(94, 84, 255, 0.05);
+    @include box-shadow;
   }
   &__header {
     flex: 1;
@@ -1804,9 +1798,7 @@
   &.bgc {
     border-radius: 24px;
     overflow: hidden;
-    box-shadow:
-      0 20px 40px 0 rgba(25, 25, 51, 0.05),
-      0 25px 50px 0 rgba(94, 84, 255, 0.05);
+    @include box-shadow;
   }
   &__content {
     //overflow: hidden;
@@ -1821,6 +1813,7 @@
     }
     .title {
       margin-top: 0;
+      line-height: 1;
     }
     article {
       &.bg {
@@ -2086,9 +2079,7 @@
   &.bgc {
     border-radius: 24px;
     overflow: hidden;
-    box-shadow:
-      0 20px 40px 0 rgba(25, 25, 51, 0.05),
-      0 25px 50px 0 rgba(94, 84, 255, 0.05);
+    @include box-shadow;
   }
   &__content {
   }
@@ -2283,9 +2274,7 @@
     border: 1px solid #fff;
     border-radius: 24px;
     background: linear-gradient(316deg, rgba(255, 255, 255, 0.5) 39.56%, rgba(255, 255, 255, 0.9) 74.55%);
-    box-shadow:
-      0 20px 40px 0 rgba(25, 25, 51, 0.05),
-      0 25px 50px 0 rgba(94, 84, 255, 0.05);
+    @include box-shadow;
   }
   &__header {
   }
@@ -2338,3 +2327,23 @@
   }
 }
 /*-- end: .error_404-card --*/
+
+/*-- .emptyState-card --*/
+.emptyState-card {
+  &__content {
+    text-align: center;
+  }
+  &__header {
+    .disc {
+      background: linear-gradient(135deg, rgba(101, 85, 255, 0.08), rgba(213, 91, 232, 0.12));
+    }
+  }
+  &__body {
+    .title {
+      font-size: 22px;
+    }
+  }
+  &__footer {
+  }
+}
+/*-- end: .emptyState-card --*/

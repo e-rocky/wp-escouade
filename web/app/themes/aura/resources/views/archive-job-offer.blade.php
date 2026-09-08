@@ -1,15 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-  @if (!have_posts())
-    <x-alert type="warning">
-      {!! __('Sorry, no results were found.', 'sage') !!}
-    </x-alert>
-
-    {!! get_search_form(false) !!}
-  @endif
-
-
   <div class="block hero-text-block bgi bgi--4">
     <div class="hero-text-block__background">
       <div class="img-container">
@@ -48,6 +39,32 @@
 
 
         <div id="search" class="relative z-9"></div>
+
+
+        @if (!have_posts())
+          <div class="card emptyState-card">
+            <div
+              class="emptyState-card__content shadow flex flex-col justify-center gap-8 px-8 py-12 rounded-3xl bgc bgc--4">
+              <div class="emptyState-card__header flex-col items-center justify-center flex">
+                <div class="disc rounded-full size-16 items-center justify-center flex">
+                  <i class="es-icon-search text-[32px] c--2"></i>
+                </div>
+              </div><!-- .emptyState-card__header -->
+              <div class="emptyState-card__body flex flex-col items-center">
+                <h2 class="title">Aucune offre ne correspond à votre recherche</h2>
+                <p class="text-center text-[15px] max-w-[650px] text-[#77778c] mx-auto">Nous n’avons trouvé aucune offre
+                  correspondant aux critères sélectionnés. Essayez de modifier vos
+                  filtres ou de réinitialiser votre recherche.</p>
+              </div><!-- .emptyState-card__body -->
+              <div class="emptyState-card__footer flex flex-col items-center">
+                <a class="btn c--4 bgc--1-2 btn-shadow-md" href="https://escouade.loc/carriere-it-madagascar/"
+                  title="Réinitialiser les filtres">
+                  <span>Réinitialiser les filtres</span></i>
+                </a>
+              </div><!-- .emptyState-card__footer -->
+            </div><!-- .emptyState-card__content -->
+          </div><!-- .emptyState-card -->
+        @endif
 
 
         @while (have_posts())
