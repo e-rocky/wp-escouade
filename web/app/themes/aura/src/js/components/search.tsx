@@ -42,7 +42,10 @@ declare global {
 }
 
 const Search = () => {
-  function handleCheckboxChange(filter: TaxonomyItem, event: React.ChangeEvent<HTMLInputElement>) {
+  function handleSearchFilterChange(
+    filter: TaxonomyItem,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) {
     const newSelectedFilters = new Map(selectedFilters);
 
     if (event.target.checked) {
@@ -53,7 +56,9 @@ const Search = () => {
 
     setSelectedFilters(newSelectedFilters);
   }
+
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+  const [urlFilter, setUrlFilter] = React.useState<string>('');
   const [selectedFilters, setSelectedFilters] = React.useState<Map<String, TaxonomyItem>>(
     new Map()
   );
@@ -63,7 +68,7 @@ const Search = () => {
   const [jobLevelParam, setJobLevelParam] = React.useState<MultiValue<unknown>>([]);
   const [jobLocationParam, setJobLocationParam] = React.useState<MultiValue<unknown>>([]);
   const [jobWorkplaceParam, setJobWorkplaceParam] = React.useState<MultiValue<unknown>>([]);*/
-  const [_, setJobStackParam] = React.useState<MultiValue<unknown>>([]);
+  const [jobStackParam, setJobStackParam] = React.useState<OptionType[]>([]);
   const options: OptionType[] = [
     { value: 'newest', label: 'Plus récent' },
     { value: 'oldest', label: 'Plus ancien' },
@@ -74,6 +79,36 @@ const Search = () => {
     };
     window.addEventListener('resize', handleResize);
   }, []);
+  useEffect(() => {
+    let serializedFilters = new Map<string, string>();
+    selectedFilters.forEach((value, _) => {
+      if (!serializedFilters.has(value.taxonomy)) {
+        serializedFilters.set(value.taxonomy, value.slug);
+      } else {
+        serializedFilters.set(
+          value.taxonomy,
+          serializedFilters.get(value.taxonomy) + ',' + value.slug
+        );
+      }
+    });
+
+    let localUrlFilter: string = window.location.origin + '/?s=&post_type=job-offer';
+    if (selectedFilters.size > 0) {
+      localUrlFilter +=
+        '&' +
+        Array.from(serializedFilters)
+          .map(([key, value]) => `${key}=${value}`)
+          .join('&');
+    }
+
+    if (jobStackParam.length > 0) {
+      localUrlFilter += '&job-stack=' + jobStackParam.map((tech) => tech.value).join(',');
+    }
+    setUrlFilter(localUrlFilter);
+
+    //updateUrlFilter();
+  }, [selectedFilters, jobStackParam]);
+
   const filterGroups: Array<0 | { title: string; items: TaxonomyItem[] }> = [
     window.aura.taxonomy.jobDuration.length && {
       title: 'Contrat',
@@ -116,7 +151,7 @@ const Search = () => {
       <div className="search-card__content flex-col gap-[32px]">
         <div className="search-card__header">
           <h2 className="title title--h3 c--2">Affiner les offres</h2>
-          <code>https://escouade.loc/?s=</code>
+          <code>{urlFilter}</code>
         </div>
         <div className="search-card__body flex items-stretch lg:items-start flex-col lg:flex-row gap-[32px] lg:gap-[100px]">
           <div className="search-card__select flex-col flex-1">
@@ -214,7 +249,7 @@ const Search = () => {
                                 value={item.name}
                                 className="uk-checkbox"
                                 type="checkbox"
-                                onChange={(e) => handleCheckboxChange(item, e)}
+                                onChange={(e) => handleSearchFilterChange(item, e)}
                                 checked={selectedFilters.has(item.slug)}
                               ></input>
                               {item.name}
@@ -230,7 +265,7 @@ const Search = () => {
         </div>
         <div className="search-card__footer">
           <div className="actions flex flex-col md:flex-row items-center gap-[20px]">
-            <a className="btn c--4 bgc--5-2 btn-shadow-sm" href="#" title="Rechercher">
+            <a className="btn c--4 bgc--5-2 btn-shadow-sm" title="Rechercher" href={urlFilter}>
               Rechercher
             </a>
             <div className="label font-500">78 Offres trouvées</div>

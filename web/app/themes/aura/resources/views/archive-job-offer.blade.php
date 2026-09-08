@@ -55,7 +55,7 @@
           @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
         @endwhile
 
-        <div class="card pagination-card">
+        <div class="card pagination-card hidden">
           <div class="pagination-card__content uk-container">
             <div class="pagination-card__body">
 
