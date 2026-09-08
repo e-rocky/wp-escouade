@@ -59,6 +59,7 @@ const Search = () => {
 
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [urlFilter, setUrlFilter] = React.useState<string>('');
+  const [urlOrder, setUrlOrder] = React.useState<string>('');
   const [selectedFilters, setSelectedFilters] = React.useState<Map<String, TaxonomyItem>>(
     new Map()
   );
@@ -70,14 +71,37 @@ const Search = () => {
   const [jobWorkplaceParam, setJobWorkplaceParam] = React.useState<MultiValue<unknown>>([]);*/
   const [jobStackParam, setJobStackParam] = React.useState<OptionType[]>([]);
   const options: OptionType[] = [
-    { value: 'newest', label: 'Plus récent' },
-    { value: 'oldest', label: 'Plus ancien' },
+    { value: 'DESC', label: 'Plus récent' },
+    { value: 'ASC', label: 'Plus ancien' },
   ];
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
     window.addEventListener('resize', handleResize);
+
+    const params = new URLSearchParams(window.location.search);
+    params.delete('s');
+    params.delete('post_type');
+    setUrlOrder(params.get('order') || 'DESC');
+    params.delete('order');
+    setJobStackParam(
+      (params.get('job-stack')?.split(',') || []).map((value) => ({ value, label: value }))
+    );
+    params.delete('job-stack');
+
+    const filterMap = new Map();
+    for (const [key, value] of params.entries()) {
+      const values = value.split(',');
+      for (const val of values) {
+        //filterMap.set(val, key);
+        const taxonomies = Object.values(window.aura.taxonomy).flat();
+        const taxonomyItem = taxonomies.find((item) => item.slug === val && item.taxonomy === key);
+        filterMap.set(val, taxonomyItem);
+      }
+    }
+
+    setSelectedFilters(filterMap);
   }, []);
   useEffect(() => {
     let serializedFilters = new Map<string, string>();
@@ -92,9 +116,9 @@ const Search = () => {
       }
     });
 
-    let localUrlFilter: string = window.location.origin + '/?s=&post_type=job-offer';
+    let _urlFilter: string = window.location.origin + '/?s=&post_type=job-offer';
     if (selectedFilters.size > 0) {
-      localUrlFilter +=
+      _urlFilter +=
         '&' +
         Array.from(serializedFilters)
           .map(([key, value]) => `${key}=${value}`)
@@ -102,12 +126,19 @@ const Search = () => {
     }
 
     if (jobStackParam.length > 0) {
-      localUrlFilter += '&job-stack=' + jobStackParam.map((tech) => tech.value).join(',');
+      _urlFilter += '&job-stack=' + jobStackParam.map((tech) => tech.value).join(',');
     }
-    setUrlFilter(localUrlFilter);
+
+    if (urlOrder) {
+      _urlFilter += '&order=' + urlOrder;
+    }
+
+    setUrlFilter(_urlFilter);
+
+    console.log(selectedFilters);
 
     //updateUrlFilter();
-  }, [selectedFilters, jobStackParam]);
+  }, [selectedFilters, jobStackParam, urlOrder]);
 
   const filterGroups: Array<0 | { title: string; items: TaxonomyItem[] }> = [
     window.aura.taxonomy.jobDuration.length && {
@@ -151,7 +182,6 @@ const Search = () => {
       <div className="search-card__content flex-col gap-[32px]">
         <div className="search-card__header">
           <h2 className="title title--h3 c--2">Affiner les offres</h2>
-          <code>{urlFilter}</code>
         </div>
         <div className="search-card__body flex items-stretch lg:items-start flex-col lg:flex-row gap-[32px] lg:gap-[100px]">
           <div className="search-card__select flex-col flex-1">
@@ -161,6 +191,11 @@ const Search = () => {
               isMulti
               classNamePrefix="search-card"
               options={jobStack}
+              defaultValue={jobStack.filter((tech) =>
+                (
+                  new URLSearchParams(window.location.search).get('job-stack')?.split(',') || []
+                ).includes(tech.value)
+              )}
               components={{
                 SelectContainer: (props) => (
                   <components.SelectContainer {...props}>
@@ -199,13 +234,21 @@ const Search = () => {
               <span className="whitespace-nowrap">trier par :</span>
               <CreatableSelect
                 isSearchable={false}
-                defaultValue={options[0]}
+                defaultValue={
+                  options.find(
+                    (option) =>
+                      option.value === new URLSearchParams(window.location.search).get('order')
+                  ) || options[0]
+                }
                 options={options}
                 components={{
                   IndicatorSeparator: () => null,
                   DropdownIndicator: () => (
                     <i className="es-icon-chevron-down text-[24px] c--2"></i>
                   ),
+                }}
+                onChange={(newValue) => {
+                  setUrlOrder(newValue?.value || '');
                 }}
                 classNamePrefix="sortby"
               />
