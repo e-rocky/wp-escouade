@@ -32,6 +32,7 @@
           <li class="separator"><i class="es-icon-caret"></i></li>
           <li><a href="{{ get_post_type_archive_link('job-offer') }}" title="Nos offres d’emploi">Nos offres
               d’emploi</a></li>
+          <li class="separator"><i class="es-icon-caret"></i></li>
           <li><a href="{{ get_permalink() }}" title="{!! $title !!}">{!! $title !!}</a></li>
         </ul>
       </div><!-- .breadcrumb-block__body -->

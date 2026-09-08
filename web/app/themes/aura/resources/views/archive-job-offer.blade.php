@@ -26,6 +26,7 @@
           <li class="separator"><i class="es-icon-caret"></i></li>
           <li><a href="{{ get_permalink(get_page_by_path('carriere-it-madagascar')) }}"
               title="Rejoindre l'Escouade">Rejoindre l'Escouade</a></li>
+          <li class="separator"><i class="es-icon-caret"></i></li>
           <li><a href="{{ get_post_type_archive_link('job-offer') }}" title="Nos offres d’emploi">Nos offres
               d’emploi</a></li>
         </ul>
