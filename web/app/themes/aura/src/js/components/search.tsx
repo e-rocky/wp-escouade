@@ -135,8 +135,6 @@ const Search = () => {
 
     setUrlFilter(_urlFilter);
 
-    console.log(selectedFilters);
-
     //updateUrlFilter();
   }, [selectedFilters, jobStackParam, urlOrder]);
 

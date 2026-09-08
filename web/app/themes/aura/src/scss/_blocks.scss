@@ -2169,12 +2169,12 @@
       .copy {
         position: relative;
         &:hover input[type="text"] {
-          border-color: white;
+          //border-color: rgba(white, 0.3);
         }
         input[type="text"] {
           padding: 10px 14px;
           background-color: rgba(0, 0, 0, 0.35);
-          border: solid 1px rgba(white, 0.6);
+          border: solid 1px rgba(white, 0);
           font-size: inherit;
           min-height: 50px;
           width: 100%;
@@ -2183,7 +2183,12 @@
           font-family: inherit;
           text-align: center;
           cursor: pointer;
-          @include transition(250ms);
+          border-radius: 50px;
+          @include transition(150ms);
+          &:focus {
+            outline: none;
+            //border-color: rgba(white, 0.6);
+          }
         }
         button {
           background: transparent;
