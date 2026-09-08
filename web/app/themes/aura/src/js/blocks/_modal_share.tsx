@@ -11,6 +11,9 @@ function share() {
     $button.forEach((btn) => {
       btn.addEventListener('click', function (e) {
         e.preventDefault();
+        const target = e.currentTarget as HTMLElement;
+        const targetUrl = target.dataset.href || window.location.href;
+        $input_link!.value = targetUrl;
         UIkit.modal('#modal-share').show();
       });
     });
