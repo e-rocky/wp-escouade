@@ -149,7 +149,7 @@
               <hr class="my-[20px]">
               <div class="flex flex-col-reverse sm:flex-row items-start items-stretch gap-[16px] justify-between">
                 <div class="actions flex items-stretch gap-[20px]">
-                  <button class="btn c--4 bgc--2 btn-shadow-sm" href="#" title="Je postule"
+                  <button class="btn c--4 bgc--2 btn-shadow-sm" title="Je postule"
                     data-uk-toggle="target: #modal-job-application-form">Je postule<i
                       class="es-icon-chevron-right"></i></button>
                   <button class="btn share-btn c--4 bgc--5 btn-shadow-sm" title="Partager"
@@ -191,11 +191,13 @@
             @php(dynamic_sidebar('sidebar-job-offer-our-benefits'))
 
 
-            <div class="actions col-span-2 flex justify-end items-stretch gap-[20px]">
-              <a class="btn c--1a-2 underline" href="#" title="Voir l’offre">Retourner à la liste
-                les offres</a>
-              <a class="btn c--4 bgc--5-2 btn-shadow-sm" href="#" title="Je postule ">Je postule <i
-                  class="es-icon-chevron-right"></i></a>
+            <div
+              class="actions col-span-2 flex flex-col-reverse align-center md:flex-row justify-end items-center gap-[20px]">
+              <a class="btn c--1a-2 underline whitespace-nowrap" href="{{ get_post_type_archive_link('job-offer') }}"
+                title="Retourner à la liste les offres">Retourner à la liste les offres</a>
+              <button class="btn c--4 bgc--5-2 btn-shadow-sm whitespace-nowrap" title="Je postule"
+                data-uk-toggle="target: #modal-job-application-form">Je postule<i
+                  class="es-icon-chevron-right"></i></button>
             </div>
 
 

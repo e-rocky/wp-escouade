@@ -303,7 +303,7 @@ $gradients: ();
   gap: 10px;
   justify-content: center;
   line-height: 1.5;
-  padding: 0.4375em 1.875em;
+  padding: 6px 30px 8px 30px;
   position: relative;
   text-align: center;
   transition: all 0.15s ease-in-out;
@@ -312,6 +312,7 @@ $gradients: ();
   background-color: transparent;
   z-index: 1;
   color: var(--color-4);
+  text-decoration: none;
   &::after {
     content: "";
     position: absolute;
@@ -322,6 +323,16 @@ $gradients: ();
     background-color: var(--bg);
     z-index: -1;
     opacity: 0.75;
+    @include transition(150ms);
+  }
+  &:hover {
+    text-decoration: none;
+    color: var(--color-4);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    &:after {
+      opacity: 0.9;
+    }
   }
 }
 
@@ -340,6 +351,14 @@ $gradients: ();
   border-radius: 4px;
   background: rgba(list.nth($colors-main, 2), 0.1);
   line-height: 1.5;
+  text-decoration: none;
+  @include transition(150ms);
+  &:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    background: rgba(list.nth($colors-main, 2), 0.15);
+  }
 }
 
 #app {
