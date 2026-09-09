@@ -34,7 +34,8 @@
       "default": {
         "text": "Candidature spontanée",
         "url": "#",
-        "openInNewTab": false
+        "openInNewTab": false,
+        "openApplication": false
       }
     }
   },

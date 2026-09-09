@@ -142,18 +142,14 @@
           </div>
         </div>
         <div class="cover">
-          @if (has_post_thumbnail())
-            <img src="{{ get_the_post_thumbnail_url(null, 'full') }}" alt="{{ get_the_title() }}">
-          @else
-            <img src="{{ asset('resources/images/content/job-detail-bg-1.png') }}" alt="">
-          @endif
+          <img src="{{ asset('resources/images/content/job-detail-bg-2.png') }}" alt="">
         </div>
       </div>
       <div class="job-application-form__body flex flex-col gap-[32px] md:gap-[48px] lg:gap-[64px]">
 
         <h2 class="title title--h2 rte rte--em-c-5 c--2-1a m-0 self-start">
-          <small class="block c--3 tracking-0">Déposer ma candidature pour le poste de :</small>
-          {!! get_the_title() !!}
+          <small class="block c--3 tracking-0">Vous avez le talent, nous avons les opportunités</small>
+          Candidature spontanée
         </h2>
 
         {!! do_shortcode(

@@ -1,4 +1,4 @@
-<div class="job-card bgc bgc--4" data-uk-scrollspy="cls:uk-animation-slide-bottom; offset: 100; delay:500">
+<div class="job-card bgc bgc--4" data-uk-scrollspy="cls:uk-animation-slide-bottom-medium; offset: 100; delay:250">
   <div class="job-card__content flex flex-col lg:grid grid-cols-[1fr_412px] lg:flex-row-reverse">
     <div class="job-card__header mb-[32px] lg:mb-0 row-start-1 col-start-2 col-span-1">
       <a class="img-container block" href="{{ get_the_permalink() }}" title="{{ get_the_title() }}">

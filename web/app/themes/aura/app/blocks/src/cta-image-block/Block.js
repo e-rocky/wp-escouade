@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   RichText,
   InspectorControls,
@@ -17,7 +18,12 @@ const Block = ({
 }) => {
   const { headingText, image = {}, button = {}, background } = attributes;
   const { url: imgUrl = '', alt: imgAlt = '', id: imgId = null } = image;
-  const { text: btnText = '', url: btnUrl = '#', openInNewTab = false } = button;
+  const {
+    text: btnText = '',
+    url: btnUrl = '#',
+    openInNewTab = false,
+    openApplication = false,
+  } = button;
   const ALLOWED_BLOCKS = ['core/paragraph'];
   const DEFAULT_TEMPLATE = [
     [
@@ -76,16 +82,29 @@ const Block = ({
             />
           </PanelBody>
           <PanelBody title="Bouton" initialOpen={true}>
-            <URLInput
-              label="URL du bouton"
-              value={btnUrl}
-              onChange={(val) => setAttributes({ button: { ...button, url: val } })}
-            />
+            {!openApplication && (
+              <URLInput
+                label="URL du bouton"
+                value={btnUrl}
+                onChange={(val) => setAttributes({ button: { ...button, url: val } })}
+              />
+            )}
             <ToggleControl
-              label="Ouvrir dans un nouvel onglet"
-              checked={openInNewTab}
-              onChange={(val) => setAttributes({ button: { ...button, openInNewTab: val } })}
+              label="Bouton de candidature spontanée"
+              checked={openApplication}
+              onChange={function (val) {
+                setAttributes({
+                  button: { ...button, openApplication: val },
+                });
+              }}
             />
+            {!openApplication && (
+              <ToggleControl
+                label="Ouvrir dans un nouvel onglet"
+                checked={openInNewTab}
+                onChange={(val) => setAttributes({ button: { ...button, openInNewTab: val } })}
+              />
+            )}
           </PanelBody>
         </InspectorControls>
       )}
@@ -172,10 +191,13 @@ const Block = ({
                           <div className="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
                             <a
                               className="btn btn--lg c--4 bgc--5 btn-shadow-sm"
-                              href={btnUrl}
+                              href={openApplication ? '/' : btnUrl}
                               title={btnText}
                               target={openInNewTab ? '_blank' : undefined}
                               rel={openInNewTab ? 'noreferrer noopener' : undefined}
+                              {...(openApplication
+                                ? { 'data-uk-toggle': 'target: #modal-open-application-form' }
+                                : {})}
                             >
                               <RichText.Content tagName="span" value={btnText} />
                               <i className="es-icon-chevron-right"></i>
