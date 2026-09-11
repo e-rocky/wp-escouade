@@ -187,3 +187,12 @@ function my_scripts()
     ));
 }
 add_action('wp_enqueue_scripts', 'my_scripts');
+
+
+add_filter('pre_get_document_title', function ($title) {
+    if (is_post_type_archive('job-offer')) {
+        return __('Job Offers', 'aura') . ' | ' . get_bloginfo('name');
+    }
+
+    return $title;
+}, 20);

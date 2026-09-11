@@ -1,0 +1,2 @@
+<?php
+return ['project-id-version'=>'Escouade\'s Aura','content-type'=>'text/plain; charset=UTF-8','content-transfer-encoding'=>'8bit','plural-forms'=>'nplurals=2; plural=n > 1;','x-domain'=>'aura','report-msgid-bugs-to'=>'','pot-creation-date'=>'2026-09-11 08:11+0000','po-revision-date'=>'2026-09-11 08:11+0000','last-translator'=>'','language-team'=>'Français','language'=>'fr_FR','mime-version'=>'1.0','x-generator'=>'Loco https://localise.biz/','x-loco-version'=>'2.8.8; wp-6.9.1; php-8.3.28','messages'=>['Job Offers'=>'Offres d\'emploi']];
