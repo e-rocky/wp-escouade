@@ -11,7 +11,7 @@
       uk-scrollspy="cls:uk-animation-fade" data-uk-parallax="x: 100vw; opacity: 1, 0;  start: 0; end: 10vh; blur: 0, 30px;">
       <div class="hero-text-block__body justify-end mt-auto">
         <h1 class="title title--h1 rte rte--em-c-5 c--4 text-left">
-          <small class="block">Découvrez nos opportunités</small>
+          <small class="block">Rejoignez-nous :</small>
           Recrutements en cours
         </h1>
       </div><!-- .hero-text-block__body -->

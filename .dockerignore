@@ -1,0 +1,9 @@
+.git
+vendor
+node_modules
+web/app/uploads
+web/app/cache
+web/app/upgrade
+*.log
+_tmp
+lp-candidats-export.xml
