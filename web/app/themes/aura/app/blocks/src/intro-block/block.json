@@ -16,10 +16,6 @@
       "type": "string",
       "default": "bgi--4"
     },
-    "headingText": {
-      "type": "string",
-      "default": "Envie de rejoindre <em>l'Escouade</em> ?"
-    },
     "bodyText": {
       "type": "string",
       "default": "Chez Escouade, nous croyons que la réussite d'un projet repose avant tout sur les personnes."

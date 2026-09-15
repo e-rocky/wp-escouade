@@ -1,5 +1,6 @@
 import {
   RichText,
+  InnerBlocks,
   InspectorControls,
   MediaUpload,
   MediaUploadCheck,
@@ -23,14 +24,7 @@ const Block = ({
   setAttributes = () => {},
   blockProps = {},
 }) => {
-  const {
-    background,
-    headingText,
-    bodyText,
-    image = {},
-    primaryButton = {},
-    secondaryButton = {},
-  } = attributes;
+  const { background, bodyText, image = {}, primaryButton = {}, secondaryButton = {} } = attributes;
   const { url: imgUrl = '', alt: imgAlt = '', id: imgId = null } = image;
   const {
     text: primaryText = '',
@@ -152,19 +146,24 @@ const Block = ({
 
                 <div className="hero-intro-card__body">
                   <div className="rte rte--em-c-2">
-                    <h2 className="title title--h1 c--3">
-                      {editmode ? (
-                        <RichText
-                          tagName="span"
-                          value={headingText}
-                          onChange={(val) => setAttributes({ headingText: val })}
-                          allowedFormats={['core/bold', 'core/italic']}
-                          placeholder="Titre…"
-                        />
-                      ) : (
-                        <RichText.Content tagName="span" value={headingText} />
-                      )}
-                    </h2>
+                    {editmode ? (
+                      <InnerBlocks
+                        allowedBlocks={['core/heading']}
+                        template={[
+                          [
+                            'core/heading',
+                            {
+                              level: 2,
+                              placeholder: 'Envie de rejoindre l’Escouade ?',
+                              className: 'title title--h2 c--3',
+                            },
+                          ],
+                        ]}
+                        templateLock="all"
+                      />
+                    ) : (
+                      <InnerBlocks.Content />
+                    )}
                     <div className="text">
                       {editmode ? (
                         <RichText
