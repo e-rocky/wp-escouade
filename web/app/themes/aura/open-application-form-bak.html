@@ -1,0 +1,531 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rejoignez Escouade : déposez votre candidature pour le poste de Développeur Back-end PHP.">
+  <title>Postuler · Développeur Back-end PHP — Escouade</title>
+  <style>
+    .application-page {
+      margin: 0;
+      background: #f6f6fb;
+      color: #191933;
+      font-family: Inter, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .application-page *,
+    .application-page *::before,
+    .application-page *::after {
+      box-sizing: border-box;
+    }
+
+    .application-page a {
+      color: inherit;
+    }
+
+    .application-shell {
+      width: min(1200px, calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .application-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 100px;
+      border-bottom: 1px solid #e2e2ed;
+    }
+
+    .application-nav img {
+      width: 170px;
+      height: auto;
+    }
+
+    .application-back {
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .application-back span {
+      margin-right: 8px;
+    }
+
+    .application-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+      align-items: start;
+      gap: 64px;
+      padding-block: 64px 80px;
+    }
+
+    .application-intro {
+      position: sticky;
+      top: 32px;
+    }
+
+    .application-eyebrow {
+      display: inline-flex;
+      gap: 9px;
+      align-items: center;
+      color: #5148d9;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .application-eyebrow::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #5148d9;
+    }
+
+    .application-page h1 {
+      font-family: 'Funnel Display', Inter, sans-serif;
+      font-size: clamp(36px, 4.3vw, 58px);
+      line-height: 1.07;
+      letter-spacing: -.045em;
+      color: #191933;
+      margin: 22px 0;
+      font-weight: 600;
+    }
+
+    .application-page h1 em {
+      color: #5e54ff;
+      font-style: normal;
+    }
+
+    .application-lead {
+      color: #616179;
+      max-width: 390px;
+      margin: 0 0 28px;
+      font-size: 16px;
+    }
+
+    .application-position {
+      border-top: 1px solid #dddded;
+      padding-top: 24px;
+    }
+
+    .application-position h2 {
+      font-size: 22px;
+      line-height: 1.3;
+      margin: 0 0 14px;
+      color: #191933;
+    }
+
+    .application-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .application-tags span {
+      padding: 5px 12px;
+      border-radius: 7px;
+      background: #eae8ff;
+      color: #48409d;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .application-tags span:first-child {
+      background: #d9f8e9;
+      color: #176244;
+    }
+
+    .application-location {
+      font-size: 13px;
+      color: #616179;
+      margin: 14px 0 28px;
+    }
+
+    .application-visual {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #191933;
+    }
+
+    .application-visual img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1.8;
+      object-fit: cover;
+    }
+
+    .application-visual figcaption {
+      padding: 18px 22px;
+      color: white;
+      font-size: 14px;
+    }
+
+    .application-visual strong {
+      color: #43fea5;
+    }
+
+    .application-contact {
+      margin-top: 22px;
+      color: #616179;
+      font-size: 13px;
+    }
+
+    .application-contact a {
+      color: #5148d9;
+      text-underline-offset: 4px;
+    }
+
+    .application-card {
+      background: white;
+      border: 1px solid #e9e8f2;
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: 0 16px 60px #19193308;
+    }
+
+    .application-card h2 {
+      font-family: 'Funnel Display', Inter, sans-serif;
+      font-size: 28px;
+      letter-spacing: -.03em;
+      color: #191933;
+      margin: 0 0 6px;
+    }
+
+    .application-card-header>p {
+      margin: 0;
+      color: #616179;
+      font-size: 14px;
+    }
+
+    .application-card fieldset {
+      border: 0;
+      padding: 0;
+      margin: 28px 0 0;
+      min-width: 0;
+    }
+
+    .application-card legend {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      padding: 0;
+    }
+
+    .application-card legend span {
+      display: inline-grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      background: #f0efff;
+      color: #5148d9;
+      border-radius: 8px;
+      font-size: 11px;
+    }
+
+    .application-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 16px;
+    }
+
+    .application-field {
+      min-width: 0;
+    }
+
+    .application-field--wide {
+      grid-column: 1 / -1;
+    }
+
+    .application-field>label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .application-field input,
+    .application-field textarea {
+      display: block;
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      font: inherit;
+      font-size: 14px;
+      color: #191933;
+      background: #fbfbfd;
+      border: 1px solid #dddde9;
+      border-radius: 9px;
+    }
+
+    .application-field input::placeholder,
+    .application-field textarea::placeholder {
+      color: #77778c;
+      opacity: 1;
+    }
+
+    .application-field textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .application-page :focus-visible {
+      outline: 3px solid #5e54ff;
+      outline-offset: 3px;
+    }
+
+    .application-field input:focus,
+    .application-field textarea:focus {
+      background: white;
+      border-color: #5e54ff;
+    }
+
+    .application-upload {
+      padding: 18px;
+      border: 1px dashed #b7b2eb;
+      background: #faf9ff;
+      border-radius: 12px;
+    }
+
+    .application-upload input {
+      background: transparent;
+      border: 0;
+      padding: 0;
+      min-height: auto;
+    }
+
+    .application-upload input::file-selector-button {
+      border: 1px solid #d7d3f6;
+      border-radius: 7px;
+      padding: 9px 12px;
+      margin: 0 10px 8px 0;
+      background: white;
+      color: #5148d9;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .application-hint {
+      margin: 8px 0 0;
+      font-size: 12px;
+      color: #616179;
+      overflow-wrap: anywhere;
+    }
+
+    .application-consent {
+      display: flex;
+      align-items: start;
+      gap: 10px;
+      margin: 24px 0;
+      font-size: 12px;
+      color: #616179;
+    }
+
+    .application-consent input {
+      width: 17px;
+      height: 17px;
+      margin: 2px 0 0;
+      flex-shrink: 0;
+      accent-color: #5e54ff;
+    }
+
+    .application-submit {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      background: #5e54ff;
+      color: white;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s;
+    }
+
+    .application-submit:hover {
+      background: #4940db;
+    }
+
+    .application-status {
+      margin: 14px 0 0;
+      font-size: 13px;
+      color: #5148d9;
+    }
+
+    .application-status:empty {
+      display: none;
+    }
+
+    .application-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-block: 24px;
+      border-top: 1px solid #e2e2ed;
+      color: #616179;
+      font-size: 12px;
+    }
+
+    .application-footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 960px) {
+      .application-layout {
+        gap: 32px;
+      }
+
+      .application-card {
+        padding: 28px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .application-shell {
+        width: min(560px, calc(100% - 32px));
+      }
+
+      .application-nav {
+        min-height: 80px;
+      }
+
+      .application-nav img {
+        width: 135px;
+      }
+
+      .application-back {
+        font-size: 12px;
+      }
+
+      .application-layout {
+        grid-template-columns: 1fr;
+        padding-block: 36px;
+      }
+
+      .application-intro {
+        position: static;
+      }
+
+      .application-visual img {
+        aspect-ratio: 2.5;
+      }
+
+      .application-lead {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .application-card {
+        padding: 22px 18px;
+      }
+
+      .application-fields {
+        grid-template-columns: 1fr;
+      }
+
+      .application-footer {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+
+<body class="application-page">
+  <header class="application-shell application-nav">
+    <a href="./homepage.html" aria-label="Escouade — Accueil"><img src="./resources/images/design/logo--icon-square-text.svg" alt="Escouade"></a>
+    <a class="application-back" href="./job-listing.html"><span aria-hidden="true">←</span> Toutes les offres</a>
+  </header>
+  <main id="main" class="application-shell application-layout">
+    <aside class="application-intro" aria-labelledby="application-title">
+      <span class="application-eyebrow">Rejoignez l’Escouade</span>
+      <h1 id="application-title">La suite s’écrit<br><em>avec vous.</em></h1>
+      <p class="application-lead">Votre prochain chapitre professionnel commence ici. Parlez-nous de vous et de ce qui vous anime.</p>
+      <div class="application-position">
+        <h2>Développeur Back-end PHP</h2>
+        <div class="application-tags" aria-label="Caractéristiques du poste"><span>CDI</span><span>Remote</span><span>Senior</span></div>
+        <p class="application-location">Antananarivo, Madagascar · Tech / Support</p>
+      </div>
+      <figure class="application-visual">
+        <img src="./resources/images/content/application-form-img-1.png" alt="" width="1120" height="370">
+        <figcaption>Des projets ambitieux. <strong>Une aventure collective.</strong></figcaption>
+      </figure>
+      <p class="application-contact">Une question avant de vous lancer ?<br><a href="mailto:contact@escouade.mg">contact@escouade.mg</a> · <a href="tel:+26134223682">+261 34 22 236 82</a></p>
+    </aside>
+    <form id="application-form" class="application-card" enctype="multipart/form-data" aria-labelledby="form-title">
+      <div class="application-card-header">
+        <h2 id="form-title">À vous de jouer.</h2>
+        <p>Complétez votre candidature ci-dessous.<br>Les champs marqués d’un * sont obligatoires.</p>
+      </div>
+      <fieldset>
+        <legend><span aria-hidden="true">01</span> Vos coordonnées</legend>
+        <div class="application-fields">
+          <div class="application-field"><label for="job-first-name">Prénom *</label><input id="job-first-name" name="first_name" autocomplete="given-name" placeholder="Votre prénom" required></div>
+          <div class="application-field"><label for="job-lastname">Nom *</label><input id="job-lastname" name="last_name" autocomplete="family-name" placeholder="Votre nom" required></div>
+          <div class="application-field application-field--wide"><label for="job-email">Adresse e-mail *</label><input id="job-email" name="email" type="email" autocomplete="email" placeholder="vous@exemple.com" required></div>
+          <div class="application-field application-field--wide"><label for="job-address">Adresse *</label><input id="job-address" name="address" autocomplete="street-address" placeholder="Votre adresse, ville et pays" required></div>
+          <div class="application-field application-field--wide"><label for="job-phone">Téléphone *</label><input id="job-phone" name="phone" type="tel" autocomplete="tel" placeholder="+261 …" required></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><span aria-hidden="true">02</span> Votre candidature</legend>
+        <div class="application-fields">
+          <div class="application-field application-field--wide">
+            <label for="job-attachments">CV et pièces jointes *</label>
+            <div class="application-upload">
+              <input id="job-attachments" name="attachments" type="file" accept=".pdf,.doc,.docx" multiple required aria-describedby="attachments-hint attachments-status">
+              <p id="attachments-hint" class="application-hint">Ajoutez votre CV et, si vous le souhaitez, une lettre de motivation.<br>PDF, DOC ou DOCX · 10 Mo maximum par fichier.</p>
+              <p id="attachments-status" class="application-hint" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="application-field application-field--wide"><label for="job-message">Quelques mots pour nous convaincre *</label><textarea id="job-message" name="message" rows="4" placeholder="Votre parcours, vos envies, ce que vous aimeriez construire avec nous…" required></textarea></div>
+        </div>
+      </fieldset>
+      <div class="application-consent"><input id="accept" name="consent" type="checkbox" required><label for="accept">J’accepte que mes informations et mes documents soient utilisés pour traiter ma candidature. *</label></div>
+      <button class="application-submit" type="submit">Envoyer ma candidature <span aria-hidden="true">↗</span></button>
+      <p id="application-status" class="application-status" role="status" tabindex="-1"></p>
+    </form>
+  </main>
+  <footer class="application-shell application-footer">
+    <p>© 2026 Escouade. Tous droits réservés.</p>
+    <p>Ensemble, allons plus loin.</p>
+  </footer>
+  <script type="module" src="/src/main.ts"></script>
+  <script type="module">
+    const form = document.getElementById('application-form');
+    const attachments = document.getElementById('job-attachments');
+    const status = document.getElementById('application-status');
+    attachments.addEventListener('change', () => {
+      const files = [...attachments.files];
+      const invalid = files.find(file => !/\.(pdf|docx?)$/i.test(file.name) || file.size > 10 * 1024 * 1024);
+      attachments.setCustomValidity(invalid ? 'Choisissez des fichiers PDF, DOC ou DOCX de 10 Mo maximum chacun.' : '');
+      document.getElementById('attachments-status').textContent = invalid
+        ? 'Un fichier dépasse 10 Mo ou son format n’est pas accepté.'
+        : files.map(file => file.name).join(' · ');
+      status.textContent = '';
+    });
+    // Maquette statique : brancher ici le traitement de candidature WordPress.
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      status.textContent = 'Cette version de démonstration n’envoie pas de candidature. Le service d’envoi doit être connecté pour finaliser votre dépôt.';
+      status.focus();
+    });
+  </script>
+</body>
+
+</html>
