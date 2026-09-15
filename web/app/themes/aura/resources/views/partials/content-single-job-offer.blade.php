@@ -10,7 +10,8 @@
         @endif
       </div>
     </div><!-- .hero-text-block__background -->
-    <div class="hero-text-block__content min-h-[60vh] gap-[70px] uk-container" uk-scrollspy="cls:uk-animation-fade"
+    <div class="hero-text-block__content min-h-65 md:min-h-100 gap-[70px] uk-container"
+      uk-scrollspy="cls:uk-animation-fade"
       data-uk-parallax="x: 100vw; opacity: 1, 0;  start: 0; end: 10vh; blur: 0, 30px;">
       <div class="hero-text-block__body justify-end mt-auto">
         <h1 class="title title--h1 rte rte--em-c-5 c--4 text-left">

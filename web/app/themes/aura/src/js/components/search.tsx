@@ -3,6 +3,7 @@ import spriteUrl from '../../../resources/images/design/sprite.svg';
 interface OptionType {
   value: string;
   label: string;
+  __isNew__?: boolean;
 }
 
 import CreatableSelect from 'react-select/creatable';
@@ -12,7 +13,18 @@ import {
   type ClearIndicatorProps,
   type MultiValue,
   type MultiValueRemoveProps,
+  type ContainerProps,
 } from 'react-select';
+
+// Keep the container stable so typing does not remount the input.
+const SearchSelectContainer = (props: ContainerProps<OptionType, true>) => (
+  <components.SelectContainer {...props}>
+    <div className="search-card__select-container">
+      <div className="search-card__select-label">Vos technos</div>
+      {props.children}
+    </div>
+  </components.SelectContainer>
+);
 
 interface TaxonomyItem {
   count: number;
@@ -60,6 +72,7 @@ const Search = () => {
 
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [urlFilter, setUrlFilter] = React.useState<string>('');
+  const [searchInputValue, setSearchInputValue] = React.useState<string>('');
   const [urlOrder, setUrlOrder] = React.useState<string>('');
   const [selectedFilters, setSelectedFilters] = React.useState<Map<String, TaxonomyItem>>(
     new Map()
@@ -82,12 +95,19 @@ const Search = () => {
     window.addEventListener('resize', handleResize);
 
     const params = new URLSearchParams(window.location.search);
+    const search = params.get('s')?.trim() || '';
     params.delete('s');
     params.delete('post_type');
     setUrlOrder(params.get('order') || 'DESC');
     params.delete('order');
     setJobStackParam(
-      (params.get('job-stack')?.split(',') || []).map((value) => ({ value, label: value }))
+      [
+        ...(params.get('job-stack')?.split(',').filter(Boolean) || []).map((value) => ({
+          value,
+          label: window.aura.taxonomy.jobStack.find((tech) => tech.slug === value)?.name || value,
+        })),
+        ...(search ? [{ value: search, label: search, __isNew__: true }] : []),
+      ]
     );
     params.delete('job-stack');
 
@@ -117,26 +137,26 @@ const Search = () => {
       }
     });
 
-    let _urlFilter: string = window.location.origin + '/?s=&post_type=job-offer';
+    const searchTerms = jobStackParam
+      .filter((tech) => tech.__isNew__)
+      .map((tech) => tech.value.trim())
+      .filter(Boolean)
+      .join(' ');
+    const query = new URLSearchParams({ s: searchTerms, post_type: 'job-offer' });
     if (selectedFilters.size > 0) {
-      _urlFilter +=
-        '&' +
-        Array.from(serializedFilters)
-          .map(([key, value]) => `${key}=${value}`)
-          .join('&');
+      serializedFilters.forEach((value, key) => query.set(key, value));
     }
 
-    if (jobStackParam.length > 0) {
-      _urlFilter += '&job-stack=' + jobStackParam.map((tech) => tech.value).join(',');
+    const selectedTechnologies = jobStackParam.filter((tech) => !tech.__isNew__);
+    if (selectedTechnologies.length > 0) {
+      query.set('job-stack', selectedTechnologies.map((tech) => tech.value).join(','));
     }
 
     if (urlOrder) {
-      _urlFilter += '&order=' + urlOrder;
+      query.set('order', urlOrder);
     }
 
-    _urlFilter += '#search';
-
-    setUrlFilter(_urlFilter);
+    setUrlFilter(`${window.location.origin}/?${query.toString()}#search`);
 
     //updateUrlFilter();
   }, [selectedFilters, jobStackParam, urlOrder]);
@@ -188,25 +208,19 @@ const Search = () => {
           <div className="search-card__select flex-col flex-1">
             <i className="es-icon-search text-[32px] c--2"></i>
             <CreatableSelect
+              inputValue={searchInputValue}
+              onInputChange={(inputValue) => setSearchInputValue(inputValue)}
+              menuIsOpen={searchInputValue.trim().length === 0 ? false : undefined}
               isClearable
               isMulti
               classNamePrefix="search-card"
-              options={jobStack}
+              options={searchInputValue.trim().length >= 3 ? jobStack : []}
+              formatCreateLabel={(inputValue) => `Rechercher « ${inputValue} »`}
+              createOptionPosition="first"
               placeholder="Ex. React, PHP, Python..."
-              defaultValue={jobStack.filter((tech) =>
-                (
-                  new URLSearchParams(window.location.search).get('job-stack')?.split(',') || []
-                ).includes(tech.value)
-              )}
+              value={jobStackParam}
               components={{
-                SelectContainer: (props) => (
-                  <components.SelectContainer {...props}>
-                    <div className="search-card__select-container">
-                      <div className="search-card__select-label">Vos technos</div>
-                      {props.children}
-                    </div>
-                  </components.SelectContainer>
-                ),
+                SelectContainer: SearchSelectContainer,
                 DropdownIndicator: () => null,
                 IndicatorSeparator: () => null,
                 MultiValueRemove: (props: MultiValueRemoveProps) => (

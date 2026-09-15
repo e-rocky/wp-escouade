@@ -154,7 +154,7 @@ const Block = ({
                             'core/heading',
                             {
                               level: 2,
-                              placeholder: 'Envie de rejoindre l’Escouade ?',
+                              placeholder: 'Titre ...',
                               className: 'title title--h2 c--3',
                             },
                           ],
