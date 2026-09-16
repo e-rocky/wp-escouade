@@ -120,17 +120,30 @@ class Dna extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        $is_edit_mode = \Elementor\Plugin::$instance->editor->is_edit_mode();
+        $this->add_inline_editing_attributes('heading', 'basic');
+        $this->add_inline_editing_attributes('intro', 'advanced');
         $heading = in_array($settings['heading_tag'] ?? '', ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'], true) ? $settings['heading_tag'] : 'h2';
         $card_heading = in_array($settings['card_heading_tag'] ?? '', ['h2', 'h3', 'h4', 'h5', 'h6'], true) ? $settings['card_heading_tag'] : 'h3';
-        ?>
+?>
         <div class="block dna-block">
             <div class="dna-block__content uk-container flex flex-col gap-[64px] <?php echo esc_attr($settings['container_classes'] ?? ''); ?>">
-                <?php if (! empty($settings['heading']) || ! empty($settings['intro'])) : ?>
+                <?php if (! empty($settings['heading']) || ! empty($settings['intro']) || $is_edit_mode) : ?>
                     <div class="dna-block__header text-center">
-                        <?php if (! empty($settings['heading'])) : ?>
-                            <<?php echo $heading; ?> class="title title--h2 c--2 rte--em-c-5 mb-0 text-[48px]"><?php echo wp_kses($settings['heading'], ['em' => [], 'strong' => [], 'br' => []]); ?></<?php echo $heading; ?>>
+                        <?php if (! empty($settings['heading']) || $is_edit_mode) : ?>
+                            <<?php echo $heading; ?>
+                                class="title title--h2 c--2 rte--em-c-5 mb-0 text-[48px]">
+                                <span <?php $this->print_render_attribute_string('heading'); ?>>
+                                    <?php echo wp_kses(
+                                        $settings['heading'] ?? '',
+                                        ['em' => [], 'strong' => [], 'br' => []]
+                                    ); ?>
+                                </span>
+                            </<?php echo $heading; ?>>
                         <?php endif; ?>
-                        <?php echo wp_kses_post($settings['intro'] ?? ''); ?>
+                        <div <?php $this->print_render_attribute_string('intro'); ?>>
+                            <?php echo wp_kses_post($settings['intro'] ?? ''); ?>
+                        </div>
                     </div>
                 <?php endif; ?>
                 <?php if (! empty($settings['cards'])) : ?>
@@ -171,6 +184,6 @@ class Dna extends Widget_Base
                 <?php endif; ?>
             </div>
         </div>
-        <?php
+<?php
     }
 }
