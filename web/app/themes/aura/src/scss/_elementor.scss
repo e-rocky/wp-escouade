@@ -1,9 +1,19 @@
 @use "vars" as vars;
 
-#main .e-con {
-  --content-width: #{vars.$width};
-  .uk-container {
-    padding-left: 0;
-    padding-right: 0;
+@mixin e-con {
+  .e-con {
+    --content-width: #{vars.$width};
+    .uk-container {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
+  .e-con-inner {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+#main {
+  @include e-con;
 }

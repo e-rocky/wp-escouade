@@ -196,6 +196,7 @@ require_once __DIR__ . '/blocks/blocks.php';
 add_action('elementor/widgets/register', function ($widgets_manager) {
     $widgets_manager->register(new \App\Elementor\Breadcrumb());
     $widgets_manager->register(new \App\Elementor\HeroIntro());
+    $widgets_manager->register(new \App\Elementor\Dna());
 });
 
 // Apply the first Intro widget's background to its immediate Elementor container.
