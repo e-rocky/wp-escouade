@@ -115,16 +115,19 @@ class Numbers extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        $is_edit_mode = \Elementor\Plugin::$instance->editor->is_edit_mode();
+        $this->add_inline_editing_attributes('heading', 'basic');
+        $this->add_inline_editing_attributes('subtitle', 'basic');
         $tag = in_array($settings['heading_tag'] ?? '', ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'], true) ? $settings['heading_tag'] : 'h2';
         ?>
         <div class="block numbers-block">
             <div class="numbers-block__content uk-container text-center flex flex-col gap-[32px] <?php echo esc_attr($settings['container_classes'] ?? ''); ?>">
-                <?php if (! empty($settings['heading']) || ! empty($settings['subtitle'])) : ?>
+                <?php if (! empty($settings['heading']) || ! empty($settings['subtitle']) || $is_edit_mode) : ?>
                     <div class="numbers-block__header">
                         <<?php echo $tag; ?> class="title title--h2 c--4 [&_small]:font-500">
-                            <span><?php echo esc_html($settings['heading'] ?? ''); ?></span>
-                            <?php if (! empty($settings['subtitle'])) : ?>
-                                <small><span><?php echo esc_html($settings['subtitle']); ?></span></small>
+                            <span <?php $this->print_render_attribute_string('heading'); ?>><?php echo esc_html($settings['heading'] ?? ''); ?></span>
+                            <?php if (! empty($settings['subtitle']) || $is_edit_mode) : ?>
+                                <small><span <?php $this->print_render_attribute_string('subtitle'); ?>><?php echo esc_html($settings['subtitle'] ?? ''); ?></span></small>
                             <?php endif; ?>
                         </<?php echo $tag; ?>>
                     </div>

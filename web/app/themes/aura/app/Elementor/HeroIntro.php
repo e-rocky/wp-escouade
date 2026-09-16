@@ -108,6 +108,11 @@ class HeroIntro extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        $is_edit_mode = \Elementor\Plugin::$instance->editor->is_edit_mode();
+        $this->add_render_attribute('heading', 'class', ['title', 'title--h2', 'c--3']);
+        $this->add_inline_editing_attributes('heading', 'basic');
+        $this->add_render_attribute('body', 'class', 'text');
+        $this->add_inline_editing_attributes('body', 'advanced');
         $tag = in_array($settings['heading_tag'], ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'], true) ? $settings['heading_tag'] : 'h2';
         $image = $settings['image'] ?? [];
         $buttons = [];
@@ -140,10 +145,10 @@ class HeroIntro extends Widget_Base
                             <?php endif; ?>
                             <div class="hero-intro-card__body">
                                 <div class="rte rte--em-c-2">
-                                    <?php if (! empty($settings['heading'])) : ?>
-                                        <<?php echo $tag; ?> class="title title--h2 c--3"><?php echo wp_kses($settings['heading'], ['em' => [], 'strong' => [], 'br' => []]); ?></<?php echo $tag; ?>>
+                                    <?php if (! empty($settings['heading']) || $is_edit_mode) : ?>
+                                        <<?php echo $tag; ?> <?php $this->print_render_attribute_string('heading'); ?>><?php echo wp_kses($settings['heading'] ?? '', ['em' => [], 'strong' => [], 'br' => []]); ?></<?php echo $tag; ?>>
                                     <?php endif; ?>
-                                    <div class="text"><?php echo wp_kses_post($settings['body']); ?></div>
+                                    <div <?php $this->print_render_attribute_string('body'); ?>><?php echo wp_kses_post($settings['body'] ?? ''); ?></div>
                                     <?php if ($buttons) : ?>
                                         <div class="actions flex flex-col sm:flex-row md:flex-wrap items-stretch gap-[20px]">
                                             <?php foreach ($buttons as $key) : ?>
