@@ -135,7 +135,14 @@ class Dna extends Widget_Base
                 <?php endif; ?>
                 <?php if (! empty($settings['cards'])) : ?>
                     <div class="dna-block__body grid grid-cols-1 md:grid-cols-3 gap-[32px]">
-                        <?php foreach ($settings['cards'] as $card) : ?>
+                        <?php foreach ($settings['cards'] as $index => $card) : ?>
+                            <?php
+                            $title_key = $this->get_repeater_setting_key('title', 'cards', $index);
+                            $description_key = $this->get_repeater_setting_key('description', 'cards', $index);
+                            $this->add_inline_editing_attributes($title_key, 'none');
+                            $this->add_inline_editing_attributes($description_key, 'none');
+                            $is_edit_mode = \Elementor\Plugin::$instance->editor->is_edit_mode();
+                            ?>
                             <div class="card dna-card flex-1 h-full">
                                 <div class="dna-card__content">
                                     <?php if (! empty($card['image']['url'])) : ?>
@@ -150,11 +157,11 @@ class Dna extends Widget_Base
                                         </div>
                                     <?php endif; ?>
                                     <div class="dna-card__body">
-                                        <?php if (! empty($card['title'])) : ?>
-                                            <<?php echo $card_heading; ?> class="title title--h3 c--2-5"><span><?php echo esc_html($card['title']); ?></span></<?php echo $card_heading; ?>>
+                                        <?php if (! empty($card['title']) || $is_edit_mode) : ?>
+                                            <<?php echo $card_heading; ?> class="title title--h3 c--2-5"><span <?php $this->print_render_attribute_string($title_key); ?>><?php echo esc_html($card['title'] ?? ''); ?></span></<?php echo $card_heading; ?>>
                                         <?php endif; ?>
-                                        <?php if (! empty($card['description'])) : ?>
-                                            <p><?php echo nl2br(esc_html($card['description'])); ?></p>
+                                        <?php if (! empty($card['description']) || $is_edit_mode) : ?>
+                                            <p <?php $this->print_render_attribute_string($description_key); ?>><?php echo nl2br(esc_html($card['description'] ?? '')); ?></p>
                                         <?php endif; ?>
                                     </div>
                                 </div>
