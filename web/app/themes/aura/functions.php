@@ -159,7 +159,7 @@ add_action('enqueue_block_assets', function () {
 });
 
 add_filter('wp_script_attributes', function ($attributes) {
-    if (($attributes['id'] ?? '') !== 'auraEditorScript-js') {
+    if (! in_array($attributes['id'] ?? '', ['auraScript-js', 'auraEditorScript-js'], true)) {
         return $attributes;
     }
 
