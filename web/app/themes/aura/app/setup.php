@@ -197,12 +197,18 @@ add_action('elementor/widgets/register', function ($widgets_manager) {
     $widgets_manager->register(new \App\Elementor\Breadcrumb());
     $widgets_manager->register(new \App\Elementor\HeroIntro());
     $widgets_manager->register(new \App\Elementor\Dna());
+    $widgets_manager->register(new \App\Elementor\Numbers());
 });
 
-// Apply the first Intro widget's background to its immediate Elementor container.
+// Apply the first supported widget's background to its immediate Elementor container.
+add_action('elementor/editor/after_enqueue_scripts', function () {
+    $path = 'resources/js/elementor-editor.js';
+    wp_enqueue_script('aura-elementor-editor', get_theme_file_uri($path), ['elementor-editor'], filemtime(get_theme_file_path($path)), true);
+});
+
 add_action('elementor/frontend/container/before_render', function ($container) {
     foreach ($container->get_children() as $child) {
-        if ($child->get_name() !== 'aura-hero-intro') {
+        if (! in_array($child->get_name(), ['aura-hero-intro', 'aura-numbers'], true)) {
             continue;
         }
 
