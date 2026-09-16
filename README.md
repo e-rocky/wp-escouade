@@ -5,19 +5,21 @@ Site WordPress basé sur Bedrock, avec le thème personnalisé Aura, des blocs G
 ## Prérequis
 
 - Git.
-- Docker Desktop démarré, avec les conteneurs Linux et Docker Compose.
+- Docker Engine démarré et le plugin Docker Compose disponibles sous Linux.
 - Node.js 22 LTS et npm pour compiler les ressources sur la machine hôte.
 
-PHP 8.3, Apache, Composer et WP-CLI sont fournis par le Dockerfile. MySQL et phpMyAdmin utilisent leurs propres images. Les commandes ci-dessous s’exécutent depuis la racine du dépôt.
+PHP 8.3, Apache, Composer et WP-CLI sont fournis par le Dockerfile. MySQL et phpMyAdmin utilisent leurs propres images. Les commandes ci-dessous s’exécutent dans un terminal Bash, depuis la racine du dépôt.
 
 ## Installation locale
 
 ### 1. Configurer l’environnement
 
-Créer `.env` à partir de `.env.example` uniquement si `.env` n’existe pas déjà. Sous PowerShell :
+Créer `.env` à partir de `.env.example` uniquement si `.env` n’existe pas déjà :
 
-```powershell
-Copy-Item .env.example .env
+```bash
+if [ ! -e .env ]; then
+  cp .env.example .env
+fi
 ```
 
 Adapter les paramètres pour Docker :
@@ -112,7 +114,7 @@ docker compose exec db sh -c 'mysqldump -uwordpress -pwordpress --single-transac
 docker compose cp db:/tmp/sauvegarde.sql ./sauvegarde.sql
 ```
 
-Le fichier `sauvegarde.sql` est créé sur la machine hôte. Cette procédure ne nécessite pas l’installation de `mysqldump` sous Windows. Le Dockerfile PHP actuel ne fournit pas le client MySQL : privilégier ces commandes à `wp db export` dans le service `wpcli`.
+Le fichier `sauvegarde.sql` est créé sur la machine hôte. Cette procédure ne nécessite pas l’installation de `mysqldump` sur celle-ci. Le Dockerfile PHP actuel ne fournit pas le client MySQL : privilégier ces commandes à `wp db export` dans le service `wpcli`.
 
 ## Commandes Docker courantes
 
@@ -164,8 +166,6 @@ docker compose run --rm wpcli --allow-root cache flush
 | `npm run build:all` | Compiler le thème et les blocs |
 
 Lancer la surveillance du thème et celle des blocs dans deux terminaux si nécessaire. Pour travailler avec Apache dans Docker à partir des fichiers compilés, utiliser `watch:aura`.
-
-Sous PowerShell, si `npm.ps1` est bloqué par la politique d’exécution, utiliser `npm.cmd` à la place de `npm`.
 
 ## Organisation du projet
 
