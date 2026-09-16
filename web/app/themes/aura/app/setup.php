@@ -195,4 +195,21 @@ require_once __DIR__ . '/blocks/blocks.php';
 
 add_action('elementor/widgets/register', function ($widgets_manager) {
     $widgets_manager->register(new \App\Elementor\Breadcrumb());
+    $widgets_manager->register(new \App\Elementor\HeroIntro());
+});
+
+// Apply the first Intro widget's background to its immediate Elementor container.
+add_action('elementor/frontend/container/before_render', function ($container) {
+    foreach ($container->get_children() as $child) {
+        if ($child->get_name() !== 'aura-hero-intro') {
+            continue;
+        }
+
+        $background = $child->get_settings_for_display('background');
+        if (in_array($background, ['bgi--1', 'bgi--2', 'bgi--3', 'bgi--4', 'bgi--5', 'bgi--6'], true)) {
+            $container->add_render_attribute('_wrapper', 'class', ['bgi', $background]);
+        }
+
+        break;
+    }
 });
