@@ -845,49 +845,65 @@
 /*-- end: .numbers-card --*/
 
 /*-- .dna-card --*/
-.dna-card {
-  box-shadow:
-    0 20px 40px 0 rgba(94, 84, 255, 0.05),
-    0 25px 50px 0 rgba(94, 84, 255, 0.05);
-  border-radius: 24px;
-  background: #fff;
-  &__content {
-    display: flex;
-    padding: 32px;
-    flex: 1 0 0;
-    gap: 24px;
-
-    flex-direction: row;
-    align-items: flex-start;
-    text-align: left;
-    @include media-breakpoint-up(md) {
-      padding: 32px 16px 16px;
-      gap: 16px;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    @include media-breakpoint-up(xl) {
+@mixin dna-card {
+  .dna-card {
+    box-shadow:
+      0 20px 40px 0 rgba(94, 84, 255, 0.05),
+      0 25px 50px 0 rgba(94, 84, 255, 0.05);
+    border-radius: 24px;
+    background: #fff;
+    &__content {
+      display: flex;
       padding: 32px;
-      gap: 35px;
+      flex: 1 0 0;
+      gap: 24px;
+
       flex-direction: row;
       align-items: flex-start;
       text-align: left;
+      @include media-breakpoint-up(md) {
+        padding: 32px 16px 16px;
+        gap: 16px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      @include media-breakpoint-up(xl) {
+        padding: 32px;
+        gap: 35px;
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+      }
+    }
+    &__header {
+      .img-container {
+        margin-bottom: 0;
+        width: 42px;
+        @include img-container-center(42px, 42px);
+      }
+    }
+    &__body {
+    }
+    &__footer {
     }
   }
+}
+/*-- end: .dna-card --*/
+
+/*-- .dna-block --*/
+.dna-block {
+  &__content {
+    @include dna-card();
+  }
   &__header {
-    .img-container {
-      margin-bottom: 0;
-      width: 42px;
-      @include img-container-center(42px, 42px);
-    }
   }
   &__body {
   }
   &__footer {
   }
 }
-/*-- end: .dna-card --*/
+/*-- end: .dna-block --*/
 
 /*-- .breadcrumb-block --*/
 .breadcrumb-block {

@@ -55,7 +55,6 @@ export default defineConfig({
         //app: './src/main.ts',
         auraApp: './resources/js/app.js',
         auraStyle: './src/style.scss',
-        auraUno: 'virtual:uno.css',
         editor: './resources/js/editor.js',
         editorStyle: './resources/css/editor.css',
         /*appStyle: './resources/css/app.css',*/

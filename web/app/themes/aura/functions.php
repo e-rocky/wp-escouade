@@ -80,6 +80,30 @@ collect(['job-department', 'job-duration', 'job-language', 'job-level', 'job-loc
         }
     });
 
+/**
+ * Return the UnoCSS URL generated for the main JavaScript entry.
+ */
+function aura_uno_asset_url()
+{
+    if (Vite::isRunningHot()) {
+        $hotFile = get_theme_file_path('public/hot');
+
+        return is_file($hotFile)
+            ? rtrim(trim(file_get_contents($hotFile)), '/') . '/__uno.css?direct'
+            : null;
+    }
+
+    $manifestFile = get_theme_file_path('public/build/manifest.json');
+    if (! is_file($manifestFile)) {
+        return null;
+    }
+
+    $manifest = json_decode(file_get_contents($manifestFile), true);
+    $cssFile = $manifest['resources/js/app.js']['css'][0] ?? null;
+
+    return $cssFile ? get_theme_file_uri('public/build/' . $cssFile) : null;
+}
+
 
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style(
@@ -88,12 +112,9 @@ add_action('wp_enqueue_scripts', function () {
         [],
         null
     );
-    wp_enqueue_style(
-        'auraUno',
-        Vite::asset("../../../../../../../../../../__uno.css"),
-        [],
-        null
-    );
+    if ($auraUno = aura_uno_asset_url()) {
+        wp_enqueue_style('auraUno', $auraUno, [], null);
+    }
     wp_enqueue_script(
         'auraScript',
         Vite::asset('resources/js/app.js'),
@@ -105,15 +126,17 @@ add_action('wp_enqueue_scripts', function () {
 
 add_filter('block_editor_settings_all', function ($settings) {
     $auraStyle = Vite::asset('src/style.scss');
-    $auraUno = Vite::asset("../../../../../../../../../../__uno.css");
+    $auraUno = aura_uno_asset_url();
 
     $settings['styles'][] = [
         'css' => "@import url('{$auraStyle}')",
     ];
 
-    $settings['styles'][] = [
-        'css' => "@import url('{$auraUno}')",
-    ];
+    if ($auraUno) {
+        $settings['styles'][] = [
+            'css' => "@import url('{$auraUno}')",
+        ];
+    }
 
     return $settings;
 });

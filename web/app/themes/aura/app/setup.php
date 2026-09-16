@@ -198,6 +198,7 @@ add_action('elementor/widgets/register', function ($widgets_manager) {
     $widgets_manager->register(new \App\Elementor\HeroIntro());
     $widgets_manager->register(new \App\Elementor\Dna());
     $widgets_manager->register(new \App\Elementor\Numbers());
+    $widgets_manager->register(new \App\Elementor\Edito());
 });
 
 // Apply the first supported widget's background to its immediate Elementor container.
