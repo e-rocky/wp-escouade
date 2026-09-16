@@ -1985,7 +1985,7 @@
     }
 
     .uk-container {
-      .uk-navbar {
+      [data-uk-navbar] {
         padding-top: 30px;
         padding-bottom: 30px;
         @include transition();

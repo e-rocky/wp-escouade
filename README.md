@@ -1,4 +1,4 @@
-﻿# Escouade — WordPress / Aura
+# Escouade — WordPress / Aura
 
 Site WordPress basé sur Bedrock, avec le thème personnalisé Aura, des blocs Gutenberg et des composants React/TypeScript. Les dépendances PHP sont gérées avec Composer ; les ressources du thème sont compilées avec Vite et les blocs avec WordPress Scripts.
 
@@ -31,15 +31,15 @@ DB_PASSWORD='wordpress'
 DB_HOST='db'
 DB_PREFIX='wp_'
 WP_ENV='development'
-WP_HOME='http://esccouade.localhost:8080'
-WP_SITEURL='http://esccouade.localhost:8080/wp'
+WP_HOME='http://escouade.localhost:8080'
+WP_SITEURL='http://escouade.localhost:8080/wp'
 ```
 
 Renseigner des clés et sels d’authentification propres à l’environnement (`AUTH_KEY`, `SECURE_AUTH_KEY`, `LOGGED_IN_KEY`, `NONCE_KEY` et les quatre variables `*_SALT`). Ne pas réutiliser les identifiants personnels présents dans le modèle. Le préfixe `DB_PREFIX` doit correspondre aux tables de la base importée. Si `DATABASE_URL` est définie, elle prend le dessus sur les paramètres `DB_*` : la retirer ou l’adapter pour Docker.
 
 Les valeurs définies dans `environment` de `docker-compose.yml` prennent le dessus sur celles de `env_file: .env`. Garder `WP_HOME` et `WP_SITEURL` identiques dans les services `wordpress` et `wpcli`.
 
-**État actuel du fichier Compose :** `wordpress` utilise `esccouade.localhost`, tandis que `wpcli` utilise encore `localhost`. Harmoniser ces valeurs avant utilisation. Le nom `esccouade` comporte deux « c » dans la configuration actuelle ; si vous choisissez `escouade.localhost`, le modifier partout, y compris dans les commandes ci-dessous.
+**État actuel du fichier Compose :** `wordpress` utilise `escouade.localhost`, tandis que `wpcli` utilise encore `localhost`. Harmoniser ces valeurs avant utilisation. Le nom `esccouade` comporte deux « c » dans la configuration actuelle ; si vous choisissez `escouade.localhost`, le modifier partout, y compris dans les commandes ci-dessous.
 
 ### 2. Construire les images et installer les dépendances PHP
 
@@ -68,8 +68,8 @@ MySQL démarre automatiquement en tant que dépendance. Importer ensuite une bas
 
 | Service | Adresse / accès |
 | --- | --- |
-| Site | http://esccouade.localhost:8080 |
-| Administration WordPress | http://esccouade.localhost:8080/wp/wp-admin/ |
+| Site | http://escouade.localhost:8080 |
+| Administration WordPress | http://escouade.localhost:8080/wp/wp-admin/ |
 | phpMyAdmin | http://localhost:8081 |
 | MySQL depuis les conteneurs | `db:3306` |
 
@@ -94,13 +94,13 @@ L’import SQL ne restaure pas les médias. Récupérer également le dossier `w
 Remplacer `https://escouade.mg` par l’URL réellement utilisée dans la base source. Effectuer d’abord une simulation :
 
 ```bash
-docker compose run --rm wpcli --allow-root search-replace 'https://escouade.mg' 'http://esccouade.localhost:8080' --all-tables-with-prefix --skip-columns=guid --dry-run
+docker compose run --rm wpcli --allow-root search-replace 'https://escouade.mg' 'http://escouade.localhost:8080' --all-tables-with-prefix --skip-columns=guid --dry-run
 ```
 
 Après vérification, appliquer :
 
 ```bash
-docker compose run --rm wpcli --allow-root search-replace 'https://escouade.mg' 'http://esccouade.localhost:8080' --all-tables-with-prefix --skip-columns=guid
+docker compose run --rm wpcli --allow-root search-replace 'https://escouade.mg' 'http://escouade.localhost:8080' --all-tables-with-prefix --skip-columns=guid
 ```
 
 WP-CLI préserve les données sérialisées. Éviter un remplacement global manuel dans le fichier SQL.

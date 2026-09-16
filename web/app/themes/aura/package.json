@@ -8,8 +8,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && cross-env VITE_ASSET_BASE=/wp-content/themes/aura/public/build/ vite build",
-    "watch": "cross-env VITE_ASSET_BASE=/wp-content/themes/aura/public/build/ vite build --watch",
+    "build": "tsc && cross-env VITE_ASSET_BASE=/app/themes/aura/public/build/ vite build",
+    "watch": "cross-env VITE_ASSET_BASE=/app/themes/aura/public/build/ vite build --watch",
     "build:bedrock": "tsc && vite build",
     "preview": "vite preview",
     "icons": "node ./scripts/build-icons.mjs",

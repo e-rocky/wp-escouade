@@ -45,6 +45,15 @@ class Breadcrumb extends Widget_Base
             'default' => __('Accueil', 'sage'),
         ]);
 
+        $this->add_control('container_classes', [
+            'label' => __('Classes CSS du conteneur', 'sage'),
+            'type' => Controls_Manager::TEXT,
+            'default' => '',
+            'placeholder' => 'ma-classe autre-classe',
+            'description' => __('Classes supplémentaires sur le conteneur interne, séparées par des espaces, sans point. Les styles correspondants doivent déjà exister.', 'sage'),
+            'label_block' => true,
+        ]);
+
         $items = new Repeater();
         $items->add_control('label', [
             'label' => __('Libellé', 'sage'),
@@ -86,9 +95,9 @@ class Breadcrumb extends Widget_Base
             return trim($item['label'] ?? '') !== '';
         }));
         $home_label = $settings['home_label'] ?: __('Accueil', 'sage');
-        ?>
+?>
         <div class="block breadcrumb-block">
-            <div class="breadcrumb-block__content uk-container">
+            <div class="breadcrumb-block__content uk-container pt-16 pb-0<?php echo ! empty($settings['container_classes']) ? ' ' . esc_attr(trim($settings['container_classes'])) : ''; ?>">
                 <nav class="breadcrumb-block__body" aria-label="<?php echo esc_attr__('Fil d’Ariane', 'sage'); ?>">
                     <ul>
                         <li>
@@ -97,7 +106,7 @@ class Breadcrumb extends Widget_Base
                             </a>
                         </li>
                         <?php foreach ($items as $index => $item) : ?>
-                            <li class="separator" aria-hidden="true"><i class="es-icon-caret"></i></li>
+                            <li class="separator test" aria-hidden="true"><i class="es-icon-caret"></i></li>
                             <li>
                                 <?php if (! empty($item['link']['url'])) : ?>
                                     <?php
@@ -111,13 +120,13 @@ class Breadcrumb extends Widget_Base
                                     <a <?php $this->print_render_attribute_string($key); ?>><?php echo esc_html($item['label']); ?></a>
                                 <?php else : ?>
                                     <span<?php echo $index === count($items) - 1 ? ' aria-current="page"' : ''; ?>><?php echo esc_html($item['label']); ?></span>
-                                <?php endif; ?>
+                                    <?php endif; ?>
                             </li>
                         <?php endforeach; ?>
                     </ul>
                 </nav>
             </div>
         </div>
-        <?php
+<?php
     }
 }
