@@ -1,0 +1,9 @@
+@use "vars" as vars;
+
+#main .e-con {
+  --content-width: #{vars.$width};
+  .uk-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

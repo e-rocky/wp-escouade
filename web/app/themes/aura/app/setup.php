@@ -192,3 +192,7 @@ add_action('widgets_init', function () {
  * @return void
  */
 require_once __DIR__ . '/blocks/blocks.php';
+
+add_action('elementor/widgets/register', function ($widgets_manager) {
+    $widgets_manager->register(new \App\Elementor\Breadcrumb());
+});
