@@ -1,16 +1,16 @@
 @use "vars" as vars;
 
 @mixin e-con {
-  .e-con {
+  .e-con:not(.block) {
     --content-width: #{vars.$width};
     .uk-container {
       padding-left: 0;
       padding-right: 0;
     }
-  }
-  .e-con-inner {
-    padding-top: 0;
-    padding-bottom: 0;
+    .e-con-inner {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
   }
 }
 
