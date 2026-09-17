@@ -1,28 +1,27 @@
 @use "vars" as vars;
 @use "global" as global;
 
-@mixin e-con {
-  .e-con {
-    --content-width: #{vars.$width};
+%e-con {
+  //--content-width: #{vars.$width};
+  .uk-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
-    &:not(.block) {
-      .uk-container {
-        padding-left: 0;
-        padding-right: 0;
-      }
+  &:not(.block) {
+    .e-con-inner {
+      padding-top: 0;
+      padding-bottom: 0;
+      max-width: #{vars.$width};
 
-      .e-con-inner {
-        padding-top: 0;
-        padding-bottom: 0;
-
-        .elementor-widget-heading .elementor-heading-title {
-          margin-bottom: 0;
-        }
+      .elementor-widget-heading .elementor-heading-title {
+        margin-bottom: 0;
       }
     }
   }
 }
 
-#main {
-  @include e-con;
+#main .e-con,
+.e-con {
+  @extend %e-con;
 }
