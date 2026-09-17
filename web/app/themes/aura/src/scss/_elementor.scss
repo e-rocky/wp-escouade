@@ -1,15 +1,24 @@
 @use "vars" as vars;
+@use "global" as global;
 
 @mixin e-con {
-  .e-con:not(.block) {
+  .e-con {
     --content-width: #{vars.$width};
-    .uk-container {
-      padding-left: 0;
-      padding-right: 0;
-    }
-    .e-con-inner {
-      padding-top: 0;
-      padding-bottom: 0;
+
+    &:not(.block) {
+      .uk-container {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .e-con-inner {
+        padding-top: 0;
+        padding-bottom: 0;
+
+        .elementor-widget-heading .elementor-heading-title {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 }

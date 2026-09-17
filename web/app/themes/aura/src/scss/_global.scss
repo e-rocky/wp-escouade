@@ -1,6 +1,6 @@
 @use "sass:list";
 @use "sass:map";
-@use "vars" as *;
+@use "vars" as vars;
 @use "mixins" as *;
 
 html,
@@ -170,7 +170,21 @@ input[type="checkbox"] {
   &.elementor-element {
     position: relative;
     @include blockReset;
-    .e-con-inner {
+    & > .e-con-inner {
+      max-width: #{vars.$width};
+      gap: 64px;
+      & > .elementor-shape {
+        display: none;
+      }
+      @include media-breakpoint-up(sm) {
+        gap: 76px;
+      }
+      @include media-breakpoint-up(md) {
+        gap: 88px;
+      }
+      @include media-breakpoint-up(lg) {
+        gap: 100px;
+      }
       @extend %blockContent;
     }
   }
@@ -181,7 +195,7 @@ input[type="checkbox"] {
 }
 
 $gradients: ();
-@for $i from 1 through list.length($colors-main) {
+@for $i from 1 through list.length(vars.$colors-main) {
   .c--#{$i} {
     color: var(--color-#{$i});
     &a {
@@ -190,7 +204,7 @@ $gradients: ();
     &:is(a):hover {
       color: var(--color-#{$i});
     }
-    @for $j from 1 through list.length($colors-main) {
+    @for $j from 1 through list.length(vars.$colors-main) {
       $gradient: linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$j}) 100%);
       $gradient-alt: linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$j}a) 100%);
       $gradient-start-alt: linear-gradient(90deg, var(--color-#{$i}a) 0%, var(--color-#{$j}) 100%);
@@ -265,9 +279,9 @@ $gradients: ();
     background-attachment: scroll;
     background-size: auto;
   }
-  @for $i from 1 through list.length($backgrounds) {
+  @for $i from 1 through list.length(vars.$backgrounds) {
     &-#{$i} {
-      background-image: list.nth($backgrounds, $i);
+      background-image: list.nth(vars.$backgrounds, $i);
     }
   }
 }
@@ -277,18 +291,18 @@ $gradients: ();
       background-color: #fff;
       background-image: linear-gradient(
         90deg,
-        rgba(list.nth($colors-main, 2), 0.05) 0%,
-        rgba(list.nth($colors-main, 2), 0.05) 0% 100%
+        rgba(list.nth(vars.$colors-main, 2), 0.05) 0%,
+        rgba(list.nth(vars.$colors-main, 2), 0.05) 0% 100%
       );
     }
-    @for $i from 1 through list.length($colors-main) {
+    @for $i from 1 through list.length(vars.$colors-main) {
       &--#{$i} {
         background-color: var(--color-#{$i});
         &a {
           background-color: var(--color-#{$i}a);
         }
       }
-      @for $j from 1 through list.length($colors-main) {
+      @for $j from 1 through list.length(vars.$colors-main) {
         $gradient: linear-gradient(90deg, var(--color-#{$i}) 0%, var(--color-#{$j}) 100%);
         &--#{$i}-#{$j} {
           background-image: $gradient;
@@ -304,10 +318,10 @@ $gradients: ();
     &--scroll {
       background-attachment: scroll;
     }
-    @for $i from 1 through list.length($backgrounds) {
+    @for $i from 1 through list.length(vars.$backgrounds) {
       &--#{$i} {
         //background-image: url(/img/design/bg-#{$i}.png);
-        background-image: list.nth($backgrounds, $i);
+        background-image: list.nth(vars.$backgrounds, $i);
       }
     }
   }
@@ -369,7 +383,7 @@ $gradients: ();
   align-items: center;
   gap: 10px;
   border-radius: 4px;
-  background: rgba(list.nth($colors-main, 2), 0.1);
+  background: rgba(list.nth(vars.$colors-main, 2), 0.1);
   line-height: 1.5;
   text-decoration: none;
   @include transition(150ms);
@@ -377,7 +391,7 @@ $gradients: ();
     text-decoration: none;
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    background: rgba(list.nth($colors-main, 2), 0.15);
+    background: rgba(list.nth(vars.$colors-main, 2), 0.15);
   }
 }
 
@@ -458,6 +472,7 @@ $gradients: ();
   }
   &--h1 {
     @at-root .rte h1,
+      .elementor-widget-heading h1.elementor-heading-title,
       &,
       .rte & {
       font-size: 40px;
@@ -476,6 +491,7 @@ $gradients: ();
   }
   &--h2 {
     @at-root .rte h2,
+      .elementor-widget-heading h2.elementor-heading-title,
       &,
       .rte & {
       font-size: 36px;
@@ -495,6 +511,7 @@ $gradients: ();
   }
   &--h3 {
     @at-root .rte h3,
+      .elementor-widget-heading h3.elementor-heading-title,
       &,
       .rte & {
       font-size: 32px;
@@ -512,6 +529,7 @@ $gradients: ();
   }
   &--h4 {
     @at-root .rte h4,
+      .elementor-widget-heading h4.elementor-heading-title,
       &,
       .rte & {
       font-size: 20px;
@@ -530,6 +548,31 @@ $gradients: ();
   }
 }
 
+%headings {
+  transition: all 150ms ease-in-out;
+  margin-bottom: 0;
+  font-family: var(--font-2);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(90deg, var(--color-2) 0%, var(--color-1a) 75%);
+  color: transparent !important;
+  margin-bottom: 0.75em;
+  em,
+  i {
+    font-style: normal;
+    color: var(--color-5);
+  }
+}
+
+.e-con-inner .elementor-widget-heading .elementor-heading-title {
+  margin-bottom: 0;
+  @extend %headings;
+}
+
 .rte {
   strong,
   b {
@@ -541,30 +584,14 @@ $gradients: ();
   h4,
   h5,
   h6 {
-    transition: all 150ms ease-in-out;
-    margin-bottom: 0;
-    font-family: var(--font-2);
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    -webkit-background-clip: text;
-    background-clip: text;
-    background-image: linear-gradient(90deg, var(--color-2) 0%, var(--color-1a) 75%);
-    color: transparent;
-    margin-bottom: 0.75em;
-    em,
-    i {
-      font-style: normal;
-      color: var(--color-5);
-    }
+    @extend %headings;
   }
 
   h3 {
     background-image: linear-gradient(90deg, var(--color-2) 0%, var(--color-1a) 100%);
   }
 
-  @for $i from 1 through list.length($colors-main) {
+  @for $i from 1 through list.length(vars.$colors-main) {
     &--em-c-#{$i} {
       em,
       i {
