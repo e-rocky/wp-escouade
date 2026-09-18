@@ -221,3 +221,58 @@ add_action('elementor/frontend/container/before_render', function ($container) {
         break;
     }
 });
+
+/**
+ * Fallback for Elementor 4 atomic styles when its generated CSS file is absent.
+ *
+ * Elementor can keep the atomic cache marked as valid even though no local CSS
+ * file was written. Render the saved atomic rules inline in that case.
+ */
+add_action('elementor/frontend/after_enqueue_post_styles', function () {
+    if (! class_exists(\Elementor\Modules\AtomicWidgets\Styles\Styles_Renderer::class)) {
+        return;
+    }
+
+    $postId = get_the_ID();
+    if (! $postId) {
+        return;
+    }
+
+    foreach (wp_styles()->queue as $handle) {
+        if (str_starts_with($handle, "local-{$postId}-")) {
+            return;
+        }
+    }
+
+    $elements = json_decode(get_post_meta($postId, '_elementor_data', true), true);
+    if (! is_array($elements)) {
+        return;
+    }
+
+    $styles = [];
+    $collectStyles = static function (array $items) use (&$collectStyles, &$styles) {
+        foreach ($items as $item) {
+            if (! empty($item['styles']) && is_array($item['styles'])) {
+                $styles = array_replace($styles, $item['styles']);
+            }
+
+            if (! empty($item['elements']) && is_array($item['elements'])) {
+                $collectStyles($item['elements']);
+            }
+        }
+    };
+
+    $collectStyles($elements);
+    if (! $styles) {
+        return;
+    }
+
+    $styles = \Elementor\Modules\AtomicWidgets\Styles\Atomic_Widget_Styles::get_license_based_filtered_styles($styles);
+    $css = \Elementor\Modules\AtomicWidgets\Styles\Styles_Renderer::make(
+        \Elementor\Plugin::$instance->breakpoints->get_breakpoints_config()
+    )->render($styles);
+
+    if ($css) {
+        wp_add_inline_style('elementor-frontend', $css);
+    }
+}, 100);

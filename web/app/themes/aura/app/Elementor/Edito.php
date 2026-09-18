@@ -7,11 +7,26 @@ use Elementor\Widget_Base;
 
 class Edito extends Widget_Base
 {
-    public function get_name() { return 'aura-edito'; }
-    public function get_title() { return __('Édito — Aura', 'sage'); }
-    public function get_icon() { return 'eicon-image-box'; }
-    public function get_categories() { return ['general']; }
-    public function get_keywords() { return ['aura', 'édito', 'carte', 'image', 'carrière']; }
+    public function get_name()
+    {
+        return 'aura-edito';
+    }
+    public function get_title()
+    {
+        return __('Édito — Aura', 'sage');
+    }
+    public function get_icon()
+    {
+        return 'eicon-image-box';
+    }
+    public function get_categories()
+    {
+        return ['general'];
+    }
+    public function get_keywords()
+    {
+        return ['aura', 'édito', 'carte', 'image', 'carrière'];
+    }
 
     protected function register_controls()
     {
@@ -74,9 +89,9 @@ class Edito extends Widget_Base
             'type' => Controls_Manager::SELECT,
             'default' => 'green',
             'options' => [
-                'purple' => __('Violet', 'sage'),
-                'orange' => __('Orange', 'sage'),
-                'green' => __('Vert', 'sage'),
+                'pink_blue' => __('Rose + Bleu', 'sage'),
+                'blue_green' => __('Bleu + Vert', 'sage'),
+                'blue_pink' => __('Bleu + rose', 'sage'),
             ],
         ]);
         $this->end_controls_section();
@@ -90,13 +105,14 @@ class Edito extends Widget_Base
             ? $settings['title_tag']
             : 'h2';
         $themes = [
-            'purple' => ['title' => 'c--5-2', 'button' => 'bgc--2'],
-            'orange' => ['title' => 'c--2-1a', 'button' => 'bgc--1a'],
-            'green' => ['title' => 'c--5-2', 'button' => 'bgc--5'],
+            'pink_blue' => ['title' => 'c--5-2', 'button' => 'bgc--2'],
+            'blue_green' => ['title' => 'c--2-1a', 'button' => 'bgc--1a'],
+            'blue_pink' => ['title' => 'c--2-5', 'button' => 'bgc--5'],
         ];
-        $theme = $themes[$settings['theme'] ?? ''] ?? $themes['green'];
+        $theme = $themes[$settings['theme'] ?? ''] ?? $themes['blue_pink'];
         $reverse_class = ($settings['image_position'] ?? 'left') === 'right' ? ' md:flex-row-reverse' : '';
         $button_url = $settings['button_link']['url'] ?? '';
+        $has_badge = trim((string) ($settings['badge'] ?? '')) !== '';
 
         $this->add_render_attribute('badge', 'class', 'tag');
         $this->add_inline_editing_attributes('badge', 'none');
@@ -111,7 +127,7 @@ class Edito extends Widget_Base
         }
         $this->add_render_attribute('button', 'class', ['btn', 'c--4', $theme['button'], 'btn-shadow-sm']);
         $this->add_render_attribute('button', 'title', $settings['button_text'] ?? '');
-        ?>
+?>
         <div class="block edito-card bgc bgc--4">
             <div class="edito-card__content flex flex-col md:flex-row<?php echo esc_attr($reverse_class); ?>">
                 <?php if (! empty($settings['image']['url'])) : ?>
@@ -127,16 +143,16 @@ class Edito extends Widget_Base
                 <?php endif; ?>
                 <div class="edito-card__body">
                     <div class="content">
-                        <?php if (! empty($settings['badge']) || $is_edit_mode) : ?>
+                        <?php if ($has_badge) : ?>
                             <ul class="taglist mb-0 flex flex-wrap gap-[10px] mb-[20px]">
-                                <li><span <?php $this->print_render_attribute_string('badge'); ?>><?php echo esc_html($settings['badge'] ?? ''); ?></span></li>
+                                <li><span <?php $this->print_render_attribute_string('badge'); ?>><?php echo esc_html($settings['badge']); ?></span></li>
                             </ul>
                         <?php endif; ?>
                         <?php if (! empty($settings['title']) || $is_edit_mode) : ?>
                             <<?php echo $title_tag; ?> <?php $this->print_render_attribute_string('title'); ?>><?php echo esc_html($settings['title'] ?? ''); ?></<?php echo $title_tag; ?>>
                         <?php endif; ?>
                         <div <?php $this->print_render_attribute_string('text'); ?>><?php echo wp_kses_post($settings['text'] ?? ''); ?></div>
-                        <?php if ((! empty($settings['button_text']) && $button_url !== '') || $is_edit_mode) : ?>
+                        <?php if (! empty($settings['button_text'])) : ?>
                             <div class="actions">
                                 <a <?php $this->print_render_attribute_string('button'); ?>><span <?php $this->print_render_attribute_string('button_text'); ?>><?php echo esc_html($settings['button_text'] ?? ''); ?></span><i class="es-icon-chevron-right"></i></a>
                             </div>
@@ -145,6 +161,6 @@ class Edito extends Widget_Base
                 </div>
             </div>
         </div>
-        <?php
+<?php
     }
 }
