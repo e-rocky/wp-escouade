@@ -44,7 +44,7 @@ $fonts: ("Inter", "Funnel Display");
 $width: 1216px;
 
 //uikit overrides
-$global-medium-gutter: 40px !default;
+$global-medium-gutter: 10px !default;
 $global-font-family: var(--font-1);
 $container-max-width: $width + $global-medium-gutter * 2;
 $navbar-nav-item-color: var(--color-3);
