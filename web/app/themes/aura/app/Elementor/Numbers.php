@@ -119,8 +119,11 @@ class Numbers extends Widget_Base
         $this->add_inline_editing_attributes('heading', 'basic');
         $this->add_inline_editing_attributes('subtitle', 'basic');
         $tag = in_array($settings['heading_tag'] ?? '', ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'], true) ? $settings['heading_tag'] : 'h2';
-        ?>
-        <div class="block numbers-block">
+        $background = in_array($settings['background'] ?? '', ['bgi--1', 'bgi--2', 'bgi--3', 'bgi--4', 'bgi--5', 'bgi--6'], true)
+            ? ' bgi ' . $settings['background']
+            : '';
+?>
+        <div class="block numbers-block<?php echo esc_attr($background); ?>">
             <div class="numbers-block__content uk-container text-center flex flex-col gap-[32px] <?php echo esc_attr($settings['container_classes'] ?? ''); ?>">
                 <?php if (! empty($settings['heading']) || ! empty($settings['subtitle']) || $is_edit_mode) : ?>
                     <div class="numbers-block__header">
@@ -152,6 +155,6 @@ class Numbers extends Widget_Base
                 <?php endif; ?>
             </div>
         </div>
-        <?php
+<?php
     }
 }

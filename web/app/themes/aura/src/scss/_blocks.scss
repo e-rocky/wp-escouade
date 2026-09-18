@@ -633,6 +633,7 @@
       right: 0;
       bottom: 70px;
     }
+    &:is(.card.talent-card--green div),
     &:is(.card:nth-child(3n + 1) div) {
       color: var(--color-1a);
       &::before {
@@ -643,6 +644,7 @@
         );
       }
     }
+    &:is(.card.talent-card--pink div),
     &:is(.card:nth-child(3n + 2) div) {
       color: var(--color-5);
       &::before {
@@ -653,6 +655,7 @@
         );
       }
     }
+    &:is(.card.talent-card--blue div),
     &:is(.card:nth-child(3n + 3) div) {
       color: var(--color-2);
       &::before {

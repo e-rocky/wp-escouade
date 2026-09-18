@@ -109,6 +109,9 @@ class HeroIntro extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
         $is_edit_mode = \Elementor\Plugin::$instance->editor->is_edit_mode();
+        $background = in_array($settings['background'] ?? '', ['bgi--1', 'bgi--2', 'bgi--3', 'bgi--4', 'bgi--5', 'bgi--6'], true)
+            ? ' bgi ' . $settings['background']
+            : '';
         $this->add_render_attribute('heading', 'class', ['title', 'title--h2', 'c--3']);
         $this->add_inline_editing_attributes('heading', 'basic');
         $this->add_render_attribute('body', 'class', 'text');
@@ -126,7 +129,7 @@ class HeroIntro extends Widget_Base
             $buttons[] = $key;
         }
 ?>
-        <div class="block hero-intro-block">
+        <div class="block hero-intro-block<?php echo esc_attr($background); ?>">
             <div class="hero-intro-block__content uk-container <?php echo esc_attr($settings['container_classes'] ?? ''); ?>">
                 <div class="hero-intro-block__body">
                     <div class="card hero-intro-card">
