@@ -203,22 +203,6 @@ add_action('elementor/widgets/register', function ($widgets_manager) {
     $widgets_manager->register(new \App\Elementor\TalentCard());
 });
 
-add_action('elementor/elements/elements_registered', function ($elements_manager) {
-    $elements_manager->register_element_type(new \App\Elementor\ContainerCustom());
-});
-
-add_action('elementor/editor/after_enqueue_scripts', function () {
-    $scriptPath = get_theme_file_path('/resources/scripts/elementor-container-custom-editor.js');
-
-    wp_enqueue_script(
-        'aura-elementor-container-custom-editor',
-        get_theme_file_uri('/resources/scripts/elementor-container-custom-editor.js'),
-        ['jquery', 'elementor-editor'],
-        file_exists($scriptPath) ? (string) filemtime($scriptPath) : null,
-        true
-    );
-});
-
 /**
  * Fallback for Elementor 4 atomic styles when its generated CSS file is absent.
  *
