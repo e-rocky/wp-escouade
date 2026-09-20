@@ -201,6 +201,7 @@ add_action('elementor/widgets/register', function ($widgets_manager) {
     $widgets_manager->register(new \App\Elementor\Edito());
     $widgets_manager->register(new \App\Elementor\JobAdvertising());
     $widgets_manager->register(new \App\Elementor\TalentCard());
+    $widgets_manager->register(new \App\Elementor\CtaCard());
 });
 
 add_action('elementor/elements/elements_registered', function ($elements_manager) {
