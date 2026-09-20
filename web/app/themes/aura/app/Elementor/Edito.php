@@ -94,6 +94,14 @@ class Edito extends Widget_Base
                 'blue_pink' => __('Bleu + rose', 'sage'),
             ],
         ]);
+        $this->add_control('transparent_background', [
+            'label' => __('Background transparent', 'sage'),
+            'type' => Controls_Manager::SWITCHER,
+            'label_on' => __('Oui', 'sage'),
+            'label_off' => __('Non', 'sage'),
+            'return_value' => 'yes',
+            'default' => '',
+        ]);
         $this->end_controls_section();
     }
 
@@ -127,8 +135,12 @@ class Edito extends Widget_Base
         }
         $this->add_render_attribute('button', 'class', ['btn', 'c--4', $theme['button'], 'btn-shadow-sm']);
         $this->add_render_attribute('button', 'title', $settings['button_text'] ?? '');
+        $this->add_render_attribute('card', 'class', ['block', 'edito-card']);
+        if (($settings['transparent_background'] ?? '') !== 'yes') {
+            $this->add_render_attribute('card', 'class', ['bgc', 'bgc--4']);
+        }
 ?>
-        <div class="block edito-card bgc bgc--4">
+        <div <?php $this->print_render_attribute_string('card'); ?>>
             <div class="edito-card__content flex flex-col md:flex-row<?php echo esc_attr($reverse_class); ?>">
                 <?php if (! empty($settings['image']['url'])) : ?>
                     <div class="edito-card__header">
