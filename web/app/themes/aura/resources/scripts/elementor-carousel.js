@@ -43,8 +43,13 @@
 
     elementor.elementsManager.elementTypes['aura-carousel'] = nativeContainer;
     const NativeContainerView = nativeContainer.getView();
+    let AuraDivBlockView;
 
     class AuraCarouselView extends NativeContainerView {
+      getChildType() {
+        return ['widget', 'container'];
+      }
+
       onRender() {
         super.onRender();
         this.$el.addClass('aura-carousel uk-slider');
@@ -82,8 +87,31 @@
       }
     }
 
+    AuraCarouselView.prototype.template = Marionette.TemplateCache.get(
+      '#tmpl-elementor-aura-carousel-content'
+    );
+
     elementor.hooks.addFilter('element/view', function (DefaultView, model) {
-      return model.get('elType') === 'aura-carousel' ? AuraCarouselView : DefaultView;
+      if (model.get('elType') === 'aura-carousel') {
+        return AuraCarouselView;
+      }
+
+      if (model.get('elType') === 'e-div-block') {
+        if (!AuraDivBlockView) {
+          AuraDivBlockView = DefaultView.extend({
+            getChildType() {
+              const childTypes = DefaultView.prototype.getChildType.call(this);
+              return childTypes.includes('aura-carousel')
+                ? childTypes
+                : [...childTypes, 'aura-carousel'];
+            }
+          });
+        }
+
+        return AuraDivBlockView;
+      }
+
+      return DefaultView;
     });
   });
 
