@@ -9,6 +9,11 @@
 
   .uk-slider-items {
     flex: 1;
+    width: 100%;
+  }
+
+  .uk-slider-container {
+    overflow: visible;
   }
 
   &:not(.block) {
@@ -31,4 +36,14 @@
 .e-con {
   @include e-con;
   @extend %e-con;
+}
+
+.aura-carousel > .aura-carousel__items {
+  margin-left: calc(-0.5 * var(--column-gap, 0px));
+  margin-right: calc(-0.5 * var(--column-gap, 0px));
+
+  > * {
+    padding-left: calc(0.5 * var(--column-gap, 0px));
+    padding-right: calc(0.5 * var(--column-gap, 0px));
+  }
 }
