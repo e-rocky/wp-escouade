@@ -203,6 +203,30 @@ add_action('elementor/widgets/register', function ($widgets_manager) {
     $widgets_manager->register(new \App\Elementor\TalentCard());
 });
 
+add_action('elementor/elements/elements_registered', function ($elements_manager) {
+    $elements_manager->register_element_type(new \App\Elementor\Carousel());
+});
+
+$enqueueCarouselScript = static function (array $dependencies = ['jquery']) {
+    $scriptPath = get_theme_file_path('/resources/scripts/elementor-carousel.js');
+
+    wp_enqueue_script(
+        'aura-elementor-carousel',
+        get_theme_file_uri('/resources/scripts/elementor-carousel.js'),
+        $dependencies,
+        file_exists($scriptPath) ? (string) filemtime($scriptPath) : null,
+        true
+    );
+};
+
+add_action('wp_enqueue_scripts', static function () use ($enqueueCarouselScript) {
+    $enqueueCarouselScript();
+});
+
+add_action('elementor/editor/after_enqueue_scripts', static function () use ($enqueueCarouselScript) {
+    $enqueueCarouselScript(['jquery', 'elementor-editor']);
+});
+
 /**
  * Fallback for Elementor 4 atomic styles when its generated CSS file is absent.
  *
