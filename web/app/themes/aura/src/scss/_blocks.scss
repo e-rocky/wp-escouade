@@ -1677,10 +1677,7 @@
       }
       .tech-item {
         text-align: center;
-        display: none;
-        &:is(.uk-active .tech-item) {
-          display: block;
-        }
+        display: block;
         figure {
           display: flex;
           flex-direction: column;

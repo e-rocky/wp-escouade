@@ -59,7 +59,7 @@ class Carousel extends Container
         $this->add_control('carousel_elements', [
             'label' => __('Éléments du carrousel', 'sage'),
             'type' => Controls_Manager::RAW_HTML,
-            'raw' => __('Les widgets enfants directs sont automatiquement utilisés comme diapositives.', 'sage'),
+            'raw' => __('Les widgets enfants directs sont automatiquement utilisés comme diapositives. Le widget « Carte technologies — Aura » peut être ajouté depuis la fenêtre Structure.', 'sage'),
             'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
         ]);
 

@@ -53,6 +53,7 @@
       onRender() {
         super.onRender();
         this.$el.addClass('aura-carousel uk-slider');
+        this.$el.attr('data-uk-slider', '');
         this.updateCarouselPreview();
       }
 

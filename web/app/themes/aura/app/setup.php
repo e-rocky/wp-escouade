@@ -203,6 +203,7 @@ add_action('elementor/widgets/register', function ($widgets_manager) {
     $widgets_manager->register(new \App\Elementor\TalentCard());
     $widgets_manager->register(new \App\Elementor\CtaCard());
     $widgets_manager->register(new \App\Elementor\HeroText());
+    $widgets_manager->register(new \App\Elementor\TechSliderCard());
 });
 
 add_action('elementor/elements/elements_registered', function ($elements_manager) {

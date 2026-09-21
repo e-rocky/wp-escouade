@@ -41,6 +41,7 @@
 .aura-carousel > .aura-carousel__items {
   margin-left: calc(-0.5 * var(--column-gap, 0px));
   margin-right: calc(-0.5 * var(--column-gap, 0px));
+  overflow: var(--overflow);
 
   > * {
     padding-left: calc(0.5 * var(--column-gap, 0px));
