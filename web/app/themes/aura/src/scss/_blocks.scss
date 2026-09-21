@@ -912,14 +912,15 @@
 .breadcrumb-block {
   &__content {
     &.uk-container:is(#main .block div) {
-      padding-top: 64px;
-      padding-bottom: 0;
+      //padding-top: 64px;
+      padding: 0;
     }
   }
   &__header {
   }
   &__body {
-    ul {
+    ul,
+    ul:is(.block.elementor-element ul) {
       padding: 16px;
       margin: 0;
       display: flex;
