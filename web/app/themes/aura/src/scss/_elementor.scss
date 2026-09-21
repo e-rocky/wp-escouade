@@ -10,10 +10,12 @@
   .uk-slider-items {
     flex: 1;
     width: 100%;
+    padding-top: var(--padding-top);
+    padding-bottom: var(--padding-bottom);
   }
 
   .uk-slider-container {
-    overflow: visible;
+    overflow: var(--overflow);
   }
 
   &:not(.block) {
@@ -41,7 +43,6 @@
 .aura-carousel > .aura-carousel__items {
   margin-left: calc(-0.5 * var(--column-gap, 0px));
   margin-right: calc(-0.5 * var(--column-gap, 0px));
-  overflow: var(--overflow);
 
   > * {
     padding-left: calc(0.5 * var(--column-gap, 0px));

@@ -1626,18 +1626,21 @@
 /*-- .tech-slider-card --*/
 .tech-slider-card {
   &__content {
-    display: flex;
-    gap: 40px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    flex-direction: column;
-    align-items: stretch;
-    align-self: stretch;
-    overflow: hidden;
-    @include media-breakpoint-up(md) {
+    @at-root .aura-carousel > .aura-carousel__items .elementor-widget.elementor-widget,
+      & {
+      display: flex;
+      gap: 40px;
       padding-top: 25px;
       padding-bottom: 25px;
-      gap: 60px;
+      flex-direction: column;
+      align-items: stretch;
+      align-self: stretch;
+      overflow: hidden;
+      @include media-breakpoint-up(md) {
+        padding-top: 25px;
+        padding-bottom: 25px;
+        gap: 60px;
+      }
     }
   }
   &__header {
