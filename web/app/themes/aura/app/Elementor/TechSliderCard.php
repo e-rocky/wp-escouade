@@ -46,6 +46,11 @@ class TechSliderCard extends Widget_Base
             'tech-slider-card',
             'tech-slider-card__content',
         ]);
+        $this->add_render_attribute(
+            '_wrapper',
+            'data-uk-scrollspy',
+            'cls: uk-animation-scale-up; target: .tech-item,h2 em; delay: 35; repeat: true'
+        );
     }
 
     protected function register_controls()
@@ -107,7 +112,7 @@ class TechSliderCard extends Widget_Base
 
         $this->add_inline_editing_attributes('title', 'basic');
         $this->add_inline_editing_attributes('subtitle', 'none');
-        ?>
+?>
         <div class="tech-slider-card__header flex flex-col md:flex-row justify-between px-[40px] md:items-center">
             <h2 class="title title--h2 rte rte--em-c-5 c--2">
                 <?php if (! empty($settings['title']) || $is_edit_mode) : ?>
@@ -156,7 +161,7 @@ class TechSliderCard extends Widget_Base
                 <?php endforeach; ?>
             </ul>
         </div>
-        <?php
+<?php
     }
 
     private function get_default_technologies(): array
@@ -173,7 +178,7 @@ class TechSliderCard extends Widget_Base
         ];
 
         return array_map(
-            static fn ($name, $filename) => [
+            static fn($name, $filename) => [
                 'name' => $name,
                 'logo' => ['url' => get_theme_file_uri('resources/images/content/' . $filename)],
             ],

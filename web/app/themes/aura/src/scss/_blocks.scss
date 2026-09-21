@@ -1098,7 +1098,8 @@
       margin-top: -80px;
       display: flex;
     }
-    .img-container {
+    .img-container,
+    .img-container:is(.elementor .elementor-widget figure) {
       position: relative;
       margin-bottom: 0;
       min-height: 100%;
@@ -1534,7 +1535,7 @@
       margin-bottom: 0;
       height: 100%;
       width: 33%;
-      @include transition(150ms);
+      @include transition(250ms);
       &:is(.job-advertising-card:hover figure) {
         width: 40%;
       }
@@ -1626,7 +1627,7 @@
 /*-- .tech-slider-card --*/
 .tech-slider-card {
   &__content {
-    @at-root .aura-carousel > .aura-carousel__items .elementor-widget.elementor-widget,
+    @at-root .aura-carousel > .aura-carousel__items .tech-slider-card.elementor-widget,
       & {
       display: flex;
       gap: 40px;
@@ -1655,6 +1656,10 @@
       .btn {
         position: relative;
         border-radius: 100px;
+        padding-left: 0;
+        padding-right: 0;
+        width: 48px;
+        height: 48px;
         &::before {
           border-radius: 100px;
           content: "";
