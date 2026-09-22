@@ -66,12 +66,12 @@ docker compose up -d wordpress phpmyadmin
 
 MySQL démarre automatiquement en tant que dépendance. Importer ensuite une base existante selon la procédure ci-dessous, ou terminer l’installation d’un site neuf depuis l’administration WordPress.
 
-| Service | Adresse / accès |
-| --- | --- |
-| Site | http://escouade.localhost:8080 |
-| Administration WordPress | http://escouade.localhost:8080/wp/wp-admin/ |
-| phpMyAdmin | http://localhost:8081 |
-| MySQL depuis les conteneurs | `db:3306` |
+| Service                     | Adresse / accès                             |
+| --------------------------- | ------------------------------------------- |
+| Site                        | http://escouade.localhost:8080              |
+| Administration WordPress    | http://escouade.localhost:8080/wp/wp-admin/ |
+| phpMyAdmin                  | http://localhost:8081                       |
+| MySQL depuis les conteneurs | `db:3306`                                   |
 
 Dans phpMyAdmin, utiliser `wordpress` comme utilisateur et mot de passe. Ces identifiants sont ceux du développement local ; les identifiants de connexion à l’administration WordPress sont distincts et proviennent de la base importée.
 
@@ -156,14 +156,14 @@ docker compose run --rm wpcli --allow-root cache flush
 
 ## Développement du thème et des blocs
 
-| Commande | Usage |
-| --- | --- |
-| `npm run start:aura` | Démarrer le serveur de développement Vite |
-| `npm run watch:aura` | Recompiler les ressources du thème à chaque modification |
-| `npm run start:blocks` | Recompiler les blocs Gutenberg à chaque modification |
-| `npm run build:aura` | Vérifier TypeScript et compiler le thème |
-| `npm run build:blocks` | Compiler les blocs Gutenberg |
-| `npm run build:all` | Compiler le thème et les blocs |
+| Commande               | Usage                                                    |
+| ---------------------- | -------------------------------------------------------- |
+| `npm run start:aura`   | Démarrer le serveur de développement Vite                |
+| `npm run watch:aura`   | Recompiler les ressources du thème à chaque modification |
+| `npm run start:blocks` | Recompiler les blocs Gutenberg à chaque modification     |
+| `npm run build:aura`   | Vérifier TypeScript et compiler le thème                 |
+| `npm run build:blocks` | Compiler les blocs Gutenberg                             |
+| `npm run build:all`    | Compiler le thème et les blocs                           |
 
 Lancer la surveillance du thème et celle des blocs dans deux terminaux si nécessaire. Pour travailler avec Apache dans Docker à partir des fichiers compilés, utiliser `watch:aura`.
 
