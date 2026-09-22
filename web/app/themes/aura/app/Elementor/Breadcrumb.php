@@ -97,7 +97,7 @@ class Breadcrumb extends Widget_Base
         $home_label = $settings['home_label'] ?: __('Accueil', 'sage');
 ?>
         <div class="block breadcrumb-block">
-            <div class="breadcrumb-block__content uk-container pt-16 pb-0<?php echo ! empty($settings['container_classes']) ? ' ' . esc_attr(trim($settings['container_classes'])) : ''; ?>">
+            <div class="breadcrumb-block__content uk-container pb-0<?php echo ! empty($settings['container_classes']) ? ' ' . esc_attr(trim($settings['container_classes'])) : ''; ?>">
                 <nav class="breadcrumb-block__body" aria-label="<?php echo esc_attr__('Fil d’Ariane', 'sage'); ?>">
                     <ul>
                         <li>

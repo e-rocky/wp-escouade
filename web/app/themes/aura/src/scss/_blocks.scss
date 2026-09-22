@@ -909,9 +909,12 @@
 /*-- end: .dna-block --*/
 
 /*-- .breadcrumb-block --*/
-.breadcrumb-block {
+$block: ".breadcrumb-block";
+#{$block} {
   &__content {
-    &.uk-container:is(#main .block div) {
+    padding-top: 0;
+    //&.uk-container:is(#main .block div) {
+    &:is(#{$block} #{$block}__content) {
       //padding-top: 64px;
       padding: 0;
     }
