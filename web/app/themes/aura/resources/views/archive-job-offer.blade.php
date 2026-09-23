@@ -4,7 +4,7 @@
   <div class="block hero-text-block bgi bgi--4">
     <div class="hero-text-block__background">
       <div class="img-container">
-        <img src="/resources/images/content/hero-img-1.png" alt="">
+        <img src="{{ asset('resources/images/content/hero-img-1.png') }}" alt="">
       </div>
     </div><!-- .hero-text-block__background -->
     <div class="hero-text-block__content min-h-65 md:min-h-100  gap-[70px] uk-container"

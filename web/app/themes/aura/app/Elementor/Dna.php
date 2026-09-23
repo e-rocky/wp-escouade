@@ -127,7 +127,7 @@ class Dna extends Widget_Base
         $card_heading = in_array($settings['card_heading_tag'] ?? '', ['h2', 'h3', 'h4', 'h5', 'h6'], true) ? $settings['card_heading_tag'] : 'h3';
 ?>
         <div class="block dna-block">
-            <div class="dna-block__content uk-container flex flex-col gap-[64px] <?php echo esc_attr($settings['container_classes'] ?? ''); ?>">
+            <div class="dna-block__content uk-container flex flex-col px-0 gap-[64px] <?php echo esc_attr($settings['container_classes'] ?? ''); ?>">
                 <?php if (! empty($settings['heading']) || ! empty($settings['intro']) || $is_edit_mode) : ?>
                     <div class="dna-block__header text-center">
                         <?php if (! empty($settings['heading']) || $is_edit_mode) : ?>
