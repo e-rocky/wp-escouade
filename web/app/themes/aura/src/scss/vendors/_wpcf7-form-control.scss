@@ -2,6 +2,13 @@
 
 .wpcf7-list-item {
   margin-left: 0;
+  label {
+    &:is(.checkbox label) {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
 }
 .wpcf7-not-valid-tip,
 .dnd-upload-status .dnd-upload-details span.has-error,

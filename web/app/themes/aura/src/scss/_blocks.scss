@@ -857,7 +857,7 @@
     background: #fff;
     &__content {
       display: flex;
-      padding: 32px;
+      padding: 32px 32px 16px 32px;
       flex: 1 0 0;
       gap: 24px;
 
@@ -872,7 +872,7 @@
         text-align: center;
       }
       @include media-breakpoint-up(xl) {
-        padding: 32px;
+        padding: 32px 32px 16px 32px;
         gap: 35px;
         flex-direction: row;
         align-items: flex-start;
@@ -914,9 +914,14 @@ $block: ".breadcrumb-block";
   &__content {
     padding-top: 0;
     //&.uk-container:is(#main .block div) {
+    &:is(.e-con-inner #{$block} #{$block}__content) {
+      padding-left: 0;
+      padding-right: 0;
+    }
     &:is(#{$block} #{$block}__content) {
       //padding-top: 64px;
-      padding: 0;
+      padding-top: 0;
+      padding-bottom: 0;
     }
   }
   &__header {
@@ -924,7 +929,7 @@ $block: ".breadcrumb-block";
   &__body {
     ul,
     ul:is(.block.elementor-element ul) {
-      padding: 16px;
+      padding: 16px 32px 16px 32px;
       margin: 0;
       display: flex;
       align-items: center;
@@ -1115,7 +1120,6 @@ $block: ".breadcrumb-block";
       padding: 0;
       @include media-breakpoint-up(md) {
         display: flex;
-        max-width: none;
         margin-right: 32px;
       }
       @include media-breakpoint-up(lg) {

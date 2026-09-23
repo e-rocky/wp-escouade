@@ -49,7 +49,8 @@ a {
 
 input[type="checkbox"] {
   font-size: inherit;
-  margin: 0.18em 0 0 0;
+  //margin: 0.18em 0 0 0;
+  margin: 0;
   width: 20px;
   height: 20px;
   min-width: 20px;
@@ -81,7 +82,7 @@ input[type="checkbox"] {
   }
   .uk-textarea,
   .uk-input {
-    min-height: 62px;
+    min-height: 52px;
     padding: 8px 16px;
     justify-content: space-between;
     align-items: center;

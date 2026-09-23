@@ -11,14 +11,24 @@ $breakpoints: (
 
 @mixin btn {
   @include transition(150ms);
+  $btn-shadow-sm: 0 5px 20px 0 rgba(0, 0, 0, 0.12);
+  $btn-shadow-md:
+    $btn-shadow-sm,
+    0 5px 20px 0 rgba(94, 84, 255, 0.12);
+  $btn-shadow-lg: 0 5px 200px 0 rgba(94, 84, 255, 0.5);
   &[disabled] {
     cursor: not-allowed;
     background: lightgray;
     opacity: 0.5;
     color: #9f9f9f;
     box-shadow: inset 0 0px 1px #000;
+    user-select: none;
     &:hover {
       transform: none;
+      box-shadow: $btn-shadow-sm;
+      &:active {
+        transform: translateY(0);
+      }
     }
   }
   display: flex;
@@ -48,9 +58,12 @@ $breakpoints: (
   }
   &:hover {
     text-decoration: none;
-    transform: scale(1.1);
+    transform: translateY(-3px);
+    &:active {
+      transition-duration: 50ms;
+      transform: translateY(0);
+    }
   }
-  $btn-shadow-sm: 0 5px 20px 0 rgba(0, 0, 0, 0.12);
   &.bg {
     color: white;
   }
@@ -73,14 +86,30 @@ $breakpoints: (
   }
   &-shadow-sm {
     box-shadow: $btn-shadow-sm;
+    &:hover {
+      box-shadow: $btn-shadow-sm, $btn-shadow-sm;
+      &:active {
+        box-shadow: $btn-shadow-sm;
+      }
+    }
   }
   &-shadow-md {
-    box-shadow:
-      $btn-shadow-sm,
-      0 5px 20px 0 rgba(94, 84, 255, 0.12);
+    box-shadow: $btn-shadow-md;
+    &:hover {
+      box-shadow: $btn-shadow-md, $btn-shadow-md;
+      &:active {
+        box-shadow: $btn-shadow-md;
+      }
+    }
   }
   &-shadow-lg {
-    box-shadow: 0 5px 200px 0 rgba(94, 84, 255, 0.5);
+    box-shadow: $btn-shadow-lg;
+    &:hover {
+      box-shadow: $btn-shadow-lg, $btn-shadow-md;
+      &:active {
+        box-shadow: $btn-shadow-lg;
+      }
+    }
   }
 
   &.bdc--1-2 {
