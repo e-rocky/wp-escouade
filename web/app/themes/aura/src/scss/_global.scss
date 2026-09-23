@@ -294,7 +294,8 @@ $gradients: ();
   }
 }
 .bg {
-  &c {
+  &c,
+  &c.bgc {
     &--white {
       background-color: #fff;
       background-image: linear-gradient(
