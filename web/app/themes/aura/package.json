@@ -33,10 +33,13 @@
     "laravel-vite-plugin": "^2.1.0",
     "postcss": "^8.4.47",
     "sass-embedded": "^1.79.5",
+    "sharp": "^0.35.4",
     "svg-sprite": "^2.0.4",
+    "svgo": "^4.1.0",
     "tailwindcss": "^4.0.9",
     "typescript": "~5.9.3",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "vite-plugin-image-optimizer": "^2.0.3"
   },
   "dependencies": {
     "@lottiefiles/dotlottie-web": "^0.71.0",

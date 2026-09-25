@@ -4,6 +4,7 @@ import UnoCSS from 'unocss/vite';
 import tailwindcss from '@tailwindcss/vite';
 import laravel from 'laravel-vite-plugin';
 import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 const base = process.env.VITE_ASSET_BASE ?? '/app/themes/aura/public/build/';
 
@@ -31,6 +32,36 @@ export default defineConfig({
       disableTailwindColors: false,
       disableTailwindFonts: false,
       disableTailwindFontSizes: false,
+    }),
+
+    // Optimize bundled and public images with visually lossless settings.
+    ViteImageOptimizer({
+      includePublic: true,
+      cache: true,
+      cacheLocation: 'node_modules/.cache/vite-plugin-image-optimizer',
+      png: {
+        quality: 100,
+        compressionLevel: 9,
+        adaptiveFiltering: true,
+      },
+      jpeg: {
+        quality: 85,
+        mozjpeg: true,
+      },
+      jpg: {
+        quality: 85,
+        mozjpeg: true,
+      },
+      webp: {
+        quality: 85,
+        effort: 6,
+        smartSubsample: true,
+      },
+      avif: {
+        quality: 65,
+        effort: 9,
+        chromaSubsampling: '4:4:4',
+      },
     }),
   ],
   css: {
