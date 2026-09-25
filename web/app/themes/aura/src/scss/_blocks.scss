@@ -1881,6 +1881,15 @@ $block: ".breadcrumb-block";
       overflow: hidden;
       position: relative;
       margin: -16px -16px 0 -16px;
+      img {
+        @include transition(250ms);
+      }
+      &:hover {
+        img {
+          filter: brightness(0.95);
+          transform: scale(1.075);
+        }
+      }
       @include media-breakpoint-up(lg) {
         max-height: none;
         margin: 0;
