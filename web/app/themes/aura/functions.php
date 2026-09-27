@@ -124,6 +124,27 @@ add_action('wp_enqueue_scripts', function () {
     );
 });
 
+/**
+ * Load the large, non-critical theme stylesheet without blocking first paint.
+ *
+ * UnoCSS remains render-blocking because it contains the layout utilities used
+ * above the fold. The full SCSS bundle is preloaded and applied as soon as it
+ * has finished downloading, with the original tag retained for no-JS clients.
+ */
+add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
+    if ($handle !== 'auraStyle' || is_admin() || Vite::isRunningHot()) {
+        return $html;
+    }
+
+    $preload = sprintf(
+        '<link rel="preload" id="%1$s-css-preload" href="%2$s" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">',
+        esc_attr($handle),
+        esc_url($href)
+    );
+
+    return $preload . '<noscript>' . $html . '</noscript>';
+}, 10, 4);
+
 add_filter('block_editor_settings_all', function ($settings) {
     $auraStyle = Vite::asset('src/style.scss');
     $auraUno = aura_uno_asset_url();
