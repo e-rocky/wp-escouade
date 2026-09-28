@@ -162,25 +162,8 @@ add_filter('block_editor_settings_all', function ($settings) {
     return $settings;
 });
 
-add_action('enqueue_block_assets', function () {
-    wp_enqueue_style(
-        'auraEditorStyle',
-        Vite::asset('resources/css/editor.css'),
-        [],
-        null
-    );
-
-    wp_enqueue_script(
-        'auraEditorScript',
-        Vite::asset('resources/js/editor.js'),
-        ['wp-blocks', 'wp-element', 'wp-i18n', 'wp-components', 'wp-dom-ready'],
-        null,
-        true
-    );
-});
-
 add_filter('wp_script_attributes', function ($attributes) {
-    if (! in_array($attributes['id'] ?? '', ['auraScript-js', 'auraEditorScript-js'], true)) {
+    if (($attributes['id'] ?? '') !== 'auraScript-js') {
         return $attributes;
     }
 
@@ -209,16 +192,8 @@ add_filter('wpcf7_form_hidden_fields', function ($hidden_fields) {
     return $hidden_fields;
 });
 
-function my_scripts()
+function aura_localize_frontend_script()
 {
-    wp_enqueue_script(
-        'auraScript',
-        get_template_directory_uri() . '/js/script.js',
-        array(),
-        null,
-        true
-    );
-
     wp_localize_script('auraScript', 'wpAura', array(
         'translations' => array(
             'wpcf7_message'  => array(
@@ -230,7 +205,7 @@ function my_scripts()
         ),
     ));
 }
-add_action('wp_enqueue_scripts', 'my_scripts');
+add_action('wp_enqueue_scripts', 'aura_localize_frontend_script');
 
 
 add_filter('pre_get_document_title', function ($title) {
