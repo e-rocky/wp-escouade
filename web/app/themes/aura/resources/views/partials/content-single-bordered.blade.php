@@ -7,7 +7,7 @@
         @if (has_post_thumbnail())
           <img src="{{ get_the_post_thumbnail_url(null, 'full') }}" alt="{{ get_the_title() }}">
         @else
-          <img src="{{ asset('resources/images/content/job-detail-bg-1.png') }}" alt="">
+          <img src="{{ asset('resources/images/content/job-detail-bg-1.jpg') }}" alt="">
         @endif
       </div>
     </div><!-- .hero-text-block__background -->
