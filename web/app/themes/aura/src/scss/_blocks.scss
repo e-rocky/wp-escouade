@@ -1596,6 +1596,9 @@ $block: ".breadcrumb-block";
 .job-advertising-block {
   overflow: hidden;
   &__content {
+    &.flex {
+      display: flex;
+    }
   }
   &__header {
   }
@@ -1991,6 +1994,18 @@ $block: ".breadcrumb-block";
     justify-content: center;
     flex-direction: column;
     z-index: 2;
+    min-height: 256px;
+    justify-content: flex-end;
+    padding-bottom: 32px;
+    padding-top: 32px;
+    @include media-breakpoint-up(sm) {
+      min-height: 320px;
+      padding-bottom: 64px;
+      padding-top: 64px;
+    }
+    @include media-breakpoint-up(lg) {
+      min-height: 400px;
+    }
   }
   &__header {
   }
@@ -1999,6 +2014,7 @@ $block: ".breadcrumb-block";
     text-align: center;
     justify-content: center;
     flex-direction: column;
+    margin-top: 0;
   }
   &__footer {
   }

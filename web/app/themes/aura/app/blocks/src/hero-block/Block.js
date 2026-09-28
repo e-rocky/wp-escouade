@@ -25,9 +25,9 @@ const Block = ({ editmode = false, attributes = {}, setAttributes = () => {} }) 
       )}
       <div className="block hero-text-block">
         <div
-          className="hero-text-block__content min-h-[60vh] gap-[70px] uk-container"
-          uk-scrollspy="cls:uk-animation-fade"
-          data-uk-parallax="y: 50vh; opacity: 1, 0;  start: 0; end: 10vh; blur: 0, 0, 20px; scale: 1, 0.5;"
+          className="hero-text-block__content uk-container"
+          data-uk-scrollspy="cls:uk-animation-fade"
+          data-uk-parallax="x: 100vw; opacity: 1, 0;  start: 0; end: 10vh; blur: 0, 30px;"
         >
           <div className="hero-text-block__body">
             <h1 className="title title--h1 rte rte--em-c-5">

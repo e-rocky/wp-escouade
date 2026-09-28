@@ -107,9 +107,10 @@ class HeroText extends Widget_Base
 
         $this->add_render_attribute('button', 'class', ['btn', 'c--4', 'bgc--5-2', 'btn--lg', 'btn-shadow-lg']);
         $this->add_render_attribute('button', 'title', $settings['button_text'] ?? '');
-        ?>
+?>
         <div class="block hero-text-block">
-            <div class="hero-text-block__content min-h-[60vh] gap-[70px] uk-container" uk-scrollspy="cls:uk-animation-fade" data-uk-parallax="y: 50vh; opacity: 1, 0; start: 0; end: 10vh; blur: 0, 0, 20px; scale: 1, 0.5;">
+            <div class="hero-text-block__content min-h-[60vh] gap-[70px] uk-container pb-n pt-n" data-uk-scrollspy="cls:uk-animation-fade"
+                data-uk-parallax="x: 100vw; opacity: 1, 0;  start: 0; end: 10vh; blur: 0, 30px;">
                 <div class="hero-text-block__body">
                     <<?php echo $heading_tag; ?> class="title title--h1 rte rte--em-c-5">
                         <?php if (! empty($settings['eyebrow']) || $is_edit_mode) : ?>
@@ -128,6 +129,6 @@ class HeroText extends Widget_Base
                 <?php endif; ?>
             </div>
         </div>
-        <?php
+<?php
     }
 }
