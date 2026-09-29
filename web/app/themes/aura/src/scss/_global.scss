@@ -396,7 +396,7 @@ $gradients: ();
   line-height: 1.5;
   text-decoration: none;
   @include transition(150ms);
-  &:hover {
+  &:is(a):hover {
     text-decoration: none;
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);

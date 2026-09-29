@@ -2052,30 +2052,71 @@ $block: ".breadcrumb-block";
         }
         .uk-navbar-nav {
           justify-content: center;
-          & > li > a {
-            min-height: 0;
-            padding-bottom: 12px;
-            padding-top: 12px;
-            & + .uk-drop {
-              box-shadow:
-                0 20px 40px 0 rgba(25, 25, 51, 0.05),
-                0 25px 50px 0 rgba(94, 84, 255, 0.05);
-              border-radius: 8px;
-              ul {
-                display: flex;
-                gap: 10px;
-                flex-direction: column;
-                li {
-                  a {
-                    color: inherit;
-                    text-decoration: none;
-                    font-size: 16px;
-                    display: block;
-                    padding: 8px 16px;
-                    border-radius: 3px;
-                    &:hover {
-                      background-color: var(--color-2);
-                      color: white;
+          font-size: 14px;
+          gap: 10px;
+          & > li {
+            & > a:hover {
+              transform: translateY(-2px);
+              &::after {
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.025);
+              }
+            }
+            &.current_page_item a,
+            & > a:hover {
+              //color: white;
+              color: list.nth(vars.$colors-main, 2);
+              text-shadow:
+                0.25px 0 0 currentColor,
+                -0.25px 0 0 currentColor;
+
+              &::after {
+                top: 5px;
+                bottom: 5px;
+                left: 0px;
+                right: 0px;
+                background-color: rgba(list.nth(vars.$colors-main, 2), 0.1);
+              }
+            }
+            & > a {
+              min-height: 0;
+              padding-bottom: 12px;
+              padding-top: 12px;
+              position: relative;
+              &:after {
+                content: "";
+                z-index: -1;
+                top: 10px;
+                //height: 5px;
+                bottom: 10px;
+                left: 5px;
+                right: 5px;
+                position: absolute;
+                background-color: transparent;
+                color: white;
+                @include transition(150ms);
+                border-radius: 10px;
+              }
+              & + .uk-drop {
+                box-shadow:
+                  0 20px 40px 0 rgba(25, 25, 51, 0.05),
+                  0 25px 50px 0 rgba(94, 84, 255, 0.05);
+                border-radius: 8px;
+                ul {
+                  display: flex;
+                  gap: 10px;
+                  flex-direction: column;
+                  li {
+                    a {
+                      color: inherit;
+                      text-decoration: none;
+                      font-size: 16px;
+                      display: block;
+                      padding: 8px 16px;
+                      border-radius: 3px;
+                      &:hover {
+                        background-color: var(--color-2);
+                        color: white;
+                      }
                     }
                   }
                 }
