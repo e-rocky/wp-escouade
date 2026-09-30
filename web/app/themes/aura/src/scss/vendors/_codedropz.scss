@@ -7,6 +7,12 @@
     background: #f9f9f9;
     border-radius: 16px;
     border: solid 1px #e5ebfe;
+    &.codedropz-dragover {
+      background-color: #eff7fb;
+      .codedropz-upload-inner:before {
+        opacity: 0.3;
+      }
+    }
     .dnd-upload-counter {
       right: 24px;
       bottom: 16px;
@@ -16,14 +22,37 @@
       .codedropz-upload-inner {
         border: dashed 1px #959bae;
         border-radius: 6px;
-        padding: 24px 24px 32px 24px;
+        padding: 8px 16px 24px 16px;
+        flex-direction: column;
+        &:before {
+          content: "";
+          background-image: url("/src/icons/upload-cloud.svg");
+          width: 64px;
+          height: 64px;
+          display: block;
+          margin: 0 auto 16px;
+          background-size: cover;
+          opacity: 0.1;
+          @include transition(150ms);
+        }
         h3 {
-          font-size: 18px;
+          font-size: inherit;
+          padding-top: 0;
+          margin-top: 0;
+          margin-bottom: 0;
+          line-height: 1.2;
+          margin-bottom: 0.5em;
+          font-weight: 300;
+        }
+        span {
+          display: block;
+          line-height: 1.2;
+          color: #666;
         }
         .codedropz-btn-wrap {
           display: flex;
           justify-content: center;
-          margin-top: 32px;
+          margin-top: 16px;
           .cd-upload-btn {
             @include btn;
             background-image: linear-gradient(123deg, var(--color-1) -73.44%, var(--color-2) 100%);

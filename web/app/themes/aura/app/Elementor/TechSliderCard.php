@@ -114,7 +114,7 @@ class TechSliderCard extends Widget_Base
         $this->add_inline_editing_attributes('subtitle', 'none');
 ?>
         <div class="tech-slider-card__header flex flex-col md:flex-row justify-between px-[40px] md:items-center">
-            <h2 class="title title--h2 rte rte--em-c-5 c--2">
+            <h2 class="title title--h2-lg rte rte--em-c-5 c--2">
                 <?php if (! empty($settings['title']) || $is_edit_mode) : ?>
                     <span <?php $this->print_render_attribute_string('title'); ?>><?php echo wp_kses($settings['title'] ?? '', ['em' => [], 'strong' => [], 'br' => []]); ?></span>
                 <?php endif; ?>

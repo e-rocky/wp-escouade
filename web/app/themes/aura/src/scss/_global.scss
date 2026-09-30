@@ -102,7 +102,12 @@ input[type="checkbox"] {
   }
   & > .flex {
     gap: 10px;
+    margin-top: 0;
+    margin-bottom: 24px;
     & > p {
+      margin-bottom: 0;
+    }
+    & > .uk-form-controls > p {
       margin-bottom: 0;
     }
   }
@@ -498,35 +503,39 @@ $gradients: ();
       }
     }
   }
+  &--h2-lg {
+    small {
+      font-size: 21px;
+    }
+    @at-root {
+      &.title,
+      & h2,
+      &.elementor-widget-heading h2.elementor-heading-title {
+        font-size: 36px;
+        @include media-breakpoint-up(sm) {
+          font-size: 40px;
+        }
+        @include media-breakpoint-up(md) {
+          font-size: 44px;
+        }
+        @include media-breakpoint-up(lg) {
+          font-size: 48px;
+        }
+      }
+    }
+  }
   &--h2 {
     @at-root .rte h2,
       .elementor-widget-heading h2.elementor-heading-title,
       &,
       .rte & {
-      font-size: 36px;
+      font-size: 30px;
+      margin-bottom: 0;
       small {
         font-size: 21px;
       }
       @include media-breakpoint-up(sm) {
-        font-size: 40px;
-      }
-      @include media-breakpoint-up(md) {
-        font-size: 44px;
-      }
-      @include media-breakpoint-up(lg) {
-        font-size: 48px;
-      }
-    }
-  }
-  &--h3 {
-    @at-root .rte h3,
-      .elementor-widget-heading h3.elementor-heading-title,
-      &,
-      .rte & {
-      font-size: 32px;
-      margin-bottom: 0;
-      @include media-breakpoint-up(sm) {
-        font-size: 33px;
+        font-size: 32px;
       }
       @include media-breakpoint-up(md) {
         font-size: 34px;
@@ -536,9 +545,9 @@ $gradients: ();
       }
     }
   }
-  &--h4 {
-    @at-root .rte h4,
-      .elementor-widget-heading h4.elementor-heading-title,
+  &--h3 {
+    @at-root .rte h3,
+      .elementor-widget-heading h3.elementor-heading-title,
       &,
       .rte & {
       font-size: 20px;

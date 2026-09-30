@@ -132,7 +132,7 @@ class Dna extends Widget_Base
                     <div class="dna-block__header text-center">
                         <?php if (! empty($settings['heading']) || $is_edit_mode) : ?>
                             <<?php echo $heading; ?>
-                                class="title title--h2 c--2 rte--em-c-5 mb-0 text-[48px]">
+                                class="title title--h2 c--2 rte--em-c-5 mb-0">
                                 <span <?php $this->print_render_attribute_string('heading'); ?>>
                                     <?php echo wp_kses(
                                         $settings['heading'] ?? '',
@@ -171,7 +171,7 @@ class Dna extends Widget_Base
                                     <?php endif; ?>
                                     <div class="dna-card__body">
                                         <?php if (! empty($card['title']) || $is_edit_mode) : ?>
-                                            <<?php echo $card_heading; ?> class="title title--h3 c--2-5"><span <?php $this->print_render_attribute_string($title_key); ?>><?php echo esc_html($card['title'] ?? ''); ?></span></<?php echo $card_heading; ?>>
+                                            <<?php echo $card_heading; ?> class="title title--h2 c--2-5"><span <?php $this->print_render_attribute_string($title_key); ?>><?php echo esc_html($card['title'] ?? ''); ?></span></<?php echo $card_heading; ?>>
                                         <?php endif; ?>
                                         <?php if (! empty($card['description']) || $is_edit_mode) : ?>
                                             <p <?php $this->print_render_attribute_string($description_key); ?>><?php echo nl2br(esc_html($card['description'] ?? '')); ?></p>

@@ -112,7 +112,7 @@ class HeroIntro extends Widget_Base
         $background = in_array($settings['background'] ?? '', ['bgi--1', 'bgi--2', 'bgi--3', 'bgi--4', 'bgi--5', 'bgi--6'], true)
             ? ' bgi ' . $settings['background']
             : '';
-        $this->add_render_attribute('heading', 'class', ['title', 'title--h2', 'c--3']);
+        $this->add_render_attribute('heading', 'class', ['title', 'title--h2-lg', 'c--3']);
         $this->add_inline_editing_attributes('heading', 'basic');
         $this->add_render_attribute('body', 'class', 'text');
         $this->add_inline_editing_attributes('body', 'advanced');

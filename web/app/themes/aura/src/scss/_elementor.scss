@@ -18,6 +18,14 @@
     overflow: var(--overflow);
   }
 
+  .elementor-widget-text-editor {
+    --e-global-typography-text-font-family: list.nth(vars.$fonts, 1);
+  }
+
+  .e-heading-base {
+    margin-bottom: 0;
+  }
+
   &:not(.block) {
     .e-con-inner {
       //padding-top: 0;

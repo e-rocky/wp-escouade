@@ -124,7 +124,7 @@ class Edito extends Widget_Base
 
         $this->add_render_attribute('badge', 'class', 'tag');
         $this->add_inline_editing_attributes('badge', 'none');
-        $this->add_render_attribute('title', 'class', ['title', 'title--h3', $theme['title']]);
+        $this->add_render_attribute('title', 'class', ['title', 'title--h2', $theme['title']]);
         $this->add_inline_editing_attributes('title', 'basic');
         $this->add_render_attribute('text', 'class', 'text');
         $this->add_inline_editing_attributes('text', 'advanced');

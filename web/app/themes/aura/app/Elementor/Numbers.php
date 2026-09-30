@@ -127,7 +127,7 @@ class Numbers extends Widget_Base
             <div class="numbers-block__content uk-container text-center flex flex-col gap-[32px] <?php echo esc_attr($settings['container_classes'] ?? ''); ?>">
                 <?php if (! empty($settings['heading']) || ! empty($settings['subtitle']) || $is_edit_mode) : ?>
                     <div class="numbers-block__header">
-                        <<?php echo $tag; ?> class="title title--h2 c--4 [&_small]:font-500">
+                        <<?php echo $tag; ?> class="title title--h2-lg c--4 [&_small]:font-500">
                             <span <?php $this->print_render_attribute_string('heading'); ?>><?php echo esc_html($settings['heading'] ?? ''); ?></span>
                             <?php if (! empty($settings['subtitle']) || $is_edit_mode) : ?>
                                 <small><span <?php $this->print_render_attribute_string('subtitle'); ?>><?php echo esc_html($settings['subtitle'] ?? ''); ?></span></small>

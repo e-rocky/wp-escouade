@@ -929,7 +929,8 @@ $block: ".breadcrumb-block";
   &__body {
     ul,
     ul:is(.block.elementor-element ul) {
-      padding: 16px 32px 16px 32px;
+      //padding: 16px 32px 16px 32px;
+      padding: 12px 42px 12px 24px;
       margin: 0;
       display: flex;
       align-items: center;
@@ -942,7 +943,7 @@ $block: ".breadcrumb-block";
       width: fit-content;
       align-items: center;
       //font-size: 18px;
-      @include media-breakpoint-up(sm) {
+      /*@include media-breakpoint-up(sm) {
         padding: 16px 32px 16px 32px;
       }
       @include media-breakpoint-up(md) {
@@ -950,7 +951,7 @@ $block: ".breadcrumb-block";
       }
       @include media-breakpoint-up(lg) {
         padding: 16px 64px 16px 32px;
-      }
+      }*/
       li {
         display: block;
         line-height: 1;
@@ -2053,8 +2054,8 @@ $block: ".breadcrumb-block";
         padding-bottom: 30px;
         @include transition();
         &:is(.uk-sticky.uk-active div) {
-          padding-top: 20px;
-          padding-bottom: 20px;
+          padding-top: 10px;
+          padding-bottom: 10px;
         }
         .uk-navbar-nav {
           justify-content: center;

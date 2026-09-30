@@ -112,7 +112,7 @@ class JobAdvertising extends Widget_Base
             'no_found_rows' => true,
         ]);
 
-        $this->add_render_attribute('title', 'class', ['title', 'title--h2', 'rte', 'rte--em-c-5', 'c--4', 'mb-0']);
+        $this->add_render_attribute('title', 'class', ['title', 'title--h2-lg', 'rte', 'rte--em-c-5', 'c--4', 'mb-0']);
         $this->add_inline_editing_attributes('title', 'basic');
 
         if ($buttonLabel !== '' && $buttonUrl !== '') {
@@ -120,7 +120,7 @@ class JobAdvertising extends Widget_Base
             $this->add_render_attribute('button', 'class', ['btn', 'btn--lg', 'c--4', 'bgc--5', 'btn-shadow-sm']);
             $this->add_render_attribute('button', 'title', $buttonLabel);
         }
-        ?>
+?>
         <div class="block bgi bgi--5 job-advertising-block">
             <div class="job-advertising-block__content uk-container flex gap-[70px] flex-col">
                 <?php if (! empty($settings['title'])) : ?>
@@ -169,6 +169,6 @@ class JobAdvertising extends Widget_Base
                 <?php endif; ?>
             </div>
         </div>
-        <?php
+<?php
     }
 }
