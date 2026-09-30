@@ -50,6 +50,9 @@ $breakpoints: (
   text-align: center;
   justify-content: center;
   border: none;
+  a {
+    background: none;
+  }
   &.underline {
     &,
     &:hover {

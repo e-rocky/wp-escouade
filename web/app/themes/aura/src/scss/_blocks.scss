@@ -1220,6 +1220,12 @@ $block: ".breadcrumb-block";
   &__header {
   }
   &__body {
+    .footer-links {
+      li a {
+        color: white;
+        text-decoration: underline;
+      }
+    }
     .social-links {
       &:hover {
         li a {
@@ -2066,9 +2072,11 @@ $block: ".breadcrumb-block";
               //color: white;
               color: list.nth(vars.$colors-main, 2);
               text-shadow:
+                /*0 0 16px rgba(0, 123, 255, 0.5),
+                0 0 32px rgba(0, 123, 255, 0.5),
+                0 0 64px rgba(0, 123, 255, 0.5),*/
                 0.25px 0 0 currentColor,
                 -0.25px 0 0 currentColor;
-
               &::after {
                 top: 5px;
                 bottom: 5px;
@@ -2082,19 +2090,26 @@ $block: ".breadcrumb-block";
               padding-bottom: 12px;
               padding-top: 12px;
               position: relative;
+              /*color: list.nth(vars.$colors-main, 2);
+              transition-duration: 125ms;
+              text-shadow:
+                0 0 32px rgba(0, 123, 255, 0.475),
+                0 0 64px rgba(0, 123, 255, 0.475),
+                0 0 126px rgba(0, 123, 255, 0.475);*/
               &:after {
                 content: "";
                 z-index: -1;
                 top: 10px;
                 //height: 5px;
                 bottom: 10px;
-                left: 5px;
-                right: 5px;
+                left: -2px;
+                right: -2px;
                 position: absolute;
                 background-color: transparent;
                 color: white;
                 @include transition(150ms);
                 border-radius: 10px;
+                //display: none;
               }
               & + .uk-drop {
                 box-shadow:

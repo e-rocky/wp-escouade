@@ -102,16 +102,23 @@
   <div class="block copyright-social-block">
     <div class="copyright-social-block__content py-0 uk-container">
       <div
-        class="copyright-social-block__body flex flex-col-reverse md:flex-row gap-[32px] justify-between items-center py-[46px] text-[16px]">
-        <p class="copyright c--4 mb-0 text-center md:text-left">© {{ date('Y') }} Escouade. Tous droits
-          réservés.</p>
+        class="copyright-social-block__body flex flex-col-reverse md:flex-row gap-[32px] justify-between items-center py-[46px]">
+        <div class="flex flex-col-reverse md:flex-row gap-5 items-center c--4">
+          <p class="copyright mb-0 text-center md:text-left">© 2025 Escouade. Tous droits réservés.</p>
+
+          {!! wp_nav_menu([
+              'theme_location' => 'footer_navigation',
+              'menu_class' => 'footer-links flex gap-5 my-0 text-[16px]',
+              'container' => false,
+          ]) !!}
+
+        </div>
 
         {!! wp_nav_menu([
             'theme_location' => 'footer_social_navigation',
             'menu_class' => 'social-links flex my-0',
             'container' => false,
         ]) !!}
-
 
       </div><!-- .copyright-social-block__body -->
     </div><!-- .copyright-social-block__content -->
