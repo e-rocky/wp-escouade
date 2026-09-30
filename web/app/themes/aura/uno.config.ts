@@ -4,7 +4,7 @@ export default defineConfig({
   content: {
     filesystem: [
       '*.{html,php}',
-      'app/**/*.{html,php}',
+      './**/*.{html,php}',
       'src/**/*.{js,ts,jsx,tsx}',
       'templates/**/*.{html,php,twig}',
       'views/**/*.{html,php,twig}',

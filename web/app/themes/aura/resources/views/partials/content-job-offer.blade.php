@@ -42,7 +42,7 @@
         </ul>
         <hr class="my-[10px]">
         <a class="block" href="{{ get_the_permalink() }}" title="{{ get_the_title() }}">
-          <h2 class="title title--h3 c--2-1a">{{ get_the_title() }}</h2>
+          <h2 class="title c--2-1a">{{ get_the_title() }}</h2>
           <div class="grid grid-cols-[24px_1fr] gap-[10px] [&>svg]:size-[24px]">
             @php($levels = get_the_terms(get_the_ID(), 'job-level'))
             @if ($levels)

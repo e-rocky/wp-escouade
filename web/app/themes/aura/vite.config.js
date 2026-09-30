@@ -37,6 +37,7 @@ export default defineConfig({
     // Optimize bundled and public images with visually lossless settings.
     ViteImageOptimizer({
       includePublic: true,
+      exclude: /sprite(?:-[\w-]+)?\.svg$/i,
       cache: true,
       cacheLocation: 'node_modules/.cache/vite-plugin-image-optimizer',
       png: {

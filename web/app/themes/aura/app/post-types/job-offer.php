@@ -163,8 +163,8 @@ add_filter('bulk_post_updated_messages', 'aura_job_offer_bulk_updated_messages',
 
 add_action('wp_enqueue_scripts', function () {
     wp_add_inline_script(
-        'wp-blocks',
-        'window.aura = ' . json_encode([
+        'auraScript',
+        'window.aura = Object.assign(window.aura || {}, ' . wp_json_encode([
             'taxonomy' => [
                 'jobWorkplace' => get_terms([
                     'taxonomy' => 'job-workplace',
@@ -195,10 +195,10 @@ add_action('wp_enqueue_scripts', function () {
                     'hide_empty' => false,
                 ]),
             ],
-        ]) . ';',
+        ]) . ');',
         'before'
     );
-});
+}, 20);
 
 // Ajouter la meta box
 add_action('add_meta_boxes', function () {
